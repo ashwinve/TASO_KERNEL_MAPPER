@@ -1,0 +1,5 @@
+/usr/local/lib/libtaso_runtime.so
+/usr/local/./include/taso/ops.h
+/usr/local/./include/taso/substitution.h
+/usr/local/./include/taso/dnnl_helper.h
+/usr/local/./include/taso/cuda_helper.h
