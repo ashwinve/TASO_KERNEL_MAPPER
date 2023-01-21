@@ -467,6 +467,7 @@ public:
   OpBase(int n, Tensor* inputs, Model* _model, OpType _type);
   virtual bool get_input_parameter(TNParameter, DIMParameter, int*);
   virtual bool get_int_parameter(PMParameter, int*);
+  virtual bool get_list_parameter(int*, PMParameter, int*);
   virtual bool get_float_parameter(PMParameter, float*);
   //virtual bool get_ints_parameter(PMParameter, std::vector<int>*);
   virtual void forward(bool block = false) = 0;
@@ -646,6 +647,7 @@ public:
   int get_input_edges(Edge* opList, size_t guid);
   OpType get_operator_type(size_t guid);
   int get_operator_int_attr(size_t guid, PMParameter attr);
+  int get_operator_list_attr(int* axes_arr, size_t guid, PMParameter attr);
   float get_operator_float_attr(size_t guid, PMParameter attr);
   int get_num_outputs(size_t guid);
   int get_input_dims(size_t guid, int* dims, int idx);
@@ -993,6 +995,7 @@ public:
          const std::vector<int>& _axes, bool _keepdims);
   ~Reduce(void);
   bool get_int_parameter(PMParameter para, int*);
+  bool get_list_parameter(int* axes_arr, PMParameter para, int * ret);
   void forward(bool block);
   void map(void);
   void unmap(void);

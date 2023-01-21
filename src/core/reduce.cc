@@ -163,6 +163,20 @@ bool Reduce::get_int_parameter(PMParameter para, int* value)
   }
 }
 
+bool Reduce::get_list_parameter(int* axes_arr, PMParameter para, int * ret)
+{
+  switch (para) {
+    case PM_AXES:
+      axes_arr = axes.data();
+      *ret = (int) axes.size();
+      return true;
+    default:
+      *ret = (int) 0;
+      return false;
+  }
+}
+
+
 void Reduce::collect_costs(float& exe_time, float& flops,
                            float& mem_acc, int& num_kernels)
 {

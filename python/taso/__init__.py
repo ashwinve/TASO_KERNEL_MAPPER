@@ -398,11 +398,21 @@ def _reducemax(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) == 1, "ReduceMax requires exactly one input"
     attrs = _parse_attribute(op.attribute)
-    keepdims = attrs["keepdims"]
+    
+    try:
+        keepdims = attrs["keepdims"]
+    except KeyError:
+        # Refer: https://github.com/onnx/onnx/blob/main/docs/Operators.md
+        keepdims = 1
     axes_ints = attrs["axes"]
     axes_list = list()
     for i in axes_ints:
-        axes_list.append(i)
+        # Workaround to convert negative axes index to positive axes index
+        # Required by TASO internal
+        if i < 0:
+            axes_list.append(inputs[0].nDim + i)
+        else:
+            axes_list.append(i)
     outputs = graph.reduce_max(input=inputs[0], axes=tuple(axes_list), keepdims=keepdims)
     return outputs
 
@@ -410,11 +420,24 @@ def _reducemean(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) == 1, "ReduceMean requires exactly one input"
     attrs = _parse_attribute(op.attribute)
-    keepdims = attrs["keepdims"]
+    
+    try:
+        keepdims = attrs["keepdims"]
+    except KeyError:
+        # Refer: https://github.com/onnx/onnx/blob/main/docs/Operators.md
+        keepdims = 1
+        
     axes_ints = attrs["axes"]
     axes_list = list()
+    
     for i in axes_ints:
-        axes_list.append(i)
+        # Workaround to convert negative axes index to positive axes index
+        # Required by TASO internal
+        if i < 0:
+            axes_list.append(inputs[0].nDim + i)
+        else:
+            axes_list.append(i)
+            
     outputs = graph.reduce_mean(input=inputs[0], axes=tuple(axes_list), keepdims=keepdims)
     return outputs
 
@@ -422,11 +445,22 @@ def _reducemin(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) == 1, "ReduceMin requires exactly one input"
     attrs = _parse_attribute(op.attribute)
-    keepdims = attrs["keepdims"]
+    
+    try:
+        keepdims = attrs["keepdims"]
+    except KeyError:
+        # Refer: https://github.com/onnx/onnx/blob/main/docs/Operators.md
+        keepdims = 1
+        
     axes_ints = attrs["axes"]
     axes_list = list()
     for i in axes_ints:
-        axes_list.append(i)
+        # Workaround to convert negative axes index to positive axes index
+        # Required by TASO internal
+        if i < 0:
+            axes_list.append(inputs[0].nDim + i)
+        else:
+            axes_list.append(i)
     outputs = graph.reduce_min(input=inputs[0], axes=tuple(axes_list), keepdims=keepdims)
     return outputs
 
@@ -434,7 +468,13 @@ def _reduceprod(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) == 1, "ReduceProd requires exactly one input"
     attrs = _parse_attribute(op.attribute)
-    keepdims = attrs["keepdims"]
+    
+    try:
+        keepdims = attrs["keepdims"]
+    except KeyError:
+        # Refer: https://github.com/onnx/onnx/blob/main/docs/Operators.md
+        keepdims = 1
+        
     axes_ints = attrs["axes"]
     axes_list = list()
     for i in axes_ints:
@@ -446,7 +486,13 @@ def _reducesum(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) == 1, "ReduceSum requires exactly one input"
     attrs = _parse_attribute(op.attribute)
-    keepdims = attrs["keepdims"]
+    
+    try:
+        keepdims = attrs["keepdims"]
+    except KeyError:
+        # Refer: https://github.com/onnx/onnx/blob/main/docs/Operators.md
+        keepdims = 1
+        
     axes_ints = attrs["axes"]
     axes_list = list()
     for i in axes_ints:
@@ -862,6 +908,7 @@ operator_attrs['Tanh'] = []
 operator_attrs['Transpose'] = ['perm']
 operator_attrs['Unsqueeze'] = ['axes']
 operator_attrs['BroadcastAdd'] = []
+operator_attrs['ReduceMax'] = ['axes', 'keepdims']
 
 def _input_tensor_name(graph, inedge, op):
     intype = graph.get_operator_type(inedge['srcOp'])

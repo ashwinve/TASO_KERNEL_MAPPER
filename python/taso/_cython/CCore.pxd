@@ -115,6 +115,7 @@ cdef extern from "taso/ops.h" namespace "taso":
         PM_OUTSHUFFLE
         PM_MERGE_GCONV_COUNT
         PM_AXES
+        PM_KEEP_DIMS
         PM_EPSILON
 
     # This must be consistent with include/taso/ops.h

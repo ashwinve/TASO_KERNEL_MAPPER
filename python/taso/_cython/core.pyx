@@ -658,7 +658,12 @@ cdef class PyGraph:
         elif attrname == 'epsilon':
             return self.p_graph.get_operator_float_attr(op.guid, PM_EPSILON)
         elif attrname == 'axes':
-            # FIXME
-            return [0]
+            num_axes = self.p_graph.get_operator_list_attr(axes_arr, op.guid, PM_AXES)
+            axes_list = list()
+            for i in range(num_axes):
+                axes_list.append(axes_arr[i])
+            return axes_list
+        elif attrname == 'keepdims':
+            return self.p_graph.get_operator_int_attr(op.guid, PM_KEEP_DIMS)
         else:
            assert False, 'Internal error: unknow attribute {}'.format(attrname)
