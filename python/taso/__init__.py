@@ -870,6 +870,7 @@ input_weight_names['AveragePool'] = ['input']
 input_weight_names['BatchNormalization'] = ['input', 'scale', 'bias', 'mean', 'var']
 input_weight_names['Concat'] = ['input1', 'input2', 'input3', 'input4', 'input5', 'input6']
 input_weight_names['Conv'] = ['input', 'weight', 'bias']
+input_weight_names['Div'] = ['input1', 'input2']
 input_weight_names['MatMul'] = ['input', 'weight']
 input_weight_names['Mul'] = ['input1', 'input2']
 input_weight_names['Reshape'] = ['input', 'shape']
@@ -888,6 +889,7 @@ operator_attrs['Concat'] = ['axis']
 operator_attrs['Conv'] = ['group', 'kernel_shape', 'pads', 'strides']
 operator_attrs['Div'] = []
 operator_attrs['Dropout'] = []
+operator_attrs['Exp'] = []
 operator_attrs['Gemm'] = []
 operator_attrs['Greater'] = []
 operator_attrs['Identity'] = []
@@ -903,6 +905,7 @@ operator_attrs['Slice'] = []
 operator_attrs['Split'] = ['axis', 'split']
 operator_attrs["Squeeze"] = ['axes']
 operator_attrs['StridedSlice'] = []
+operator_attrs['Sub'] = []
 operator_attrs['Relu'] = []
 operator_attrs['Reshape'] = []
 operator_attrs['Tanh'] = []
@@ -949,7 +952,7 @@ def export_onnx(graph):
     for op in opList:
         mytype = graph.get_operator_type(op)
         inedges = graph.get_input_edges(op)
-        #print("op.guid={} mytype={} inedges={}".format(op['guid'], mytype, len(inedges)))
+        # print("op.guid={} mytype={} inedges={}".format(op['guid'], mytype, len(inedges)))
         inputs = list()
         for e in inedges:
             intype = graph.get_operator_type(e['srcOp'])
