@@ -265,6 +265,7 @@ cdef extern from "taso/ops.h" namespace "taso":
         int get_input_edges(Edge* edges, size_t guid)
         OpType get_operator_type(size_t guid)
         int get_operator_int_attr(size_t guid, PMParameter attr)
+        int get_operator_list_attr(int* axes_arr, size_t guid, PMParameter attr)
         float get_operator_float_attr(size_t guid, PMParameter attr)
         int get_num_outputs(size_t guid)
         int get_input_dims(size_t guid, int* dims, int idx)

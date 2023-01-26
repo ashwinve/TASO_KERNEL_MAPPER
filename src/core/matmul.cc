@@ -96,6 +96,7 @@ Matmul::Matmul(Model* _model, Tensor _input, Tensor _weight, ActiMode _activatio
   outputs[0].split[numDim-2] = _input.split[numDim-2];
   outputs[0].split[numDim-1] = _weight.split[numDim-1];
   outputs[0].idx = 0;
+  
 }
 
 Matmul::~Matmul(void)

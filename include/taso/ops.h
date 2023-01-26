@@ -349,13 +349,20 @@ struct Tensor {
     }
     return true;
   }
+
   bool default_layout(void) const
   {
     int cnt = 1;
+    std::cout << "default layout check" << std::endl;
+    std::cout << "numDim: " << numDim << std::endl;
     for (int i = numDim-1; i >= 0; i--) {
-      if (stride[i] != cnt) return false;
+      std::cout << stride[i] << " " << cnt << std::endl;
       cnt *= dim[i];
     }
+    // for (int i = numDim-1; i >= 0; i--) {
+    //   if (stride[i] != cnt) return false;
+    //   cnt *= dim[i];
+    // }
     return true;
   }
 

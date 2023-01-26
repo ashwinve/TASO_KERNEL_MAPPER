@@ -112,8 +112,13 @@ void Matmul::set_layout(void)
 {
   // CuBLAS uses column-major.
   int numDim = outputs[0].numDim;
-  outputs[0].stride[numDim-2] = 1;
-  outputs[0].stride[numDim-1] = outputs[0].dim[numDim-2];
+  // outputs[0].stride[numDim-2] = 1;
+  // outputs[0].stride[numDim-1] = outputs[0].dim[numDim-2];
+
+  // row-major order
+  outputs[0].stride[numDim-1] = 1;
+  outputs[0].stride[numDim-2] = outputs[0].dim[numDim-1];
+
   int size = outputs[0].dim[numDim-2] * outputs[0].dim[numDim-1];
   for (int i = numDim-3; i >= 0; i--) {
     outputs[0].stride[i] = size;
@@ -148,7 +153,13 @@ void Model::measure_matmul_cost(Matmul* mm)
     transB = CUBLAS_OP_T;
     ldb = mm->inputs[1].stride[numDim-2];
   }
-  ldc = mm->outputs[0].stride[numDim-1];
+  
+  // col-major leading dim of 2D array to store C
+  // ldc = mm->output[0].dim[numDim-1];
+  
+  // row-major leading dim of 2D array to store C
+  // take reference from outer dim of first Matmul operand
+  ldc = mm->inputs[0].dim[numDim-2];
 
   if (mm->activation != AC_MODE_NONE) {
     cudnnActivationMode_t mode;

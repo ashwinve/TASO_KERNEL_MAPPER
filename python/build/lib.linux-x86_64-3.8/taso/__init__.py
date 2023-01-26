@@ -2,6 +2,8 @@ from .core import *
 import onnx
 from onnx import helper, TensorProto, numpy_helper
 
+print("__init__: After import statements\n")
+
 class InputNotFoundError(Exception):
     """Raised when cannot find input tensors """
     pass
@@ -128,6 +130,7 @@ def _get_inputs(op, graph, tensors, initializer):
     return inputs
 
 def _add(op, graph, tensors, initializer):
+    print("python/taso/__init__.py: triggered _add\n")
     inputs = _get_inputs(op, graph, tensors, initializer)
     outputs = graph.add(inputs[0], inputs[1])
     return outputs
@@ -778,6 +781,8 @@ def load_onnx(filename):
     @return
     Loaded in-memory Graph
     '''
+    print("Triggered load_onnx\n")
+    
     graph = core.PyGraph()
     model = onnx.load(filename)
     tensors = dict()
@@ -908,6 +913,7 @@ operator_attrs['Tanh'] = []
 operator_attrs['Transpose'] = ['perm']
 operator_attrs['Unsqueeze'] = ['axes']
 operator_attrs['BroadcastAdd'] = []
+operator_attrs['ReduceMax'] = ['axes', 'keepdims']
 
 def _input_tensor_name(graph, inedge, op):
     intype = graph.get_operator_type(inedge['srcOp'])

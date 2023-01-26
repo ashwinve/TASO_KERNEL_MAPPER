@@ -606,6 +606,9 @@ cdef class PyGraph:
     def get_operator_attr(self, Op op, attrname):
         cdef int kh, kw, sh, sw
         cdef PaddingMode pm
+        cdef int axes_arr[128]
+        cdef int num_axes
+        
         if attrname == 'kernel_shape':
             kh = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_H)
             kw = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_W)

@@ -128,6 +128,7 @@ def _get_inputs(op, graph, tensors, initializer):
     return inputs
 
 def _add(op, graph, tensors, initializer):
+    print("python/taso/__init__.py: triggered _add\n")
     inputs = _get_inputs(op, graph, tensors, initializer)
     outputs = graph.add(inputs[0], inputs[1])
     return outputs
@@ -778,6 +779,8 @@ def load_onnx(filename):
     @return
     Loaded in-memory Graph
     '''
+    print("Triggered load_onnx\n")
+    
     graph = core.PyGraph()
     model = onnx.load(filename)
     tensors = dict()

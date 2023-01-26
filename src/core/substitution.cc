@@ -367,6 +367,7 @@ void GraphXfer::load_graph_xfer_from_pb_file(Model* model,
 {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
   GraphSubst::RuleCollection collection;
+  
   std::fstream input(filename, ios::in);
   assert(collection.ParseFromIstream(&input));
   //printf("Number of generated substitutions = %d\n", collection.rule_size());
