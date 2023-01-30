@@ -679,6 +679,13 @@ def _sum(op, graph, tensors, initializer):
     outputs = graph.add(inputs[0], inputs[1])
     return outputs
 
+def _tanh(op, graph, tensors, initializer):
+    inputs = _get_inputs(op, graph, tensors, initializer)
+    assert len(inputs) == 1, "Tanh requires exactly one input"
+    attrs = _parse_attribute(op.attribute)
+    outputs = graph.tanh(input=inputs[0])
+    return outputs
+
 def _transpose(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) == 1, "Transpose requires exactly one input"
@@ -753,6 +760,7 @@ xf_operators['AveragePool'] = _avgpool2d
 xf_operators['GlobalAveragePool'] = _globalavgpool2d
 xf_operators['Shape'] = _shape
 xf_operators['Size'] = _size
+xf_operators['Sigmoid'] = _sigmoid
 xf_operators['Slice'] = _slice
 xf_operators['Split'] = _split
 xf_operators['Sqrt'] = _sqrt
@@ -761,6 +769,7 @@ xf_operators['StridedSlice'] = _strided_slice
 xf_operators['Sub'] = _sub
 xf_operators['Sum'] = _sum
 xf_operators['Transpose'] = _transpose
+xf_operators['Tanh'] = _tanh
 xf_operators['Unsqueeze'] = _unsqueeze
 
 def new_graph(print_measurements = False):
