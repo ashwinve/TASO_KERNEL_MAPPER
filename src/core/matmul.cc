@@ -48,8 +48,10 @@ TensorHandle Graph::matmul(const TensorHandle _input,
 Op Model::get_or_create_matmul(Tensor _input, Tensor _weight,
                                ActiMode _acti)
 {
-  if (_input.numDim != _weight.numDim)
+  if (_input.numDim != _weight.numDim){
     return Op::INVALID_OP;
+  }
+    
   for (int i = 0; i < _input.numDim - 2; i++)
     if (_input.dim[i] != _weight.dim[i])
       return Op::INVALID_OP;

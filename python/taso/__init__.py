@@ -339,7 +339,22 @@ def _logical_not(op, graph, tensors, initializer):
 def _matmul(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) == 2, "MatMul takes exactly two inputs"
-    outputs = graph.matmul(inputs[0], inputs[1])
+    
+    if(inputs[0].nDim != inputs[1].nDim):
+        # check if dims are the same. if not, reshape inputs[1] to inputs[0]
+        # the dimensions sent to reshape are prepended with 1s
+        numDims = inputs[0].nDim
+        dims = [inputs[0].dim(i) for i in range(numDims)]
+        j = numDims - 1
+        # iterate backwards through dims and overwrite with inputs[1] dimensions
+        for i in range(inputs[1].nDim - 1, -1, -1):
+            dims[j] = inputs[1].dim(i)
+            j = j -1
+        
+        reshaped_weights = graph.reshape(inputs[1], tuple(dims))
+        outputs = graph.matmul(inputs[0], reshaped_weights)
+    else:
+        outputs = graph.matmul(inputs[0], inputs[1])
     return outputs
 
 def _min(op, graph, tensors, initializer):
