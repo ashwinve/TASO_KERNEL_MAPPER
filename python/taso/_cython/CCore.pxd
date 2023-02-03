@@ -43,6 +43,7 @@ cdef extern from "taso/ops.h" namespace "taso":
         OP_POOL2D_AVG
         OP_RELU
         OP_SIGMOID
+        OP_SOFTPLUS
         OP_TANH
         OP_BATCHNORM
         OP_CONCAT
@@ -84,6 +85,7 @@ cdef extern from "taso/ops.h" namespace "taso":
         OP_CEIL,
         OP_CAST,
         OP_EXP,
+        OP_ERF,
         OP_ROUND,
         OP_LOG,
         OP_LOGICAL_NOT,
@@ -92,6 +94,7 @@ cdef extern from "taso/ops.h" namespace "taso":
         OP_SLICE,
         OP_RESIZE,
         OP_PRELU,
+        OP_POW,
         OP_FUSE_CONV_BATCHNORM,
         OP_FUSE_CONV_BATCHNORM_ALPHA_VAR,
         OP_FUSE_CONV_BATCHNORM_BIAS,
@@ -173,6 +176,7 @@ cdef extern from "taso/ops.h" namespace "taso":
 
     cdef cppclass Graph:
         Graph()
+        TensorHandle broadcast_add(OpType type, const TensorHandle x, const TensorHandle bias)
         TensorHandle batchnorm(const TensorHandle input,
                                const TensorHandle scale,
                                const TensorHandle bias,
@@ -193,6 +197,7 @@ cdef extern from "taso/ops.h" namespace "taso":
                              const TensorHandle x,
                              const TensorHandle y)
         TensorHandle exp(const TensorHandle input)
+        TensorHandle erf(const TensorHandle input)
         TensorHandle log(const TensorHandle input)
         TensorHandle logical_not(const TensorHandle input)
         TensorHandle pool2d_max(const TensorHandle input,
@@ -249,6 +254,7 @@ cdef extern from "taso/ops.h" namespace "taso":
         void split_equal(const TensorHandle input, int axis,
                          int num, TensorHandle* outputs)
         TensorHandle sqrt(const TensorHandle input)
+        TensorHandle softplus(const TensorHandle input)
         TensorHandle squeeze(const TensorHandle input,
                               const vector[int] axes)
         TensorHandle tanh(const TensorHandle input,

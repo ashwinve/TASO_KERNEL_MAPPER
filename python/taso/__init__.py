@@ -1,6 +1,11 @@
 from .core import *
 import onnx
-from onnx import helper, TensorProto, numpy_helper
+from onnx import helper, TensorProto, numpy_helper, mapping
+from onnx.external_data_helper import load_external_data_for_tensor, uses_external_data
+
+import numpy as np
+
+import sys
 
 class InputNotFoundError(Exception):
     """Raised when cannot find input tensors """
@@ -126,7 +131,7 @@ def _get_inputs(op, graph, tensors, initializer):
             return []
         inputs.append(input_tensor)
     return inputs
-
+        
 def _add(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     outputs = graph.add(inputs[0], inputs[1])
@@ -250,6 +255,13 @@ def _exp(op, graph, tensors, initializer):
     outputs = graph.exp(input=inputs[0])
     return outputs
 
+def _erf(op, graph, tensors, initializer):
+    inputs = _get_inputs(op, graph, tensors, initializer)
+    assert len(inputs) == 1, "Erf requires exactly one input"
+    attrs = _parse_attribute(op.attribute)
+    outputs = graph.erf(input=inputs[0])
+    return outputs
+
 def _flatten(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) == 1, "Flatten requires exactly one input"
@@ -356,6 +368,12 @@ def _prelu(op, graph, tensors, initializer):
     assert len(inputs) == 2, "PRelu requires exactly two inputs"
     attrs = _parse_attribute(op.attribute)
     outputs = graph.prelu(x=inputs[0], slope=inputs[1])
+    return outputs
+
+def _pow(op, graph, tensors, initializer):
+    inputs = _get_inputs(op, graph, tensors, initializer)
+    assert len(inputs) == 2, "Pow requires exactly two inputs"
+    outputs = graph.pow(inputs[0], inputs[1])
     return outputs
 
 def _max(op, graph, tensors, initializer):
@@ -573,6 +591,13 @@ def _sigmoid(op, graph, tensors, initializer):
     outputs = graph.sigmoid(input=inputs[0])
     return outputs
 
+def _softplus(op, graph, tensors, initializer):
+    inputs = _get_inputs(op, graph, tensors, initializer)
+    assert len(inputs) == 1, "Softplus requires exactly one input"
+    attrs = _parse_attribute(op.attribute)
+    outputs = graph.softplus(input=inputs[0])
+    return outputs
+
 def _size(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) == 1, "Size requires exactly one input"
@@ -733,6 +758,7 @@ xf_operators['Div'] = _div
 xf_operators['Dropout'] = _dropout
 xf_operators['Equal'] = _equal
 xf_operators['Exp'] = _exp
+xf_operators['Erf'] = _erf
 xf_operators['Flatten'] = _flatten
 xf_operators['Gemm'] = _gemm
 xf_operators['Greater'] = _greater
@@ -742,12 +768,14 @@ xf_operators['Less'] = _less
 xf_operators['Log'] = _log
 xf_operators['Pad'] = _pad
 xf_operators['PRelu'] = _prelu
+xf_operators['Pow'] = _pow
 xf_operators['ReduceMax'] = _reducemax
 xf_operators['ReduceMean'] = _reducemean
 xf_operators['ReduceMin'] = _reducemin
 xf_operators['ReduceProd'] = _reduceprod
 xf_operators['ReduceSum'] = _reducesum
 xf_operators['Reshape'] = _reshape
+xf_operators['Resize'] = _resize
 xf_operators['Relu'] = _relu
 xf_operators['Round'] = _round
 xf_operators['MatMul'] = _matmul
@@ -762,6 +790,7 @@ xf_operators['Shape'] = _shape
 xf_operators['Size'] = _size
 xf_operators['Sigmoid'] = _sigmoid
 xf_operators['Slice'] = _slice
+xf_operators['Softplus'] = _softplus
 xf_operators['Split'] = _split
 xf_operators['Sqrt'] = _sqrt
 xf_operators['Squeeze'] = _squeeze
@@ -854,7 +883,7 @@ def load_onnx(filename):
     cnt = 0
     for opname in node_list:
         op = name_to_op[opname]
-        #print(cnt, op.op_type, opname)
+        print(cnt, op.op_type, opname)
         cnt += 1
         if op.op_type in xf_operators:
             try:

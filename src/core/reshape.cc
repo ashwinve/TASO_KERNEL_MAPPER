@@ -41,6 +41,7 @@ TensorHandle Graph::reshape(const TensorHandle _input,
   add_edge(_input->op, op, _input->idx, 0);
   TensorHandle t = new Tensor(op.ptr->outputs[0]);
   t->op = op;
+  
   return t;
 }
 

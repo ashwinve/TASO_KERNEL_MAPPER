@@ -53,9 +53,15 @@ Op Model::get_or_create_element(OpType type,
                                 const Tensor& t1,
                                 const Tensor& t2)
 {
-  if (!broadcastable(t1, t2)) {
+  bool is_broadcastable = broadcastable(t1, t2);
+  if (!is_broadcastable) {
     return Op::INVALID_OP;
   }
+
+  if(is_broadcastable){
+    
+  }
+
   // key is (inputN, inputC, inputH, inputW, type)
   ElementKey key(t1, t2, type);
   Element* eleOp;

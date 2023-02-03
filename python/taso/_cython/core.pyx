@@ -118,6 +118,7 @@ op_table[OP_POOL2D_MAX] = "MaxPool"
 op_table[OP_POOL2D_AVG] = "AveragePool"
 op_table[OP_RELU] = "Relu"
 op_table[OP_SIGMOID] = "Sigmoid"
+op_table[OP_SOFTPLUS] = "Softplus"
 op_table[OP_TANH] = "Tanh"
 op_table[OP_BATCHNORM] = "BatchNormalization"
 op_table[OP_CONCAT] = "Concat"
@@ -144,6 +145,7 @@ op_table[OP_REDUCE_MIN] = "ReduceMin"
 op_table[OP_REDUCE_PROD] = "ReduceProd"
 op_table[OP_REDUCE_SUM] = "ReduceSum"
 op_table[OP_PAD] = "Pad"
+op_table[OP_POW] = "Pow"
 op_table[OP_SHAPE] = "Shape"
 op_table[OP_SIZE] = "Size"
 op_table[OP_TOPK] = "TopK"
@@ -151,6 +153,7 @@ op_table[OP_WHERE] = "Where"
 op_table[OP_CEIL] = "Ceil"
 op_table[OP_CAST] = "Cast"
 op_table[OP_EXP] = "Exp"
+op_table[OP_ERF] = "Erf"
 op_table[OP_ROUND] = "Round"
 op_table[OP_LOG] = "Log"
 op_table[OP_LOGICAL_NOT] = "Not"
@@ -189,6 +192,11 @@ cdef class PyGraph:
         cdef TensorHandle handle = self.p_graph.element(OP_EW_ADD, x.ctensor, y.ctensor)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
+    
+    def broadcast_add(self, PyTensor x, PyTensor bias):
+       cdef TensorHandle handle = self.p_graph.broadcast_add(OP_BROADCAST_ADD, x.ctensor, bias.ctensor)
+       t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+       return PyTensor(t)
 
     def batchnorm(self, PyTensor input, PyTensor scale, PyTensor bias, PyTensor mean, PyTensor var, float epsilon = -1):
         cdef TensorHandle handle = self.p_graph.batchnorm(input.ctensor, scale.ctensor,
@@ -246,6 +254,11 @@ cdef class PyGraph:
 
     def exp(self, *, PyTensor input):
         cdef TensorHandle handle = self.p_graph.exp(input.ctensor)
+        t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+        return PyTensor(t)
+    
+    def erf(self, *, PyTensor input):
+        cdef TensorHandle handle = self.p_graph.erf(input.ctensor)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
 
@@ -319,6 +332,12 @@ cdef class PyGraph:
 
     def prelu(self, *, PyTensor x, PyTensor slope):
         cdef TensorHandle handle = self.p_graph.element(OP_PRELU, x.ctensor, slope.ctensor)
+        t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+        return PyTensor(t)
+    
+    # element-wise power
+    def pow(self, PyTensor x, PyTensor y):
+        cdef TensorHandle handle = self.p_graph.element(OP_POW, x.ctensor, y.ctensor)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
 
@@ -411,6 +430,11 @@ cdef class PyGraph:
 
     def sigmoid(self, PyTensor input, bool inplace = False):
         cdef TensorHandle handle = self.p_graph.sigmoid(input.ctensor, inplace)
+        t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+        return PyTensor(t)
+    
+    def softplus(self, *, PyTensor input):
+        cdef TensorHandle handle = self.p_graph.softplus(input.ctensor)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
 

@@ -55,9 +55,17 @@ void helperSetTensorDescriptor(const Tensor& tensor,
                                             4, dims, strides));
       break;
     }
+    case 3:
+    {
+      int dims[] = {tensor.dim[0], tensor.dim[1], tensor.dim[2], 1};
+      int strides[] = {tensor.stride[0], tensor.stride[1], 1, 1};
+      checkCUDNN(cudnnSetTensorNdDescriptor(tensorDesc, CUDNN_DATA_FLOAT,
+                                            4, dims, strides));
+      break;
+    }
     default:
     {
-      assert(tensor.numDim >= 3);
+      assert(tensor.numDim >= 4);
       checkCUDNN(cudnnSetTensorNdDescriptor(tensorDesc, CUDNN_DATA_FLOAT,
           tensor.numDim, tensor.dim, tensor.stride));
     }
@@ -90,10 +98,6 @@ void helperSetBroadcastableTensorDescriptor(const Tensor& input,
       strides[i] = 1;
     }
   }
-  //for (int i = 0; i < num_dim; i++)
-  //  printf("dims[%d] = %d input.dim(%d) output.dim(%d)\n", i, dims[i], input.dim[i], output.dim[i]);
-  //for (int i = 0; i < num_dim; i++)
-  //  printf("strides[%d] = %d input.stride(%d) output.stride(%d)\n", i, strides[i], input.stride[i], output.stride[i]);
  
   checkCUDNN(cudnnSetTensorNdDescriptor(tensorDesc, CUDNN_DATA_FLOAT,
       num_dim, dims, strides));

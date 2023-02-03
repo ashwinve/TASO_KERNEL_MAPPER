@@ -16,7 +16,7 @@
 #include "taso/ops.h"
 using namespace taso;
 
-TensorHandle Graph::broadcast_add(const TensorHandle _data,
+TensorHandle Graph::broadcast_add(OpType type, const TensorHandle _data,
                                         const TensorHandle _bias)
 {
   Op op = model->get_or_create_broadcast_add(*_data, *_bias);

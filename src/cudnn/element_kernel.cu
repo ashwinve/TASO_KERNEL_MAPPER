@@ -95,6 +95,9 @@ void elementwise_kernel(int volume,
         z[id_z] = x[id_x] >= 0 ? x[id_x] : y[id_y] * x[id_x];
         break;
       }
+      case OP_POW:
+        z[id_z] = pow(x[id_x], y[id_y]);
+        break;
       default:
         assert(false);
     }
@@ -207,11 +210,13 @@ void Model::measure_element_cost(Element* ele)
   if (ele->use_kernel()) {
     const float alpha = 1.0f;
     const float beta = 0.0f;
+
     helperSetBroadcastableTensorDescriptor(ele->inputs[0],
         ele->outputs[0], inputTensor);
     helperSetBroadcastableTensorDescriptor(ele->inputs[1],
         ele->outputs[0], biasTensor);
     helperSetTensorDescriptor(ele->outputs[0], outputTensor);
+
     cudnnOpTensorOp_t opType;
     switch (ele->type) {
       case OP_EW_ADD:
@@ -237,6 +242,7 @@ void Model::measure_element_cost(Element* ele)
   
     checkCUDA(cudaDeviceSynchronize());
     checkCUDA(cudaEventRecord(startEvent));
+    
     for (int i = 0; i < REPEAT_TIMES; i++) {
       checkCUDNN(cudnnOpTensor(dnn, opDesc, &alpha, inputTensor, inputPtr,
           &alpha, biasTensor, filterPtr, &beta, outputTensor, outputPtr));

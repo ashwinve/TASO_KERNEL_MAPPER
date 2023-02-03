@@ -82,6 +82,7 @@ enum OpType {
   OP_POOL2D_AVG,
   OP_RELU,
   OP_SIGMOID,
+  OP_SOFTPLUS,
   OP_TANH,
   OP_BATCHNORM,
   OP_CONCAT,
@@ -122,6 +123,7 @@ enum OpType {
   OP_CEIL, //https://github.com/onnx/onnx/blob/master/docs/Operators.md#Ceil
   OP_CAST, //https://github.com/onnx/onnx/blob/master/docs/Operators.md#Cast
   OP_EXP, //https://github.com/onnx/onnx/blob/master/docs/Operators.md#Exp
+  OP_ERF,
   OP_ROUND, //https://github.com/onnx/onnx/blob/master/docs/Operators.md#Round
   OP_LOG, //https://github.com/onnx/onnx/blob/master/docs/Operators.md#Log
   OP_LOGICAL_NOT, //https://github.com/onnx/onnx/blob/master/docs/Operators.md#Not
@@ -130,6 +132,7 @@ enum OpType {
   OP_SLICE, //https://github.com/onnx/onnx/blob/master/docs/Operators.md#Slice
   OP_RESIZE, //https://github.com/onnx/onnx/blob/master/docs/Operators.md#Resize
   OP_PRELU, //https://github.com/onnx/onnx/blob/master/docs/Operators.md#PRelu
+  OP_POW,
   OP_FUSE_CONV_BATCHNORM,
   OP_FUSE_CONV_BATCHNORM_ALPHA_VAR,
   OP_FUSE_CONV_BATCHNORM_BIAS,
@@ -536,6 +539,7 @@ public:
   TensorHandle elementwise_unary(const TensorHandle _input, OpType _type);
   TensorHandle enlarge(const TensorHandle _w1, const TensorHandle _w2);
   TensorHandle exp(const TensorHandle _input);
+  TensorHandle erf(const TensorHandle _input);
   TensorHandle fc(const TensorHandle _input,
                   int _outputC,
                   ActiMode _actiMode = AC_MODE_NONE);
@@ -551,7 +555,7 @@ public:
                                    const TensorHandle _bias,
                                    const TensorHandle _mean,
                                    const TensorHandle _var);
-  TensorHandle broadcast_add(const TensorHandle _data,
+  TensorHandle broadcast_add(OpType type, const TensorHandle _data,
                                    const TensorHandle _bias);
 
   TensorHandle leakyrelu(const TensorHandle _input, float _alpha,
@@ -568,6 +572,8 @@ public:
                    const std::vector<int>& _pad_before,
                    const std::vector<int>& _pad_after,
                    float _pad_value);
+  TensorHandle pow(const TensorHandle _x,
+                   const TensorHandle _y);
   TensorHandle pool2d_max(const TensorHandle _input,
                           int _kernelH, int _kernelW,
                           int _strideH, int _strideW,
@@ -619,6 +625,9 @@ public:
                      const std::vector<int>& _steps);
   TensorHandle sigmoid(const TensorHandle _input,
                        bool _inPlace = true);
+
+  TensorHandle softplus(const TensorHandle _input);
+
   //void split(Tensor _input, int axis, int c1, int c2, Tensor* outputs);
   //void split(Tensor _input, int axis, int num, const int* sizes, Tensor* outputs);
   void split(const TensorHandle _input, int _axis,

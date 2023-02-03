@@ -21,6 +21,11 @@ TensorHandle Graph::ceil(const TensorHandle _input)
   return elementwise_unary(_input, OP_CEIL);
 }
 
+TensorHandle Graph::erf(const TensorHandle _input)
+{
+  return elementwise_unary(_input, OP_ERF);
+}
+
 TensorHandle Graph::exp(const TensorHandle _input)
 {
   return elementwise_unary(_input, OP_EXP);
@@ -44,6 +49,11 @@ TensorHandle Graph::logical_not(const TensorHandle _input)
 TensorHandle Graph::sqrt(const TensorHandle _input)
 {
   return elementwise_unary(_input, OP_SQRT);
+}
+
+TensorHandle Graph::softplus(const TensorHandle _input)
+{
+  return elementwise_unary(_input, OP_SOFTPLUS);
 }
 
 TensorHandle Graph::elementwise_unary(const TensorHandle _input,
