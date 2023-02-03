@@ -412,6 +412,11 @@ cdef class PyGraph:
         cdef TensorHandle handle = self.p_graph.reshape(input.ctensor, cshape)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
+    
+    def resize(self, PyTensor input, PyTensor shape):
+        cdef TensorHandle handle = self.p_graph.resize(input.ctensor, shape.ctensor)
+        t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+        return PyTensor(t)
 
     def relu(self, PyTensor input, bool inplace = False):
         cdef TensorHandle handle = self.p_graph.relu(input.ctensor, inplace)

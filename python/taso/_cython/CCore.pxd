@@ -236,6 +236,8 @@ cdef extern from "taso/ops.h" namespace "taso":
                                 bool keepdims)
         TensorHandle reshape(const TensorHandle input,
                              const vector[int] shape)
+        TensorHandle resize(const TensorHandle input,
+                             const TensorHandle shape)
         TensorHandle leakyrelu(const TensorHandle input,
                                float alpha, bool _inplace)
         TensorHandle relu(const TensorHandle input,

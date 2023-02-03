@@ -17,9 +17,19 @@
 using namespace taso;
 
 TensorHandle Graph::resize(const TensorHandle _input,
-                           const std::vector<int>& _shape)
+                           const TensorHandle _shape)
 {
-  Op op = model->get_or_create_resize(*_input, _shape);
+  std::vector<int> _shape_vector;
+  
+  if(_shape->numDim == 1){
+    // extract shape information from TensorHandle into std::vector
+    // This is assumed to be 1D tensor of volume() entries
+    for(int i=0; i < _shape->volume(); i++){
+      _shape_vector.push_back(_shape->dim[i]);
+    }
+  }
+
+  Op op = model->get_or_create_resize(*_input, _shape_vector);
   assert(op != Op::INVALID_OP);
   add_edge(_input->op, op, _input->idx, 0);
   TensorHandle t = new Tensor(op.ptr->outputs[0]);

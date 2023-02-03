@@ -117,6 +117,8 @@ def _get_list_from_initializer(initializer, name):
 def _get_inputs(op, graph, tensors, initializer):
     inputs = list()
     for i in op.input:
+        if i == '': continue
+        
         input_tensor = None
         if i in tensors:
             input_tensor = tensors[i]
@@ -856,7 +858,7 @@ def load_onnx(filename):
                 dims = list(weight.dims)
                 weight_data = numpy_helper.to_array(weight)
                 tensors[weight.name] = graph.new_weight(dims=tuple(dims), data=weight_data)
-
+    
     # Reorder nodes to satisfy data dependencies
     tensor_owner = dict()
     name_to_op = dict()
@@ -893,7 +895,7 @@ def load_onnx(filename):
                     node_list.append(e)
         idx += 1
     assert len(node_list) == len(model.graph.node), "Internal error when reording ONNX operators"
-
+    
     # Add nodes into TASO graph
     cnt = 0
     for opname in node_list:
@@ -909,6 +911,12 @@ def load_onnx(filename):
                 for i in range(len(outputs)):
                     assert _check_output(outputs[i], op.output[i])
                     tensors[op.output[i]] = outputs[i]
+                
+                # print(out_edges['/model/decode_head/Reshape'])
+                # print(out_edges['/model/decode_head/Resize'])
+                # print(tensor_owner['/model/decode_head/Reshape_output_0'])
+                # # print(tensors['/model/decode_head/Concat_output_0'])
+                # sys.exit()
             except InputNotFoundError:
                 print("Cannot find input tensor for operator: name({}) type({}) (Skipped)".format(opname, op.op_type))
                 continue
@@ -927,6 +935,7 @@ input_weight_names['Div'] = ['input1', 'input2']
 input_weight_names['MatMul'] = ['input', 'weight']
 input_weight_names['Mul'] = ['input1', 'input2']
 input_weight_names['Reshape'] = ['input', 'shape']
+input_weight_names['Resize'] = ['input', 'sizes']
 input_weight_names['BroadcastAdd'] = ['input1', 'input2']
 input_weight_names['Transpose'] = ['input']
 
@@ -961,6 +970,7 @@ operator_attrs['StridedSlice'] = []
 operator_attrs['Sub'] = []
 operator_attrs['Relu'] = []
 operator_attrs['Reshape'] = []
+operator_attrs['Resize'] = ['coordinate_transformation_mode', 'cubic_coeff_a', 'mode', 'nearest_mode']
 operator_attrs['Tanh'] = []
 operator_attrs['Transpose'] = ['perm']
 operator_attrs['Unsqueeze'] = ['axes']
