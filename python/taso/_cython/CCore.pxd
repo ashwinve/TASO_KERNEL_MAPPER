@@ -237,7 +237,7 @@ cdef extern from "taso/ops.h" namespace "taso":
         TensorHandle reshape(const TensorHandle input,
                              const vector[int] shape)
         TensorHandle resize(const TensorHandle input,
-                             const TensorHandle shape)
+                             const vector[int] shape)
         TensorHandle leakyrelu(const TensorHandle input,
                                float alpha, bool _inplace)
         TensorHandle relu(const TensorHandle input,

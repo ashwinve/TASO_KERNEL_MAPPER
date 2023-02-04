@@ -413,8 +413,12 @@ cdef class PyGraph:
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
     
-    def resize(self, PyTensor input, PyTensor shape):
-        cdef TensorHandle handle = self.p_graph.resize(input.ctensor, shape.ctensor)
+    def resize(self, PyTensor input, tuple shape):
+        cdef vector[int] cshape
+        cshape.resize(len(shape))
+        for i in range(len(shape)):
+            cshape[i] = shape[i]
+        cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
 

@@ -70,12 +70,12 @@ Op Model::get_or_create_concat(int axis, int n, Tensor* _inputs, bool* _needCopy
 Concat::Concat(Model* _model, int _axis, int n, Tensor* _inputs, bool* _needCopy)
   : OpBase(n, _inputs, _model, OP_CONCAT), axis(_axis)
 {
-  //for (int i = 0; i < n; i++) {
+  // for (int i = 0; i < n; i++) {
   //  printf("  concat2[%d]:", i);
   //  for (int j = 0; j < _inputs[i].numDim; j++)
   //    printf("%d, ", _inputs[i].dim[j]);
   //  printf("\n");
-  //}
+  // }
   assert(n <= MAX_NUM_INPUTS);
   for (int i = 0; i < n; i++)
     needCopy[i] = _needCopy[i];

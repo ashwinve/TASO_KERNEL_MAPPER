@@ -614,7 +614,7 @@ public:
   TensorHandle reshape(const TensorHandle _input,
                        const std::vector<int>& _shape);
   TensorHandle resize(const TensorHandle _input,
-                      const TensorHandle _shape);
+                      const std::vector<int>& _shape);
   TensorHandle round(const TensorHandle _input);
   TensorHandle shape(const TensorHandle _input,
                      OpType _type);
