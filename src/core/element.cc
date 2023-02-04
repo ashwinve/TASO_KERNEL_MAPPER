@@ -19,9 +19,11 @@ using namespace taso;
 bool Model::broadcastable(const Tensor& t1,
                           const Tensor& t2)
 {
+  // cout <<"Broadcastable check:\n";
   int num_dim = min(t1.numDim, t2.numDim);
 
   for (int dim = 0; dim < num_dim; dim++) {
+    // cout << t1.dim[t1.numDim-1-dim] << " " << t2.dim[t2.numDim-1-dim] << endl;
     if ((t1.dim[t1.numDim-1-dim] != 1)
       &&(t2.dim[t2.numDim-1-dim] != 1)
       &&(t1.dim[t1.numDim-1-dim] != t2.dim[t2.numDim-1-dim]))
@@ -37,7 +39,7 @@ TensorHandle Graph::element(OpType type,
                             const TensorHandle t2)
 { 
   if (!model->broadcastable(*t1, *t2)) {
-    fprintf(stderr, "Error: inputs could not be broadcast together");
+    fprintf(stderr, "Error: inputs could not be broadcast together\n");
     assert(false);
     return NULL;
   }
