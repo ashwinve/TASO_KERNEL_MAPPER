@@ -552,21 +552,51 @@ def _reshape(op, graph, tensors, initializer):
     outputs = graph.reshape(inputs[0], tuple(shape))
     return outputs
 
+def get_data_from_init_list(op, initializer, index_num):
+    extracted_list = list()
+    for data in initializer:
+        if data.name == op.input[index_num]:
+            if data.int64_data != []:
+                for val in data.int64_data:
+                    extracted_list.append(val)
+            elif data.raw_data and data.raw_data != []:
+                extracted_list = numpy_helper.to_array(data)
+    return extracted_list
+                
 def _resize(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) >= 2, "Resize takes at least two inputs"
-    shape = list()
-    for data in initializer:
-        if data.name == op.input[3]:
-            if data.int64_data != []:
-                for dim in data.int64_data:
-                    shape.append(dim)
-            elif data.raw_data and data.raw_data != []:
-                shape_in_array = numpy_helper.to_array(data)
-                for dim in shape_in_array:
-                    shape.append(dim)
+    if(len(op.input)==4):
+        assert not(op.input[2] != '' and op.input[3] != ''), "Resize node CANNOT specify both scales and sizes"
     
-    outputs = graph.resize(inputs[0], tuple(shape))
+    # https://github.com/onnx/onnx/blob/main/docs/Operators.md#Resize
+    # inputs[0]: Input tensor on which to perform resize op
+    # inputs[1]: ROI (optional)
+    # inputs[2]: scales (optional)
+    # inputs[3]: sizes (optional)
+    
+    # Resize behaviour is set by attributes, not relevant for TASO
+    # Output tensor dimensions is calculated from 'scales' or 'sizes' input
+    # scale = length_resized / length_original => out_size[i] = scale * input_size[i]
+    # Only scales or sizes can be specified;
+    # interpretation of sizes depends on keep_aspect_ratio_policy : string (default is stretch)
+        # not applicable for 'scale', only 'sizes'
+        # if 'stretch' mode, orginal aspect ratio is ignored and out_size[i] = sizes[i]
+    
+    sizes = list()
+    
+    if(len(op.input) == 3):
+        # extract scales and compute sizes for output tensor
+        scales = get_data_from_init_list(op, initializer, 2)
+        input_tensor_dims = list()
+        for i in range(inputs[0].nDim):
+            input_tensor_dims.append(inputs[0].dim(i))
+        sizes = np.multiply(input_tensor_dims, scales)
+        
+    elif(len(op.input) == 4):
+        sizes = get_data_from_init_list(op, initializer, 3)
+    
+    outputs = graph.resize(inputs[0], tuple(sizes))
     return outputs
 
 # TensorFlow resize_nearest_neighbor
@@ -911,7 +941,7 @@ def load_onnx(filename):
     cnt = 0
     for opname in node_list:
         op = name_to_op[opname]
-        print(cnt, op.op_type, opname)
+        # print(cnt, op.op_type, opname)
         cnt += 1
         if op.op_type in xf_operators:
             try:

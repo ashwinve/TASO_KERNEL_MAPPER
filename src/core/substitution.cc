@@ -258,6 +258,7 @@ void GraphXfer::create_operator_from_pb(const GraphSubst::Operator& pbOp,
   // Step 2: create op
   OpType type = (OpType) pbOp.type();
   OpX* opx = NULL;
+  cout << "case: " << type << "\n";
   switch (type) {
     case OP_CONV2D:
     {
