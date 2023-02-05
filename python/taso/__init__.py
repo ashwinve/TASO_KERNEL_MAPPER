@@ -272,6 +272,26 @@ def _exp(op, graph, tensors, initializer):
     outputs = graph.exp(input=inputs[0])
     return outputs
 
+def _expand(op, graph, tensors, initializer):
+    # Returns an output tensor shape equal to the spec in 'shape' input
+    # Assume this is a no-op without cost, returning dummy output tensor with shape information
+    inputs = _get_inputs(op, graph, tensors, initializer)
+    assert len(inputs) == 2, "Expand requires exactly two input"
+    
+    _shape = get_data_from_init_list(op, initializer, 1)
+    
+    dyn_expr = 'np.random.rand('
+    for i in range(len(_shape)):
+        dyn_expr += str(_shape[i])
+        if i != len(_shape) - 1:
+            dyn_expr += ','
+    dyn_expr += ').astype(np.float32)'
+    
+    out_data = eval(dyn_expr)
+    
+    outputs = graph.new_weight(dims=tuple(_shape), data=out_data)
+    return outputs
+
 def _erf(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) == 1, "Erf requires exactly one input"
@@ -399,27 +419,27 @@ def _pad(op, graph, tensors, initializer):
         for i in range(inputs[0].nDim):
             input_tensor_dims.append(inputs[0].dim(i))
         
-        dyn_in_tensor = 'np.random.rand('
+        dyn_expr = 'np.random.rand('
         for i in range(len(input_tensor_dims)):
-            dyn_in_tensor += str(input_tensor_dims[i])
+            dyn_expr += str(input_tensor_dims[i])
             if i != len(input_tensor_dims) - 1:
-                dyn_in_tensor += ','
-        dyn_in_tensor += ').astype(np.float32)'
+                dyn_expr += ','
+        dyn_expr += ').astype(np.float32)'
         
-        x = eval(dyn_in_tensor)
+        x = eval(dyn_expr)
         
         y = pad_impl(x, pads, mode)
         out_shape = y.shape
         
         # make a dummy output with desired shape information
-        dyn_out_tensor = 'np.random.rand('
+        dyn_expr = 'np.random.rand('
         for i in range(len(out_shape)):
-            dyn_out_tensor += str(out_shape[i])
+            dyn_expr += str(out_shape[i])
             if i != len(out_shape) - 1:
-                dyn_out_tensor += ','
-        dyn_out_tensor += ').astype(np.float32)'
+                dyn_expr += ','
+        dyn_expr += ').astype(np.float32)'
         
-        out_data = eval(dyn_out_tensor)
+        out_data = eval(dyn_expr)
         
         outputs = graph.new_weight(dims=out_shape, data=out_data)
         return outputs
@@ -597,6 +617,7 @@ def _reshape(op, graph, tensors, initializer):
                 shape_in_array = numpy_helper.to_array(data)
                 for dim in shape_in_array:
                     shape.append(dim)
+    
     outputs = graph.reshape(inputs[0], tuple(shape))
     return outputs
 
@@ -871,6 +892,7 @@ xf_operators['Div'] = _div
 xf_operators['Dropout'] = _dropout
 xf_operators['Equal'] = _equal
 xf_operators['Exp'] = _exp
+xf_operators['Expand'] = _expand
 xf_operators['Erf'] = _erf
 xf_operators['Flatten'] = _flatten
 xf_operators['Gemm'] = _gemm
