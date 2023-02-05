@@ -43,7 +43,6 @@ cdef extern from "taso/ops.h" namespace "taso":
         OP_POOL2D_AVG
         OP_RELU
         OP_SIGMOID
-        OP_SOFTPLUS
         OP_TANH
         OP_BATCHNORM
         OP_CONCAT
@@ -94,11 +93,12 @@ cdef extern from "taso/ops.h" namespace "taso":
         OP_SLICE,
         OP_RESIZE,
         OP_PRELU,
-        OP_POW,
         OP_FUSE_CONV_BATCHNORM,
         OP_FUSE_CONV_BATCHNORM_ALPHA_VAR,
         OP_FUSE_CONV_BATCHNORM_BIAS,
-        OP_BROADCAST_ADD
+        OP_BROADCAST_ADD,
+        OP_SOFTPLUS,
+        OP_POW
 
     # This must be consistent with include/taso/ops.h
     cdef enum PMParameter:

@@ -82,7 +82,6 @@ enum OpType {
   OP_POOL2D_AVG,
   OP_RELU,
   OP_SIGMOID,
-  OP_SOFTPLUS,
   OP_TANH,
   OP_BATCHNORM,
   OP_CONCAT,
@@ -132,11 +131,12 @@ enum OpType {
   OP_SLICE, //https://github.com/onnx/onnx/blob/master/docs/Operators.md#Slice
   OP_RESIZE, //https://github.com/onnx/onnx/blob/master/docs/Operators.md#Resize
   OP_PRELU, //https://github.com/onnx/onnx/blob/master/docs/Operators.md#PRelu
-  OP_POW,
   OP_FUSE_CONV_BATCHNORM,
   OP_FUSE_CONV_BATCHNORM_ALPHA_VAR,
   OP_FUSE_CONV_BATCHNORM_BIAS,
-  OP_BROADCAST_ADD
+  OP_BROADCAST_ADD,
+  OP_SOFTPLUS,
+  OP_POW
 };
 
 struct Op {
