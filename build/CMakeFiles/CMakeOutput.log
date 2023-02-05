@@ -736,3 +736,17 @@ make[1]: Leaving directory '/home/ashwin/TASO_KERNEL_MAPPER/build/CMakeFiles/CMa
 Source file was:
 int main() { return 0; }
 
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/ashwin/TASO_KERNEL_MAPPER/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_181b0/fast && /usr/bin/make -f CMakeFiles/cmTC_181b0.dir/build.make CMakeFiles/cmTC_181b0.dir/build
+make[1]: Entering directory '/home/ashwin/TASO_KERNEL_MAPPER/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_181b0.dir/CheckIncludeFile.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_181b0.dir/CheckIncludeFile.cxx.o -c /home/ashwin/TASO_KERNEL_MAPPER/build/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+Linking CXX executable cmTC_181b0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_181b0.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_181b0.dir/CheckIncludeFile.cxx.o  -o cmTC_181b0 
+make[1]: Leaving directory '/home/ashwin/TASO_KERNEL_MAPPER/build/CMakeFiles/CMakeTmp'
+
+
+

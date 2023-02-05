@@ -1,322 +1,322 @@
 [
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/activation.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/activation.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/activation.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/activation.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/activation.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/batchnorm.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/batchnorm.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/batchnorm.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/batchnorm.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/batchnorm.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/broadcast_add.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/broadcast_add.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/broadcast_add.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/broadcast_add.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/broadcast_add.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/cast.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/cast.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/cast.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/cast.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/cast.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/concat.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/concat.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/concat.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/concat.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/concat.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/constant.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/constant.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/constant.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/constant.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/constant.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/conv2d.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/conv2d.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/conv2d.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/conv2d.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/conv2d.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/element.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/element.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/element.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/element.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/element.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/elementwise_unary.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/elementwise_unary.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/elementwise_unary.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/elementwise_unary.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/elementwise_unary.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/enlarge.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/enlarge.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/enlarge.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/enlarge.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/enlarge.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/fuse_conv_batchnorm.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/fuse_conv_batchnorm.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/fuse_conv_batchnorm.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/fuse_conv_batchnorm.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/fuse_conv_batchnorm.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/fuse_conv_batchnorm_alpha_var.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/fuse_conv_batchnorm_alpha_var.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/fuse_conv_batchnorm_alpha_var.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/fuse_conv_batchnorm_alpha_var.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/fuse_conv_batchnorm_alpha_var.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/fuse_conv_batchnorm_bias.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/fuse_conv_batchnorm_bias.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/fuse_conv_batchnorm_bias.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/fuse_conv_batchnorm_bias.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/fuse_conv_batchnorm_bias.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/graph_to_trt.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/graph_to_trt.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/graph_to_trt.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/graph_to_trt.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/graph_to_trt.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/matmul.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/matmul.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/matmul.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/matmul.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/matmul.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/merge_gconv.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/merge_gconv.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/merge_gconv.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/merge_gconv.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/merge_gconv.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/mul.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/mul.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/mul.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/mul.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/mul.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/noop.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/noop.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/noop.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/noop.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/noop.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/ops.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/ops.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/ops.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/ops.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/ops.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/pad.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/pad.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/pad.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/pad.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/pad.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/pool2d.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/pool2d.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/pool2d.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/pool2d.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/pool2d.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/reduce.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/reduce.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/reduce.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/reduce.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/reduce.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/reshape.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/reshape.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/reshape.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/reshape.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/reshape.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/resize.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/resize.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/resize.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/resize.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/resize.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/shape.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/shape.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/shape.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/shape.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/shape.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/slice.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/slice.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/slice.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/slice.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/slice.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/split.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/split.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/split.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/split.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/split.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/squeeze.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/squeeze.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/squeeze.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/squeeze.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/squeeze.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/substitution.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/substitution.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/substitution.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/substitution.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/substitution.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/topk.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/topk.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/topk.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/topk.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/topk.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/transpose.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/transpose.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/transpose.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/transpose.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/transpose.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/unsqueeze.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/unsqueeze.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/unsqueeze.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/unsqueeze.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/unsqueeze.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/src/core/where.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/where.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/src/core/where.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/src/core/where.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/core/where.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/bin/c++ -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include -O2 -Wall -fPIC  -fPIC -o CMakeFiles/taso_runtime.dir/rules.pb.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/build/rules.pb.cc",
+  "command": "/usr/bin/c++  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include -I/usr/local/cuda/include  -O2 -Wall -fPIC  -fPIC   -o CMakeFiles/taso_runtime.dir/rules.pb.cc.o -c /home/ashwin/TASO_KERNEL_MAPPER/build/rules.pb.cc",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/build/rules.pb.cc"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/activation_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/activation_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/activation_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/activation_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/activation_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/batchnorm_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/batchnorm_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/batchnorm_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/batchnorm_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/batchnorm_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/broadcast_add_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/broadcast_add_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/broadcast_add_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/broadcast_add_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/broadcast_add_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/cast_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/cast_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/cast_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/cast_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/cast_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/concat_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/concat_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/concat_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/concat_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/concat_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/constant_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/constant_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/constant_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/constant_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/constant_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/conv2d_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/conv2d_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/conv2d_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/conv2d_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/conv2d_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/cuda_helper.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/cuda_helper.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/cuda_helper.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/cuda_helper.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/cuda_helper.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/element_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/element_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/element_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/element_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/element_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/elementwise_unary_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/elementwise_unary_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/elementwise_unary_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/elementwise_unary_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/elementwise_unary_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/enlarge_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/enlarge_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/enlarge_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/enlarge_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/enlarge_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/fuse_conv_batchnorm_alpha_var_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/fuse_conv_batchnorm_alpha_var_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/fuse_conv_batchnorm_alpha_var_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/fuse_conv_batchnorm_alpha_var_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/fuse_conv_batchnorm_alpha_var_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/fuse_conv_batchnorm_bias_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/fuse_conv_batchnorm_bias_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/fuse_conv_batchnorm_bias_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/fuse_conv_batchnorm_bias_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/fuse_conv_batchnorm_bias_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/fuse_conv_batchnorm_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/fuse_conv_batchnorm_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/fuse_conv_batchnorm_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/fuse_conv_batchnorm_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/fuse_conv_batchnorm_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/matmul_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/matmul_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/matmul_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/matmul_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/matmul_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/merge_gconv_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/merge_gconv_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/merge_gconv_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/merge_gconv_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/merge_gconv_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/mul_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/mul_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/mul_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/mul_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/mul_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/ops_cudnn.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/ops_cudnn.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/ops_cudnn.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/ops_cudnn.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/ops_cudnn.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/pad_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/pad_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/pad_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/pad_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/pad_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/pool2d_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/pool2d_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/pool2d_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/pool2d_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/pool2d_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/reduce_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/reduce_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/reduce_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/reduce_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/reduce_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/reshape_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/reshape_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/reshape_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/reshape_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/reshape_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/resize_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/resize_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/resize_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/resize_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/resize_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/shape_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/shape_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/shape_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/shape_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/shape_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/slice_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/slice_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/slice_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/slice_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/slice_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/squeeze_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/squeeze_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/squeeze_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/squeeze_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/squeeze_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/topk_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/topk_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/topk_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/topk_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/topk_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/transpose_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/transpose_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/transpose_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/transpose_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/transpose_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/unsqueeze_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/unsqueeze_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/unsqueeze_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/unsqueeze_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/unsqueeze_kernel.cu"
 },
 {
   "directory": "/home/ashwin/TASO_KERNEL_MAPPER/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -DUSE_CUDNN -Dtaso_runtime_EXPORTS --options-file CMakeFiles/taso_runtime.dir/includes_CUDA.rsp -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC -std=c++14 -x cu -rdc=true -c /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/where_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/where_kernel.cu.o",
+  "command": "/usr/local/cuda/bin/nvcc  -DUSE_CUDNN -Dtaso_runtime_EXPORTS -I/home/ashwin/TASO_KERNEL_MAPPER/build -I/home/ashwin/TASO_KERNEL_MAPPER/include  -O2 -Xcompiler=-fPIC  -Xcompiler=-fPIC   -std=c++11 -x cu -dc /home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/where_kernel.cu -o CMakeFiles/taso_runtime.dir/src/cudnn/where_kernel.cu.o",
   "file": "/home/ashwin/TASO_KERNEL_MAPPER/src/cudnn/where_kernel.cu"
 }
 ]
