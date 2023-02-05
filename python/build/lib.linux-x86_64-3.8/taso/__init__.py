@@ -411,13 +411,36 @@ def _pad(op, graph, tensors, initializer):
     from onnx.backend.test.case.node.pad import pad_impl
     mode = attrs['mode'].decode("utf-8")
     try:
-        pads = attrs['pads']
+        pads = np.array(attrs['pads'])
         
-        x = np.random.randn(1, 3, 4, 5).astype(np.int32)
-        pads = np.array([0, 0, 1, 1, 0, 0, 1, 1]).astype(np.int64)
+        input_tensor_dims = list()
+        for i in range(inputs[0].nDim):
+            input_tensor_dims.append(inputs[0].dim(i))
+        
+        dyn_in_tensor = 'np.random.rand('
+        for i in range(len(input_tensor_dims)):
+            dyn_in_tensor += str(input_tensor_dims[i])
+            if i != len(input_tensor_dims) - 1:
+                dyn_in_tensor += ','
+        dyn_in_tensor += ').astype(np.float32)'
+        print(dyn_in_tensor)
+        x = eval(dyn_in_tensor)
+        
         y = pad_impl(x, pads, mode)
-        print(y.shape)
-        sys.exit()
+        out_shape = y.shape
+        
+        # make a dummy output with desired shape information
+        dyn_out_tensor = 'np.random.rand('
+        for i in range(len(out_shape)):
+            dyn_out_tensor += str(out_shape[i])
+            if i != len(out_shape) - 1:
+                dyn_out_tensor += ','
+        dyn_out_tensor += ').astype(np.float32)'
+        print(dyn_out_tensor)
+        out_data = eval(dyn_out_tensor)
+        
+        outputs = graph.new_weight(dims=out_shape, data=out_data)
+        return outputs
         
     except KeyError:
         assert "pads as input not supported"
@@ -451,7 +474,7 @@ def _pad(op, graph, tensors, initializer):
     # ort_sess_orig = ort.InferenceSession(orig_model_path)
     # outputs_orig_onnx = ort_sess_orig.run(None, runtime_inputs)
     
-    return inputs[0]
+    # return inputs[0]
 
 def _prelu(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)

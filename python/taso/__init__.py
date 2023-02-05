@@ -404,55 +404,44 @@ def _mul(op, graph, tensors, initializer):
 def _pad(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     attrs = _parse_attribute(op.attribute)
-    # TODO: use the shape information from the ONNX runtime to
-    # calculate the exact output shape
-    # Currently treat pad as a no op
-    #assert sum(attrs['pads']) == 0
+    
     from onnx.backend.test.case.node.pad import pad_impl
     mode = attrs['mode'].decode("utf-8")
     try:
-        pads = attrs['pads']
+        pads = np.array(attrs['pads'])
         
-        x = np.random.randn(1, 3, 4, 5).astype(np.int32)
-        pads = np.array([0, 0, 1, 1, 0, 0, 1, 1]).astype(np.int64)
+        input_tensor_dims = list()
+        for i in range(inputs[0].nDim):
+            input_tensor_dims.append(inputs[0].dim(i))
+        
+        dyn_in_tensor = 'np.random.rand('
+        for i in range(len(input_tensor_dims)):
+            dyn_in_tensor += str(input_tensor_dims[i])
+            if i != len(input_tensor_dims) - 1:
+                dyn_in_tensor += ','
+        dyn_in_tensor += ').astype(np.float32)'
+        
+        x = eval(dyn_in_tensor)
+        
         y = pad_impl(x, pads, mode)
         out_shape = y.shape
+        
         # make a dummy output with desired shape information
-        sys.exit()
+        dyn_out_tensor = 'np.random.rand('
+        for i in range(len(out_shape)):
+            dyn_out_tensor += str(out_shape[i])
+            if i != len(out_shape) - 1:
+                dyn_out_tensor += ','
+        dyn_out_tensor += ').astype(np.float32)'
+        
+        out_data = eval(dyn_out_tensor)
+        
+        outputs = graph.new_weight(dims=out_shape, data=out_data)
+        return outputs
         
     except KeyError:
+        # TODO: support padding as an input as per new version of ONNX
         assert "pads as input not supported"
-    
-    # # constant padding example
-    # node = onnx.helper.make_node("Pad",
-    #                              inputs=["x", "pads", "value"],
-    #                              outputs=["y"],
-    #                              mode="constant")
-    # x = np.random.randn(1, 3, 4, 5).astype(np.float32)
-    # pads = np.array([0, 0, 1, 3, 0, 0, 2, 4]).astype(
-    #     np.int64
-    # )  # pad order [x1_begin, x2_begin, ..., x1_end, x2_end, ...]
-    # value = np.float32(1.2)
-    # y = pad_impl(x, pads, "constant", 1.2)
-
-    # # reflect, edge mode
-    # for mode in ["edge", "reflect"]:
-    #     node = onnx.helper.make_node(
-    #         "Pad", inputs=["x", "pads"], outputs=["y"], mode=mode
-    #     )
-    #     x = np.random.randn(1, 3, 4, 5).astype(np.int32)
-    #     pads = np.array([0, 0, 1, 1, 0, 0, 1, 1]).astype(
-    #         np.int64
-    #     )  # pad order [x1_begin, x2_begin, ..., x1_end, x2_end, ...]
-    #     y = pad_impl(x, pads, mode)
-    
-    # # runtime config
-    # a = torch.Tensor(np.random.rand(1, 3, 512, 512))
-    # runtime_inputs[onnx_model.graph.input[0].name] = a.numpy()
-    # ort_sess_orig = ort.InferenceSession(orig_model_path)
-    # outputs_orig_onnx = ort_sess_orig.run(None, runtime_inputs)
-    
-    return inputs[0]
 
 def _prelu(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
