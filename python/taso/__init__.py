@@ -239,21 +239,6 @@ def _conv2d(op, graph, tensors, initializer):
     strides = attrs["strides"]
     outputs = graph.conv2d(input=inputs[0], weight=inputs[1], strides=strides, padding=pads)
     
-    input_dims = list()
-    for i in range(inputs[0].nDim):
-        input_dims.append(inputs[0].dim(i))
-    print(input_dims)
-    
-    weight_dims = list()
-    for i in range(inputs[1].nDim):
-        weight_dims.append(inputs[1].dim(i))
-    print(weight_dims)
-    
-    out_dims = list()
-    for i in range(outputs.nDim):
-        out_dims.append(outputs.dim(i))
-    print(out_dims)
-    
     if len(inputs) > 2:
         dim = inputs[2].dim(0)
         reshaped_bias = graph.reshape(inputs[2], (1, dim, 1, 1))
@@ -647,8 +632,15 @@ def _resize(op, graph, tensors, initializer):
         # if 'stretch' mode, orginal aspect ratio is ignored and out_size[i] = sizes[i]
     
     sizes = list()
-    
-    if(len(op.input) == 3):
+    if(len(op.input) == 2):
+        # Likely redirected Upsample node (deprecated) to resize
+        scales = get_data_from_init_list(op, initializer, 1)
+        input_tensor_dims = list()
+        for i in range(inputs[0].nDim):
+            input_tensor_dims.append(inputs[0].dim(i))
+        sizes = np.multiply(input_tensor_dims, scales)
+        
+    elif(len(op.input) == 3):
         # extract scales and compute sizes for output tensor
         scales = get_data_from_init_list(op, initializer, 2)
         input_tensor_dims = list()
@@ -921,6 +913,8 @@ xf_operators['Sum'] = _sum
 xf_operators['Transpose'] = _transpose
 xf_operators['Tanh'] = _tanh
 xf_operators['Unsqueeze'] = _unsqueeze
+xf_operators['Upsample'] = _resize  # Upsample is deprecated, redirect to _resize
+
 
 def new_graph(print_measurements = False):
     graph = core.PyGraph()
