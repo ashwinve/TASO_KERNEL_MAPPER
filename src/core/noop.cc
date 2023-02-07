@@ -55,8 +55,8 @@ TensorHandle Graph::noop_pad(const TensorHandle _input)
   return t;
 }
 
-/*
-TensorHandle Graph::expand(const TensorHandle _input)
+
+TensorHandle Graph::noop_expand(const TensorHandle _input)
 {
   Op op = model->get_or_create_noop(*_input, OP_EXPAND);
   add_edge(_input->op, op, _input->idx, 0);
@@ -64,7 +64,7 @@ TensorHandle Graph::expand(const TensorHandle _input)
   t->op = op;
   return t;
 }
-*/
+
 
 Op Model::create_input(Tensor _input, OpType _type)
 {

@@ -569,11 +569,12 @@ public:
   TensorHandle merge_gconv(const TensorHandle _weight, int count);
   TensorHandle mul(const TensorHandle _x,
                    const TensorHandle _y);
+  TensorHandle noop_expand(const TensorHandle _input);
+  TensorHandle noop_pad(const TensorHandle _input);
   TensorHandle pad(const TensorHandle _input,
                    const std::vector<int>& _pad_before,
                    const std::vector<int>& _pad_after,
                    float _pad_value);
-  TensorHandle noop_pad(const TensorHandle _input);
   TensorHandle pow(const TensorHandle _x,
                    const TensorHandle _y);
   TensorHandle pool2d_max(const TensorHandle _input,

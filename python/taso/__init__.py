@@ -280,16 +280,10 @@ def _expand(op, graph, tensors, initializer):
     
     _shape = get_data_from_init_list(op, initializer, 1)
     
-    dyn_expr = 'np.random.rand('
-    for i in range(len(_shape)):
-        dyn_expr += str(_shape[i])
-        if i != len(_shape) - 1:
-            dyn_expr += ','
-    dyn_expr += ').astype(np.float32)'
-    
-    out_data = eval(dyn_expr)
-    
-    outputs = graph.new_weight(dims=tuple(_shape), data=out_data)
+    # convert _shape into PyTensor object, pass X into
+    out_tensor = graph.new_input(dims=tuple(_shape))
+    outputs = graph.noop_expand(out_tensor)
+    # outputs = graph.new_weight(dims=tuple(_shape), data=out_data)
     return outputs
 
 def _erf(op, graph, tensors, initializer):
@@ -352,16 +346,7 @@ def _less(op, graph, tensors, initializer):
 def _log(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) == 1, "Log requires exactly one input"
-    #input_tensor = None
-    #if op.input[0] in tensors:
-    #    input_tensor = tensors[op.input[0]]
-    #else:
-    #    for init in initializer:
-    #        if init.name == op.input[0]:
-    #            input_tensor = graph.new_weight(
-    #                dims=tuple(list(init.dims)), data=numpy_helper.to_array(init))
-    #            break
-    #assert input_tensor is not None, "Input Tensor Not Found"
+    
     attrs = _parse_attribute(op.attribute)
     outputs = graph.log(input=inputs[0])
     return outputs
@@ -432,7 +417,7 @@ def _pad(op, graph, tensors, initializer):
         y = pad_impl(x, pads, mode)
         out_shape = y.shape
         
-        # convert rand data into PyTensor object, pass X into
+        # convert out-shape into PyTensor object, pass X into
         out_tensor = graph.new_input(dims=tuple(out_shape))
         outputs = graph.noop_pad(out_tensor)
         return outputs

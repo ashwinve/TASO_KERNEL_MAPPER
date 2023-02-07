@@ -137,6 +137,7 @@ op_table[OP_EW_GREATER] = "Greater"
 op_table[OP_EW_LESS] = "Less"
 op_table[OP_EW_MAX] = "Max"
 op_table[OP_EW_MIN] = "Min"
+op_table[OP_EXPAND] = "Expand"
 op_table[OP_REDUCE_ARGMAX] = "ArgMax"
 op_table[OP_REDUCE_ARGMIN] = "ArgMin"
 op_table[OP_REDUCE_MAX] = "ReduceMax"
@@ -333,6 +334,11 @@ cdef class PyGraph:
     
     def noop_pad(self, PyTensor x):
         cdef TensorHandle handle = self.p_graph.noop_pad(x.ctensor)
+        t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+        return PyTensor(t)
+
+    def noop_expand(self, PyTensor x):
+        cdef TensorHandle handle = self.p_graph.noop_expand(x.ctensor)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
 
