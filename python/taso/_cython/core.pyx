@@ -330,6 +330,11 @@ cdef class PyGraph:
         cdef TensorHandle handle = self.p_graph.pool2d_avg(input.ctensor, kernels[0], kernels[1], strides[0], strides[1], padding, activation)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
+    
+    def noop_pad(self, PyTensor x):
+        cdef TensorHandle handle = self.p_graph.noop_pad(x.ctensor)
+        t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+        return PyTensor(t)
 
     def prelu(self, *, PyTensor x, PyTensor slope):
         cdef TensorHandle handle = self.p_graph.element(OP_PRELU, x.ctensor, slope.ctensor)

@@ -545,6 +545,7 @@ Graph* Graph::preprocess_weights(void)
         // to automatically transpose inputs.
         continue;
       }
+      
       bool allWeights = true;
       const std::set<Edge, EdgeCompare>& list = opIt->second;
       std::set<Edge, EdgeCompare>::const_iterator it;

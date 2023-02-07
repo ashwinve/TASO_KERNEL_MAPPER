@@ -46,6 +46,26 @@ TensorHandle Graph::dropout(const TensorHandle _input)
   return t;
 }
 
+TensorHandle Graph::noop_pad(const TensorHandle _input)
+{
+  Op op = model->get_or_create_noop(*_input, OP_PAD);
+  add_edge(_input->op, op, _input->idx, 0);
+  TensorHandle t = new Tensor(op.ptr->outputs[0]);
+  t->op = op;
+  return t;
+}
+
+/*
+TensorHandle Graph::expand(const TensorHandle _input)
+{
+  Op op = model->get_or_create_noop(*_input, OP_EXPAND);
+  add_edge(_input->op, op, _input->idx, 0);
+  TensorHandle t = new Tensor(op.ptr->outputs[0]);
+  t->op = op;
+  return t;
+}
+*/
+
 Op Model::create_input(Tensor _input, OpType _type)
 {
   assert(_type == OP_INPUT);
@@ -70,7 +90,7 @@ Op Model::create_weight(Tensor _weight, OpType _type)
 
 Op Model::get_or_create_noop(Tensor _input, OpType _type)
 {
-  assert(_type == OP_DROPOUT);
+  assert(_type == OP_DROPOUT || _type == OP_PAD || _type == OP_EXPAND);
   // key is (_type, _input)
   NoopKey key(_input, _type);
   NoOp* noOp;

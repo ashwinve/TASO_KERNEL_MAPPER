@@ -98,7 +98,8 @@ cdef extern from "taso/ops.h" namespace "taso":
         OP_FUSE_CONV_BATCHNORM_BIAS,
         OP_BROADCAST_ADD,
         OP_SOFTPLUS,
-        OP_POW
+        OP_POW,
+        OP_EXPAND
 
     # This must be consistent with include/taso/ops.h
     cdef enum PMParameter:
@@ -266,6 +267,9 @@ cdef extern from "taso/ops.h" namespace "taso":
                                bool shuffle)
         TensorHandle unsqueeze(const TensorHandle input,
                                const vector[int] axes)
+        
+        TensorHandle noop_pad(const TensorHandle input)
+
         TensorHandle new_input(int ndim, const int* dims)
         TensorHandle new_weight(int ndim, const int* dims, const float* data)
         Graph* optimize(float alpha, int budget, bool print_subst)

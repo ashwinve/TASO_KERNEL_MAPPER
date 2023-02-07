@@ -136,7 +136,8 @@ enum OpType {
   OP_FUSE_CONV_BATCHNORM_BIAS,
   OP_BROADCAST_ADD,
   OP_SOFTPLUS,
-  OP_POW
+  OP_POW,
+  OP_EXPAND
 };
 
 struct Op {
@@ -572,6 +573,7 @@ public:
                    const std::vector<int>& _pad_before,
                    const std::vector<int>& _pad_after,
                    float _pad_value);
+  TensorHandle noop_pad(const TensorHandle _input);
   TensorHandle pow(const TensorHandle _x,
                    const TensorHandle _y);
   TensorHandle pool2d_max(const TensorHandle _input,

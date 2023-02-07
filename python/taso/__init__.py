@@ -407,6 +407,7 @@ def _mul(op, graph, tensors, initializer):
     return outputs
 
 def _pad(op, graph, tensors, initializer):
+    # considered no-op
     inputs = _get_inputs(op, graph, tensors, initializer)
     attrs = _parse_attribute(op.attribute)
     
@@ -441,7 +442,10 @@ def _pad(op, graph, tensors, initializer):
         
         out_data = eval(dyn_expr)
         
-        outputs = graph.new_weight(dims=out_shape, data=out_data)
+        # convert rand data into PyTensor object, pass X into
+        out_tensor = graph.new_input(dims=tuple(out_shape))
+        # outputs = graph.new_weight(dims=out_shape, data=out_data)
+        outputs = graph.noop_pad(out_tensor)
         return outputs
         
     except KeyError:
