@@ -432,19 +432,8 @@ def _pad(op, graph, tensors, initializer):
         y = pad_impl(x, pads, mode)
         out_shape = y.shape
         
-        # make a dummy output with desired shape information
-        dyn_expr = 'np.random.rand('
-        for i in range(len(out_shape)):
-            dyn_expr += str(out_shape[i])
-            if i != len(out_shape) - 1:
-                dyn_expr += ','
-        dyn_expr += ').astype(np.float32)'
-        
-        out_data = eval(dyn_expr)
-        
         # convert rand data into PyTensor object, pass X into
         out_tensor = graph.new_input(dims=tuple(out_shape))
-        # outputs = graph.new_weight(dims=out_shape, data=out_data)
         outputs = graph.noop_pad(out_tensor)
         return outputs
         
