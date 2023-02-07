@@ -603,6 +603,14 @@ def _resize(op, graph, tensors, initializer):
     if(len(op.input)==4):
         assert not(op.input[2] != '' and op.input[3] != ''), "Resize node CANNOT specify both scales and sizes"
     
+    attrs = _parse_attribute(op.attribute)
+    
+    # Setting default attribute values to start off
+    coord_transf_mode = 'half-pixel'.encode('utf-8')
+    cubic_coeff_a = -0.75
+    mode = 'nearest'.encode('utf-8')
+    nearest_mode = 'round_prefer_floor'.encode('utf-8')
+    
     # https://github.com/onnx/onnx/blob/main/docs/Operators.md#Resize
     # inputs[0]: Input tensor on which to perform resize op
     # inputs[1]: ROI (optional)
@@ -626,6 +634,9 @@ def _resize(op, graph, tensors, initializer):
             input_tensor_dims.append(inputs[0].dim(i))
         sizes = np.multiply(input_tensor_dims, scales)
         
+        # Upsample (deprecated) only specifies mode
+        mode = attrs['mode']  # default: 'nearest'
+        
     elif(len(op.input) == 3):
         # extract scales and compute sizes for output tensor
         scales = get_data_from_init_list(op, initializer, 2)
@@ -637,7 +648,15 @@ def _resize(op, graph, tensors, initializer):
     elif(len(op.input) == 4):
         sizes = get_data_from_init_list(op, initializer, 3)
     
-    outputs = graph.resize(inputs[0], tuple(sizes))
+    if(len(op.input) != 2):
+        # Reading in attributes for actual Resize node
+        # Guard check required due to Upsample (deprecated) -> redirection to Resize node
+        coord_transf_mode = attrs['coordinate_transformation_mode'] # default: 'half-pixel'
+        cubic_coeff_a = attrs['cubic_coeff_a'] # default: -0.75
+        mode = attrs['mode']  # default: 'nearest'
+        nearest_mode = attrs['nearest_mode'] #default: 'round_prefer_floor'
+    
+    outputs = graph.resize(inputs[0], tuple(sizes), coord_transf_mode, cubic_coeff_a, mode, nearest_mode)
     return outputs
 
 # TensorFlow resize_nearest_neighbor

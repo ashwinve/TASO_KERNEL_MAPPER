@@ -17,9 +17,12 @@
 using namespace taso;
 
 TensorHandle Graph::resize(const TensorHandle _input,
-                           const std::vector<int>& _shape)
+                           const std::vector<int>& _shape,
+                           string _coord_transf_mode,
+                           float _cubic_coeff_a, string _mode,
+                           string _nearest_mode)
 {
-  Op op = model->get_or_create_resize(*_input, _shape);
+  Op op = model->get_or_create_resize(*_input, _shape, _coord_transf_mode, _cubic_coeff_a, _mode, _nearest_mode);
   assert(op != Op::INVALID_OP);
   add_edge(_input->op, op, _input->idx, 0);
   TensorHandle t = new Tensor(op.ptr->outputs[0]);
@@ -28,16 +31,19 @@ TensorHandle Graph::resize(const TensorHandle _input,
 }
 
 Op Model::get_or_create_resize(const Tensor& _input,
-                               const std::vector<int>& _shape)
+                               const std::vector<int>& _shape,
+                               string _coord_transf_mode,
+                               float _cubic_coeff_a, string _mode,
+                               string _nearest_mode)
 {
   if ((int)_shape.size() != _input.numDim)
     return Op::INVALID_OP;
-  ResizeKey key(_input, _shape);
+  ResizeKey key(_input, _shape, _coord_transf_mode, _cubic_coeff_a, _mode, _nearest_mode);
   Resize* resizeOp;
   if (resize.find(key) != resize.end()) {
     resizeOp = resize[key];
   } else {
-    resizeOp = new Resize(this, _input, _shape);
+    resizeOp = new Resize(this, _input, _shape, _coord_transf_mode, _cubic_coeff_a, _mode, _nearest_mode);
     measure_resize_cost(resizeOp);
     resize[key] = resizeOp;
   }
@@ -48,8 +54,11 @@ Op Model::get_or_create_resize(const Tensor& _input,
 }
 
 Resize::Resize(Model* _model, const Tensor& _input,
-               const std::vector<int>& _shape)
-: OpBase(_input, _model, OP_RESIZE), shape(_shape)
+               const std::vector<int>& _shape, string _coord_transf_mode,
+               float _cubic_coeff_a, string _mode, string _nearest_mode)
+: OpBase(_input, _model, OP_RESIZE), shape(_shape), coord_transf_mode(_coord_transf_mode),
+  cubic_coeff_a(_cubic_coeff_a), mode(_mode), nearest_mode(_nearest_mode)
+// 'coordinate_transformation_mode', 'cubic_coeff_a', 'mode', 'nearest_mode'
 {
   assert((int)_shape.size() == _input.numDim);
   numOutputs = 1;
@@ -84,7 +93,10 @@ void Resize::collect_costs(float& exe_time, float& flops,
 }
 
 ResizeKey::ResizeKey(const Tensor& _input,
-                     const std::vector<int>& _shape)
+                     const std::vector<int>& _shape,
+                     string _coord_transf_mode,
+                     float _cubic_coeff_a, string _mode,
+                     string _nearest_mode)
 {
   int idx = 0;
   keys[idx++] = _shape.size();

@@ -1908,6 +1908,7 @@ static const char __pyx_k_dims[] = "dims";
 static const char __pyx_k_guid[] = "guid";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_mean[] = "mean";
+static const char __pyx_k_mode[] = "mode";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_pads[] = "pads";
 static const char __pyx_k_perm[] = "perm";
@@ -2015,6 +2016,8 @@ static const char __pyx_k_AveragePool[] = "AveragePool";
 static const char __pyx_k_MemoryError[] = "MemoryError";
 static const char __pyx_k_print_subst[] = "print_subst";
 static const char __pyx_k_kernel_shape[] = "kernel_shape";
+static const char __pyx_k_nearest_mode[] = "nearest_mode";
+static const char __pyx_k_cubic_coeff_a[] = "cubic_coeff_a";
 static const char __pyx_k_get_data_type[] = "get_data_type";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_Undefined_type[] = "Undefined type: {}";
@@ -2023,6 +2026,7 @@ static const char __pyx_k_get_split_lens[] = "get_split_lens";
 static const char __pyx_k_get_output_dims[] = "get_output_dims";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_get_padding_mode[] = "get_padding_mode";
+static const char __pyx_k_coord_transf_mode[] = "coord_transf_mode";
 static const char __pyx_k_BatchNormalization[] = "BatchNormalization";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_get_activation_mode[] = "get_activation_mode";
@@ -2123,7 +2127,9 @@ static PyObject *__pyx_n_s_budget;
 static PyObject *__pyx_n_s_c_void_p;
 static PyObject *__pyx_n_s_cast;
 static PyObject *__pyx_n_s_cline_in_traceback;
+static PyObject *__pyx_n_s_coord_transf_mode;
 static PyObject *__pyx_n_s_ctypes;
+static PyObject *__pyx_n_s_cubic_coeff_a;
 static PyObject *__pyx_n_s_data;
 static PyObject *__pyx_n_s_datatype;
 static PyObject *__pyx_n_s_dims;
@@ -2157,8 +2163,10 @@ static PyObject *__pyx_n_u_kernel_shape;
 static PyObject *__pyx_n_s_kernels;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_mean;
+static PyObject *__pyx_n_s_mode;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_ndarray;
+static PyObject *__pyx_n_s_nearest_mode;
 static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
 static PyObject *__pyx_n_s_np;
 static PyObject *__pyx_n_s_numpy;
@@ -2260,7 +2268,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_72reduce_min(struct __pyx_obj_4ta
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_74reduce_prod(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, PyObject *__pyx_v_axes, bool __pyx_v_keepdims); /* proto */
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_76reduce_sum(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, PyObject *__pyx_v_axes, bool __pyx_v_keepdims); /* proto */
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, PyObject *__pyx_v_shape); /* proto */
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, PyObject *__pyx_v_shape); /* proto */
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, PyObject *__pyx_v_shape, PyObject *__pyx_v_coord_transf_mode, PyObject *__pyx_v_cubic_coeff_a, PyObject *__pyx_v_mode, PyObject *__pyx_v_nearest_mode); /* proto */
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_82relu(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, bool __pyx_v_inplace); /* proto */
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_84round(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input); /* proto */
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_86shape(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input); /* proto */
@@ -13165,7 +13173,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
  * 
- *     def resize(self, PyTensor input, tuple shape):
+ *     def resize(self, PyTensor input, tuple shape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 443, __pyx_L1_error)
@@ -13202,7 +13210,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
 /* "taso/_cython/core.pyx":445
  *         return PyTensor(t)
  * 
- *     def resize(self, PyTensor input, tuple shape):             # <<<<<<<<<<<<<<
+ *     def resize(self, PyTensor input, tuple shape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode):             # <<<<<<<<<<<<<<
  *         cdef vector[int] cshape
  *         cshape.resize(len(shape))
  */
@@ -13212,6 +13220,10 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_81resize(PyObject *__pyx_v_self, 
 static PyObject *__pyx_pw_4taso_4core_7PyGraph_81resize(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input = 0;
   PyObject *__pyx_v_shape = 0;
+  PyObject *__pyx_v_coord_transf_mode = 0;
+  PyObject *__pyx_v_cubic_coeff_a = 0;
+  PyObject *__pyx_v_mode = 0;
+  PyObject *__pyx_v_nearest_mode = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -13219,12 +13231,20 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_81resize(PyObject *__pyx_v_self, 
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("resize (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_input,&__pyx_n_s_shape,0};
-    PyObject* values[2] = {0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_input,&__pyx_n_s_shape,&__pyx_n_s_coord_transf_mode,&__pyx_n_s_cubic_coeff_a,&__pyx_n_s_mode,&__pyx_n_s_nearest_mode,0};
+    PyObject* values[6] = {0,0,0,0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
         case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
         CYTHON_FALLTHROUGH;
         case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
@@ -13241,24 +13261,56 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_81resize(PyObject *__pyx_v_self, 
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_shape)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("resize", 1, 2, 2, 1); __PYX_ERR(1, 445, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 1); __PYX_ERR(1, 445, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_coord_transf_mode)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 2); __PYX_ERR(1, 445, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_cubic_coeff_a)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 3); __PYX_ERR(1, 445, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_mode)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 4); __PYX_ERR(1, 445, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_nearest_mode)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 5); __PYX_ERR(1, 445, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "resize") < 0)) __PYX_ERR(1, 445, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 6) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+      values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+      values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+      values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     __pyx_v_shape = ((PyObject*)values[1]);
+    __pyx_v_coord_transf_mode = values[2];
+    __pyx_v_cubic_coeff_a = values[3];
+    __pyx_v_mode = values[4];
+    __pyx_v_nearest_mode = values[5];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("resize", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 445, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 445, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.resize", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -13266,7 +13318,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_81resize(PyObject *__pyx_v_self, 
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 445, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_shape), (&PyTuple_Type), 1, "shape", 1))) __PYX_ERR(1, 445, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_80resize(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_shape);
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_80resize(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_shape, __pyx_v_coord_transf_mode, __pyx_v_cubic_coeff_a, __pyx_v_mode, __pyx_v_nearest_mode);
 
   /* function exit code */
   goto __pyx_L0;
@@ -13277,7 +13329,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_81resize(PyObject *__pyx_v_self, 
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, PyObject *__pyx_v_shape) {
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, PyObject *__pyx_v_shape, PyObject *__pyx_v_coord_transf_mode, PyObject *__pyx_v_cubic_coeff_a, PyObject *__pyx_v_mode, PyObject *__pyx_v_nearest_mode) {
   std::vector<int>  __pyx_v_cshape;
   Py_ssize_t __pyx_v_i;
   taso::TensorHandle __pyx_v_handle;
@@ -13289,18 +13341,22 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
   Py_ssize_t __pyx_t_3;
   PyObject *__pyx_t_4 = NULL;
   int __pyx_t_5;
-  PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
-  PyObject *__pyx_t_8 = NULL;
-  PyObject *__pyx_t_9 = NULL;
+  char *__pyx_t_6;
+  float __pyx_t_7;
+  char *__pyx_t_8;
+  char *__pyx_t_9;
   PyObject *__pyx_t_10 = NULL;
+  PyObject *__pyx_t_11 = NULL;
+  PyObject *__pyx_t_12 = NULL;
+  PyObject *__pyx_t_13 = NULL;
+  PyObject *__pyx_t_14 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("resize", 0);
 
   /* "taso/_cython/core.pyx":447
- *     def resize(self, PyTensor input, tuple shape):
+ *     def resize(self, PyTensor input, tuple shape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode):
  *         cdef vector[int] cshape
  *         cshape.resize(len(shape))             # <<<<<<<<<<<<<<
  *         for i in range(len(shape)):
@@ -13323,7 +13379,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
  *         cshape.resize(len(shape))
  *         for i in range(len(shape)):             # <<<<<<<<<<<<<<
  *             cshape[i] = shape[i]
- *         cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape)
+ *         cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode)
  */
   if (unlikely(__pyx_v_shape == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
@@ -13338,7 +13394,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
  *         cshape.resize(len(shape))
  *         for i in range(len(shape)):
  *             cshape[i] = shape[i]             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape)
+ *         cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  */
     if (unlikely(__pyx_v_shape == Py_None)) {
@@ -13355,85 +13411,89 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
   /* "taso/_cython/core.pyx":450
  *         for i in range(len(shape)):
  *             cshape[i] = shape[i]
- *         cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape)             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode)             # <<<<<<<<<<<<<<
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)
  */
-  __pyx_v_handle = __pyx_v_self->p_graph->resize(__pyx_v_input->ctensor, __pyx_v_cshape);
+  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_coord_transf_mode); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(1, 450, __pyx_L1_error)
+  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_v_cubic_coeff_a); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 450, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_AsWritableString(__pyx_v_mode); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) __PYX_ERR(1, 450, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_AsWritableString(__pyx_v_nearest_mode); if (unlikely((!__pyx_t_9) && PyErr_Occurred())) __PYX_ERR(1, 450, __pyx_L1_error)
+  __pyx_v_handle = __pyx_v_self->p_graph->resize(__pyx_v_input->ctensor, __pyx_v_cshape, __pyx_t_6, __pyx_t_7, __pyx_t_8, __pyx_t_9);
 
   /* "taso/_cython/core.pyx":451
  *             cshape[i] = shape[i]
- *         cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape)
+ *         cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 451, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 451, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 451, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 451, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 451, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 451, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_cast); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 451, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_11);
+  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  __pyx_t_10 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 451, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_10);
+  __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_12)) __PYX_ERR(1, 451, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_13)) __PYX_ERR(1, 451, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_13);
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_12 = NULL;
   __pyx_t_5 = 0;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
-    __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
-    if (likely(__pyx_t_8)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-      __Pyx_INCREF(__pyx_t_8);
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_11))) {
+    __pyx_t_12 = PyMethod_GET_SELF(__pyx_t_11);
+    if (likely(__pyx_t_12)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_11);
+      __Pyx_INCREF(__pyx_t_12);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_7, function);
+      __Pyx_DECREF_SET(__pyx_t_11, function);
       __pyx_t_5 = 1;
     }
   }
   #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_7)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 451, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+  if (PyFunction_Check(__pyx_t_11)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_12, __pyx_t_10, __pyx_t_13};
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 451, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   } else
   #endif
   #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 451, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_12, __pyx_t_10, __pyx_t_13};
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 451, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 451, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    if (__pyx_t_8) {
-      __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
+    __pyx_t_14 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_14)) __PYX_ERR(1, 451, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_14);
+    if (__pyx_t_12) {
+      __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_12); __pyx_t_12 = NULL;
     }
-    __Pyx_GIVEREF(__pyx_t_6);
-    PyTuple_SET_ITEM(__pyx_t_10, 0+__pyx_t_5, __pyx_t_6);
-    __Pyx_GIVEREF(__pyx_t_9);
-    PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_5, __pyx_t_9);
-    __pyx_t_6 = 0;
-    __pyx_t_9 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 451, __pyx_L1_error)
+    __Pyx_GIVEREF(__pyx_t_10);
+    PyTuple_SET_ITEM(__pyx_t_14, 0+__pyx_t_5, __pyx_t_10);
+    __Pyx_GIVEREF(__pyx_t_13);
+    PyTuple_SET_ITEM(__pyx_t_14, 1+__pyx_t_5, __pyx_t_13);
+    __pyx_t_10 = 0;
+    __pyx_t_13 = 0;
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_14, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 451, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   }
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
   /* "taso/_cython/core.pyx":452
- *         cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape)
+ *         cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
  * 
@@ -13449,7 +13509,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
   /* "taso/_cython/core.pyx":445
  *         return PyTensor(t)
  * 
- *     def resize(self, PyTensor input, tuple shape):             # <<<<<<<<<<<<<<
+ *     def resize(self, PyTensor input, tuple shape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode):             # <<<<<<<<<<<<<<
  *         cdef vector[int] cshape
  *         cshape.resize(len(shape))
  */
@@ -13457,11 +13517,11 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_11);
+  __Pyx_XDECREF(__pyx_t_12);
+  __Pyx_XDECREF(__pyx_t_13);
+  __Pyx_XDECREF(__pyx_t_14);
   __Pyx_AddTraceback("taso.core.PyGraph.resize", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -21898,7 +21958,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_c_void_p, __pyx_k_c_void_p, sizeof(__pyx_k_c_void_p), 0, 0, 1, 1},
   {&__pyx_n_s_cast, __pyx_k_cast, sizeof(__pyx_k_cast), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
+  {&__pyx_n_s_coord_transf_mode, __pyx_k_coord_transf_mode, sizeof(__pyx_k_coord_transf_mode), 0, 0, 1, 1},
   {&__pyx_n_s_ctypes, __pyx_k_ctypes, sizeof(__pyx_k_ctypes), 0, 0, 1, 1},
+  {&__pyx_n_s_cubic_coeff_a, __pyx_k_cubic_coeff_a, sizeof(__pyx_k_cubic_coeff_a), 0, 0, 1, 1},
   {&__pyx_n_s_data, __pyx_k_data, sizeof(__pyx_k_data), 0, 0, 1, 1},
   {&__pyx_n_s_datatype, __pyx_k_datatype, sizeof(__pyx_k_datatype), 0, 0, 1, 1},
   {&__pyx_n_s_dims, __pyx_k_dims, sizeof(__pyx_k_dims), 0, 0, 1, 1},
@@ -21932,8 +21994,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_kernels, __pyx_k_kernels, sizeof(__pyx_k_kernels), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_mean, __pyx_k_mean, sizeof(__pyx_k_mean), 0, 0, 1, 1},
+  {&__pyx_n_s_mode, __pyx_k_mode, sizeof(__pyx_k_mode), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_ndarray, __pyx_k_ndarray, sizeof(__pyx_k_ndarray), 0, 0, 1, 1},
+  {&__pyx_n_s_nearest_mode, __pyx_k_nearest_mode, sizeof(__pyx_k_nearest_mode), 0, 0, 1, 1},
   {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
   {&__pyx_n_s_np, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
   {&__pyx_n_s_numpy, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
