@@ -399,9 +399,12 @@ def _pad(op, graph, tensors, initializer):
         pads = np.array(attrs['pads'])
         #byte string is directly parseable by Cython; no need to decode("utf-8")
         pad_mode = attrs['mode']
-        # TODO: Robust handling of more than 1D???
-        pad_before = pads[:4]
-        pad_after = pads[4:]
+        input_rank = inputs[0].nDim
+        # First N (rank of input tensor) defines the pad_before for each axis
+        pad_before = pads[:input_rank]
+        
+        # Last N (rank of input tensor) defines the pad_before for each axis
+        pad_after = pads[input_rank:]
         
         outputs = graph.pad(inputs[0], tuple(pad_before), tuple(pad_after), float(0), pad_mode)
         return outputs
