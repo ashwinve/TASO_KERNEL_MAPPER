@@ -267,8 +267,13 @@ cdef extern from "taso/ops.h" namespace "taso":
                                bool shuffle)
         TensorHandle unsqueeze(const TensorHandle input,
                                const vector[int] axes)
-        
-        TensorHandle noop_pad(const TensorHandle input)
+        TensorHandle pad(const TensorHandle input,
+                   const vector[int] pad_before,
+                   const vector[int] pad_after,
+                   float pad_value,
+                   char* pad_mode)
+
+        # TensorHandle noop_pad(const TensorHandle input)
         TensorHandle noop_expand(const TensorHandle input)
 
         TensorHandle new_input(int ndim, const int* dims)

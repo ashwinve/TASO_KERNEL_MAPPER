@@ -395,36 +395,49 @@ def _pad(op, graph, tensors, initializer):
     # considered no-op
     inputs = _get_inputs(op, graph, tensors, initializer)
     attrs = _parse_attribute(op.attribute)
-    
-    from onnx.backend.test.case.node.pad import pad_impl
-    mode = attrs['mode'].decode("utf-8")
     try:
         pads = np.array(attrs['pads'])
+        #byte string is directly parseable by Cython; no need to decode("utf-8")
+        pad_mode = attrs['mode']
+        # TODO: Robust handling of more than 1D???
+        pad_before = pads[:4]
+        pad_after = pads[4:]
         
-        input_tensor_dims = list()
-        for i in range(inputs[0].nDim):
-            input_tensor_dims.append(inputs[0].dim(i))
-        
-        dyn_expr = 'np.random.rand('
-        for i in range(len(input_tensor_dims)):
-            dyn_expr += str(input_tensor_dims[i])
-            if i != len(input_tensor_dims) - 1:
-                dyn_expr += ','
-        dyn_expr += ').astype(np.float32)'
-        
-        x = eval(dyn_expr)
-        
-        y = pad_impl(x, pads, mode)
-        out_shape = y.shape
-        
-        # convert out-shape into PyTensor object, pass X into
-        out_tensor = graph.new_input(dims=tuple(out_shape))
-        outputs = graph.noop_pad(out_tensor)
+        outputs = graph.pad(inputs[0], tuple(pad_before), tuple(pad_after), float(0), pad_mode)
         return outputs
-        
+    
     except KeyError:
         # TODO: support padding as an input as per new version of ONNX
         assert "pads as input not supported"
+    # from onnx.backend.test.case.node.pad import pad_impl
+    # mode = attrs['mode'].decode("utf-8")
+    # try:
+    #     pads = np.array(attrs['pads'])
+        
+    #     input_tensor_dims = list()
+    #     for i in range(inputs[0].nDim):
+    #         input_tensor_dims.append(inputs[0].dim(i))
+        
+    #     dyn_expr = 'np.random.rand('
+    #     for i in range(len(input_tensor_dims)):
+    #         dyn_expr += str(input_tensor_dims[i])
+    #         if i != len(input_tensor_dims) - 1:
+    #             dyn_expr += ','
+    #     dyn_expr += ').astype(np.float32)'
+        
+    #     x = eval(dyn_expr)
+        
+    #     y = pad_impl(x, pads, mode)
+    #     out_shape = y.shape
+        
+    #     # convert out-shape into PyTensor object, pass X into
+    #     out_tensor = graph.new_input(dims=tuple(out_shape))
+    #     outputs = graph.noop_pad(out_tensor)
+        # return outputs
+        
+    # except KeyError:
+    #     # TODO: support padding as an input as per new version of ONNX
+    #     assert "pads as input not supported"
 
 def _prelu(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)

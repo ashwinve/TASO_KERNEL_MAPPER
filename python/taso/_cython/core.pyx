@@ -332,10 +332,27 @@ cdef class PyGraph:
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
     
-    def noop_pad(self, PyTensor x):
-        cdef TensorHandle handle = self.p_graph.noop_pad(x.ctensor)
+    def pad(self, PyTensor input, tuple pad_before, tuple pad_after, pad_value, pad_mode):
+        cdef vector[int] c_pad_before
+        cdef vector[int] c_pad_after
+        
+        c_pad_before.resize(len(pad_before))
+        c_pad_after.resize(len(pad_after))
+
+        for i in range(len(pad_before)):
+            c_pad_before[i] = pad_before[i]
+        
+        for i in range(len(pad_after)):
+            c_pad_after[i] = pad_after[i]
+        
+        cdef TensorHandle handle = self.p_graph.pad(input.ctensor, c_pad_before, c_pad_after, pad_value, pad_mode)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
+
+    # def noop_pad(self, PyTensor x):
+    #    cdef TensorHandle handle = self.p_graph.noop_pad(x.ctensor)
+    #    t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+    #    return PyTensor(t)
 
     def noop_expand(self, PyTensor x):
         cdef TensorHandle handle = self.p_graph.noop_expand(x.ctensor)

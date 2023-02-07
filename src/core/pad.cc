@@ -19,11 +19,12 @@ using namespace taso;
 TensorHandle Graph::pad(const TensorHandle _input,
                         const std::vector<int>& _pad_before,
                         const std::vector<int>& _pad_after,
-                        float _pad_value)
+                        float _pad_value,
+                        string _pad_mode)
 {
   assert(_pad_before.size() == (size_t)(_input->numDim));
   assert(_pad_after.size() == (size_t)(_input->numDim));
-  Op op = model->get_or_create_pad(*_input, _pad_before, _pad_after, _pad_value);
+  Op op = model->get_or_create_pad(*_input, _pad_before, _pad_after, _pad_value, _pad_mode);
   assert(op != Op::INVALID_OP);
   add_edge(_input->op, op, _input->idx, 0);
   TensorHandle t = new Tensor(op.ptr->outputs[0]);
@@ -34,14 +35,14 @@ TensorHandle Graph::pad(const TensorHandle _input,
 Op Model::get_or_create_pad(const Tensor& _input,
                             const std::vector<int>& _pad_before,
                             const std::vector<int>& _pad_after,
-                            float _pad_value)
+                            float _pad_value, string _pad_mode)
 {
-  PadKey key(_input, _pad_before, _pad_after, _pad_value);
+  PadKey key(_input, _pad_before, _pad_after, _pad_value, _pad_mode);
   Pad* padOp;
   if (pad.find(key) != pad.end()) {
     padOp = pad[key];
   } else {
-    padOp = new Pad(this, _input, _pad_before, _pad_after, _pad_value);
+    padOp = new Pad(this, _input, _pad_before, _pad_after, _pad_value, _pad_mode);
     measure_pad_cost(padOp);
     pad[key] = padOp;
   }
@@ -54,9 +55,9 @@ Op Model::get_or_create_pad(const Tensor& _input,
 Pad::Pad(Model* _model, const Tensor& _input,
          const std::vector<int>& _pad_before,
          const std::vector<int>& _pad_after,
-         float _pad_value)
+         float _pad_value, string _pad_mode)
 : OpBase(_input, _model, OP_PAD), pad_before(_pad_before),
-pad_after(_pad_after), pad_value(_pad_value)
+pad_after(_pad_after), pad_value(_pad_value), pad_mode(_pad_mode)
 {
   numOutputs = 1;
   // Pad currently only support the defacult layout
@@ -95,7 +96,8 @@ void Pad::collect_costs(float& exe_time, float& flops,
 PadKey::PadKey(const Tensor& _input,
                const std::vector<int>& _pad_before,
                const std::vector<int>& _pad_after,
-               float _pad_value)
+               float _pad_value,
+               string _pad_mode)
 {
   //TODO: currently we do not include pad_value in the hash
   int idx = 0;

@@ -574,7 +574,8 @@ public:
   TensorHandle pad(const TensorHandle _input,
                    const std::vector<int>& _pad_before,
                    const std::vector<int>& _pad_after,
-                   float _pad_value);
+                   float _pad_value,
+                   string _pad_mode);
   TensorHandle pow(const TensorHandle _x,
                    const TensorHandle _y);
   TensorHandle pool2d_max(const TensorHandle _input,
@@ -991,7 +992,8 @@ public:
   Pad(Model* _model, const Tensor& _input,
       const std::vector<int>& _pad_before,
       const std::vector<int>& _pad_after,
-      float _pad_value);
+      float _pad_value,
+      string _pad_mode);
   ~Pad(void);
   bool get_int_parameter(PMParameter para, int*);
   void forward(bool block);
@@ -1001,6 +1003,7 @@ public:
 public:
   std::vector<int> pad_before, pad_after;
   float pad_value;
+  string pad_mode;
 };
 
 class Reduce : public OpBase {
@@ -1284,7 +1287,8 @@ struct PadKey {
   PadKey(const Tensor& _input,
          const std::vector<int>& _pad_before,
          const std::vector<int>& _pad_after,
-         float _pad_value);
+         float _pad_value,
+         string _pad_mode);
   int keys[KEY_LENGTH];
 };
 
@@ -1404,7 +1408,8 @@ public:
   Op get_or_create_pad(const Tensor& _input,
                        const std::vector<int>& _pad_before,
                        const std::vector<int>& _pad_after,
-                       float _pad_value);
+                       float _pad_value,
+                       string _pad_mode);
   Op get_or_create_pool2d(Tensor _input, Tensor _weight,
                           OpType _type,
                           int _kernelH, int _kernelW,
