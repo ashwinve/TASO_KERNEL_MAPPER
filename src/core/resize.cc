@@ -86,10 +86,33 @@ bool Resize::get_int_parameter(PMParameter para, int* value)
   return OpBase::get_int_parameter(para, value);
 }
 
-// bool Resize::get_float_parameter(PMParameter para, float* value)
-// {
-//   return OpBase::get_float_parameter(para, value);
-// }
+bool Resize::get_float_parameter(PMParameter para, float* value)
+{
+  switch(para){
+    case PM_CUBIC_COEFF_A:
+      *value = cubic_coeff_a;
+      return true;
+    default:
+      return OpBase::get_float_parameter(para, value);
+  }
+}
+
+bool Resize::get_string_parameter(PMParameter para, char* value)
+{
+  switch(para){
+    case PM_COOR_TRANS_MODE:
+      strcpy(value, coord_transf_mode.c_str());
+      return true;
+    case PM_MODE:
+      strcpy(value, mode.c_str());
+      return true;
+    case PM_NEAREST_MODE:
+      strcpy(value, nearest_mode.c_str());
+      return true;
+    default:
+      return OpBase::get_string_parameter(para, value);
+  }
+}
 
 void Resize::collect_costs(float& exe_time, float& flops,
                            float& mem_acc, int& num_kernels)

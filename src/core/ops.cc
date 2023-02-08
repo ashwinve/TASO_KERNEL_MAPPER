@@ -210,6 +210,14 @@ bool OpBase::get_float_parameter(PMParameter para, float* value)
   }
 }
 
+bool OpBase::get_string_parameter(PMParameter para, char* value)
+{
+  switch (para) {
+    default:
+      return false;
+  }
+}
+
 bool OpBase::get_input_parameter(TNParameter tnp, DIMParameter dim, int* value)
 {
   int inputIdx = 0, dimIdx = 0;
@@ -718,53 +726,29 @@ float Graph::get_operator_float_attr(size_t guid, PMParameter attr)
 {
   Op op = find_op_or_fail(guid);
   float ret;
-  // assert(op.ptr->get_float_parameter(attr, &ret));
-  bool found_state = false;
-  if(attr == PM_CUBIC_COEFF_A){
-      Resize* op_cast = (Resize *)(op.ptr);
-      ret = op_cast->cubic_coeff_a;
-      found_state = true;
-  }
-  else if( attr == PM_ALPHA){
-    Activation* op_cast = (Activation*)(op.ptr);
-    ret = op_cast->alpha;
-    found_state = true;
-  }
-  else{
-    found_state = op.ptr->get_float_parameter(attr, &ret);
-  }
-  assert(found_state);
+  assert(op.ptr->get_float_parameter(attr, &ret));
+  // bool found_state = false;
+  // if(attr == PM_CUBIC_COEFF_A){
+  //     Resize* op_cast = (Resize *)(op.ptr);
+  //     ret = op_cast->cubic_coeff_a;
+  //     found_state = true;
+  // }
+  // else if( attr == PM_ALPHA){
+  //   Activation* op_cast = (Activation*)(op.ptr);
+  //   ret = op_cast->alpha;
+  //   found_state = true;
+  // }
+  // else{
+  //   found_state = op.ptr->get_float_parameter(attr, &ret);
+  // }
+  // assert(found_state);
   return ret;
 }
 
 void Graph::get_operator_string_attr(size_t guid, PMParameter attr, char* &ret)
 {
   Op op = find_op_or_fail(guid);
-  // string ret = NULL;
-  
-  bool found_state = false;
-  Resize* op_cast;
-
-  switch (attr) {
-    case PM_COOR_TRANS_MODE:
-      op_cast = (Resize *)(op.ptr);
-      strcpy(ret, op_cast->coord_transf_mode.c_str());
-      found_state = true;
-      break;
-    case PM_MODE:
-      op_cast = (Resize *)(op.ptr);
-      strcpy(ret, op_cast->mode.c_str());
-      found_state = true;
-      break;
-    case PM_NEAREST_MODE:
-      op_cast = (Resize *)(op.ptr);
-      strcpy(ret, op_cast->nearest_mode.c_str());
-      found_state = true;
-      break;
-    default:
-      found_state = false;
-  }
-  assert(found_state);
+  assert(op.ptr->get_string_parameter(attr, ret));
 }
 
 int Graph::get_num_outputs(size_t guid)

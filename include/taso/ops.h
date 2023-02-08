@@ -482,6 +482,7 @@ public:
   virtual bool get_int_parameter(PMParameter, int*);
   virtual bool get_list_parameter(int*, PMParameter, int*);
   virtual bool get_float_parameter(PMParameter, float*);
+  virtual bool get_string_parameter(PMParameter para, char* value);
   //virtual bool get_ints_parameter(PMParameter, std::vector<int>*);
   virtual void forward(bool block = false) = 0;
   virtual void map(void) = 0;
@@ -835,6 +836,7 @@ public:
   Activation(Model* _model, Tensor _input, OpType _type, bool _inPlace, float _alpha);
   ~Activation(void);
   bool get_int_parameter(PMParameter para, int*);
+  bool get_float_parameter(PMParameter para, float* value);
   void forward(bool block);
   void map(void);
   void unmap(void);
@@ -1059,6 +1061,8 @@ public:
           string _coord_transf_mode, float _cubic_coeff_a, string _mode, string _nearest_mode);
   ~Resize(void);
   bool get_int_parameter(PMParameter para, int*);
+  bool get_float_parameter(PMParameter para, float* value);
+  bool get_string_parameter(PMParameter para, char* value);
   void forward(bool block);
   void map(void);
   void unmap(void);
