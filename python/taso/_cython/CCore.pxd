@@ -288,7 +288,6 @@ cdef extern from "taso/ops.h" namespace "taso":
                    const vector[int] pad_after,
                    float pad_value,
                    char* pad_mode)
-        TensorHandle noop_expand(const TensorHandle input)
 
         TensorHandle new_input(int ndim, const int* dims)
         TensorHandle new_weight(int ndim, const int* dims, const float* data)

@@ -372,11 +372,6 @@ cdef class PyGraph:
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
 
-    # def noop_expand(self, PyTensor x):
-    #    cdef TensorHandle handle = self.p_graph.noop_expand(x.ctensor)
-    #    t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
-    #    return PyTensor(t)
-
     def prelu(self, *, PyTensor x, PyTensor slope):
         cdef TensorHandle handle = self.p_graph.element(OP_PRELU, x.ctensor, slope.ctensor)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)

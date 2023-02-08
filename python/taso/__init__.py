@@ -277,16 +277,11 @@ def _exp(op, graph, tensors, initializer):
 
 def _expand(op, graph, tensors, initializer):
     # Returns an output tensor shape equal to the spec in 'shape' input
-    # Assume this is a no-op without cost, returning dummy output tensor with shape information
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) == 2, "Expand requires exactly two input"
     
     _shape = get_data_from_init_list(op, initializer, 1)
     outputs = graph.expand(inputs[0], tuple(_shape))
-    # convert _shape into PyTensor object, pass X into
-    # out_tensor = graph.new_input(dims=tuple(_shape))
-    # outputs = graph.noop_expand(out_tensor)
-    # outputs = graph.new_weight(dims=tuple(_shape), data=out_data)
     return outputs
 
 def _erf(op, graph, tensors, initializer):
@@ -1006,7 +1001,7 @@ def load_onnx(filename):
     cnt = 0
     for opname in node_list:
         op = name_to_op[opname]
-        print(cnt, op.op_type, opname)
+        # print(cnt, op.op_type, opname)
         cnt += 1
         if op.op_type in xf_operators:
             try:
