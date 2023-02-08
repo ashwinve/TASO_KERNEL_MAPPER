@@ -718,7 +718,17 @@ float Graph::get_operator_float_attr(size_t guid, PMParameter attr)
 {
   Op op = find_op_or_fail(guid);
   float ret;
-  assert(op.ptr->get_float_parameter(attr, &ret));
+  // assert(op.ptr->get_float_parameter(attr, &ret));
+  bool found_state = false;
+  if(attr == PM_CUBIC_COEFF_A){
+      Resize* op_cast = (Resize *)(op.ptr);
+      ret = op_cast->cubic_coeff_a;
+      found_state = true;
+  }
+  else{
+    found_state = op.ptr->get_float_parameter(attr, &ret);
+  }
+  assert(found_state);
   return ret;
 }
 
@@ -734,8 +744,17 @@ void Graph::get_operator_string_attr(size_t guid, PMParameter attr, char* &ret)
   if(attr == PM_COOR_TRANS_MODE){
       Resize* op_cast = (Resize *)(op.ptr);
       strcpy(ret, op_cast->coord_transf_mode.c_str());
-      cout << "coord_transf_mode: " << ret << endl;
       found_state = true;
+  }
+  else if(attr == PM_MODE){
+    Resize* op_cast = (Resize *)(op.ptr);
+    strcpy(ret, op_cast->mode.c_str());
+    found_state = true;
+  }
+  else if(attr == PM_NEAREST_MODE){
+    Resize* op_cast = (Resize *)(op.ptr);
+    strcpy(ret, op_cast->nearest_mode.c_str());
+    found_state = true;
   }
     // case PM_OP_TYPE:
     //   found_state = false;

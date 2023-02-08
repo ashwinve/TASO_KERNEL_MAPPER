@@ -737,5 +737,15 @@ cdef class PyGraph:
             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
             self.p_graph.get_operator_string_attr(op.guid, PM_COOR_TRANS_MODE, c_string_ptr)
             return c_string_ptr
+        elif attrname == 'cubic_coeff_a':
+            return self.p_graph.get_operator_float_attr(op.guid, PM_CUBIC_COEFF_A)
+        elif attrname == 'mode':
+            c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
+            self.p_graph.get_operator_string_attr(op.guid, PM_MODE, c_string_ptr)
+            return c_string_ptr
+        elif attrname == 'nearest_mode':
+            c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
+            self.p_graph.get_operator_string_attr(op.guid, PM_NEAREST_MODE, c_string_ptr)
+            return c_string_ptr
         else:
            assert False, 'Internal error: unknow attribute {}'.format(attrname)

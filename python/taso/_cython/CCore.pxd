@@ -122,6 +122,9 @@ cdef extern from "taso/ops.h" namespace "taso":
         PM_KEEP_DIMS
         PM_EPSILON
         PM_COOR_TRANS_MODE
+        PM_CUBIC_COEFF_A
+        PM_MODE
+        PM_NEAREST_MODE
 
     # This must be consistent with include/taso/ops.h
     cdef enum ActiMode:

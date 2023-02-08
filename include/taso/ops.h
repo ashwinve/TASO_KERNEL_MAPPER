@@ -408,7 +408,10 @@ enum PMParameter {
   PM_AXES,		// Squeeze, Unsqueeze, Reduce*
   PM_KEEP_DIMS,         // Reduce*
   PM_EPSILON,   // BatchNorm
-  PM_COOR_TRANS_MODE // Resize
+  PM_COOR_TRANS_MODE, // Resize
+  PM_CUBIC_COEFF_A, //Resize
+  PM_MODE, //Resize
+  PM_NEAREST_MODE //Resize
 };
 
 enum TNParameter {
