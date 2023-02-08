@@ -725,6 +725,11 @@ float Graph::get_operator_float_attr(size_t guid, PMParameter attr)
       ret = op_cast->cubic_coeff_a;
       found_state = true;
   }
+  else if( attr == PM_ALPHA){
+    Activation* op_cast = (Activation*)(op.ptr);
+    ret = op_cast->alpha;
+    found_state = true;
+  }
   else{
     found_state = op.ptr->get_float_parameter(attr, &ret);
   }
@@ -739,7 +744,7 @@ void Graph::get_operator_string_attr(size_t guid, PMParameter attr, char* &ret)
   
   bool found_state = false;
   Resize* op_cast;
-  
+
   switch (attr) {
     case PM_COOR_TRANS_MODE:
       op_cast = (Resize *)(op.ptr);
@@ -1379,7 +1384,7 @@ float Graph::run(void)
       {
         Activation* act = (Activation*) op.ptr;
         assert(inList.size() == 1);
-        opPtr = new Activation(model, inputs[0], act->type, act->inPlace);
+        opPtr = new Activation(model, inputs[0], act->type, act->inPlace, act->alpha);
         break;
       }
       case OP_BATCHNORM:

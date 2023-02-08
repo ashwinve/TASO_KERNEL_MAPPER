@@ -16,9 +16,9 @@
 #include "taso/ops.h"
 using namespace taso;
 
-TensorHandle Graph::leakyrelu(const TensorHandle _input, float alpha, bool _inPlace)
+TensorHandle Graph::leakyrelu(const TensorHandle _input, float _alpha, bool _inPlace)
 {
-  Op op = model->get_or_create_activation(*_input, OP_LEAKYRELU, _inPlace);
+  Op op = model->get_or_create_activation(*_input, OP_LEAKYRELU, _inPlace, _alpha);
   assert(op != Op::INVALID_OP);
   add_edge(_input->op, op, _input->idx, 0);
   TensorHandle t = new Tensor(op.ptr->outputs[0]);
@@ -28,7 +28,8 @@ TensorHandle Graph::leakyrelu(const TensorHandle _input, float alpha, bool _inPl
 
 TensorHandle Graph::relu(const TensorHandle _input, bool _inPlace)
 {
-  Op op = model->get_or_create_activation(*_input, OP_RELU, _inPlace);
+  float _alpha = 0.0;
+  Op op = model->get_or_create_activation(*_input, OP_RELU, _inPlace, _alpha);
   assert(op != Op::INVALID_OP);
   add_edge(_input->op, op, _input->idx, 0);
   TensorHandle t = new Tensor(op.ptr->outputs[0]);
@@ -38,7 +39,8 @@ TensorHandle Graph::relu(const TensorHandle _input, bool _inPlace)
 
 TensorHandle Graph::sigmoid(const TensorHandle _input, bool _inPlace)
 {
-  Op op = model->get_or_create_activation(*_input, OP_SIGMOID, _inPlace);
+  float _alpha = 0.0;
+  Op op = model->get_or_create_activation(*_input, OP_SIGMOID, _inPlace, _alpha);
   assert(op != Op::INVALID_OP);
   add_edge(_input->op, op, _input->idx, 0);
   TensorHandle t = new Tensor(op.ptr->outputs[0]);
@@ -48,7 +50,8 @@ TensorHandle Graph::sigmoid(const TensorHandle _input, bool _inPlace)
 
 TensorHandle Graph::tanh(const TensorHandle _input, bool _inPlace)
 {
-  Op op = model->get_or_create_activation(*_input, OP_TANH, _inPlace);
+  float _alpha = 0.0;
+  Op op = model->get_or_create_activation(*_input, OP_TANH, _inPlace, _alpha);
   assert(op != Op::INVALID_OP);
   add_edge(_input->op, op, _input->idx, 0);
   TensorHandle t = new Tensor(op.ptr->outputs[0]);
@@ -56,7 +59,7 @@ TensorHandle Graph::tanh(const TensorHandle _input, bool _inPlace)
   return t;
 }
 
-Op Model::get_or_create_activation(Tensor _input, OpType _type, bool _inPlace)
+Op Model::get_or_create_activation(Tensor _input, OpType _type, bool _inPlace, float _alpha)
 {
   // keys are (inputN, inputC, inputH, inputW, _type, _inPlace)
   ActivationKey key(_input, _type, _inPlace);
@@ -64,7 +67,7 @@ Op Model::get_or_create_activation(Tensor _input, OpType _type, bool _inPlace)
   if (activation.find(key) != activation.end()) {
     actOp = activation[key];
   } else {
-    actOp = new Activation(this, _input, _type, _inPlace);
+    actOp = new Activation(this, _input, _type, _inPlace, _alpha);
     measure_activation_cost(actOp);
     activation[key] = actOp;
   }
@@ -74,8 +77,8 @@ Op Model::get_or_create_activation(Tensor _input, OpType _type, bool _inPlace)
   return ret;
 }
 
-Activation::Activation(Model* _model, Tensor _input, OpType _type, bool _inPlace)
-: OpBase(_input, _model, _type), inPlace(_inPlace)
+Activation::Activation(Model* _model, Tensor _input, OpType _type, bool _inPlace, float _alpha)
+: OpBase(_input, _model, _type), inPlace(_inPlace), alpha(_alpha)
 {
   numOutputs = 1;
   outputs[0] = _input;

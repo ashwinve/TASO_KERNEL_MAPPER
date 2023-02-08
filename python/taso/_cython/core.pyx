@@ -747,5 +747,7 @@ cdef class PyGraph:
             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
             self.p_graph.get_operator_string_attr(op.guid, PM_NEAREST_MODE, c_string_ptr)
             return c_string_ptr
+        elif attrname == 'alpha':
+            return self.p_graph.get_operator_float_attr(op.guid, PM_ALPHA)
         else:
            assert False, 'Internal error: unknow attribute {}'.format(attrname)

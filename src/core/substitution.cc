@@ -1343,7 +1343,7 @@ bool GraphXfer::create_new_operator(const OpX* opx, Op& op)
     {
       assert(opx->inputs.size() == 1);
       Tensor input = opx->inputs[0].to_tensor(this);
-      op = model->get_or_create_activation(input, opx->type, true);
+      op = model->get_or_create_activation(input, opx->type, true, 0.0);
       break;
     }
     default:

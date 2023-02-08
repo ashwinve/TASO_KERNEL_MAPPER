@@ -411,7 +411,8 @@ enum PMParameter {
   PM_COOR_TRANS_MODE, // Resize
   PM_CUBIC_COEFF_A, //Resize
   PM_MODE, //Resize
-  PM_NEAREST_MODE //Resize
+  PM_NEAREST_MODE, //Resize
+  PM_ALPHA // LeakyReLu
 };
 
 enum TNParameter {
@@ -822,7 +823,7 @@ public:
 
 class Activation : public OpBase {
 public:
-  Activation(Model* _model, Tensor _input, OpType _type, bool _inPlace);
+  Activation(Model* _model, Tensor _input, OpType _type, bool _inPlace, float _alpha);
   ~Activation(void);
   bool get_int_parameter(PMParameter para, int*);
   void forward(bool block);
@@ -835,6 +836,7 @@ public:
   cudnnActivationDescriptor_t actiDesc;
 #endif
   bool inPlace;
+  float alpha; // only used for LeakyReLu
 };
 
 class BatchNorm : public OpBase {
@@ -1385,7 +1387,7 @@ class Model {
 public:
   Model();
   Op get_or_create_activation(Tensor _input, OpType _type,
-                              bool _inPlace);
+                              bool _inPlace, float _alpha);
   Op get_or_create_batchnorm(const Tensor& _input,
                              const Tensor& _scale,
                              const Tensor& _bias,

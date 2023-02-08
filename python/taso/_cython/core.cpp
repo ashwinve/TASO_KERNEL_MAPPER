@@ -2120,6 +2120,7 @@ static PyObject *__pyx_n_u_Weight;
 static PyObject *__pyx_n_u_Where;
 static PyObject *__pyx_n_s_activation;
 static PyObject *__pyx_n_s_alpha;
+static PyObject *__pyx_n_u_alpha;
 static PyObject *__pyx_n_s_array;
 static PyObject *__pyx_n_s_attrname;
 static PyObject *__pyx_n_s_axes;
@@ -20556,7 +20557,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  *             self.p_graph.get_operator_string_attr(op.guid, PM_NEAREST_MODE, c_string_ptr)             # <<<<<<<<<<<<<<
  *             return c_string_ptr
- *         else:
+ *         elif attrname == 'alpha':
  */
     __pyx_v_self->p_graph->get_operator_string_attr(__pyx_v_op.guid, taso::PM_NEAREST_MODE, __pyx_v_c_string_ptr);
 
@@ -20564,8 +20565,8 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  *             self.p_graph.get_operator_string_attr(op.guid, PM_NEAREST_MODE, c_string_ptr)
  *             return c_string_ptr             # <<<<<<<<<<<<<<
- *         else:
- *            assert False, 'Internal error: unknow attribute {}'.format(attrname)
+ *         elif attrname == 'alpha':
+ *             return self.p_graph.get_operator_float_attr(op.guid, PM_ALPHA)
  */
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_2 = __Pyx_PyBytes_FromString(__pyx_v_c_string_ptr); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 749, __pyx_L1_error)
@@ -20583,8 +20584,41 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":751
+  /* "taso/_cython/core.pyx":750
+ *             self.p_graph.get_operator_string_attr(op.guid, PM_NEAREST_MODE, c_string_ptr)
  *             return c_string_ptr
+ *         elif attrname == 'alpha':             # <<<<<<<<<<<<<<
+ *             return self.p_graph.get_operator_float_attr(op.guid, PM_ALPHA)
+ *         else:
+ */
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_alpha, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 750, __pyx_L1_error)
+  if (__pyx_t_1) {
+
+    /* "taso/_cython/core.pyx":751
+ *             return c_string_ptr
+ *         elif attrname == 'alpha':
+ *             return self.p_graph.get_operator_float_attr(op.guid, PM_ALPHA)             # <<<<<<<<<<<<<<
+ *         else:
+ *            assert False, 'Internal error: unknow attribute {}'.format(attrname)
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->p_graph->get_operator_float_attr(__pyx_v_op.guid, taso::PM_ALPHA)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 751, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
+    goto __pyx_L0;
+
+    /* "taso/_cython/core.pyx":750
+ *             self.p_graph.get_operator_string_attr(op.guid, PM_NEAREST_MODE, c_string_ptr)
+ *             return c_string_ptr
+ *         elif attrname == 'alpha':             # <<<<<<<<<<<<<<
+ *             return self.p_graph.get_operator_float_attr(op.guid, PM_ALPHA)
+ *         else:
+ */
+  }
+
+  /* "taso/_cython/core.pyx":753
+ *             return self.p_graph.get_operator_float_attr(op.guid, PM_ALPHA)
  *         else:
  *            assert False, 'Internal error: unknow attribute {}'.format(attrname)             # <<<<<<<<<<<<<<
  */
@@ -20592,7 +20626,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
       if (unlikely(!0)) {
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Internal_error_unknow_attribute, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 751, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Internal_error_unknow_attribute, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 753, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_7 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -20606,15 +20640,15 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
         }
         __pyx_t_2 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_7, __pyx_v_attrname) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_attrname);
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 751, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 753, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_5 = PyTuple_Pack(1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 751, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_Pack(1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 753, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         PyErr_SetObject(PyExc_AssertionError, __pyx_t_5);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __PYX_ERR(1, 751, __pyx_L1_error)
+        __PYX_ERR(1, 753, __pyx_L1_error)
       }
     }
     #endif
@@ -22142,6 +22176,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_Where, __pyx_k_Where, sizeof(__pyx_k_Where), 0, 1, 0, 1},
   {&__pyx_n_s_activation, __pyx_k_activation, sizeof(__pyx_k_activation), 0, 0, 1, 1},
   {&__pyx_n_s_alpha, __pyx_k_alpha, sizeof(__pyx_k_alpha), 0, 0, 1, 1},
+  {&__pyx_n_u_alpha, __pyx_k_alpha, sizeof(__pyx_k_alpha), 0, 1, 0, 1},
   {&__pyx_n_s_array, __pyx_k_array, sizeof(__pyx_k_array), 0, 0, 1, 1},
   {&__pyx_n_s_attrname, __pyx_k_attrname, sizeof(__pyx_k_attrname), 0, 0, 1, 1},
   {&__pyx_n_s_axes, __pyx_k_axes, sizeof(__pyx_k_axes), 0, 0, 1, 1},

@@ -392,7 +392,6 @@ def _mul(op, graph, tensors, initializer):
     return outputs
 
 def _pad(op, graph, tensors, initializer):
-    # considered no-op
     inputs = _get_inputs(op, graph, tensors, initializer)
     attrs = _parse_attribute(op.attribute)
     try:
@@ -411,7 +410,7 @@ def _pad(op, graph, tensors, initializer):
     
     except KeyError:
         # TODO: support padding as an input as per new version of ONNX
-        assert "pads as input not supported"
+        assert "pads as input not supported; currently supports padding as attribute"
 
 def _prelu(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
@@ -1041,6 +1040,7 @@ input_weight_names['Mul'] = ['input1', 'input2']
 input_weight_names['Pow'] = ['input1', 'input2']
 input_weight_names['Reshape'] = ['input', 'shape']
 input_weight_names['Resize'] = ['input', 'sizes']
+input_weight_names['Sub'] = ['input1', 'input2']
 input_weight_names['BroadcastAdd'] = ['input1', 'input2']
 input_weight_names['Transpose'] = ['input']
 
