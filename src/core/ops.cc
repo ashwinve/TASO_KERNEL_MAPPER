@@ -738,29 +738,27 @@ void Graph::get_operator_string_attr(size_t guid, PMParameter attr, char* &ret)
   // string ret = NULL;
   
   bool found_state = false;
+  Resize* op_cast;
   
-  // switch (attr) {
-  //   case PM_COOR_TRANS_MODE:
-  if(attr == PM_COOR_TRANS_MODE){
-      Resize* op_cast = (Resize *)(op.ptr);
+  switch (attr) {
+    case PM_COOR_TRANS_MODE:
+      op_cast = (Resize *)(op.ptr);
       strcpy(ret, op_cast->coord_transf_mode.c_str());
       found_state = true;
+      break;
+    case PM_MODE:
+      op_cast = (Resize *)(op.ptr);
+      strcpy(ret, op_cast->mode.c_str());
+      found_state = true;
+      break;
+    case PM_NEAREST_MODE:
+      op_cast = (Resize *)(op.ptr);
+      strcpy(ret, op_cast->nearest_mode.c_str());
+      found_state = true;
+      break;
+    default:
+      found_state = false;
   }
-  else if(attr == PM_MODE){
-    Resize* op_cast = (Resize *)(op.ptr);
-    strcpy(ret, op_cast->mode.c_str());
-    found_state = true;
-  }
-  else if(attr == PM_NEAREST_MODE){
-    Resize* op_cast = (Resize *)(op.ptr);
-    strcpy(ret, op_cast->nearest_mode.c_str());
-    found_state = true;
-  }
-    // case PM_OP_TYPE:
-    //   found_state = false;
-  //   default:
-  //     found_state = false;
-  // }
   assert(found_state);
 }
 
