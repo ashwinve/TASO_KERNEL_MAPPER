@@ -722,6 +722,29 @@ float Graph::get_operator_float_attr(size_t guid, PMParameter attr)
   return ret;
 }
 
+void Graph::get_operator_string_attr(size_t guid, PMParameter attr, char* &ret)
+{
+  Op op = find_op_or_fail(guid);
+  // string ret = NULL;
+  
+  bool found_state = false;
+  
+  // switch (attr) {
+  //   case PM_COOR_TRANS_MODE:
+  if(attr == PM_COOR_TRANS_MODE){
+      Resize* op_cast = (Resize *)(op.ptr);
+      strcpy(ret, op_cast->coord_transf_mode.c_str());
+      cout << "coord_transf_mode: " << ret << endl;
+      found_state = true;
+  }
+    // case PM_OP_TYPE:
+    //   found_state = false;
+  //   default:
+  //     found_state = false;
+  // }
+  assert(found_state);
+}
+
 int Graph::get_num_outputs(size_t guid)
 {
   Op op = find_op_or_fail(guid);

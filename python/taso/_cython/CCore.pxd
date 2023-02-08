@@ -121,6 +121,7 @@ cdef extern from "taso/ops.h" namespace "taso":
         PM_AXES
         PM_KEEP_DIMS
         PM_EPSILON
+        PM_COOR_TRANS_MODE
 
     # This must be consistent with include/taso/ops.h
     cdef enum ActiMode:
@@ -290,6 +291,7 @@ cdef extern from "taso/ops.h" namespace "taso":
         int get_operator_int_attr(size_t guid, PMParameter attr)
         int get_operator_list_attr(int* axes_arr, size_t guid, PMParameter attr)
         float get_operator_float_attr(size_t guid, PMParameter attr)
+        void get_operator_string_attr(size_t guid, PMParameter attr, char* &ret)
         int get_num_outputs(size_t guid)
         int get_input_dims(size_t guid, int* dims, int idx)
         void get_weight_value(size_t guid, float* data)

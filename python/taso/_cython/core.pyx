@@ -13,6 +13,8 @@
 # limitations under the License.
 #
 
+from libc.stdlib cimport malloc
+
 from CCore cimport Model
 from CCore cimport Graph
 from CCore cimport Tensor
@@ -670,7 +672,8 @@ cdef class PyGraph:
         cdef PaddingMode pm
         cdef int axes_arr[128]
         cdef int num_axes
-        
+        cdef char* c_string_ptr
+
         if attrname == 'kernel_shape':
             kh = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_H)
             kw = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_W)
@@ -730,5 +733,9 @@ cdef class PyGraph:
             return axes_list
         elif attrname == 'keepdims':
             return self.p_graph.get_operator_int_attr(op.guid, PM_KEEP_DIMS)
+        elif attrname == 'coordinate_transformation_mode':
+            c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
+            self.p_graph.get_operator_string_attr(op.guid, PM_COOR_TRANS_MODE, c_string_ptr)
+            return c_string_ptr
         else:
            assert False, 'Internal error: unknow attribute {}'.format(attrname)
