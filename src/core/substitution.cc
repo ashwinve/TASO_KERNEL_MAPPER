@@ -1218,12 +1218,15 @@ bool GraphXfer::create_new_operator(const OpX* opx, Op& op)
       Tensor input = opx->inputs[0].to_tensor(this);
       Tensor weight = opx->inputs[1].to_tensor(this);
       int strideH, strideW, padding, activation;
+      const std::vector<int> kernel_shape;
+      const std::vector<int> dilations;
       assert(opx->get_pm_constraint(PM_STRIDE_H, strideH));
       assert(opx->get_pm_constraint(PM_STRIDE_W, strideW));
       assert(opx->get_pm_constraint(PM_PAD, padding));
       assert(opx->get_pm_constraint(PM_ACTI, activation));
       op = model->get_or_create_conv2d(input, weight, strideH, strideW,
                                        (PaddingMode)padding,
+                                       kernel_shape, dilations,
                                        (ActiMode)activation);
       break;
     }

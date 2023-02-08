@@ -86,6 +86,11 @@ bool Resize::get_int_parameter(PMParameter para, int* value)
   return OpBase::get_int_parameter(para, value);
 }
 
+// bool Resize::get_float_parameter(PMParameter para, float* value)
+// {
+//   return OpBase::get_float_parameter(para, value);
+// }
+
 void Resize::collect_costs(float& exe_time, float& flops,
                            float& mem_acc, int& num_kernels)
 {

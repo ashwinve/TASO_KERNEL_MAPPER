@@ -126,6 +126,8 @@ cdef extern from "taso/ops.h" namespace "taso":
         PM_MODE
         PM_NEAREST_MODE
         PM_ALPHA
+        PM_DILATIONS
+        PM_KERNEL_SHAPE
 
     # This must be consistent with include/taso/ops.h
     cdef enum ActiMode:
@@ -197,6 +199,8 @@ cdef extern from "taso/ops.h" namespace "taso":
                             const TensorHandle weight,
                             int strideH, int strideW,
                             PaddingMode _padding,
+                            const vector[int] kernel_shape,
+                            const vector[int] dilations,
                             ActiMode _activation)
         TensorHandle dropout(const TensorHandle input)
         TensorHandle element(OpType type,
@@ -282,8 +286,6 @@ cdef extern from "taso/ops.h" namespace "taso":
                    const vector[int] pad_after,
                    float pad_value,
                    char* pad_mode)
-
-        # TensorHandle noop_pad(const TensorHandle input)
         TensorHandle noop_expand(const TensorHandle input)
 
         TensorHandle new_input(int ndim, const int* dims)

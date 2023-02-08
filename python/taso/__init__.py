@@ -237,7 +237,10 @@ def _conv2d(op, graph, tensors, initializer):
         group = attrs["group"]
     pads = _get_conv_pool_pads_attr(attrs)
     strides = attrs["strides"]
-    outputs = graph.conv2d(input=inputs[0], weight=inputs[1], strides=strides, padding=pads)
+    kernel_shape = attrs["kernel_shape"]
+    dilations = attrs["dilations"]
+    outputs = graph.conv2d(input=inputs[0], weight=inputs[1], strides=strides, padding=pads,
+                           kernel_shape=kernel_shape, dilations=dilations)
     
     if len(inputs) > 2:
         dim = inputs[2].dim(0)
@@ -1053,7 +1056,7 @@ operator_attrs['BatchNormalization'] = ['epsilon'] # TODO: Add momentum
 operator_attrs['Cast'] = []
 operator_attrs['Ceil'] = []
 operator_attrs['Concat'] = ['axis']
-operator_attrs['Conv'] = ['group', 'kernel_shape', 'pads', 'strides']
+operator_attrs['Conv'] = ['dilations', 'group', 'kernel_shape', 'pads', 'strides']
 operator_attrs['Div'] = []
 operator_attrs['Dropout'] = []
 operator_attrs['Erf'] = []

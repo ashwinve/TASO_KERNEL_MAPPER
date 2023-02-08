@@ -231,12 +231,24 @@ cdef class PyGraph:
         cdef TensorHandle handle = self.p_graph.concat(axis, len(inputs), cinputs)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
+    
+    def conv2d(self, *, PyTensor input, PyTensor weight, strides, padding, kernel_shape, dilations, activation = "NONE"):
+        cdef vector[int] c_kernel_shape
+        cdef vector[int] c_dilations
+        c_kernel_shape.resize(len(kernel_shape))
+        c_dilations.resize(len(dilations))
 
-    def conv2d(self, *, PyTensor input, PyTensor weight, strides, padding, activation = "NONE"):
         assert (type(input) == PyTensor)
         padding = get_padding_mode(padding)
         activation = get_activation_mode(activation)
-        cdef TensorHandle handle = self.p_graph.conv2d(input.ctensor, weight.ctensor, strides[0], strides[1], padding, activation)
+
+        for i in range(len(kernel_shape)):
+            c_kernel_shape[i] = kernel_shape[i]
+        
+        for i in range(len(dilations)):
+            c_dilations[i] = dilations[i]
+
+        cdef TensorHandle handle = self.p_graph.conv2d(input.ctensor, weight.ctensor, strides[0], strides[1], padding, c_kernel_shape, c_dilations, activation)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
 
@@ -350,11 +362,6 @@ cdef class PyGraph:
         cdef TensorHandle handle = self.p_graph.pad(input.ctensor, c_pad_before, c_pad_after, pad_value, pad_mode)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
-
-    # def noop_pad(self, PyTensor x):
-    #    cdef TensorHandle handle = self.p_graph.noop_pad(x.ctensor)
-    #    t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
-    #    return PyTensor(t)
 
     def noop_expand(self, PyTensor x):
         cdef TensorHandle handle = self.p_graph.noop_expand(x.ctensor)
@@ -670,10 +677,10 @@ cdef class PyGraph:
     def get_operator_attr(self, Op op, attrname):
         cdef int kh, kw, sh, sw
         cdef PaddingMode pm
-        cdef int axes_arr[128]
+        cdef int temp_arr[128]
         cdef int num_axes
         cdef char* c_string_ptr
-
+        
         if attrname == 'kernel_shape':
             kh = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_H)
             kw = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_W)
@@ -711,6 +718,18 @@ cdef class PyGraph:
             return [padH // 2, padW // 2, padH - padH // 2, padW - padW // 2]
         elif attrname == 'group':
             return self.p_graph.get_operator_int_attr(op.guid, PM_GROUP)
+        elif attrname == 'dilations':
+            n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_DILATIONS)
+            dilation_list = list()
+            for i in range(n_dims):
+                dilation_list.append(temp_arr[i])
+            return dilation_list
+        elif attrname == 'kernel_shape':
+            n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_KERNEL_SHAPE)
+            shape_list = list()
+            for i in range(n_dims):
+                shape_list.append(temp_arr[i])
+            return shape_list
         elif attrname == 'axis':
             return self.p_graph.get_operator_int_attr(op.guid, PM_AXIS)
         elif attrname == 'split':
@@ -726,10 +745,10 @@ cdef class PyGraph:
         elif attrname == 'epsilon':
             return self.p_graph.get_operator_float_attr(op.guid, PM_EPSILON)
         elif attrname == 'axes':
-            num_axes = self.p_graph.get_operator_list_attr(axes_arr, op.guid, PM_AXES)
+            n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_AXES)
             axes_list = list()
-            for i in range(num_axes):
-                axes_list.append(axes_arr[i])
+            for i in range(n_dims):
+                axes_list.append(temp_arr[i])
             return axes_list
         elif attrname == 'keepdims':
             return self.p_graph.get_operator_int_attr(op.guid, PM_KEEP_DIMS)

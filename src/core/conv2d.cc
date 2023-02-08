@@ -34,6 +34,11 @@ TensorHandle Graph::group_conv2d(int groups,
     data[i] = (DATATYPE)std::rand() / RAND_MAX;
   TensorHandle weight = new_weight(4, dims, data);
   free(data);
+
+  // dummy instantiation of kernel_shape and dilations attributes
+  const std::vector<int> _kernel_shape;
+  const std::vector<int> _dilations;
+  /* TODO: Expose from top-level if needed*/
 /*
   weight.numDim = 4;
   weight.dim[0] = _outputC;
@@ -49,7 +54,7 @@ TensorHandle Graph::group_conv2d(int groups,
   weight.idx = 0;
   weight = noop(weight);
 */
-  return conv2d(_input, weight, _strideH, _strideW, _padding, _activation);
+  return conv2d(_input, weight, _strideH, _strideW, _padding, _kernel_shape, _dilations, _activation);
 }
 
 
@@ -68,6 +73,11 @@ TensorHandle Graph::conv2d(const TensorHandle _input,
     data[i] = (DATATYPE)std::rand() / RAND_MAX;
   TensorHandle weight = new_weight(4, dims, data);
   free(data);
+
+  // dummy instantiation of kernel_shape and dilations attributes
+  const std::vector<int> _kernel_shape;
+  const std::vector<int> _dilations;
+  /* TODO: Expose from top-level if needed*/
 /*
   weight.numDim = 4;
   weight.dim[0] = _outputC;
@@ -84,7 +94,7 @@ TensorHandle Graph::conv2d(const TensorHandle _input,
   weight = noop(weight);
 */
   return conv2d(_input, weight, _strideH, _strideW,
-                _padding, _activation);
+                _padding, _kernel_shape, _dilations, _activation);
 }
 
 /*
@@ -107,10 +117,12 @@ TensorHandle Graph::conv2d(const TensorHandle _input,
                            const TensorHandle _weight,
                            int _strideH, int _strideW,
                            PaddingMode _padding,
+                           const std::vector<int>& _kernel_shape,
+                           const std::vector<int>& _dilations,
                            ActiMode _activation)
 {
   Op op = model->get_or_create_conv2d(*_input, *_weight, _strideH, _strideW,
-                                      _padding, _activation);
+                                      _padding, _kernel_shape, _dilations, _activation);
   assert(op != Op::INVALID_OP);
   add_edge(_input->op, op, _input->idx, 0);
   add_edge(_weight->op, op, _weight->idx, 1);
@@ -122,6 +134,8 @@ TensorHandle Graph::conv2d(const TensorHandle _input,
 Op Model::get_or_create_conv2d(Tensor _input, Tensor _weight,
                                int _strideH, int _strideW,
                                PaddingMode _padding,
+                               const std::vector<int>& _kernel_shape,
+                               const std::vector<int>& _dilations,
                                ActiMode _activation)
 {
   if (_input.dim[1] % _weight.dim[1] != 0)
@@ -134,7 +148,7 @@ Op Model::get_or_create_conv2d(Tensor _input, Tensor _weight,
     convOp = conv2d[key];
   } else {
     convOp = new Conv2D(this, _input, _weight, _strideH, _strideW,
-                        _padding, _activation);
+                        _padding, _kernel_shape, _dilations, _activation);
     measure_conv2d_cost(convOp);
     conv2d[key] = convOp;
   }
@@ -147,10 +161,13 @@ Op Model::get_or_create_conv2d(Tensor _input, Tensor _weight,
 Conv2D::Conv2D(Model* _model, Tensor _input, Tensor _weight,
                int _strideH, int _strideW,
                PaddingMode _padding,
+               const std::vector<int>& _kernel_shape,
+               const std::vector<int>& _dilations,
                ActiMode _activation)
 : OpBase(_input, _weight, _model, OP_CONV2D),
   strideH(_strideH), strideW(_strideW),
-  padding(_padding), activation(_activation)
+  padding(_padding), kernel_shape(_kernel_shape),
+  dilations(_dilations),activation(_activation)
 {
   assert(_input.numDim == 4);
   assert(_weight.numDim == 4);
@@ -237,6 +254,22 @@ bool Conv2D::get_int_parameter(PMParameter para, int* value)
       return true;
     default:
       return OpBase::get_int_parameter(para, value);
+  }
+}
+
+bool Conv2D::get_list_parameter(int* arr, PMParameter para, int * ret)
+{
+  switch (para) {
+    case PM_DILATIONS:
+      arr = (int*) dilations.data();
+      *ret = (int) dilations.size();
+      return true;
+    case PM_KERNEL_SHAPE:
+      arr = (int*) kernel_shape.data();
+      *ret = (int) kernel_shape.size();
+      return true;
+    default:
+      return OpBase::get_list_parameter(arr, para, ret);
   }
 }
 

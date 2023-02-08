@@ -412,7 +412,9 @@ enum PMParameter {
   PM_CUBIC_COEFF_A, //Resize
   PM_MODE, //Resize
   PM_NEAREST_MODE, //Resize
-  PM_ALPHA // LeakyReLu
+  PM_ALPHA, // LeakyReLu
+  PM_DILATIONS, // Conv2D
+  PM_KERNEL_SHAPE // Conv2D
 };
 
 enum TNParameter {
@@ -537,6 +539,8 @@ public:
                       const TensorHandle _weight,
                       int _strideH, int _strideW,
                       PaddingMode _padding,
+                      const std::vector<int>& _kernel_shape,
+                      const std::vector<int>& _dilations,
                       ActiMode _activation = AC_MODE_NONE);
   TensorHandle dropout(const TensorHandle _input);
   TensorHandle element(OpType type,
@@ -724,11 +728,14 @@ public:
   Conv2D(Model* _model, Tensor _input, Tensor _weight,
          int _strideH, int _strideW,
          PaddingMode _padding,
+         const std::vector<int>& _kernel_shape,
+         const std::vector<int>& _dilations,
          ActiMode _activation);
   ~Conv2D(void);
   void forward(bool block);
   void map(void);
   void unmap(void);
+  bool get_list_parameter(int* arr, PMParameter para, int * ret);
   bool get_int_parameter(PMParameter para, int*);
   void get_padding(int* padH, int* padW);
   void collect_costs(float& exe_time, float& flops, float& mem_acc, int& num_kernels);
@@ -745,6 +752,8 @@ public:
 #endif
   int strideH, strideW;
   PaddingMode padding;
+  const std::vector<int> kernel_shape;
+  const std::vector<int> dilations;
   ActiMode activation;
   void *biasPtr;
 };
@@ -1400,6 +1409,8 @@ public:
   Op get_or_create_conv2d(Tensor _input, Tensor _weight,
                           int _strideH, int _strideW,
                           PaddingMode _padding,
+                          const std::vector<int>& _kernel_shape,
+                          const std::vector<int>& _dilations,
                           ActiMode _activation);
   Op get_or_create_element(OpType type, const Tensor& t1, const Tensor& t2);
   Op get_or_create_elementwise_unary(const Tensor& _input, OpType _type);

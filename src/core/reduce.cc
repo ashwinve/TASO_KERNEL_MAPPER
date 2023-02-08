@@ -163,16 +163,15 @@ bool Reduce::get_int_parameter(PMParameter para, int* value)
   }
 }
 
-bool Reduce::get_list_parameter(int* axes_arr, PMParameter para, int * ret)
+bool Reduce::get_list_parameter(int* arr, PMParameter para, int * ret)
 {
   switch (para) {
     case PM_AXES:
-      axes_arr = axes.data();
+      arr = axes.data();
       *ret = (int) axes.size();
       return true;
     default:
-      *ret = (int) 0;
-      return false;
+      return OpBase::get_list_parameter(arr, para, ret);
   }
 }
 
