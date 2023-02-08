@@ -282,10 +282,10 @@ def _expand(op, graph, tensors, initializer):
     assert len(inputs) == 2, "Expand requires exactly two input"
     
     _shape = get_data_from_init_list(op, initializer, 1)
-    
+    outputs = graph.expand(inputs[0], tuple(_shape))
     # convert _shape into PyTensor object, pass X into
-    out_tensor = graph.new_input(dims=tuple(_shape))
-    outputs = graph.noop_expand(out_tensor)
+    # out_tensor = graph.new_input(dims=tuple(_shape))
+    # outputs = graph.noop_expand(out_tensor)
     # outputs = graph.new_weight(dims=tuple(_shape), data=out_data)
     return outputs
 

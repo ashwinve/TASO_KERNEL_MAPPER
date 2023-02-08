@@ -549,6 +549,7 @@ public:
                        const TensorHandle _t2);
   TensorHandle elementwise_unary(const TensorHandle _input, OpType _type);
   TensorHandle enlarge(const TensorHandle _w1, const TensorHandle _w2);
+  TensorHandle expand(const TensorHandle _input, const std::vector<int> &_shape);
   TensorHandle exp(const TensorHandle _input);
   TensorHandle erf(const TensorHandle _input);
   TensorHandle fc(const TensorHandle _input,
@@ -939,6 +940,17 @@ public:
   void collect_costs(float& exe_time, float& flops, float& mem_acc, int& num_kernels);
 };
 
+class Expand : public OpBase {
+public:
+  Expand(Model* _model, Tensor _input, const std::vector<int>& shape);
+  ~Expand(void);
+  bool get_int_parameter(PMParameter para, int*);
+  void forward(bool block);
+  void map(void);
+  void unmap(void);
+  void collect_costs(float& exe_time, float& flops, float& mem_acc, int& num_kernels);
+};
+
 class FuseConvBatchNorm : public OpBase {
 public:
   FuseConvBatchNorm(Model* _model, const Tensor& _conv_w, const Tensor& _scale,
@@ -1254,6 +1266,12 @@ struct EnlargeKey {
   int keys[KEY_LENGTH];
 };
 
+struct ExpandKey {
+  static const int KEY_LENGTH = Tensor::MAX_KEY_LENGTH + MAX_DIM + 1;
+  ExpandKey(Tensor, const std::vector<int>&);
+  int keys[KEY_LENGTH];
+};
+
 struct FuseConvBatchNormKey {
   static const int KEY_LENGTH = Tensor::MAX_KEY_LENGTH;
   FuseConvBatchNormKey(const Tensor& conv_w);
@@ -1419,6 +1437,7 @@ public:
   Op get_or_create_element(OpType type, const Tensor& t1, const Tensor& t2);
   Op get_or_create_elementwise_unary(const Tensor& _input, OpType _type);
   Op get_or_create_enlarge(Tensor _w1, Tensor _w2);
+  Op get_or_create_expand(Tensor _input, const std::vector<int>& shape);
   Op get_or_create_fuse_conv_batchnorm(const Tensor& _conv_w,
                                        const Tensor& _scale,
                                        const Tensor& _bias,
@@ -1497,6 +1516,7 @@ public:
   void measure_element_cost(Element*);
   void measure_elementwise_unary_cost(ElementWiseUnary*);
   void measure_enlarge_cost(Enlarge*);
+  void measure_expand_cost(Expand*);
   void measure_squeeze_cost(Squeeze*);
   void measure_unsqueeze_cost(Unsqueeze*);
   void measure_where_cost(Where*);
@@ -1540,6 +1560,7 @@ public:
   std::map<ElementKey, Element*, KeyCompare<ElementKey> > element;
   std::map<ElementWiseUnaryKey, ElementWiseUnary*, KeyCompare<ElementWiseUnaryKey> > element_unary;
   std::map<EnlargeKey, Enlarge*, KeyCompare<EnlargeKey> > enlarge;
+  std::map<ExpandKey, Expand*, KeyCompare<ExpandKey> > expand;
   std::map<FuseConvBatchNormKey, FuseConvBatchNorm*, KeyCompare<FuseConvBatchNormKey> > fuse_conv_batchnorm;
   std::map<FuseConvBatchNormAlphaVarKey, FuseConvBatchNormAlphaVar*, KeyCompare<FuseConvBatchNormAlphaVarKey> > fuse_conv_batchnorm_alpha_var;
   std::map<FuseConvBatchNormBiasKey, FuseConvBatchNormBias*, KeyCompare<FuseConvBatchNormBiasKey> > fuse_conv_batchnorm_bias;

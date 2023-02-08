@@ -208,6 +208,8 @@ cdef extern from "taso/ops.h" namespace "taso":
                              const TensorHandle y)
         TensorHandle exp(const TensorHandle input)
         TensorHandle erf(const TensorHandle input)
+        TensorHandle expand(const TensorHandle input,
+                             const vector[int] shape)
         TensorHandle log(const TensorHandle input)
         TensorHandle logical_not(const TensorHandle input)
         TensorHandle pool2d_max(const TensorHandle input,

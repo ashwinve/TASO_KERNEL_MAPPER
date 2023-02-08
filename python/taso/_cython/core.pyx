@@ -277,6 +277,15 @@ cdef class PyGraph:
         cdef TensorHandle handle = self.p_graph.erf(input.ctensor)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
+    
+    def expand(self, PyTensor input, tuple shape):
+        cdef vector[int] cshape
+        cshape.resize(len(shape))
+        for i in range(len(shape)):
+            cshape[i] = shape[i]
+        cdef TensorHandle handle = self.p_graph.expand(input.ctensor, cshape)
+        t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+        return PyTensor(t)
 
     def greater(self, *, PyTensor x, PyTensor y):
         cdef TensorHandle handle = self.p_graph.element(OP_EW_GREATER, x.ctensor, y.ctensor)
@@ -363,10 +372,10 @@ cdef class PyGraph:
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
 
-    def noop_expand(self, PyTensor x):
-        cdef TensorHandle handle = self.p_graph.noop_expand(x.ctensor)
-        t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
-        return PyTensor(t)
+    # def noop_expand(self, PyTensor x):
+    #    cdef TensorHandle handle = self.p_graph.noop_expand(x.ctensor)
+    #    t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+    #    return PyTensor(t)
 
     def prelu(self, *, PyTensor x, PyTensor slope):
         cdef TensorHandle handle = self.p_graph.element(OP_PRELU, x.ctensor, slope.ctensor)
