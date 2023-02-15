@@ -405,7 +405,7 @@ enum PMParameter {
   PM_PERM,		// Transpose
   PM_OUTSHUFFLE,	// Transpose
   PM_MERGE_GCONV_COUNT, // MergeGConv
-  PM_AXES,		// Squeeze, Unsqueeze, Reduce*
+  PM_AXES,		// Squeeze, Unsqueeze, Reduce*, Slice
   PM_KEEP_DIMS,         // Reduce*
   PM_EPSILON,   // BatchNorm
   PM_COOR_TRANS_MODE, // Resize
@@ -414,7 +414,10 @@ enum PMParameter {
   PM_NEAREST_MODE, //Resize
   PM_ALPHA, // LeakyReLu
   PM_DILATIONS, // Conv2D
-  PM_KERNEL_SHAPE // Conv2D
+  PM_KERNEL_SHAPE, // Conv2D
+  PM_STARTS, // Slice
+  PM_ENDS, // Slice
+  PM_STEPS // Slice
 };
 
 enum TNParameter {
@@ -480,7 +483,7 @@ public:
   OpBase(int n, Tensor* inputs, Model* _model, OpType _type);
   virtual bool get_input_parameter(TNParameter, DIMParameter, int*);
   virtual bool get_int_parameter(PMParameter, int*);
-  virtual bool get_list_parameter(int*, PMParameter, int*);
+  virtual bool get_list_parameter(int*&, PMParameter, int*);
   virtual bool get_float_parameter(PMParameter, float*);
   virtual bool get_string_parameter(PMParameter para, char* value);
   //virtual bool get_ints_parameter(PMParameter, std::vector<int>*);
@@ -641,7 +644,8 @@ public:
                      const std::vector<int>& _start,
                      const std::vector<int>& _end,
                      const std::vector<int>& _axes,
-                     const std::vector<int>& _steps);
+                     const std::vector<int>& _steps,
+                     const int num_inputs);
   TensorHandle sigmoid(const TensorHandle _input,
                        bool _inPlace = true);
 
@@ -677,7 +681,7 @@ public:
   int get_input_edges(Edge* opList, size_t guid);
   OpType get_operator_type(size_t guid);
   int get_operator_int_attr(size_t guid, PMParameter attr);
-  int get_operator_list_attr(int* axes_arr, size_t guid, PMParameter attr);
+  int get_operator_list_attr(int* &arr, size_t guid, PMParameter attr);
   float get_operator_float_attr(size_t guid, PMParameter attr);
   void get_operator_string_attr(size_t guid, PMParameter attr, char* &c_string_ptr);
   int get_num_outputs(size_t guid);
@@ -737,7 +741,7 @@ public:
   void forward(bool block);
   void map(void);
   void unmap(void);
-  bool get_list_parameter(int* arr, PMParameter para, int * ret);
+  bool get_list_parameter(int* &arr, PMParameter para, int * ret);
   bool get_int_parameter(PMParameter para, int*);
   void get_padding(int* padH, int* padW);
   void collect_costs(float& exe_time, float& flops, float& mem_acc, int& num_kernels);
@@ -1046,7 +1050,7 @@ public:
          const std::vector<int>& _axes, bool _keepdims);
   ~Reduce(void);
   bool get_int_parameter(PMParameter para, int*);
-  bool get_list_parameter(int* axes_arr, PMParameter para, int * ret);
+  bool get_list_parameter(int* &axes_arr, PMParameter para, int * ret);
   void forward(bool block);
   void map(void);
   void unmap(void);
@@ -1104,15 +1108,18 @@ public:
         const std::vector<int>& _start,
         const std::vector<int>& _end,
         const std::vector<int>& _axes,
-        const std::vector<int>& _steps);
+        const std::vector<int>& _steps,
+        const int num_inputs);
   ~Slice(void);
   bool get_int_parameter(PMParameter para, int*);
+  bool get_list_parameter(int* &arr, PMParameter para, int * ret);
   void forward(bool block);
   void map(void);
   void unmap(void);
   void collect_costs(float& exe_time, float& flops, float& mem_acc, int& num_kernels);
 public:
   std::vector<int> start, end, axes, steps;
+  int num_inputs;
 };
 
 class Split : public OpBase {
@@ -1478,7 +1485,8 @@ public:
                          const std::vector<int>& _start,
                          const std::vector<int>& _end,
                          const std::vector<int>& _axes,
-                         const std::vector<int>& _steps);
+                         const std::vector<int>& _steps,
+                         const int num_inputs);
   Op get_or_create_squeeze(const Tensor& input, const std::vector<int>& axes);
   Op get_or_create_split(const Tensor& _input, int _axis, const std::vector<int>& _sizes);
   Op get_or_create_split(const Tensor& _input, int axis, int n);

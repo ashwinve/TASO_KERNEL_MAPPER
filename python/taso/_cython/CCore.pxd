@@ -128,6 +128,9 @@ cdef extern from "taso/ops.h" namespace "taso":
         PM_ALPHA
         PM_DILATIONS
         PM_KERNEL_SHAPE
+        PM_STARTS
+        PM_ENDS
+        PM_STEPS
 
     # This must be consistent with include/taso/ops.h
     cdef enum ActiMode:
@@ -267,7 +270,8 @@ cdef extern from "taso/ops.h" namespace "taso":
                            const vector[int] start,
                            const vector[int] end,
                            const vector[int] axse,
-                           const vector[int] steps)
+                           const vector[int] steps,
+                           const int num_inputs)
         void split(const TensorHandle input, int axis,
                    const vector[int] sizes, TensorHandle* outputs)
         void split_equal(const TensorHandle input, int axis,
@@ -296,7 +300,7 @@ cdef extern from "taso/ops.h" namespace "taso":
         int get_input_edges(Edge* edges, size_t guid)
         OpType get_operator_type(size_t guid)
         int get_operator_int_attr(size_t guid, PMParameter attr)
-        int get_operator_list_attr(int* axes_arr, size_t guid, PMParameter attr)
+        int get_operator_list_attr(int* &axes_arr, size_t guid, PMParameter attr)
         float get_operator_float_attr(size_t guid, PMParameter attr)
         void get_operator_string_attr(size_t guid, PMParameter attr, char* &ret)
         int get_num_outputs(size_t guid)

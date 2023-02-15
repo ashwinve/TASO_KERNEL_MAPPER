@@ -740,7 +740,9 @@ def _slice(op, graph, tensors, initializer):
         steps = _get_list_from_initializer(initializer, op.input[4])
     else:
         steps = None
-    outputs = graph.slice(inputs[0], start, end, axes, steps)
+    
+    num_inputs = len(op.input)
+    outputs = graph.slice(inputs[0], start, end, axes, steps, num_inputs)
     return outputs
 
 def _split(op, graph, tensors, initializer):
@@ -1041,6 +1043,7 @@ input_weight_names['Resize'] = ['input', 'sizes']
 input_weight_names['Sub'] = ['input1', 'input2']
 input_weight_names['BroadcastAdd'] = ['input1', 'input2']
 input_weight_names['Transpose'] = ['input']
+input_weight_names['Slice'] = ['input', 'starts', 'ends', 'axes', 'steps']
 
 operator_attrs = dict()
 operator_attrs['Add'] = []
@@ -1110,6 +1113,15 @@ def _add_node_attribute(graph, node, op, optype):
         attr = helper.make_attribute(key, val)
         node.attribute.append(attr)
 
+# Helper function to register tensors that should be at Op input
+def export_register_input_tensor(inputs, graph_inputs, graph_initializers, mytype, op, py_array, input_idx):
+    input_tensor_name = "{}{}_{}".format(mytype, op['guid'], input_weight_names[mytype][input_idx])
+    inputs.append(input_tensor_name)
+    graph_inputs.append(helper.make_tensor_value_info(input_tensor_name, TensorProto.INT64, [len(py_array)]))
+    graph_initializers.append(helper.make_tensor(input_tensor_name, TensorProto.INT64, [len(py_array)], py_array))
+    
+    return inputs, graph_inputs, graph_initializers
+                    
 def export_onnx(graph):
     '''
     Export a XFlow graph to an ONNX graph
@@ -1148,6 +1160,47 @@ def export_onnx(graph):
             shape = graph.get_output_dims(op, 0)
             graph_inputs.append(helper.make_tensor_value_info('Reshape_attr{}'.format(op['guid']), TensorProto.INT64, [len(shape)]))
             graph_initializers.append(helper.make_tensor('Reshape_attr{}'.format(op['guid']), TensorProto.INT64, [len(shape)], shape))
+        
+        if mytype == 'Slice':
+            num_inputs = graph.get_operator_int_attr(op, 'num_inputs')
+            assert num_inputs >= 3, "Slice requires at least 3 inputs"
+            assert num_inputs <= 5, "Slice takes at most 5 inputs"
+            if(num_inputs == 3):
+                starts = graph.get_op_init_vector(op, 'starts')
+                ends = graph.get_op_init_vector(op, 'ends')
+                
+                inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, starts, 1)
+                
+                inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, ends, 2)
+            
+            elif(num_inputs == 5):
+                starts = graph.get_op_init_vector(op, 'starts')
+                ends = graph.get_op_init_vector(op, 'ends')
+                axes = graph.get_op_init_vector(op, 'axes')
+                steps = graph.get_op_init_vector(op, 'steps')
+                
+                inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, starts, 1)
+                
+                inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, ends, 2)
+                
+                inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, axes, 3)
+                
+                inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, steps, 4)
+                
+            sys.exit()
+            
         outputs = list()
         for i in range(graph.get_num_outputs(op)):
             outputs.append(_output_tensor_name(graph, op, i))

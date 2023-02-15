@@ -190,7 +190,7 @@ bool OpBase::get_int_parameter(PMParameter para, int* value)
   }
 }
 
-bool OpBase::get_list_parameter(int* axes_arr, PMParameter para, int * ret){
+bool OpBase::get_list_parameter(int* &axes_arr, PMParameter para, int * ret){
   switch (para) {
     case PM_AXES:
       axes_arr = NULL;
@@ -713,12 +713,11 @@ int Graph::get_operator_int_attr(size_t guid, PMParameter attr)
   return ret;
 }
 
-int Graph::get_operator_list_attr(int* axes_arr, size_t guid, PMParameter attr)
+int Graph::get_operator_list_attr(int* &arr, size_t guid, PMParameter attr)
 {
   Op op = find_op_or_fail(guid);
   int ret;
-  assert(op.ptr->get_list_parameter(axes_arr, attr, &ret));
-  
+  assert(op.ptr->get_list_parameter(arr, attr, &ret));
   return ret;
 }
 

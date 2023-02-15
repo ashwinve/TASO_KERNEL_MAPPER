@@ -494,7 +494,7 @@ cdef class PyGraph:
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
 
-    def slice(self, PyTensor input, start, end, axes, steps):
+    def slice(self, PyTensor input, start, end, axes, steps, num_inputs):
         cdef vector[int] cstart
         cdef vector[int] cend
         cdef vector[int] caxes
@@ -521,7 +521,7 @@ cdef class PyGraph:
             csteps.resize(len(start))
             for i in range(len(start)):
                 csteps[i] = 1
-        cdef TensorHandle handle = self.p_graph.slice(input.ctensor, cstart, cend, caxes, csteps)
+        cdef TensorHandle handle = self.p_graph.slice(input.ctensor, cstart, cend, caxes, csteps, num_inputs)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
 
@@ -670,6 +670,27 @@ cdef class PyGraph:
     def get_num_outputs(self, Op op):
         return self.p_graph.get_num_outputs(op.guid)
 
+    def get_op_init_vector(self, Op op, input_name):
+        cdef int temp_arr[128]
+        cdef int* ptr = &temp_arr[0]
+        cdef int n_dims = 0
+        py_list = list()
+
+        if input_name == 'starts':
+            n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STARTS)
+        elif input_name == 'ends':
+            n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_ENDS)
+        elif input_name == 'axes':
+            n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
+        elif input_name == 'steps':
+            n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STEPS)
+        
+        temp_arr[:] = ptr
+        for i in range(n_dims):
+            py_list.append(temp_arr[i])
+        
+        return py_list
+
     def get_operator_type(self, Op op):
         cdef OpType type = self.p_graph.get_operator_type(op.guid)
         if type in op_table:
@@ -678,10 +699,19 @@ cdef class PyGraph:
             assert False, 'Undefined type: {}'.format(type)
             return "Undefined"
 
+    def get_operator_int_attr(self, Op op, attrname):
+        cdef int val
+        if attrname == 'num_inputs':
+            val = self.p_graph.get_operator_int_attr(op.guid, PM_NUM_INPUTS)
+            return val
+        else:
+           assert False, 'Add functionality for: {} in get_operator_int_attr()'.format(attrname)
+
     def get_operator_attr(self, Op op, attrname):
         cdef int kh, kw, sh, sw
         cdef PaddingMode pm
         cdef int temp_arr[128]
+        cdef int *ptr = &temp_arr[0]
         cdef int num_axes
         cdef char* c_string_ptr
         
@@ -723,13 +753,15 @@ cdef class PyGraph:
         elif attrname == 'group':
             return self.p_graph.get_operator_int_attr(op.guid, PM_GROUP)
         elif attrname == 'dilations':
-            n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_DILATIONS)
+            n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_DILATIONS)
+            temp_arr[:] = ptr
             dilation_list = list()
             for i in range(n_dims):
                 dilation_list.append(temp_arr[i])
             return dilation_list
         elif attrname == 'kernel_shape':
-            n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_KERNEL_SHAPE)
+            n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_KERNEL_SHAPE)
+            temp_arr[:] = ptr
             shape_list = list()
             for i in range(n_dims):
                 shape_list.append(temp_arr[i])
@@ -749,7 +781,8 @@ cdef class PyGraph:
         elif attrname == 'epsilon':
             return self.p_graph.get_operator_float_attr(op.guid, PM_EPSILON)
         elif attrname == 'axes':
-            n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_AXES)
+            n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
+            temp_arr[:] = ptr
             axes_list = list()
             for i in range(n_dims):
                 axes_list.append(temp_arr[i])

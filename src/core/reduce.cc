@@ -163,7 +163,7 @@ bool Reduce::get_int_parameter(PMParameter para, int* value)
   }
 }
 
-bool Reduce::get_list_parameter(int* arr, PMParameter para, int * ret)
+bool Reduce::get_list_parameter(int* &arr, PMParameter para, int * ret)
 {
   switch (para) {
     case PM_AXES:

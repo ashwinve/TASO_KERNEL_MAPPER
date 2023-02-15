@@ -1908,6 +1908,7 @@ static const char __pyx_k_bias[] = "bias";
 static const char __pyx_k_cast[] = "cast";
 static const char __pyx_k_data[] = "data";
 static const char __pyx_k_dims[] = "dims";
+static const char __pyx_k_ends[] = "ends";
 static const char __pyx_k_guid[] = "guid";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_mean[] = "mean";
@@ -1965,6 +1966,7 @@ static const char __pyx_k_inputs[] = "inputs";
 static const char __pyx_k_random[] = "random";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_srcIdx[] = "srcIdx";
+static const char __pyx_k_starts[] = "starts";
 static const char __pyx_k_tensor[] = "tensor";
 static const char __pyx_k_tolist[] = "tolist";
 static const char __pyx_k_weight[] = "weight";
@@ -2014,6 +2016,8 @@ static const char __pyx_k_ReduceMean[] = "ReduceMean";
 static const char __pyx_k_ReduceProd[] = "ReduceProd";
 static const char __pyx_k_ValueError[] = "ValueError";
 static const char __pyx_k_activation[] = "activation";
+static const char __pyx_k_input_name[] = "input_name";
+static const char __pyx_k_num_inputs[] = "num_inputs";
 static const char __pyx_k_pad_before[] = "pad_before";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_AveragePool[] = "AveragePool";
@@ -2038,10 +2042,12 @@ static const char __pyx_k_taso__cython_core_pyx[] = "taso/_cython/core.pyx";
 static const char __pyx_k_Error_index_out_of_range[] = "Error: index out of range";
 static const char __pyx_k_coordinate_transformation_mode[] = "coordinate_transformation_mode";
 static const char __pyx_k_Internal_error_unknow_attribute[] = "Internal error: unknow attribute {}";
+static const char __pyx_k_Add_functionality_for_in_get_ope[] = "Add functionality for: {} in get_operator_int_attr()";
 static const char __pyx_k_No_value_specified_for_struct_at[] = "No value specified for struct attribute 'guid'";
 static const char __pyx_k_input_tensor_must_be_4_dim_for_p[] = "input tensor must be 4 dim for pads attribute";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static PyObject *__pyx_n_u_Add;
+static PyObject *__pyx_kp_u_Add_functionality_for_in_get_ope;
 static PyObject *__pyx_n_u_ArgMax;
 static PyObject *__pyx_n_u_ArgMin;
 static PyObject *__pyx_n_u_AveragePool;
@@ -2146,6 +2152,7 @@ static PyObject *__pyx_n_s_dims;
 static PyObject *__pyx_n_s_dstIdx;
 static PyObject *__pyx_n_s_dstOp;
 static PyObject *__pyx_n_s_end;
+static PyObject *__pyx_n_u_ends;
 static PyObject *__pyx_n_s_epsilon;
 static PyObject *__pyx_n_u_epsilon;
 static PyObject *__pyx_n_u_f;
@@ -2165,6 +2172,7 @@ static PyObject *__pyx_n_s_idx;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_inplace;
 static PyObject *__pyx_n_s_input;
+static PyObject *__pyx_n_s_input_name;
 static PyObject *__pyx_kp_u_input_tensor_must_be_4_dim_for_p;
 static PyObject *__pyx_n_s_inputs;
 static PyObject *__pyx_n_s_keepdims;
@@ -2182,6 +2190,8 @@ static PyObject *__pyx_n_s_nearest_mode;
 static PyObject *__pyx_n_u_nearest_mode;
 static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
 static PyObject *__pyx_n_s_np;
+static PyObject *__pyx_n_s_num_inputs;
+static PyObject *__pyx_n_u_num_inputs;
 static PyObject *__pyx_n_s_numpy;
 static PyObject *__pyx_n_s_op;
 static PyObject *__pyx_n_s_op_table;
@@ -2213,7 +2223,9 @@ static PyObject *__pyx_n_u_split;
 static PyObject *__pyx_n_s_srcIdx;
 static PyObject *__pyx_n_s_srcOp;
 static PyObject *__pyx_n_s_start;
+static PyObject *__pyx_n_u_starts;
 static PyObject *__pyx_n_s_steps;
+static PyObject *__pyx_n_u_steps;
 static PyObject *__pyx_n_s_strides;
 static PyObject *__pyx_n_u_strides;
 static PyObject *__pyx_kp_s_taso__cython_core_pyx;
@@ -2288,7 +2300,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_86shape(struct __pyx_obj_4taso_4c
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_88sigmoid(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, bool __pyx_v_inplace); /* proto */
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_90softplus(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input); /* proto */
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_92size(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input); /* proto */
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, PyObject *__pyx_v_start, PyObject *__pyx_v_end, PyObject *__pyx_v_axes, PyObject *__pyx_v_steps); /* proto */
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, PyObject *__pyx_v_start, PyObject *__pyx_v_end, PyObject *__pyx_v_axes, PyObject *__pyx_v_steps, PyObject *__pyx_v_num_inputs); /* proto */
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, int __pyx_v_axis, PyObject *__pyx_v_sizes); /* proto */
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_98sqrt(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input); /* proto */
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_100squeeze(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, PyObject *__pyx_v_axes); /* proto */
@@ -2306,10 +2318,12 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_122get_weight_value(struct __pyx_
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_124get_split_lens(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op); /* proto */
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_126get_output_dims(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op, int __pyx_v_idx); /* proto */
 static PyObject *__pyx_pf_4taso_4core_7PyGraph_128get_num_outputs(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op); /* proto */
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_operator_type(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op); /* proto */
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op, PyObject *__pyx_v_attrname); /* proto */
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_134__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_136__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_op_init_vector(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op, PyObject *__pyx_v_input_name); /* proto */
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_type(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op); /* proto */
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_134get_operator_int_attr(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op, PyObject *__pyx_v_attrname); /* proto */
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_136get_operator_attr(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op, PyObject *__pyx_v_attrname); /* proto */
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_138__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_140__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static int __pyx_pf_7cpython_5array_5array___getbuffer__(arrayobject *__pyx_v_self, Py_buffer *__pyx_v_info, CYTHON_UNUSED int __pyx_v_flags); /* proto */
 static void __pyx_pf_7cpython_5array_5array_2__releasebuffer__(CYTHON_UNUSED arrayobject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static PyObject *__pyx_tp_new_4taso_4core_PyModel(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -10776,7 +10790,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_58pad(struct __pyx_obj_4taso_4cor
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
  * 
- *     # def noop_expand(self, PyTensor x):
+ *     def prelu(self, *, PyTensor x, PyTensor slope):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 373, __pyx_L1_error)
@@ -10810,8 +10824,8 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_58pad(struct __pyx_obj_4taso_4cor
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":380
- *     #    return PyTensor(t)
+/* "taso/_cython/core.pyx":375
+ *         return PyTensor(t)
  * 
  *     def prelu(self, *, PyTensor x, PyTensor slope):             # <<<<<<<<<<<<<<
  *         cdef TensorHandle handle = self.p_graph.element(OP_PRELU, x.ctensor, slope.ctensor)
@@ -10842,33 +10856,33 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_61prelu(PyObject *__pyx_v_self, P
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("prelu", __pyx_n_s_x); __PYX_ERR(1, 380, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("prelu", __pyx_n_s_x); __PYX_ERR(1, 375, __pyx_L3_error)
       }
       if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_slope)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("prelu", __pyx_n_s_slope); __PYX_ERR(1, 380, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("prelu", __pyx_n_s_slope); __PYX_ERR(1, 375, __pyx_L3_error)
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "prelu") < 0)) __PYX_ERR(1, 380, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "prelu") < 0)) __PYX_ERR(1, 375, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("prelu", __pyx_n_s_x); __PYX_ERR(1, 380, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("prelu", __pyx_n_s_x); __PYX_ERR(1, 375, __pyx_L3_error)
     }
     __pyx_v_x = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     __pyx_v_slope = ((struct __pyx_obj_4taso_4core_PyTensor *)values[1]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("prelu", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 380, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("prelu", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 375, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.prelu", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_x), __pyx_ptype_4taso_4core_PyTensor, 1, "x", 0))) __PYX_ERR(1, 380, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_slope), __pyx_ptype_4taso_4core_PyTensor, 1, "slope", 0))) __PYX_ERR(1, 380, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_x), __pyx_ptype_4taso_4core_PyTensor, 1, "x", 0))) __PYX_ERR(1, 375, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_slope), __pyx_ptype_4taso_4core_PyTensor, 1, "slope", 0))) __PYX_ERR(1, 375, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_60prelu(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_x, __pyx_v_slope);
 
   /* function exit code */
@@ -10897,7 +10911,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_60prelu(struct __pyx_obj_4taso_4c
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("prelu", 0);
 
-  /* "taso/_cython/core.pyx":381
+  /* "taso/_cython/core.pyx":376
  * 
  *     def prelu(self, *, PyTensor x, PyTensor slope):
  *         cdef TensorHandle handle = self.p_graph.element(OP_PRELU, x.ctensor, slope.ctensor)             # <<<<<<<<<<<<<<
@@ -10906,23 +10920,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_60prelu(struct __pyx_obj_4taso_4c
  */
   __pyx_v_handle = __pyx_v_self->p_graph->element(taso::OP_PRELU, __pyx_v_x->ctensor, __pyx_v_slope->ctensor);
 
-  /* "taso/_cython/core.pyx":382
+  /* "taso/_cython/core.pyx":377
  *     def prelu(self, *, PyTensor x, PyTensor slope):
  *         cdef TensorHandle handle = self.p_graph.element(OP_PRELU, x.ctensor, slope.ctensor)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 382, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 377, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cast); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 382, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cast); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 377, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 382, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 377, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 382, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 377, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 382, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 377, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -10940,7 +10954,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_60prelu(struct __pyx_obj_4taso_4c
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 382, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 377, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -10950,7 +10964,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_60prelu(struct __pyx_obj_4taso_4c
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 382, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 377, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -10958,7 +10972,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_60prelu(struct __pyx_obj_4taso_4c
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 382, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 377, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -10969,7 +10983,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_60prelu(struct __pyx_obj_4taso_4c
     PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_5);
     __pyx_t_2 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 382, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 377, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
@@ -10977,7 +10991,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_60prelu(struct __pyx_obj_4taso_4c
   __pyx_v_t = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "taso/_cython/core.pyx":383
+  /* "taso/_cython/core.pyx":378
  *         cdef TensorHandle handle = self.p_graph.element(OP_PRELU, x.ctensor, slope.ctensor)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -10985,14 +10999,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_60prelu(struct __pyx_obj_4taso_4c
  *     # element-wise power
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 383, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 378, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":380
- *     #    return PyTensor(t)
+  /* "taso/_cython/core.pyx":375
+ *         return PyTensor(t)
  * 
  *     def prelu(self, *, PyTensor x, PyTensor slope):             # <<<<<<<<<<<<<<
  *         cdef TensorHandle handle = self.p_graph.element(OP_PRELU, x.ctensor, slope.ctensor)
@@ -11016,7 +11030,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_60prelu(struct __pyx_obj_4taso_4c
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":386
+/* "taso/_cython/core.pyx":381
  * 
  *     # element-wise power
  *     def pow(self, PyTensor x, PyTensor y):             # <<<<<<<<<<<<<<
@@ -11058,11 +11072,11 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_63pow(PyObject *__pyx_v_self, PyO
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pow", 1, 2, 2, 1); __PYX_ERR(1, 386, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pow", 1, 2, 2, 1); __PYX_ERR(1, 381, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pow") < 0)) __PYX_ERR(1, 386, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pow") < 0)) __PYX_ERR(1, 381, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -11075,14 +11089,14 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_63pow(PyObject *__pyx_v_self, PyO
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pow", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 386, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pow", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 381, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.pow", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_x), __pyx_ptype_4taso_4core_PyTensor, 1, "x", 0))) __PYX_ERR(1, 386, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_y), __pyx_ptype_4taso_4core_PyTensor, 1, "y", 0))) __PYX_ERR(1, 386, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_x), __pyx_ptype_4taso_4core_PyTensor, 1, "x", 0))) __PYX_ERR(1, 381, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_y), __pyx_ptype_4taso_4core_PyTensor, 1, "y", 0))) __PYX_ERR(1, 381, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_62pow(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_x, __pyx_v_y);
 
   /* function exit code */
@@ -11111,7 +11125,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_62pow(struct __pyx_obj_4taso_4cor
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pow", 0);
 
-  /* "taso/_cython/core.pyx":387
+  /* "taso/_cython/core.pyx":382
  *     # element-wise power
  *     def pow(self, PyTensor x, PyTensor y):
  *         cdef TensorHandle handle = self.p_graph.element(OP_POW, x.ctensor, y.ctensor)             # <<<<<<<<<<<<<<
@@ -11120,23 +11134,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_62pow(struct __pyx_obj_4taso_4cor
  */
   __pyx_v_handle = __pyx_v_self->p_graph->element(taso::OP_POW, __pyx_v_x->ctensor, __pyx_v_y->ctensor);
 
-  /* "taso/_cython/core.pyx":388
+  /* "taso/_cython/core.pyx":383
  *     def pow(self, PyTensor x, PyTensor y):
  *         cdef TensorHandle handle = self.p_graph.element(OP_POW, x.ctensor, y.ctensor)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 388, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 383, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cast); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 388, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cast); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 383, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 388, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 383, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 388, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 383, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 388, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 383, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -11154,7 +11168,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_62pow(struct __pyx_obj_4taso_4cor
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 388, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 383, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -11164,7 +11178,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_62pow(struct __pyx_obj_4taso_4cor
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 388, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 383, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -11172,7 +11186,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_62pow(struct __pyx_obj_4taso_4cor
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 388, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 383, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -11183,7 +11197,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_62pow(struct __pyx_obj_4taso_4cor
     PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_5);
     __pyx_t_2 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 388, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 383, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
@@ -11191,7 +11205,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_62pow(struct __pyx_obj_4taso_4cor
   __pyx_v_t = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "taso/_cython/core.pyx":389
+  /* "taso/_cython/core.pyx":384
  *         cdef TensorHandle handle = self.p_graph.element(OP_POW, x.ctensor, y.ctensor)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -11199,13 +11213,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_62pow(struct __pyx_obj_4taso_4cor
  *     def reduce_argmax(self, *, PyTensor input, tuple axes, bool keepdims = True):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 389, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 384, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":386
+  /* "taso/_cython/core.pyx":381
  * 
  *     # element-wise power
  *     def pow(self, PyTensor x, PyTensor y):             # <<<<<<<<<<<<<<
@@ -11230,7 +11244,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_62pow(struct __pyx_obj_4taso_4cor
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":391
+/* "taso/_cython/core.pyx":386
  *         return PyTensor(t)
  * 
  *     def reduce_argmax(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -11263,11 +11277,11 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_65reduce_argmax(PyObject *__pyx_v
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_argmax", __pyx_n_s_input); __PYX_ERR(1, 391, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_argmax", __pyx_n_s_input); __PYX_ERR(1, 386, __pyx_L3_error)
       }
       if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_axes)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_argmax", __pyx_n_s_axes); __PYX_ERR(1, 391, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_argmax", __pyx_n_s_axes); __PYX_ERR(1, 386, __pyx_L3_error)
       }
       if (kw_args == 1) {
         const Py_ssize_t index = 2;
@@ -11275,31 +11289,31 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_65reduce_argmax(PyObject *__pyx_v
         if (value) { values[index] = value; kw_args--; }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_argmax") < 0)) __PYX_ERR(1, 391, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_argmax") < 0)) __PYX_ERR(1, 386, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("reduce_argmax", __pyx_n_s_input); __PYX_ERR(1, 391, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("reduce_argmax", __pyx_n_s_input); __PYX_ERR(1, 386, __pyx_L3_error)
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     __pyx_v_axes = ((PyObject*)values[1]);
     if (values[2]) {
-      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 391, __pyx_L3_error)
+      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 386, __pyx_L3_error)
     } else {
       __pyx_v_keepdims = ((bool)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("reduce_argmax", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 391, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("reduce_argmax", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 386, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.reduce_argmax", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 391, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 391, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 386, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 386, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_64reduce_argmax(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_axes, __pyx_v_keepdims);
 
   /* function exit code */
@@ -11333,7 +11347,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_64reduce_argmax(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("reduce_argmax", 0);
 
-  /* "taso/_cython/core.pyx":393
+  /* "taso/_cython/core.pyx":388
  *     def reduce_argmax(self, *, PyTensor input, tuple axes, bool keepdims = True):
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))             # <<<<<<<<<<<<<<
@@ -11342,17 +11356,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_64reduce_argmax(struct __pyx_obj_
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 393, __pyx_L1_error)
+    __PYX_ERR(1, 388, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 393, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 388, __pyx_L1_error)
   try {
     __pyx_v_caxes.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 393, __pyx_L1_error)
+    __PYX_ERR(1, 388, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":394
+  /* "taso/_cython/core.pyx":389
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):             # <<<<<<<<<<<<<<
@@ -11361,14 +11375,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_64reduce_argmax(struct __pyx_obj_
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 394, __pyx_L1_error)
+    __PYX_ERR(1, 389, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 394, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 389, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":395
+    /* "taso/_cython/core.pyx":390
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]             # <<<<<<<<<<<<<<
@@ -11377,16 +11391,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_64reduce_argmax(struct __pyx_obj_
  */
     if (unlikely(__pyx_v_axes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 395, __pyx_L1_error)
+      __PYX_ERR(1, 390, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 395, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 390, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 395, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 390, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_caxes[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":396
+  /* "taso/_cython/core.pyx":391
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_argmax(input.ctensor, caxes, keepdims)             # <<<<<<<<<<<<<<
@@ -11395,23 +11409,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_64reduce_argmax(struct __pyx_obj_
  */
   __pyx_v_handle = __pyx_v_self->p_graph->reduce_argmax(__pyx_v_input->ctensor, __pyx_v_caxes, __pyx_v_keepdims);
 
-  /* "taso/_cython/core.pyx":397
+  /* "taso/_cython/core.pyx":392
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_argmax(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 397, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 392, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 397, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 392, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 397, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 392, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 397, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 392, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 397, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 392, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -11429,7 +11443,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_64reduce_argmax(struct __pyx_obj_
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 397, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 392, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -11439,7 +11453,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_64reduce_argmax(struct __pyx_obj_
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 397, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 392, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -11447,7 +11461,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_64reduce_argmax(struct __pyx_obj_
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 397, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 392, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -11458,7 +11472,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_64reduce_argmax(struct __pyx_obj_
     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_5, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 397, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 392, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
@@ -11466,7 +11480,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_64reduce_argmax(struct __pyx_obj_
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":398
+  /* "taso/_cython/core.pyx":393
  *         cdef TensorHandle handle = self.p_graph.reduce_argmax(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -11474,13 +11488,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_64reduce_argmax(struct __pyx_obj_
  *     def reduce_argmin(self, *, PyTensor input, tuple axes, bool keepdims = True):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 398, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 393, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":391
+  /* "taso/_cython/core.pyx":386
  *         return PyTensor(t)
  * 
  *     def reduce_argmax(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -11505,7 +11519,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_64reduce_argmax(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":400
+/* "taso/_cython/core.pyx":395
  *         return PyTensor(t)
  * 
  *     def reduce_argmin(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -11538,11 +11552,11 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_67reduce_argmin(PyObject *__pyx_v
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_argmin", __pyx_n_s_input); __PYX_ERR(1, 400, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_argmin", __pyx_n_s_input); __PYX_ERR(1, 395, __pyx_L3_error)
       }
       if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_axes)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_argmin", __pyx_n_s_axes); __PYX_ERR(1, 400, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_argmin", __pyx_n_s_axes); __PYX_ERR(1, 395, __pyx_L3_error)
       }
       if (kw_args == 1) {
         const Py_ssize_t index = 2;
@@ -11550,31 +11564,31 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_67reduce_argmin(PyObject *__pyx_v
         if (value) { values[index] = value; kw_args--; }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_argmin") < 0)) __PYX_ERR(1, 400, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_argmin") < 0)) __PYX_ERR(1, 395, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("reduce_argmin", __pyx_n_s_input); __PYX_ERR(1, 400, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("reduce_argmin", __pyx_n_s_input); __PYX_ERR(1, 395, __pyx_L3_error)
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     __pyx_v_axes = ((PyObject*)values[1]);
     if (values[2]) {
-      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 400, __pyx_L3_error)
+      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 395, __pyx_L3_error)
     } else {
       __pyx_v_keepdims = ((bool)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("reduce_argmin", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 400, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("reduce_argmin", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 395, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.reduce_argmin", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 400, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 400, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 395, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 395, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_66reduce_argmin(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_axes, __pyx_v_keepdims);
 
   /* function exit code */
@@ -11608,7 +11622,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_66reduce_argmin(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("reduce_argmin", 0);
 
-  /* "taso/_cython/core.pyx":402
+  /* "taso/_cython/core.pyx":397
  *     def reduce_argmin(self, *, PyTensor input, tuple axes, bool keepdims = True):
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))             # <<<<<<<<<<<<<<
@@ -11617,17 +11631,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_66reduce_argmin(struct __pyx_obj_
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 402, __pyx_L1_error)
+    __PYX_ERR(1, 397, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 402, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 397, __pyx_L1_error)
   try {
     __pyx_v_caxes.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 402, __pyx_L1_error)
+    __PYX_ERR(1, 397, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":403
+  /* "taso/_cython/core.pyx":398
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):             # <<<<<<<<<<<<<<
@@ -11636,14 +11650,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_66reduce_argmin(struct __pyx_obj_
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 403, __pyx_L1_error)
+    __PYX_ERR(1, 398, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 403, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 398, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":404
+    /* "taso/_cython/core.pyx":399
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]             # <<<<<<<<<<<<<<
@@ -11652,16 +11666,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_66reduce_argmin(struct __pyx_obj_
  */
     if (unlikely(__pyx_v_axes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 404, __pyx_L1_error)
+      __PYX_ERR(1, 399, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 404, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 399, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 404, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 399, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_caxes[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":405
+  /* "taso/_cython/core.pyx":400
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_argmin(input.ctensor, caxes, keepdims)             # <<<<<<<<<<<<<<
@@ -11670,23 +11684,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_66reduce_argmin(struct __pyx_obj_
  */
   __pyx_v_handle = __pyx_v_self->p_graph->reduce_argmin(__pyx_v_input->ctensor, __pyx_v_caxes, __pyx_v_keepdims);
 
-  /* "taso/_cython/core.pyx":406
+  /* "taso/_cython/core.pyx":401
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_argmin(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 406, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 401, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 406, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 401, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 406, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 401, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 406, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 401, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 406, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 401, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -11704,7 +11718,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_66reduce_argmin(struct __pyx_obj_
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 406, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 401, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -11714,7 +11728,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_66reduce_argmin(struct __pyx_obj_
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 406, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 401, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -11722,7 +11736,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_66reduce_argmin(struct __pyx_obj_
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 406, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 401, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -11733,7 +11747,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_66reduce_argmin(struct __pyx_obj_
     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_5, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 406, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 401, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
@@ -11741,7 +11755,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_66reduce_argmin(struct __pyx_obj_
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":407
+  /* "taso/_cython/core.pyx":402
  *         cdef TensorHandle handle = self.p_graph.reduce_argmin(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -11749,13 +11763,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_66reduce_argmin(struct __pyx_obj_
  *     def reduce_max(self, *, PyTensor input, tuple axes, bool keepdims = True):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 407, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 402, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":400
+  /* "taso/_cython/core.pyx":395
  *         return PyTensor(t)
  * 
  *     def reduce_argmin(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -11780,7 +11794,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_66reduce_argmin(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":409
+/* "taso/_cython/core.pyx":404
  *         return PyTensor(t)
  * 
  *     def reduce_max(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -11813,11 +11827,11 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_69reduce_max(PyObject *__pyx_v_se
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_max", __pyx_n_s_input); __PYX_ERR(1, 409, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_max", __pyx_n_s_input); __PYX_ERR(1, 404, __pyx_L3_error)
       }
       if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_axes)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_max", __pyx_n_s_axes); __PYX_ERR(1, 409, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_max", __pyx_n_s_axes); __PYX_ERR(1, 404, __pyx_L3_error)
       }
       if (kw_args == 1) {
         const Py_ssize_t index = 2;
@@ -11825,31 +11839,31 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_69reduce_max(PyObject *__pyx_v_se
         if (value) { values[index] = value; kw_args--; }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_max") < 0)) __PYX_ERR(1, 409, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_max") < 0)) __PYX_ERR(1, 404, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("reduce_max", __pyx_n_s_input); __PYX_ERR(1, 409, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("reduce_max", __pyx_n_s_input); __PYX_ERR(1, 404, __pyx_L3_error)
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     __pyx_v_axes = ((PyObject*)values[1]);
     if (values[2]) {
-      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 409, __pyx_L3_error)
+      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 404, __pyx_L3_error)
     } else {
       __pyx_v_keepdims = ((bool)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("reduce_max", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 409, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("reduce_max", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 404, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.reduce_max", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 409, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 409, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 404, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 404, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_68reduce_max(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_axes, __pyx_v_keepdims);
 
   /* function exit code */
@@ -11883,7 +11897,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_68reduce_max(struct __pyx_obj_4ta
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("reduce_max", 0);
 
-  /* "taso/_cython/core.pyx":411
+  /* "taso/_cython/core.pyx":406
  *     def reduce_max(self, *, PyTensor input, tuple axes, bool keepdims = True):
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))             # <<<<<<<<<<<<<<
@@ -11892,17 +11906,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_68reduce_max(struct __pyx_obj_4ta
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 411, __pyx_L1_error)
+    __PYX_ERR(1, 406, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 411, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 406, __pyx_L1_error)
   try {
     __pyx_v_caxes.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 411, __pyx_L1_error)
+    __PYX_ERR(1, 406, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":412
+  /* "taso/_cython/core.pyx":407
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):             # <<<<<<<<<<<<<<
@@ -11911,14 +11925,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_68reduce_max(struct __pyx_obj_4ta
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 412, __pyx_L1_error)
+    __PYX_ERR(1, 407, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 412, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 407, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":413
+    /* "taso/_cython/core.pyx":408
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]             # <<<<<<<<<<<<<<
@@ -11927,16 +11941,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_68reduce_max(struct __pyx_obj_4ta
  */
     if (unlikely(__pyx_v_axes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 413, __pyx_L1_error)
+      __PYX_ERR(1, 408, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 413, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 408, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 413, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 408, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_caxes[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":414
+  /* "taso/_cython/core.pyx":409
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_max(input.ctensor, caxes, keepdims)             # <<<<<<<<<<<<<<
@@ -11945,23 +11959,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_68reduce_max(struct __pyx_obj_4ta
  */
   __pyx_v_handle = __pyx_v_self->p_graph->reduce_max(__pyx_v_input->ctensor, __pyx_v_caxes, __pyx_v_keepdims);
 
-  /* "taso/_cython/core.pyx":415
+  /* "taso/_cython/core.pyx":410
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_max(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 415, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 415, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 415, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 415, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 415, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -11979,7 +11993,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_68reduce_max(struct __pyx_obj_4ta
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 415, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 410, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -11989,7 +12003,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_68reduce_max(struct __pyx_obj_4ta
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 415, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 410, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -11997,7 +12011,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_68reduce_max(struct __pyx_obj_4ta
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 415, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 410, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -12008,7 +12022,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_68reduce_max(struct __pyx_obj_4ta
     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_5, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 415, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 410, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
@@ -12016,7 +12030,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_68reduce_max(struct __pyx_obj_4ta
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":416
+  /* "taso/_cython/core.pyx":411
  *         cdef TensorHandle handle = self.p_graph.reduce_max(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -12024,13 +12038,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_68reduce_max(struct __pyx_obj_4ta
  *     def reduce_mean(self, *, PyTensor input, tuple axes, bool keepdims = True):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 416, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 411, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":409
+  /* "taso/_cython/core.pyx":404
  *         return PyTensor(t)
  * 
  *     def reduce_max(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -12055,7 +12069,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_68reduce_max(struct __pyx_obj_4ta
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":418
+/* "taso/_cython/core.pyx":413
  *         return PyTensor(t)
  * 
  *     def reduce_mean(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -12088,11 +12102,11 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_71reduce_mean(PyObject *__pyx_v_s
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_mean", __pyx_n_s_input); __PYX_ERR(1, 418, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_mean", __pyx_n_s_input); __PYX_ERR(1, 413, __pyx_L3_error)
       }
       if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_axes)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_mean", __pyx_n_s_axes); __PYX_ERR(1, 418, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_mean", __pyx_n_s_axes); __PYX_ERR(1, 413, __pyx_L3_error)
       }
       if (kw_args == 1) {
         const Py_ssize_t index = 2;
@@ -12100,31 +12114,31 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_71reduce_mean(PyObject *__pyx_v_s
         if (value) { values[index] = value; kw_args--; }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_mean") < 0)) __PYX_ERR(1, 418, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_mean") < 0)) __PYX_ERR(1, 413, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("reduce_mean", __pyx_n_s_input); __PYX_ERR(1, 418, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("reduce_mean", __pyx_n_s_input); __PYX_ERR(1, 413, __pyx_L3_error)
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     __pyx_v_axes = ((PyObject*)values[1]);
     if (values[2]) {
-      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 418, __pyx_L3_error)
+      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 413, __pyx_L3_error)
     } else {
       __pyx_v_keepdims = ((bool)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("reduce_mean", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 418, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("reduce_mean", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 413, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.reduce_mean", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 418, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 418, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 413, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 413, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_70reduce_mean(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_axes, __pyx_v_keepdims);
 
   /* function exit code */
@@ -12158,7 +12172,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_70reduce_mean(struct __pyx_obj_4t
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("reduce_mean", 0);
 
-  /* "taso/_cython/core.pyx":420
+  /* "taso/_cython/core.pyx":415
  *     def reduce_mean(self, *, PyTensor input, tuple axes, bool keepdims = True):
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))             # <<<<<<<<<<<<<<
@@ -12167,17 +12181,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_70reduce_mean(struct __pyx_obj_4t
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 420, __pyx_L1_error)
+    __PYX_ERR(1, 415, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 420, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 415, __pyx_L1_error)
   try {
     __pyx_v_caxes.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 420, __pyx_L1_error)
+    __PYX_ERR(1, 415, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":421
+  /* "taso/_cython/core.pyx":416
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):             # <<<<<<<<<<<<<<
@@ -12186,14 +12200,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_70reduce_mean(struct __pyx_obj_4t
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 421, __pyx_L1_error)
+    __PYX_ERR(1, 416, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 421, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 416, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":422
+    /* "taso/_cython/core.pyx":417
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]             # <<<<<<<<<<<<<<
@@ -12202,16 +12216,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_70reduce_mean(struct __pyx_obj_4t
  */
     if (unlikely(__pyx_v_axes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 422, __pyx_L1_error)
+      __PYX_ERR(1, 417, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 422, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 417, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 422, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 417, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_caxes[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":423
+  /* "taso/_cython/core.pyx":418
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_mean(input.ctensor, caxes, keepdims)             # <<<<<<<<<<<<<<
@@ -12220,23 +12234,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_70reduce_mean(struct __pyx_obj_4t
  */
   __pyx_v_handle = __pyx_v_self->p_graph->reduce_mean(__pyx_v_input->ctensor, __pyx_v_caxes, __pyx_v_keepdims);
 
-  /* "taso/_cython/core.pyx":424
+  /* "taso/_cython/core.pyx":419
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_mean(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 424, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 419, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 424, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 419, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 424, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 419, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 424, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 419, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 424, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 419, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -12254,7 +12268,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_70reduce_mean(struct __pyx_obj_4t
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 424, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 419, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -12264,7 +12278,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_70reduce_mean(struct __pyx_obj_4t
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 424, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 419, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -12272,7 +12286,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_70reduce_mean(struct __pyx_obj_4t
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 424, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 419, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -12283,7 +12297,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_70reduce_mean(struct __pyx_obj_4t
     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_5, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 424, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 419, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
@@ -12291,7 +12305,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_70reduce_mean(struct __pyx_obj_4t
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":425
+  /* "taso/_cython/core.pyx":420
  *         cdef TensorHandle handle = self.p_graph.reduce_mean(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -12299,13 +12313,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_70reduce_mean(struct __pyx_obj_4t
  *     def reduce_min(self, *, PyTensor input, tuple axes, bool keepdims = True):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 425, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":418
+  /* "taso/_cython/core.pyx":413
  *         return PyTensor(t)
  * 
  *     def reduce_mean(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -12330,7 +12344,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_70reduce_mean(struct __pyx_obj_4t
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":427
+/* "taso/_cython/core.pyx":422
  *         return PyTensor(t)
  * 
  *     def reduce_min(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -12363,11 +12377,11 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_73reduce_min(PyObject *__pyx_v_se
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_min", __pyx_n_s_input); __PYX_ERR(1, 427, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_min", __pyx_n_s_input); __PYX_ERR(1, 422, __pyx_L3_error)
       }
       if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_axes)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_min", __pyx_n_s_axes); __PYX_ERR(1, 427, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_min", __pyx_n_s_axes); __PYX_ERR(1, 422, __pyx_L3_error)
       }
       if (kw_args == 1) {
         const Py_ssize_t index = 2;
@@ -12375,31 +12389,31 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_73reduce_min(PyObject *__pyx_v_se
         if (value) { values[index] = value; kw_args--; }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_min") < 0)) __PYX_ERR(1, 427, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_min") < 0)) __PYX_ERR(1, 422, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("reduce_min", __pyx_n_s_input); __PYX_ERR(1, 427, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("reduce_min", __pyx_n_s_input); __PYX_ERR(1, 422, __pyx_L3_error)
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     __pyx_v_axes = ((PyObject*)values[1]);
     if (values[2]) {
-      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 427, __pyx_L3_error)
+      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 422, __pyx_L3_error)
     } else {
       __pyx_v_keepdims = ((bool)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("reduce_min", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 427, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("reduce_min", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 422, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.reduce_min", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 427, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 427, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 422, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 422, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_72reduce_min(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_axes, __pyx_v_keepdims);
 
   /* function exit code */
@@ -12433,7 +12447,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_72reduce_min(struct __pyx_obj_4ta
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("reduce_min", 0);
 
-  /* "taso/_cython/core.pyx":429
+  /* "taso/_cython/core.pyx":424
  *     def reduce_min(self, *, PyTensor input, tuple axes, bool keepdims = True):
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))             # <<<<<<<<<<<<<<
@@ -12442,17 +12456,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_72reduce_min(struct __pyx_obj_4ta
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 429, __pyx_L1_error)
+    __PYX_ERR(1, 424, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 429, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 424, __pyx_L1_error)
   try {
     __pyx_v_caxes.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 429, __pyx_L1_error)
+    __PYX_ERR(1, 424, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":430
+  /* "taso/_cython/core.pyx":425
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):             # <<<<<<<<<<<<<<
@@ -12461,14 +12475,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_72reduce_min(struct __pyx_obj_4ta
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 430, __pyx_L1_error)
+    __PYX_ERR(1, 425, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 430, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 425, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":431
+    /* "taso/_cython/core.pyx":426
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]             # <<<<<<<<<<<<<<
@@ -12477,16 +12491,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_72reduce_min(struct __pyx_obj_4ta
  */
     if (unlikely(__pyx_v_axes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 431, __pyx_L1_error)
+      __PYX_ERR(1, 426, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 431, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 426, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 431, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 426, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_caxes[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":432
+  /* "taso/_cython/core.pyx":427
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_min(input.ctensor, caxes, keepdims)             # <<<<<<<<<<<<<<
@@ -12495,23 +12509,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_72reduce_min(struct __pyx_obj_4ta
  */
   __pyx_v_handle = __pyx_v_self->p_graph->reduce_min(__pyx_v_input->ctensor, __pyx_v_caxes, __pyx_v_keepdims);
 
-  /* "taso/_cython/core.pyx":433
+  /* "taso/_cython/core.pyx":428
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_min(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 433, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 428, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 433, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 428, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 433, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 428, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 433, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 428, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 433, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 428, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -12529,7 +12543,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_72reduce_min(struct __pyx_obj_4ta
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 433, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 428, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -12539,7 +12553,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_72reduce_min(struct __pyx_obj_4ta
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 433, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 428, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -12547,7 +12561,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_72reduce_min(struct __pyx_obj_4ta
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 433, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 428, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -12558,7 +12572,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_72reduce_min(struct __pyx_obj_4ta
     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_5, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 433, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 428, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
@@ -12566,7 +12580,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_72reduce_min(struct __pyx_obj_4ta
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":434
+  /* "taso/_cython/core.pyx":429
  *         cdef TensorHandle handle = self.p_graph.reduce_min(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -12574,13 +12588,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_72reduce_min(struct __pyx_obj_4ta
  *     def reduce_prod(self, *, PyTensor input, tuple axes, bool keepdims = True):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 434, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 429, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":427
+  /* "taso/_cython/core.pyx":422
  *         return PyTensor(t)
  * 
  *     def reduce_min(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -12605,7 +12619,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_72reduce_min(struct __pyx_obj_4ta
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":436
+/* "taso/_cython/core.pyx":431
  *         return PyTensor(t)
  * 
  *     def reduce_prod(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -12638,11 +12652,11 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_75reduce_prod(PyObject *__pyx_v_s
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_prod", __pyx_n_s_input); __PYX_ERR(1, 436, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_prod", __pyx_n_s_input); __PYX_ERR(1, 431, __pyx_L3_error)
       }
       if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_axes)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_prod", __pyx_n_s_axes); __PYX_ERR(1, 436, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_prod", __pyx_n_s_axes); __PYX_ERR(1, 431, __pyx_L3_error)
       }
       if (kw_args == 1) {
         const Py_ssize_t index = 2;
@@ -12650,31 +12664,31 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_75reduce_prod(PyObject *__pyx_v_s
         if (value) { values[index] = value; kw_args--; }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_prod") < 0)) __PYX_ERR(1, 436, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_prod") < 0)) __PYX_ERR(1, 431, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("reduce_prod", __pyx_n_s_input); __PYX_ERR(1, 436, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("reduce_prod", __pyx_n_s_input); __PYX_ERR(1, 431, __pyx_L3_error)
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     __pyx_v_axes = ((PyObject*)values[1]);
     if (values[2]) {
-      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 436, __pyx_L3_error)
+      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 431, __pyx_L3_error)
     } else {
       __pyx_v_keepdims = ((bool)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("reduce_prod", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 436, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("reduce_prod", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 431, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.reduce_prod", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 436, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 436, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 431, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 431, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_74reduce_prod(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_axes, __pyx_v_keepdims);
 
   /* function exit code */
@@ -12708,7 +12722,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_74reduce_prod(struct __pyx_obj_4t
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("reduce_prod", 0);
 
-  /* "taso/_cython/core.pyx":438
+  /* "taso/_cython/core.pyx":433
  *     def reduce_prod(self, *, PyTensor input, tuple axes, bool keepdims = True):
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))             # <<<<<<<<<<<<<<
@@ -12717,17 +12731,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_74reduce_prod(struct __pyx_obj_4t
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 438, __pyx_L1_error)
+    __PYX_ERR(1, 433, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 438, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 433, __pyx_L1_error)
   try {
     __pyx_v_caxes.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 438, __pyx_L1_error)
+    __PYX_ERR(1, 433, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":439
+  /* "taso/_cython/core.pyx":434
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):             # <<<<<<<<<<<<<<
@@ -12736,14 +12750,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_74reduce_prod(struct __pyx_obj_4t
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 439, __pyx_L1_error)
+    __PYX_ERR(1, 434, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 439, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 434, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":440
+    /* "taso/_cython/core.pyx":435
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]             # <<<<<<<<<<<<<<
@@ -12752,16 +12766,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_74reduce_prod(struct __pyx_obj_4t
  */
     if (unlikely(__pyx_v_axes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 440, __pyx_L1_error)
+      __PYX_ERR(1, 435, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 440, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 435, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 440, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 435, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_caxes[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":441
+  /* "taso/_cython/core.pyx":436
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_prod(input.ctensor, caxes, keepdims)             # <<<<<<<<<<<<<<
@@ -12770,23 +12784,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_74reduce_prod(struct __pyx_obj_4t
  */
   __pyx_v_handle = __pyx_v_self->p_graph->reduce_prod(__pyx_v_input->ctensor, __pyx_v_caxes, __pyx_v_keepdims);
 
-  /* "taso/_cython/core.pyx":442
+  /* "taso/_cython/core.pyx":437
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_prod(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 442, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 442, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 442, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 442, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 442, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -12804,7 +12818,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_74reduce_prod(struct __pyx_obj_4t
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 442, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 437, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -12814,7 +12828,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_74reduce_prod(struct __pyx_obj_4t
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 442, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 437, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -12822,7 +12836,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_74reduce_prod(struct __pyx_obj_4t
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 442, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 437, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -12833,7 +12847,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_74reduce_prod(struct __pyx_obj_4t
     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_5, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 442, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 437, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
@@ -12841,7 +12855,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_74reduce_prod(struct __pyx_obj_4t
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":443
+  /* "taso/_cython/core.pyx":438
  *         cdef TensorHandle handle = self.p_graph.reduce_prod(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -12849,13 +12863,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_74reduce_prod(struct __pyx_obj_4t
  *     def reduce_sum(self, *, PyTensor input, tuple axes, bool keepdims = True):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 443, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 438, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":436
+  /* "taso/_cython/core.pyx":431
  *         return PyTensor(t)
  * 
  *     def reduce_prod(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -12880,7 +12894,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_74reduce_prod(struct __pyx_obj_4t
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":445
+/* "taso/_cython/core.pyx":440
  *         return PyTensor(t)
  * 
  *     def reduce_sum(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -12913,11 +12927,11 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_77reduce_sum(PyObject *__pyx_v_se
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_sum", __pyx_n_s_input); __PYX_ERR(1, 445, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_sum", __pyx_n_s_input); __PYX_ERR(1, 440, __pyx_L3_error)
       }
       if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_axes)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("reduce_sum", __pyx_n_s_axes); __PYX_ERR(1, 445, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("reduce_sum", __pyx_n_s_axes); __PYX_ERR(1, 440, __pyx_L3_error)
       }
       if (kw_args == 1) {
         const Py_ssize_t index = 2;
@@ -12925,31 +12939,31 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_77reduce_sum(PyObject *__pyx_v_se
         if (value) { values[index] = value; kw_args--; }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_sum") < 0)) __PYX_ERR(1, 445, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "reduce_sum") < 0)) __PYX_ERR(1, 440, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("reduce_sum", __pyx_n_s_input); __PYX_ERR(1, 445, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("reduce_sum", __pyx_n_s_input); __PYX_ERR(1, 440, __pyx_L3_error)
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     __pyx_v_axes = ((PyObject*)values[1]);
     if (values[2]) {
-      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 445, __pyx_L3_error)
+      __pyx_v_keepdims = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_keepdims == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 440, __pyx_L3_error)
     } else {
       __pyx_v_keepdims = ((bool)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("reduce_sum", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 445, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("reduce_sum", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 440, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.reduce_sum", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 445, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 445, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 440, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 440, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_76reduce_sum(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_axes, __pyx_v_keepdims);
 
   /* function exit code */
@@ -12983,7 +12997,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_76reduce_sum(struct __pyx_obj_4ta
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("reduce_sum", 0);
 
-  /* "taso/_cython/core.pyx":447
+  /* "taso/_cython/core.pyx":442
  *     def reduce_sum(self, *, PyTensor input, tuple axes, bool keepdims = True):
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))             # <<<<<<<<<<<<<<
@@ -12992,17 +13006,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_76reduce_sum(struct __pyx_obj_4ta
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 447, __pyx_L1_error)
+    __PYX_ERR(1, 442, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 447, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 442, __pyx_L1_error)
   try {
     __pyx_v_caxes.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 447, __pyx_L1_error)
+    __PYX_ERR(1, 442, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":448
+  /* "taso/_cython/core.pyx":443
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):             # <<<<<<<<<<<<<<
@@ -13011,14 +13025,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_76reduce_sum(struct __pyx_obj_4ta
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 448, __pyx_L1_error)
+    __PYX_ERR(1, 443, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 448, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 443, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":449
+    /* "taso/_cython/core.pyx":444
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]             # <<<<<<<<<<<<<<
@@ -13027,16 +13041,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_76reduce_sum(struct __pyx_obj_4ta
  */
     if (unlikely(__pyx_v_axes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 449, __pyx_L1_error)
+      __PYX_ERR(1, 444, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 449, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 444, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 449, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 444, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_caxes[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":450
+  /* "taso/_cython/core.pyx":445
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_sum(input.ctensor, caxes, keepdims)             # <<<<<<<<<<<<<<
@@ -13045,23 +13059,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_76reduce_sum(struct __pyx_obj_4ta
  */
   __pyx_v_handle = __pyx_v_self->p_graph->reduce_sum(__pyx_v_input->ctensor, __pyx_v_caxes, __pyx_v_keepdims);
 
-  /* "taso/_cython/core.pyx":451
+  /* "taso/_cython/core.pyx":446
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.reduce_sum(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 451, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 446, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 451, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 446, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 451, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 446, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 451, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 446, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 451, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 446, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -13079,7 +13093,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_76reduce_sum(struct __pyx_obj_4ta
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 451, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 446, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -13089,7 +13103,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_76reduce_sum(struct __pyx_obj_4ta
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 451, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 446, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -13097,7 +13111,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_76reduce_sum(struct __pyx_obj_4ta
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 451, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -13108,7 +13122,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_76reduce_sum(struct __pyx_obj_4ta
     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_5, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 451, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
@@ -13116,7 +13130,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_76reduce_sum(struct __pyx_obj_4ta
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":452
+  /* "taso/_cython/core.pyx":447
  *         cdef TensorHandle handle = self.p_graph.reduce_sum(input.ctensor, caxes, keepdims)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -13124,13 +13138,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_76reduce_sum(struct __pyx_obj_4ta
  *     def reshape(self, PyTensor input, tuple shape):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 452, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 447, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":445
+  /* "taso/_cython/core.pyx":440
  *         return PyTensor(t)
  * 
  *     def reduce_sum(self, *, PyTensor input, tuple axes, bool keepdims = True):             # <<<<<<<<<<<<<<
@@ -13155,7 +13169,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_76reduce_sum(struct __pyx_obj_4ta
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":454
+/* "taso/_cython/core.pyx":449
  *         return PyTensor(t)
  * 
  *     def reshape(self, PyTensor input, tuple shape):             # <<<<<<<<<<<<<<
@@ -13197,11 +13211,11 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_79reshape(PyObject *__pyx_v_self,
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_shape)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("reshape", 1, 2, 2, 1); __PYX_ERR(1, 454, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("reshape", 1, 2, 2, 1); __PYX_ERR(1, 449, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "reshape") < 0)) __PYX_ERR(1, 454, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "reshape") < 0)) __PYX_ERR(1, 449, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -13214,14 +13228,14 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_79reshape(PyObject *__pyx_v_self,
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("reshape", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 454, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("reshape", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 449, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.reshape", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 454, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_shape), (&PyTuple_Type), 1, "shape", 1))) __PYX_ERR(1, 454, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 449, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_shape), (&PyTuple_Type), 1, "shape", 1))) __PYX_ERR(1, 449, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_78reshape(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_shape);
 
   /* function exit code */
@@ -13255,7 +13269,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("reshape", 0);
 
-  /* "taso/_cython/core.pyx":456
+  /* "taso/_cython/core.pyx":451
  *     def reshape(self, PyTensor input, tuple shape):
  *         cdef vector[int] cshape
  *         cshape.resize(len(shape))             # <<<<<<<<<<<<<<
@@ -13264,17 +13278,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
  */
   if (unlikely(__pyx_v_shape == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 456, __pyx_L1_error)
+    __PYX_ERR(1, 451, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_shape); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 456, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_shape); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 451, __pyx_L1_error)
   try {
     __pyx_v_cshape.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 456, __pyx_L1_error)
+    __PYX_ERR(1, 451, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":457
+  /* "taso/_cython/core.pyx":452
  *         cdef vector[int] cshape
  *         cshape.resize(len(shape))
  *         for i in range(len(shape)):             # <<<<<<<<<<<<<<
@@ -13283,14 +13297,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
  */
   if (unlikely(__pyx_v_shape == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 457, __pyx_L1_error)
+    __PYX_ERR(1, 452, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_shape); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 457, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_shape); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 452, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":458
+    /* "taso/_cython/core.pyx":453
  *         cshape.resize(len(shape))
  *         for i in range(len(shape)):
  *             cshape[i] = shape[i]             # <<<<<<<<<<<<<<
@@ -13299,16 +13313,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
  */
     if (unlikely(__pyx_v_shape == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 458, __pyx_L1_error)
+      __PYX_ERR(1, 453, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_shape, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 458, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_shape, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 453, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 458, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 453, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_cshape[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":459
+  /* "taso/_cython/core.pyx":454
  *         for i in range(len(shape)):
  *             cshape[i] = shape[i]
  *         cdef TensorHandle handle = self.p_graph.reshape(input.ctensor, cshape)             # <<<<<<<<<<<<<<
@@ -13317,23 +13331,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
  */
   __pyx_v_handle = __pyx_v_self->p_graph->reshape(__pyx_v_input->ctensor, __pyx_v_cshape);
 
-  /* "taso/_cython/core.pyx":460
+  /* "taso/_cython/core.pyx":455
  *             cshape[i] = shape[i]
  *         cdef TensorHandle handle = self.p_graph.reshape(input.ctensor, cshape)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 460, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 455, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 460, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 455, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 460, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 455, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 460, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 455, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 460, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 455, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -13351,7 +13365,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 460, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 455, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -13361,7 +13375,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 460, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 455, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -13369,7 +13383,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 460, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 455, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -13380,7 +13394,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_5, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 460, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 455, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
@@ -13388,7 +13402,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":461
+  /* "taso/_cython/core.pyx":456
  *         cdef TensorHandle handle = self.p_graph.reshape(input.ctensor, cshape)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -13396,13 +13410,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
  *     def resize(self, PyTensor input, tuple shape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 461, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 456, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":454
+  /* "taso/_cython/core.pyx":449
  *         return PyTensor(t)
  * 
  *     def reshape(self, PyTensor input, tuple shape):             # <<<<<<<<<<<<<<
@@ -13427,7 +13441,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_78reshape(struct __pyx_obj_4taso_
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":463
+/* "taso/_cython/core.pyx":458
  *         return PyTensor(t)
  * 
  *     def resize(self, PyTensor input, tuple shape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode):             # <<<<<<<<<<<<<<
@@ -13481,35 +13495,35 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_81resize(PyObject *__pyx_v_self, 
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_shape)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 1); __PYX_ERR(1, 463, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 1); __PYX_ERR(1, 458, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_coord_transf_mode)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 2); __PYX_ERR(1, 463, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 2); __PYX_ERR(1, 458, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_cubic_coeff_a)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 3); __PYX_ERR(1, 463, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 3); __PYX_ERR(1, 458, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_mode)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 4); __PYX_ERR(1, 463, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 4); __PYX_ERR(1, 458, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_nearest_mode)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 5); __PYX_ERR(1, 463, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, 5); __PYX_ERR(1, 458, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "resize") < 0)) __PYX_ERR(1, 463, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "resize") < 0)) __PYX_ERR(1, 458, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 6) {
       goto __pyx_L5_argtuple_error;
@@ -13530,14 +13544,14 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_81resize(PyObject *__pyx_v_self, 
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 463, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("resize", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 458, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.resize", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 463, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_shape), (&PyTuple_Type), 1, "shape", 1))) __PYX_ERR(1, 463, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 458, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_shape), (&PyTuple_Type), 1, "shape", 1))) __PYX_ERR(1, 458, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_80resize(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_shape, __pyx_v_coord_transf_mode, __pyx_v_cubic_coeff_a, __pyx_v_mode, __pyx_v_nearest_mode);
 
   /* function exit code */
@@ -13575,7 +13589,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("resize", 0);
 
-  /* "taso/_cython/core.pyx":465
+  /* "taso/_cython/core.pyx":460
  *     def resize(self, PyTensor input, tuple shape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode):
  *         cdef vector[int] cshape
  *         cshape.resize(len(shape))             # <<<<<<<<<<<<<<
@@ -13584,17 +13598,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
  */
   if (unlikely(__pyx_v_shape == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 465, __pyx_L1_error)
+    __PYX_ERR(1, 460, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_shape); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 465, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_shape); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 460, __pyx_L1_error)
   try {
     __pyx_v_cshape.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 465, __pyx_L1_error)
+    __PYX_ERR(1, 460, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":466
+  /* "taso/_cython/core.pyx":461
  *         cdef vector[int] cshape
  *         cshape.resize(len(shape))
  *         for i in range(len(shape)):             # <<<<<<<<<<<<<<
@@ -13603,14 +13617,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
  */
   if (unlikely(__pyx_v_shape == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 466, __pyx_L1_error)
+    __PYX_ERR(1, 461, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_shape); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 466, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_shape); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 461, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":467
+    /* "taso/_cython/core.pyx":462
  *         cshape.resize(len(shape))
  *         for i in range(len(shape)):
  *             cshape[i] = shape[i]             # <<<<<<<<<<<<<<
@@ -13619,45 +13633,45 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
  */
     if (unlikely(__pyx_v_shape == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 467, __pyx_L1_error)
+      __PYX_ERR(1, 462, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_shape, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 467, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_shape, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 462, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 467, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 462, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_cshape[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":468
+  /* "taso/_cython/core.pyx":463
  *         for i in range(len(shape)):
  *             cshape[i] = shape[i]
  *         cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode)             # <<<<<<<<<<<<<<
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)
  */
-  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_coord_transf_mode); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(1, 468, __pyx_L1_error)
-  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_v_cubic_coeff_a); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 468, __pyx_L1_error)
-  __pyx_t_8 = __Pyx_PyObject_AsWritableString(__pyx_v_mode); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) __PYX_ERR(1, 468, __pyx_L1_error)
-  __pyx_t_9 = __Pyx_PyObject_AsWritableString(__pyx_v_nearest_mode); if (unlikely((!__pyx_t_9) && PyErr_Occurred())) __PYX_ERR(1, 468, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_v_coord_transf_mode); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(1, 463, __pyx_L1_error)
+  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_v_cubic_coeff_a); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 463, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_AsWritableString(__pyx_v_mode); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) __PYX_ERR(1, 463, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_AsWritableString(__pyx_v_nearest_mode); if (unlikely((!__pyx_t_9) && PyErr_Occurred())) __PYX_ERR(1, 463, __pyx_L1_error)
   __pyx_v_handle = __pyx_v_self->p_graph->resize(__pyx_v_input->ctensor, __pyx_v_cshape, __pyx_t_6, __pyx_t_7, __pyx_t_8, __pyx_t_9);
 
-  /* "taso/_cython/core.pyx":469
+  /* "taso/_cython/core.pyx":464
  *             cshape[i] = shape[i]
  *         cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 469, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 464, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_cast); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 469, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_cast); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 464, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 469, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 464, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_12)) __PYX_ERR(1, 469, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_12)) __PYX_ERR(1, 464, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
-  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_13)) __PYX_ERR(1, 469, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_13)) __PYX_ERR(1, 464, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   __pyx_t_12 = NULL;
@@ -13675,7 +13689,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_11)) {
     PyObject *__pyx_temp[3] = {__pyx_t_12, __pyx_t_10, __pyx_t_13};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 469, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 464, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -13685,7 +13699,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
     PyObject *__pyx_temp[3] = {__pyx_t_12, __pyx_t_10, __pyx_t_13};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 469, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 464, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -13693,7 +13707,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
   } else
   #endif
   {
-    __pyx_t_14 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_14)) __PYX_ERR(1, 469, __pyx_L1_error)
+    __pyx_t_14 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_14)) __PYX_ERR(1, 464, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     if (__pyx_t_12) {
       __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_12); __pyx_t_12 = NULL;
@@ -13704,7 +13718,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
     PyTuple_SET_ITEM(__pyx_t_14, 1+__pyx_t_5, __pyx_t_13);
     __pyx_t_10 = 0;
     __pyx_t_13 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_14, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 469, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_14, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 464, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   }
@@ -13712,7 +13726,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":470
+  /* "taso/_cython/core.pyx":465
  *         cdef TensorHandle handle = self.p_graph.resize(input.ctensor, cshape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -13720,13 +13734,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
  *     def relu(self, PyTensor input, bool inplace = False):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 470, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 465, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":463
+  /* "taso/_cython/core.pyx":458
  *         return PyTensor(t)
  * 
  *     def resize(self, PyTensor input, tuple shape, coord_transf_mode, cubic_coeff_a, mode, nearest_mode):             # <<<<<<<<<<<<<<
@@ -13751,7 +13765,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_80resize(struct __pyx_obj_4taso_4
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":472
+/* "taso/_cython/core.pyx":467
  *         return PyTensor(t)
  * 
  *     def relu(self, PyTensor input, bool inplace = False):             # <<<<<<<<<<<<<<
@@ -13797,7 +13811,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_83relu(PyObject *__pyx_v_self, Py
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "relu") < 0)) __PYX_ERR(1, 472, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "relu") < 0)) __PYX_ERR(1, 467, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -13810,20 +13824,20 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_83relu(PyObject *__pyx_v_self, Py
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     if (values[1]) {
-      __pyx_v_inplace = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_inplace == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 472, __pyx_L3_error)
+      __pyx_v_inplace = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_inplace == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 467, __pyx_L3_error)
     } else {
       __pyx_v_inplace = ((bool)0);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("relu", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 472, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("relu", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 467, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.relu", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 472, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 467, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_82relu(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_inplace);
 
   /* function exit code */
@@ -13852,7 +13866,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_82relu(struct __pyx_obj_4taso_4co
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("relu", 0);
 
-  /* "taso/_cython/core.pyx":473
+  /* "taso/_cython/core.pyx":468
  * 
  *     def relu(self, PyTensor input, bool inplace = False):
  *         cdef TensorHandle handle = self.p_graph.relu(input.ctensor, inplace)             # <<<<<<<<<<<<<<
@@ -13861,9 +13875,174 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_82relu(struct __pyx_obj_4taso_4co
  */
   __pyx_v_handle = __pyx_v_self->p_graph->relu(__pyx_v_input->ctensor, __pyx_v_inplace);
 
-  /* "taso/_cython/core.pyx":474
+  /* "taso/_cython/core.pyx":469
  *     def relu(self, PyTensor input, bool inplace = False):
  *         cdef TensorHandle handle = self.p_graph.relu(input.ctensor, inplace)
+ *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
+ *         return PyTensor(t)
+ * 
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 469, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cast); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 469, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 469, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 469, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 469, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = NULL;
+  __pyx_t_6 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+      __pyx_t_6 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_3)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 469, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 469, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  } else
+  #endif
+  {
+    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 469, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (__pyx_t_4) {
+      __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
+    }
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_6, __pyx_t_2);
+    __Pyx_GIVEREF(__pyx_t_5);
+    PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_5);
+    __pyx_t_2 = 0;
+    __pyx_t_5 = 0;
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 469, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_v_t = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "taso/_cython/core.pyx":470
+ *         cdef TensorHandle handle = self.p_graph.relu(input.ctensor, inplace)
+ *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+ *         return PyTensor(t)             # <<<<<<<<<<<<<<
+ * 
+ *     def round(self, PyTensor input):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 470, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "taso/_cython/core.pyx":467
+ *         return PyTensor(t)
+ * 
+ *     def relu(self, PyTensor input, bool inplace = False):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.relu(input.ctensor, inplace)
+ *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("taso.core.PyGraph.relu", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_t);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "taso/_cython/core.pyx":472
+ *         return PyTensor(t)
+ * 
+ *     def round(self, PyTensor input):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.round(input.ctensor)
+ *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_85round(PyObject *__pyx_v_self, PyObject *__pyx_v_input); /*proto*/
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_85round(PyObject *__pyx_v_self, PyObject *__pyx_v_input) {
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("round (wrapper)", 0);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 472, __pyx_L1_error)
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_84round(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), ((struct __pyx_obj_4taso_4core_PyTensor *)__pyx_v_input));
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_84round(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input) {
+  taso::TensorHandle __pyx_v_handle;
+  PyObject *__pyx_v_t = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("round", 0);
+
+  /* "taso/_cython/core.pyx":473
+ * 
+ *     def round(self, PyTensor input):
+ *         cdef TensorHandle handle = self.p_graph.round(input.ctensor)             # <<<<<<<<<<<<<<
+ *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+ *         return PyTensor(t)
+ */
+  __pyx_v_handle = __pyx_v_self->p_graph->round(__pyx_v_input->ctensor);
+
+  /* "taso/_cython/core.pyx":474
+ *     def round(self, PyTensor input):
+ *         cdef TensorHandle handle = self.p_graph.round(input.ctensor)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
@@ -13933,11 +14112,11 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_82relu(struct __pyx_obj_4taso_4co
   __pyx_t_1 = 0;
 
   /* "taso/_cython/core.pyx":475
- *         cdef TensorHandle handle = self.p_graph.relu(input.ctensor, inplace)
+ *         cdef TensorHandle handle = self.p_graph.round(input.ctensor)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
  * 
- *     def round(self, PyTensor input):
+ *     def shape(self, PyTensor input):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 475, __pyx_L1_error)
@@ -13949,8 +14128,8 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_82relu(struct __pyx_obj_4taso_4co
   /* "taso/_cython/core.pyx":472
  *         return PyTensor(t)
  * 
- *     def relu(self, PyTensor input, bool inplace = False):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.relu(input.ctensor, inplace)
+ *     def round(self, PyTensor input):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.round(input.ctensor)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  */
 
@@ -13962,7 +14141,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_82relu(struct __pyx_obj_4taso_4co
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("taso.core.PyGraph.relu", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("taso.core.PyGraph.round", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_t);
@@ -13974,22 +14153,22 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_82relu(struct __pyx_obj_4taso_4co
 /* "taso/_cython/core.pyx":477
  *         return PyTensor(t)
  * 
- *     def round(self, PyTensor input):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.round(input.ctensor)
+ *     def shape(self, PyTensor input):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SHAPE)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_85round(PyObject *__pyx_v_self, PyObject *__pyx_v_input); /*proto*/
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_85round(PyObject *__pyx_v_self, PyObject *__pyx_v_input) {
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_87shape(PyObject *__pyx_v_self, PyObject *__pyx_v_input); /*proto*/
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_87shape(PyObject *__pyx_v_self, PyObject *__pyx_v_input) {
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("round (wrapper)", 0);
+  __Pyx_RefNannySetupContext("shape (wrapper)", 0);
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 477, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_84round(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), ((struct __pyx_obj_4taso_4core_PyTensor *)__pyx_v_input));
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_86shape(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), ((struct __pyx_obj_4taso_4core_PyTensor *)__pyx_v_input));
 
   /* function exit code */
   goto __pyx_L0;
@@ -14000,7 +14179,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_85round(PyObject *__pyx_v_self, P
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_84round(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input) {
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_86shape(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input) {
   taso::TensorHandle __pyx_v_handle;
   PyObject *__pyx_v_t = NULL;
   PyObject *__pyx_r = NULL;
@@ -14015,20 +14194,20 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_84round(struct __pyx_obj_4taso_4c
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("round", 0);
+  __Pyx_RefNannySetupContext("shape", 0);
 
   /* "taso/_cython/core.pyx":478
  * 
- *     def round(self, PyTensor input):
- *         cdef TensorHandle handle = self.p_graph.round(input.ctensor)             # <<<<<<<<<<<<<<
+ *     def shape(self, PyTensor input):
+ *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SHAPE)             # <<<<<<<<<<<<<<
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)
  */
-  __pyx_v_handle = __pyx_v_self->p_graph->round(__pyx_v_input->ctensor);
+  __pyx_v_handle = __pyx_v_self->p_graph->shape(__pyx_v_input->ctensor, taso::OP_SHAPE);
 
   /* "taso/_cython/core.pyx":479
- *     def round(self, PyTensor input):
- *         cdef TensorHandle handle = self.p_graph.round(input.ctensor)
+ *     def shape(self, PyTensor input):
+ *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SHAPE)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
@@ -14098,11 +14277,11 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_84round(struct __pyx_obj_4taso_4c
   __pyx_t_1 = 0;
 
   /* "taso/_cython/core.pyx":480
- *         cdef TensorHandle handle = self.p_graph.round(input.ctensor)
+ *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SHAPE)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
  * 
- *     def shape(self, PyTensor input):
+ *     def sigmoid(self, PyTensor input, bool inplace = False):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 480, __pyx_L1_error)
@@ -14114,8 +14293,8 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_84round(struct __pyx_obj_4taso_4c
   /* "taso/_cython/core.pyx":477
  *         return PyTensor(t)
  * 
- *     def round(self, PyTensor input):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.round(input.ctensor)
+ *     def shape(self, PyTensor input):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SHAPE)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  */
 
@@ -14127,7 +14306,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_84round(struct __pyx_obj_4taso_4c
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("taso.core.PyGraph.round", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("taso.core.PyGraph.shape", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_t);
@@ -14139,22 +14318,77 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_84round(struct __pyx_obj_4taso_4c
 /* "taso/_cython/core.pyx":482
  *         return PyTensor(t)
  * 
- *     def shape(self, PyTensor input):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SHAPE)
+ *     def sigmoid(self, PyTensor input, bool inplace = False):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.sigmoid(input.ctensor, inplace)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_87shape(PyObject *__pyx_v_self, PyObject *__pyx_v_input); /*proto*/
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_87shape(PyObject *__pyx_v_self, PyObject *__pyx_v_input) {
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_89sigmoid(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_89sigmoid(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input = 0;
+  bool __pyx_v_inplace;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("shape (wrapper)", 0);
+  __Pyx_RefNannySetupContext("sigmoid (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_input,&__pyx_n_s_inplace,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_inplace);
+          if (value) { values[1] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sigmoid") < 0)) __PYX_ERR(1, 482, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
+    if (values[1]) {
+      __pyx_v_inplace = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_inplace == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 482, __pyx_L3_error)
+    } else {
+      __pyx_v_inplace = ((bool)0);
+    }
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("sigmoid", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 482, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("taso.core.PyGraph.sigmoid", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 482, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_86shape(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), ((struct __pyx_obj_4taso_4core_PyTensor *)__pyx_v_input));
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_88sigmoid(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_inplace);
 
   /* function exit code */
   goto __pyx_L0;
@@ -14165,7 +14399,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_87shape(PyObject *__pyx_v_self, P
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_86shape(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input) {
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_88sigmoid(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, bool __pyx_v_inplace) {
   taso::TensorHandle __pyx_v_handle;
   PyObject *__pyx_v_t = NULL;
   PyObject *__pyx_r = NULL;
@@ -14180,20 +14414,20 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_86shape(struct __pyx_obj_4taso_4c
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("shape", 0);
+  __Pyx_RefNannySetupContext("sigmoid", 0);
 
   /* "taso/_cython/core.pyx":483
  * 
- *     def shape(self, PyTensor input):
- *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SHAPE)             # <<<<<<<<<<<<<<
+ *     def sigmoid(self, PyTensor input, bool inplace = False):
+ *         cdef TensorHandle handle = self.p_graph.sigmoid(input.ctensor, inplace)             # <<<<<<<<<<<<<<
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)
  */
-  __pyx_v_handle = __pyx_v_self->p_graph->shape(__pyx_v_input->ctensor, taso::OP_SHAPE);
+  __pyx_v_handle = __pyx_v_self->p_graph->sigmoid(__pyx_v_input->ctensor, __pyx_v_inplace);
 
   /* "taso/_cython/core.pyx":484
- *     def shape(self, PyTensor input):
- *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SHAPE)
+ *     def sigmoid(self, PyTensor input, bool inplace = False):
+ *         cdef TensorHandle handle = self.p_graph.sigmoid(input.ctensor, inplace)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
@@ -14263,11 +14497,11 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_86shape(struct __pyx_obj_4taso_4c
   __pyx_t_1 = 0;
 
   /* "taso/_cython/core.pyx":485
- *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SHAPE)
+ *         cdef TensorHandle handle = self.p_graph.sigmoid(input.ctensor, inplace)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
  * 
- *     def sigmoid(self, PyTensor input, bool inplace = False):
+ *     def softplus(self, *, PyTensor input):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 485, __pyx_L1_error)
@@ -14279,8 +14513,8 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_86shape(struct __pyx_obj_4taso_4c
   /* "taso/_cython/core.pyx":482
  *         return PyTensor(t)
  * 
- *     def shape(self, PyTensor input):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SHAPE)
+ *     def sigmoid(self, PyTensor input, bool inplace = False):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.sigmoid(input.ctensor, inplace)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  */
 
@@ -14292,7 +14526,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_86shape(struct __pyx_obj_4taso_4c
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("taso.core.PyGraph.shape", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("taso.core.PyGraph.sigmoid", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_t);
@@ -14304,77 +14538,56 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_86shape(struct __pyx_obj_4taso_4c
 /* "taso/_cython/core.pyx":487
  *         return PyTensor(t)
  * 
- *     def sigmoid(self, PyTensor input, bool inplace = False):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.sigmoid(input.ctensor, inplace)
+ *     def softplus(self, *, PyTensor input):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.softplus(input.ctensor)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_89sigmoid(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_89sigmoid(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_91softplus(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_91softplus(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input = 0;
-  bool __pyx_v_inplace;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("sigmoid (wrapper)", 0);
+  __Pyx_RefNannySetupContext("softplus (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_input,&__pyx_n_s_inplace,0};
-    PyObject* values[2] = {0,0};
-    if (unlikely(__pyx_kwds)) {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_input,0};
+    PyObject* values[1] = {0};
+    if (likely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_inplace);
-          if (value) { values[1] = value; kw_args--; }
-        }
+      if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
+      else {
+        __Pyx_RaiseKeywordRequired("softplus", __pyx_n_s_input); __PYX_ERR(1, 487, __pyx_L3_error)
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sigmoid") < 0)) __PYX_ERR(1, 487, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "softplus") < 0)) __PYX_ERR(1, 487, __pyx_L3_error)
       }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
+      goto __pyx_L5_argtuple_error;
     } else {
-      switch (PyTuple_GET_SIZE(__pyx_args)) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        break;
-        default: goto __pyx_L5_argtuple_error;
-      }
+      __Pyx_RaiseKeywordRequired("softplus", __pyx_n_s_input); __PYX_ERR(1, 487, __pyx_L3_error)
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
-    if (values[1]) {
-      __pyx_v_inplace = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_inplace == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 487, __pyx_L3_error)
-    } else {
-      __pyx_v_inplace = ((bool)0);
-    }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sigmoid", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 487, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("softplus", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 487, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("taso.core.PyGraph.sigmoid", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("taso.core.PyGraph.softplus", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 487, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_88sigmoid(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_inplace);
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_90softplus(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input);
 
   /* function exit code */
   goto __pyx_L0;
@@ -14385,7 +14598,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_89sigmoid(PyObject *__pyx_v_self,
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_88sigmoid(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, bool __pyx_v_inplace) {
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_90softplus(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input) {
   taso::TensorHandle __pyx_v_handle;
   PyObject *__pyx_v_t = NULL;
   PyObject *__pyx_r = NULL;
@@ -14400,20 +14613,20 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_88sigmoid(struct __pyx_obj_4taso_
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("sigmoid", 0);
+  __Pyx_RefNannySetupContext("softplus", 0);
 
   /* "taso/_cython/core.pyx":488
  * 
- *     def sigmoid(self, PyTensor input, bool inplace = False):
- *         cdef TensorHandle handle = self.p_graph.sigmoid(input.ctensor, inplace)             # <<<<<<<<<<<<<<
+ *     def softplus(self, *, PyTensor input):
+ *         cdef TensorHandle handle = self.p_graph.softplus(input.ctensor)             # <<<<<<<<<<<<<<
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)
  */
-  __pyx_v_handle = __pyx_v_self->p_graph->sigmoid(__pyx_v_input->ctensor, __pyx_v_inplace);
+  __pyx_v_handle = __pyx_v_self->p_graph->softplus(__pyx_v_input->ctensor);
 
   /* "taso/_cython/core.pyx":489
- *     def sigmoid(self, PyTensor input, bool inplace = False):
- *         cdef TensorHandle handle = self.p_graph.sigmoid(input.ctensor, inplace)
+ *     def softplus(self, *, PyTensor input):
+ *         cdef TensorHandle handle = self.p_graph.softplus(input.ctensor)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
@@ -14483,11 +14696,11 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_88sigmoid(struct __pyx_obj_4taso_
   __pyx_t_1 = 0;
 
   /* "taso/_cython/core.pyx":490
- *         cdef TensorHandle handle = self.p_graph.sigmoid(input.ctensor, inplace)
+ *         cdef TensorHandle handle = self.p_graph.softplus(input.ctensor)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
  * 
- *     def softplus(self, *, PyTensor input):
+ *     def size(self, *, PyTensor input):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 490, __pyx_L1_error)
@@ -14499,8 +14712,8 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_88sigmoid(struct __pyx_obj_4taso_
   /* "taso/_cython/core.pyx":487
  *         return PyTensor(t)
  * 
- *     def sigmoid(self, PyTensor input, bool inplace = False):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.sigmoid(input.ctensor, inplace)
+ *     def softplus(self, *, PyTensor input):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.softplus(input.ctensor)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  */
 
@@ -14512,7 +14725,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_88sigmoid(struct __pyx_obj_4taso_
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("taso.core.PyGraph.sigmoid", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("taso.core.PyGraph.softplus", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_t);
@@ -14524,21 +14737,21 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_88sigmoid(struct __pyx_obj_4taso_
 /* "taso/_cython/core.pyx":492
  *         return PyTensor(t)
  * 
- *     def softplus(self, *, PyTensor input):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.softplus(input.ctensor)
+ *     def size(self, *, PyTensor input):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SIZE)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_91softplus(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_91softplus(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_93size(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_93size(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("softplus (wrapper)", 0);
+  __Pyx_RefNannySetupContext("size (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_input,0};
     PyObject* values[1] = {0};
@@ -14552,28 +14765,28 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_91softplus(PyObject *__pyx_v_self
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("softplus", __pyx_n_s_input); __PYX_ERR(1, 492, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("size", __pyx_n_s_input); __PYX_ERR(1, 492, __pyx_L3_error)
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "softplus") < 0)) __PYX_ERR(1, 492, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "size") < 0)) __PYX_ERR(1, 492, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("softplus", __pyx_n_s_input); __PYX_ERR(1, 492, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("size", __pyx_n_s_input); __PYX_ERR(1, 492, __pyx_L3_error)
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("softplus", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 492, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("size", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 492, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("taso.core.PyGraph.softplus", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("taso.core.PyGraph.size", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 492, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_90softplus(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input);
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_92size(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input);
 
   /* function exit code */
   goto __pyx_L0;
@@ -14584,7 +14797,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_91softplus(PyObject *__pyx_v_self
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_90softplus(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input) {
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_92size(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input) {
   taso::TensorHandle __pyx_v_handle;
   PyObject *__pyx_v_t = NULL;
   PyObject *__pyx_r = NULL;
@@ -14599,20 +14812,20 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_90softplus(struct __pyx_obj_4taso
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("softplus", 0);
+  __Pyx_RefNannySetupContext("size", 0);
 
   /* "taso/_cython/core.pyx":493
  * 
- *     def softplus(self, *, PyTensor input):
- *         cdef TensorHandle handle = self.p_graph.softplus(input.ctensor)             # <<<<<<<<<<<<<<
+ *     def size(self, *, PyTensor input):
+ *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SIZE)             # <<<<<<<<<<<<<<
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)
  */
-  __pyx_v_handle = __pyx_v_self->p_graph->softplus(__pyx_v_input->ctensor);
+  __pyx_v_handle = __pyx_v_self->p_graph->shape(__pyx_v_input->ctensor, taso::OP_SIZE);
 
   /* "taso/_cython/core.pyx":494
- *     def softplus(self, *, PyTensor input):
- *         cdef TensorHandle handle = self.p_graph.softplus(input.ctensor)
+ *     def size(self, *, PyTensor input):
+ *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SIZE)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
@@ -14682,11 +14895,11 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_90softplus(struct __pyx_obj_4taso
   __pyx_t_1 = 0;
 
   /* "taso/_cython/core.pyx":495
- *         cdef TensorHandle handle = self.p_graph.softplus(input.ctensor)
+ *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SIZE)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
  * 
- *     def size(self, *, PyTensor input):
+ *     def slice(self, PyTensor input, start, end, axes, steps, num_inputs):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 495, __pyx_L1_error)
@@ -14698,8 +14911,8 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_90softplus(struct __pyx_obj_4taso
   /* "taso/_cython/core.pyx":492
  *         return PyTensor(t)
  * 
- *     def softplus(self, *, PyTensor input):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.softplus(input.ctensor)
+ *     def size(self, *, PyTensor input):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SIZE)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  */
 
@@ -14711,7 +14924,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_90softplus(struct __pyx_obj_4taso
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("taso.core.PyGraph.softplus", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("taso.core.PyGraph.size", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_t);
@@ -14723,206 +14936,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_90softplus(struct __pyx_obj_4taso
 /* "taso/_cython/core.pyx":497
  *         return PyTensor(t)
  * 
- *     def size(self, *, PyTensor input):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SIZE)
- *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_93size(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_93size(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input = 0;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("size (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_input,0};
-    PyObject* values[1] = {0};
-    if (likely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
-      else {
-        __Pyx_RaiseKeywordRequired("size", __pyx_n_s_input); __PYX_ERR(1, 497, __pyx_L3_error)
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "size") < 0)) __PYX_ERR(1, 497, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      __Pyx_RaiseKeywordRequired("size", __pyx_n_s_input); __PYX_ERR(1, 497, __pyx_L3_error)
-    }
-    __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("size", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 497, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("taso.core.PyGraph.size", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 497, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_92size(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input);
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_92size(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input) {
-  taso::TensorHandle __pyx_v_handle;
-  PyObject *__pyx_v_t = NULL;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  int __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("size", 0);
-
-  /* "taso/_cython/core.pyx":498
- * 
- *     def size(self, *, PyTensor input):
- *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SIZE)             # <<<<<<<<<<<<<<
- *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
- *         return PyTensor(t)
- */
-  __pyx_v_handle = __pyx_v_self->p_graph->shape(__pyx_v_input->ctensor, taso::OP_SIZE);
-
-  /* "taso/_cython/core.pyx":499
- *     def size(self, *, PyTensor input):
- *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SIZE)
- *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
- *         return PyTensor(t)
- * 
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 499, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cast); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 499, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 499, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 499, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 499, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = NULL;
-  __pyx_t_6 = 0;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-      __pyx_t_6 = 1;
-    }
-  }
-  #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_3)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 499, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  } else
-  #endif
-  #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 499, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  } else
-  #endif
-  {
-    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 499, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    if (__pyx_t_4) {
-      __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
-    }
-    __Pyx_GIVEREF(__pyx_t_2);
-    PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_6, __pyx_t_2);
-    __Pyx_GIVEREF(__pyx_t_5);
-    PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_5);
-    __pyx_t_2 = 0;
-    __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 499, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  }
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_t = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "taso/_cython/core.pyx":500
- *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SIZE)
- *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
- *         return PyTensor(t)             # <<<<<<<<<<<<<<
- * 
- *     def slice(self, PyTensor input, start, end, axes, steps):
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 500, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "taso/_cython/core.pyx":497
- *         return PyTensor(t)
- * 
- *     def size(self, *, PyTensor input):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.shape(input.ctensor, OP_SIZE)
- *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("taso.core.PyGraph.size", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_t);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "taso/_cython/core.pyx":502
- *         return PyTensor(t)
- * 
- *     def slice(self, PyTensor input, start, end, axes, steps):             # <<<<<<<<<<<<<<
+ *     def slice(self, PyTensor input, start, end, axes, steps, num_inputs):             # <<<<<<<<<<<<<<
  *         cdef vector[int] cstart
  *         cdef vector[int] cend
  */
@@ -14935,6 +14949,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_95slice(PyObject *__pyx_v_self, P
   PyObject *__pyx_v_end = 0;
   PyObject *__pyx_v_axes = 0;
   PyObject *__pyx_v_steps = 0;
+  PyObject *__pyx_v_num_inputs = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -14942,12 +14957,14 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_95slice(PyObject *__pyx_v_self, P
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("slice (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_input,&__pyx_n_s_start,&__pyx_n_s_end,&__pyx_n_s_axes,&__pyx_n_s_steps,0};
-    PyObject* values[5] = {0,0,0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_input,&__pyx_n_s_start,&__pyx_n_s_end,&__pyx_n_s_axes,&__pyx_n_s_steps,&__pyx_n_s_num_inputs,0};
+    PyObject* values[6] = {0,0,0,0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
         case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
         CYTHON_FALLTHROUGH;
         case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
@@ -14970,31 +14987,37 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_95slice(PyObject *__pyx_v_self, P
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_start)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("slice", 1, 5, 5, 1); __PYX_ERR(1, 502, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("slice", 1, 6, 6, 1); __PYX_ERR(1, 497, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_end)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("slice", 1, 5, 5, 2); __PYX_ERR(1, 502, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("slice", 1, 6, 6, 2); __PYX_ERR(1, 497, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_axes)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("slice", 1, 5, 5, 3); __PYX_ERR(1, 502, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("slice", 1, 6, 6, 3); __PYX_ERR(1, 497, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_steps)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("slice", 1, 5, 5, 4); __PYX_ERR(1, 502, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("slice", 1, 6, 6, 4); __PYX_ERR(1, 497, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_inputs)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("slice", 1, 6, 6, 5); __PYX_ERR(1, 497, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "slice") < 0)) __PYX_ERR(1, 502, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "slice") < 0)) __PYX_ERR(1, 497, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 5) {
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 6) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
@@ -15002,23 +15025,25 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_95slice(PyObject *__pyx_v_self, P
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
       values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
       values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+      values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     __pyx_v_start = values[1];
     __pyx_v_end = values[2];
     __pyx_v_axes = values[3];
     __pyx_v_steps = values[4];
+    __pyx_v_num_inputs = values[5];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("slice", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 502, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("slice", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 497, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.slice", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 502, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_94slice(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_start, __pyx_v_end, __pyx_v_axes, __pyx_v_steps);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 497, __pyx_L1_error)
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_94slice(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_start, __pyx_v_end, __pyx_v_axes, __pyx_v_steps, __pyx_v_num_inputs);
 
   /* function exit code */
   goto __pyx_L0;
@@ -15029,7 +15054,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_95slice(PyObject *__pyx_v_self, P
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, PyObject *__pyx_v_start, PyObject *__pyx_v_end, PyObject *__pyx_v_axes, PyObject *__pyx_v_steps) {
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, PyObject *__pyx_v_start, PyObject *__pyx_v_end, PyObject *__pyx_v_axes, PyObject *__pyx_v_steps, PyObject *__pyx_v_num_inputs) {
   std::vector<int>  __pyx_v_cstart;
   std::vector<int>  __pyx_v_cend;
   std::vector<int>  __pyx_v_caxes;
@@ -15055,140 +15080,140 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4c
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("slice", 0);
 
-  /* "taso/_cython/core.pyx":507
+  /* "taso/_cython/core.pyx":502
  *         cdef vector[int] caxes
  *         cdef vector[int] csteps
  *         cstart.resize(len(start))             # <<<<<<<<<<<<<<
  *         for i in range(len(start)):
  *             cstart[i] = start[i]
  */
-  __pyx_t_1 = PyObject_Length(__pyx_v_start); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 507, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(__pyx_v_start); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 502, __pyx_L1_error)
   try {
     __pyx_v_cstart.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 507, __pyx_L1_error)
+    __PYX_ERR(1, 502, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":508
+  /* "taso/_cython/core.pyx":503
  *         cdef vector[int] csteps
  *         cstart.resize(len(start))
  *         for i in range(len(start)):             # <<<<<<<<<<<<<<
  *             cstart[i] = start[i]
  *         cend.resize(len(end))
  */
-  __pyx_t_1 = PyObject_Length(__pyx_v_start); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 508, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(__pyx_v_start); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 503, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":509
+    /* "taso/_cython/core.pyx":504
  *         cstart.resize(len(start))
  *         for i in range(len(start)):
  *             cstart[i] = start[i]             # <<<<<<<<<<<<<<
  *         cend.resize(len(end))
  *         for i in range(len(end)):
  */
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_start, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 509, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_start, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 504, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 509, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 504, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_cstart[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":510
+  /* "taso/_cython/core.pyx":505
  *         for i in range(len(start)):
  *             cstart[i] = start[i]
  *         cend.resize(len(end))             # <<<<<<<<<<<<<<
  *         for i in range(len(end)):
  *             cend[i] = end[i]
  */
-  __pyx_t_1 = PyObject_Length(__pyx_v_end); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 510, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(__pyx_v_end); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 505, __pyx_L1_error)
   try {
     __pyx_v_cend.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 510, __pyx_L1_error)
+    __PYX_ERR(1, 505, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":511
+  /* "taso/_cython/core.pyx":506
  *             cstart[i] = start[i]
  *         cend.resize(len(end))
  *         for i in range(len(end)):             # <<<<<<<<<<<<<<
  *             cend[i] = end[i]
  *         if axes:
  */
-  __pyx_t_1 = PyObject_Length(__pyx_v_end); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 511, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(__pyx_v_end); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 506, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":512
+    /* "taso/_cython/core.pyx":507
  *         cend.resize(len(end))
  *         for i in range(len(end)):
  *             cend[i] = end[i]             # <<<<<<<<<<<<<<
  *         if axes:
  *             caxes.resize(len(axes))
  */
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_end, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 512, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_end, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 507, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 512, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 507, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_cend[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":513
+  /* "taso/_cython/core.pyx":508
  *         for i in range(len(end)):
  *             cend[i] = end[i]
  *         if axes:             # <<<<<<<<<<<<<<
  *             caxes.resize(len(axes))
  *             for i in range(len(axes)):
  */
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_axes); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 513, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_axes); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 508, __pyx_L1_error)
   if (__pyx_t_6) {
 
-    /* "taso/_cython/core.pyx":514
+    /* "taso/_cython/core.pyx":509
  *             cend[i] = end[i]
  *         if axes:
  *             caxes.resize(len(axes))             # <<<<<<<<<<<<<<
  *             for i in range(len(axes)):
  *                 caxes[i] = axes[i]
  */
-    __pyx_t_1 = PyObject_Length(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 514, __pyx_L1_error)
+    __pyx_t_1 = PyObject_Length(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 509, __pyx_L1_error)
     try {
       __pyx_v_caxes.resize(__pyx_t_1);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 514, __pyx_L1_error)
+      __PYX_ERR(1, 509, __pyx_L1_error)
     }
 
-    /* "taso/_cython/core.pyx":515
+    /* "taso/_cython/core.pyx":510
  *         if axes:
  *             caxes.resize(len(axes))
  *             for i in range(len(axes)):             # <<<<<<<<<<<<<<
  *                 caxes[i] = axes[i]
  *         else:
  */
-    __pyx_t_1 = PyObject_Length(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 515, __pyx_L1_error)
+    __pyx_t_1 = PyObject_Length(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 510, __pyx_L1_error)
     __pyx_t_2 = __pyx_t_1;
     for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
       __pyx_v_i = __pyx_t_3;
 
-      /* "taso/_cython/core.pyx":516
+      /* "taso/_cython/core.pyx":511
  *             caxes.resize(len(axes))
  *             for i in range(len(axes)):
  *                 caxes[i] = axes[i]             # <<<<<<<<<<<<<<
  *         else:
  *             caxes.resize(len(start))
  */
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 516, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 511, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 516, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 511, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       (__pyx_v_caxes[__pyx_v_i]) = __pyx_t_5;
     }
 
-    /* "taso/_cython/core.pyx":513
+    /* "taso/_cython/core.pyx":508
  *         for i in range(len(end)):
  *             cend[i] = end[i]
  *         if axes:             # <<<<<<<<<<<<<<
@@ -15198,7 +15223,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4c
     goto __pyx_L7;
   }
 
-  /* "taso/_cython/core.pyx":518
+  /* "taso/_cython/core.pyx":513
  *                 caxes[i] = axes[i]
  *         else:
  *             caxes.resize(len(start))             # <<<<<<<<<<<<<<
@@ -15206,27 +15231,27 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4c
  *                 caxes[i] = i
  */
   /*else*/ {
-    __pyx_t_1 = PyObject_Length(__pyx_v_start); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 518, __pyx_L1_error)
+    __pyx_t_1 = PyObject_Length(__pyx_v_start); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 513, __pyx_L1_error)
     try {
       __pyx_v_caxes.resize(__pyx_t_1);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 518, __pyx_L1_error)
+      __PYX_ERR(1, 513, __pyx_L1_error)
     }
 
-    /* "taso/_cython/core.pyx":519
+    /* "taso/_cython/core.pyx":514
  *         else:
  *             caxes.resize(len(start))
  *             for i in range(len(start)):             # <<<<<<<<<<<<<<
  *                 caxes[i] = i
  *         if steps:
  */
-    __pyx_t_1 = PyObject_Length(__pyx_v_start); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 519, __pyx_L1_error)
+    __pyx_t_1 = PyObject_Length(__pyx_v_start); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 514, __pyx_L1_error)
     __pyx_t_2 = __pyx_t_1;
     for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
       __pyx_v_i = __pyx_t_3;
 
-      /* "taso/_cython/core.pyx":520
+      /* "taso/_cython/core.pyx":515
  *             caxes.resize(len(start))
  *             for i in range(len(start)):
  *                 caxes[i] = i             # <<<<<<<<<<<<<<
@@ -15238,58 +15263,58 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4c
   }
   __pyx_L7:;
 
-  /* "taso/_cython/core.pyx":521
+  /* "taso/_cython/core.pyx":516
  *             for i in range(len(start)):
  *                 caxes[i] = i
  *         if steps:             # <<<<<<<<<<<<<<
  *             csteps.resize(len(steps))
  *             for i in range(len(steps)):
  */
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_steps); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 521, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_steps); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 516, __pyx_L1_error)
   if (__pyx_t_6) {
 
-    /* "taso/_cython/core.pyx":522
+    /* "taso/_cython/core.pyx":517
  *                 caxes[i] = i
  *         if steps:
  *             csteps.resize(len(steps))             # <<<<<<<<<<<<<<
  *             for i in range(len(steps)):
  *                 csteps[i] = steps[i]
  */
-    __pyx_t_1 = PyObject_Length(__pyx_v_steps); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 522, __pyx_L1_error)
+    __pyx_t_1 = PyObject_Length(__pyx_v_steps); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 517, __pyx_L1_error)
     try {
       __pyx_v_csteps.resize(__pyx_t_1);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 522, __pyx_L1_error)
+      __PYX_ERR(1, 517, __pyx_L1_error)
     }
 
-    /* "taso/_cython/core.pyx":523
+    /* "taso/_cython/core.pyx":518
  *         if steps:
  *             csteps.resize(len(steps))
  *             for i in range(len(steps)):             # <<<<<<<<<<<<<<
  *                 csteps[i] = steps[i]
  *         else:
  */
-    __pyx_t_1 = PyObject_Length(__pyx_v_steps); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 523, __pyx_L1_error)
+    __pyx_t_1 = PyObject_Length(__pyx_v_steps); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 518, __pyx_L1_error)
     __pyx_t_2 = __pyx_t_1;
     for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
       __pyx_v_i = __pyx_t_3;
 
-      /* "taso/_cython/core.pyx":524
+      /* "taso/_cython/core.pyx":519
  *             csteps.resize(len(steps))
  *             for i in range(len(steps)):
  *                 csteps[i] = steps[i]             # <<<<<<<<<<<<<<
  *         else:
  *             csteps.resize(len(start))
  */
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_steps, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 524, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_steps, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 519, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 524, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 519, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       (__pyx_v_csteps[__pyx_v_i]) = __pyx_t_5;
     }
 
-    /* "taso/_cython/core.pyx":521
+    /* "taso/_cython/core.pyx":516
  *             for i in range(len(start)):
  *                 caxes[i] = i
  *         if steps:             # <<<<<<<<<<<<<<
@@ -15299,7 +15324,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4c
     goto __pyx_L12;
   }
 
-  /* "taso/_cython/core.pyx":526
+  /* "taso/_cython/core.pyx":521
  *                 csteps[i] = steps[i]
  *         else:
  *             csteps.resize(len(start))             # <<<<<<<<<<<<<<
@@ -15307,31 +15332,31 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4c
  *                 csteps[i] = 1
  */
   /*else*/ {
-    __pyx_t_1 = PyObject_Length(__pyx_v_start); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 526, __pyx_L1_error)
+    __pyx_t_1 = PyObject_Length(__pyx_v_start); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 521, __pyx_L1_error)
     try {
       __pyx_v_csteps.resize(__pyx_t_1);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 526, __pyx_L1_error)
+      __PYX_ERR(1, 521, __pyx_L1_error)
     }
 
-    /* "taso/_cython/core.pyx":527
+    /* "taso/_cython/core.pyx":522
  *         else:
  *             csteps.resize(len(start))
  *             for i in range(len(start)):             # <<<<<<<<<<<<<<
  *                 csteps[i] = 1
- *         cdef TensorHandle handle = self.p_graph.slice(input.ctensor, cstart, cend, caxes, csteps)
+ *         cdef TensorHandle handle = self.p_graph.slice(input.ctensor, cstart, cend, caxes, csteps, num_inputs)
  */
-    __pyx_t_1 = PyObject_Length(__pyx_v_start); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 527, __pyx_L1_error)
+    __pyx_t_1 = PyObject_Length(__pyx_v_start); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 522, __pyx_L1_error)
     __pyx_t_2 = __pyx_t_1;
     for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
       __pyx_v_i = __pyx_t_3;
 
-      /* "taso/_cython/core.pyx":528
+      /* "taso/_cython/core.pyx":523
  *             csteps.resize(len(start))
  *             for i in range(len(start)):
  *                 csteps[i] = 1             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.slice(input.ctensor, cstart, cend, caxes, csteps)
+ *         cdef TensorHandle handle = self.p_graph.slice(input.ctensor, cstart, cend, caxes, csteps, num_inputs)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  */
       (__pyx_v_csteps[__pyx_v_i]) = 1;
@@ -15339,32 +15364,33 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4c
   }
   __pyx_L12:;
 
-  /* "taso/_cython/core.pyx":529
+  /* "taso/_cython/core.pyx":524
  *             for i in range(len(start)):
  *                 csteps[i] = 1
- *         cdef TensorHandle handle = self.p_graph.slice(input.ctensor, cstart, cend, caxes, csteps)             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.slice(input.ctensor, cstart, cend, caxes, csteps, num_inputs)             # <<<<<<<<<<<<<<
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)
  */
-  __pyx_v_handle = __pyx_v_self->p_graph->slice(__pyx_v_input->ctensor, __pyx_v_cstart, __pyx_v_cend, __pyx_v_caxes, __pyx_v_csteps);
+  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num_inputs); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 524, __pyx_L1_error)
+  __pyx_v_handle = __pyx_v_self->p_graph->slice(__pyx_v_input->ctensor, __pyx_v_cstart, __pyx_v_cend, __pyx_v_caxes, __pyx_v_csteps, __pyx_t_5);
 
-  /* "taso/_cython/core.pyx":530
+  /* "taso/_cython/core.pyx":525
  *                 csteps[i] = 1
- *         cdef TensorHandle handle = self.p_graph.slice(input.ctensor, cstart, cend, caxes, csteps)
+ *         cdef TensorHandle handle = self.p_graph.slice(input.ctensor, cstart, cend, caxes, csteps, num_inputs)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 530, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 525, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_cast); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 530, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_cast); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 525, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 530, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 525, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 530, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 525, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 530, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 525, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_t_9 = NULL;
@@ -15382,7 +15408,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4c
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_8)) {
     PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_t_7, __pyx_t_10};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 530, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 525, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -15392,7 +15418,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4c
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
     PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_t_7, __pyx_t_10};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 530, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 525, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -15400,7 +15426,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4c
   } else
   #endif
   {
-    __pyx_t_11 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 530, __pyx_L1_error)
+    __pyx_t_11 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 525, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     if (__pyx_t_9) {
       __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -15411,7 +15437,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4c
     PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_5, __pyx_t_10);
     __pyx_t_7 = 0;
     __pyx_t_10 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_11, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 530, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_11, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 525, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   }
@@ -15419,24 +15445,24 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4c
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":531
- *         cdef TensorHandle handle = self.p_graph.slice(input.ctensor, cstart, cend, caxes, csteps)
+  /* "taso/_cython/core.pyx":526
+ *         cdef TensorHandle handle = self.p_graph.slice(input.ctensor, cstart, cend, caxes, csteps, num_inputs)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
  * 
  *     def split(self, PyTensor input, int axis, sizes):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 531, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 526, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":502
+  /* "taso/_cython/core.pyx":497
  *         return PyTensor(t)
  * 
- *     def slice(self, PyTensor input, start, end, axes, steps):             # <<<<<<<<<<<<<<
+ *     def slice(self, PyTensor input, start, end, axes, steps, num_inputs):             # <<<<<<<<<<<<<<
  *         cdef vector[int] cstart
  *         cdef vector[int] cend
  */
@@ -15458,7 +15484,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_94slice(struct __pyx_obj_4taso_4c
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":533
+/* "taso/_cython/core.pyx":528
  *         return PyTensor(t)
  * 
  *     def split(self, PyTensor input, int axis, sizes):             # <<<<<<<<<<<<<<
@@ -15503,17 +15529,17 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_97split(PyObject *__pyx_v_self, P
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_axis)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("split", 1, 3, 3, 1); __PYX_ERR(1, 533, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("split", 1, 3, 3, 1); __PYX_ERR(1, 528, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_sizes)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("split", 1, 3, 3, 2); __PYX_ERR(1, 533, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("split", 1, 3, 3, 2); __PYX_ERR(1, 528, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "split") < 0)) __PYX_ERR(1, 533, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "split") < 0)) __PYX_ERR(1, 528, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -15523,18 +15549,18 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_97split(PyObject *__pyx_v_self, P
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
-    __pyx_v_axis = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_axis == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 533, __pyx_L3_error)
+    __pyx_v_axis = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_axis == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 528, __pyx_L3_error)
     __pyx_v_sizes = values[2];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("split", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 533, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("split", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 528, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.split", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 533, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 528, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_96split(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_axis, __pyx_v_sizes);
 
   /* function exit code */
@@ -15572,7 +15598,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4c
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("split", 0);
 
-  /* "taso/_cython/core.pyx":536
+  /* "taso/_cython/core.pyx":531
  *         cdef TensorHandle coutputs[32]
  *         cdef vector[int] csizes
  *         if type(sizes) is list:             # <<<<<<<<<<<<<<
@@ -15583,7 +15609,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4c
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "taso/_cython/core.pyx":537
+    /* "taso/_cython/core.pyx":532
  *         cdef vector[int] csizes
  *         if type(sizes) is list:
  *             assert len(sizes) <= 32             # <<<<<<<<<<<<<<
@@ -15592,56 +15618,56 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4c
  */
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
-      __pyx_t_3 = PyObject_Length(__pyx_v_sizes); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(1, 537, __pyx_L1_error)
+      __pyx_t_3 = PyObject_Length(__pyx_v_sizes); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(1, 532, __pyx_L1_error)
       if (unlikely(!((__pyx_t_3 <= 32) != 0))) {
         PyErr_SetNone(PyExc_AssertionError);
-        __PYX_ERR(1, 537, __pyx_L1_error)
+        __PYX_ERR(1, 532, __pyx_L1_error)
       }
     }
     #endif
 
-    /* "taso/_cython/core.pyx":538
+    /* "taso/_cython/core.pyx":533
  *         if type(sizes) is list:
  *             assert len(sizes) <= 32
  *             csizes.resize(len(sizes))             # <<<<<<<<<<<<<<
  *             for i in range(len(sizes)):
  *                 csizes[i] = sizes[i]
  */
-    __pyx_t_3 = PyObject_Length(__pyx_v_sizes); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(1, 538, __pyx_L1_error)
+    __pyx_t_3 = PyObject_Length(__pyx_v_sizes); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(1, 533, __pyx_L1_error)
     try {
       __pyx_v_csizes.resize(__pyx_t_3);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 538, __pyx_L1_error)
+      __PYX_ERR(1, 533, __pyx_L1_error)
     }
 
-    /* "taso/_cython/core.pyx":539
+    /* "taso/_cython/core.pyx":534
  *             assert len(sizes) <= 32
  *             csizes.resize(len(sizes))
  *             for i in range(len(sizes)):             # <<<<<<<<<<<<<<
  *                 csizes[i] = sizes[i]
  *             self.p_graph.split(input.ctensor, axis, csizes, coutputs)
  */
-    __pyx_t_3 = PyObject_Length(__pyx_v_sizes); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(1, 539, __pyx_L1_error)
+    __pyx_t_3 = PyObject_Length(__pyx_v_sizes); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(1, 534, __pyx_L1_error)
     __pyx_t_4 = __pyx_t_3;
     for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
       __pyx_v_i = __pyx_t_5;
 
-      /* "taso/_cython/core.pyx":540
+      /* "taso/_cython/core.pyx":535
  *             csizes.resize(len(sizes))
  *             for i in range(len(sizes)):
  *                 csizes[i] = sizes[i]             # <<<<<<<<<<<<<<
  *             self.p_graph.split(input.ctensor, axis, csizes, coutputs)
  *         else:
  */
-      __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_sizes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 540, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_sizes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 535, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 540, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 535, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       (__pyx_v_csizes[__pyx_v_i]) = __pyx_t_7;
     }
 
-    /* "taso/_cython/core.pyx":541
+    /* "taso/_cython/core.pyx":536
  *             for i in range(len(sizes)):
  *                 csizes[i] = sizes[i]
  *             self.p_graph.split(input.ctensor, axis, csizes, coutputs)             # <<<<<<<<<<<<<<
@@ -15650,7 +15676,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4c
  */
     __pyx_v_self->p_graph->split(__pyx_v_input->ctensor, __pyx_v_axis, __pyx_v_csizes, __pyx_v_coutputs);
 
-    /* "taso/_cython/core.pyx":536
+    /* "taso/_cython/core.pyx":531
  *         cdef TensorHandle coutputs[32]
  *         cdef vector[int] csizes
  *         if type(sizes) is list:             # <<<<<<<<<<<<<<
@@ -15660,7 +15686,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4c
     goto __pyx_L3;
   }
 
-  /* "taso/_cython/core.pyx":544
+  /* "taso/_cython/core.pyx":539
  *         else:
  *             # sizes is an integer
  *             self.p_graph.split_equal(input.ctensor, axis, sizes, coutputs)             # <<<<<<<<<<<<<<
@@ -15668,52 +15694,52 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4c
  *         for i in range(len(sizes)):
  */
   /*else*/ {
-    __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_sizes); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 544, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_sizes); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 539, __pyx_L1_error)
     __pyx_v_self->p_graph->split_equal(__pyx_v_input->ctensor, __pyx_v_axis, __pyx_t_7, __pyx_v_coutputs);
   }
   __pyx_L3:;
 
-  /* "taso/_cython/core.pyx":545
+  /* "taso/_cython/core.pyx":540
  *             # sizes is an integer
  *             self.p_graph.split_equal(input.ctensor, axis, sizes, coutputs)
  *         outputs = list()             # <<<<<<<<<<<<<<
  *         for i in range(len(sizes)):
  *             t = ctypes.cast(<unsigned long long>coutputs[i], ctypes.c_void_p)
  */
-  __pyx_t_6 = PyList_New(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 545, __pyx_L1_error)
+  __pyx_t_6 = PyList_New(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 540, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_v_outputs = ((PyObject*)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "taso/_cython/core.pyx":546
+  /* "taso/_cython/core.pyx":541
  *             self.p_graph.split_equal(input.ctensor, axis, sizes, coutputs)
  *         outputs = list()
  *         for i in range(len(sizes)):             # <<<<<<<<<<<<<<
  *             t = ctypes.cast(<unsigned long long>coutputs[i], ctypes.c_void_p)
  *             outputs.append(PyTensor(t))
  */
-  __pyx_t_3 = PyObject_Length(__pyx_v_sizes); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(1, 546, __pyx_L1_error)
+  __pyx_t_3 = PyObject_Length(__pyx_v_sizes); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(1, 541, __pyx_L1_error)
   __pyx_t_4 = __pyx_t_3;
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "taso/_cython/core.pyx":547
+    /* "taso/_cython/core.pyx":542
  *         outputs = list()
  *         for i in range(len(sizes)):
  *             t = ctypes.cast(<unsigned long long>coutputs[i], ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *             outputs.append(PyTensor(t))
  *         return outputs
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 547, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 542, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_cast); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 547, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_cast); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 542, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)(__pyx_v_coutputs[__pyx_v_i]))); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 547, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)(__pyx_v_coutputs[__pyx_v_i]))); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 542, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 547, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 542, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 547, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 542, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_t_10 = NULL;
@@ -15731,7 +15757,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4c
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_9)) {
       PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_t_8, __pyx_t_11};
-      __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 547, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 542, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -15741,7 +15767,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4c
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
       PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_t_8, __pyx_t_11};
-      __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 547, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 542, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -15749,7 +15775,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4c
     } else
     #endif
     {
-      __pyx_t_12 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_12)) __PYX_ERR(1, 547, __pyx_L1_error)
+      __pyx_t_12 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_12)) __PYX_ERR(1, 542, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       if (__pyx_t_10) {
         __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -15760,7 +15786,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4c
       PyTuple_SET_ITEM(__pyx_t_12, 1+__pyx_t_7, __pyx_t_11);
       __pyx_t_8 = 0;
       __pyx_t_11 = 0;
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_12, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 547, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_12, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 542, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     }
@@ -15768,20 +15794,20 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4c
     __Pyx_XDECREF_SET(__pyx_v_t, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "taso/_cython/core.pyx":548
+    /* "taso/_cython/core.pyx":543
  *         for i in range(len(sizes)):
  *             t = ctypes.cast(<unsigned long long>coutputs[i], ctypes.c_void_p)
  *             outputs.append(PyTensor(t))             # <<<<<<<<<<<<<<
  *         return outputs
  * 
  */
-    __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 548, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 543, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_outputs, __pyx_t_6); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(1, 548, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_outputs, __pyx_t_6); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(1, 543, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
 
-  /* "taso/_cython/core.pyx":549
+  /* "taso/_cython/core.pyx":544
  *             t = ctypes.cast(<unsigned long long>coutputs[i], ctypes.c_void_p)
  *             outputs.append(PyTensor(t))
  *         return outputs             # <<<<<<<<<<<<<<
@@ -15793,7 +15819,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4c
   __pyx_r = __pyx_v_outputs;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":533
+  /* "taso/_cython/core.pyx":528
  *         return PyTensor(t)
  * 
  *     def split(self, PyTensor input, int axis, sizes):             # <<<<<<<<<<<<<<
@@ -15819,7 +15845,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_96split(struct __pyx_obj_4taso_4c
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":551
+/* "taso/_cython/core.pyx":546
  *         return outputs
  * 
  *     def sqrt(self, *, PyTensor input):             # <<<<<<<<<<<<<<
@@ -15850,27 +15876,27 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_99sqrt(PyObject *__pyx_v_self, Py
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("sqrt", __pyx_n_s_input); __PYX_ERR(1, 551, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("sqrt", __pyx_n_s_input); __PYX_ERR(1, 546, __pyx_L3_error)
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "sqrt") < 0)) __PYX_ERR(1, 551, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "sqrt") < 0)) __PYX_ERR(1, 546, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("sqrt", __pyx_n_s_input); __PYX_ERR(1, 551, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("sqrt", __pyx_n_s_input); __PYX_ERR(1, 546, __pyx_L3_error)
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sqrt", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 551, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("sqrt", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 546, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.sqrt", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 551, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 546, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_98sqrt(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input);
 
   /* function exit code */
@@ -15899,7 +15925,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_98sqrt(struct __pyx_obj_4taso_4co
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("sqrt", 0);
 
-  /* "taso/_cython/core.pyx":552
+  /* "taso/_cython/core.pyx":547
  * 
  *     def sqrt(self, *, PyTensor input):
  *         cdef TensorHandle handle = self.p_graph.sqrt(input.ctensor)             # <<<<<<<<<<<<<<
@@ -15908,23 +15934,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_98sqrt(struct __pyx_obj_4taso_4co
  */
   __pyx_v_handle = __pyx_v_self->p_graph->sqrt(__pyx_v_input->ctensor);
 
-  /* "taso/_cython/core.pyx":553
+  /* "taso/_cython/core.pyx":548
  *     def sqrt(self, *, PyTensor input):
  *         cdef TensorHandle handle = self.p_graph.sqrt(input.ctensor)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 553, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cast); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 553, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cast); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 553, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 553, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 553, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 548, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -15942,7 +15968,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_98sqrt(struct __pyx_obj_4taso_4co
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 553, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 548, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -15952,7 +15978,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_98sqrt(struct __pyx_obj_4taso_4co
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 553, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 548, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -15960,7 +15986,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_98sqrt(struct __pyx_obj_4taso_4co
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 553, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 548, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -15971,7 +15997,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_98sqrt(struct __pyx_obj_4taso_4co
     PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_5);
     __pyx_t_2 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 553, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 548, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
@@ -15979,7 +16005,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_98sqrt(struct __pyx_obj_4taso_4co
   __pyx_v_t = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "taso/_cython/core.pyx":554
+  /* "taso/_cython/core.pyx":549
  *         cdef TensorHandle handle = self.p_graph.sqrt(input.ctensor)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -15987,13 +16013,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_98sqrt(struct __pyx_obj_4taso_4co
  *     def squeeze(self, *, PyTensor input, tuple axes):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 554, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 549, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":551
+  /* "taso/_cython/core.pyx":546
  *         return outputs
  * 
  *     def sqrt(self, *, PyTensor input):             # <<<<<<<<<<<<<<
@@ -16018,7 +16044,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_98sqrt(struct __pyx_obj_4taso_4co
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":556
+/* "taso/_cython/core.pyx":551
  *         return PyTensor(t)
  * 
  *     def squeeze(self, *, PyTensor input, tuple axes):             # <<<<<<<<<<<<<<
@@ -16050,33 +16076,33 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_101squeeze(PyObject *__pyx_v_self
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("squeeze", __pyx_n_s_input); __PYX_ERR(1, 556, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("squeeze", __pyx_n_s_input); __PYX_ERR(1, 551, __pyx_L3_error)
       }
       if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_axes)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("squeeze", __pyx_n_s_axes); __PYX_ERR(1, 556, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("squeeze", __pyx_n_s_axes); __PYX_ERR(1, 551, __pyx_L3_error)
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "squeeze") < 0)) __PYX_ERR(1, 556, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "squeeze") < 0)) __PYX_ERR(1, 551, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("squeeze", __pyx_n_s_input); __PYX_ERR(1, 556, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("squeeze", __pyx_n_s_input); __PYX_ERR(1, 551, __pyx_L3_error)
     }
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     __pyx_v_axes = ((PyObject*)values[1]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("squeeze", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 556, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("squeeze", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 551, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.squeeze", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 556, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 556, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 551, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 551, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_100squeeze(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_axes);
 
   /* function exit code */
@@ -16110,7 +16136,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_100squeeze(struct __pyx_obj_4taso
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("squeeze", 0);
 
-  /* "taso/_cython/core.pyx":558
+  /* "taso/_cython/core.pyx":553
  *     def squeeze(self, *, PyTensor input, tuple axes):
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))             # <<<<<<<<<<<<<<
@@ -16119,17 +16145,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_100squeeze(struct __pyx_obj_4taso
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 558, __pyx_L1_error)
+    __PYX_ERR(1, 553, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 558, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 553, __pyx_L1_error)
   try {
     __pyx_v_caxes.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 558, __pyx_L1_error)
+    __PYX_ERR(1, 553, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":559
+  /* "taso/_cython/core.pyx":554
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):             # <<<<<<<<<<<<<<
@@ -16138,14 +16164,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_100squeeze(struct __pyx_obj_4taso
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 559, __pyx_L1_error)
+    __PYX_ERR(1, 554, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 559, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 554, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":560
+    /* "taso/_cython/core.pyx":555
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]             # <<<<<<<<<<<<<<
@@ -16154,16 +16180,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_100squeeze(struct __pyx_obj_4taso
  */
     if (unlikely(__pyx_v_axes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 560, __pyx_L1_error)
+      __PYX_ERR(1, 555, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 560, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 555, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 560, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 555, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_caxes[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":561
+  /* "taso/_cython/core.pyx":556
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.squeeze(input.ctensor, caxes)             # <<<<<<<<<<<<<<
@@ -16172,23 +16198,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_100squeeze(struct __pyx_obj_4taso
  */
   __pyx_v_handle = __pyx_v_self->p_graph->squeeze(__pyx_v_input->ctensor, __pyx_v_caxes);
 
-  /* "taso/_cython/core.pyx":562
+  /* "taso/_cython/core.pyx":557
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.squeeze(input.ctensor, caxes)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 562, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 557, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 562, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 557, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 562, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 557, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 562, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 557, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 562, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 557, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -16206,7 +16232,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_100squeeze(struct __pyx_obj_4taso
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 562, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 557, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -16216,7 +16242,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_100squeeze(struct __pyx_obj_4taso
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 562, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 557, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -16224,7 +16250,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_100squeeze(struct __pyx_obj_4taso
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 562, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 557, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -16235,7 +16261,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_100squeeze(struct __pyx_obj_4taso
     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_5, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 562, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 557, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
@@ -16243,7 +16269,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_100squeeze(struct __pyx_obj_4taso
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":563
+  /* "taso/_cython/core.pyx":558
  *         cdef TensorHandle handle = self.p_graph.squeeze(input.ctensor, caxes)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -16251,13 +16277,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_100squeeze(struct __pyx_obj_4taso
  *     def sub(self, *, PyTensor x, PyTensor y):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 563, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 558, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":556
+  /* "taso/_cython/core.pyx":551
  *         return PyTensor(t)
  * 
  *     def squeeze(self, *, PyTensor input, tuple axes):             # <<<<<<<<<<<<<<
@@ -16282,7 +16308,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_100squeeze(struct __pyx_obj_4taso
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":565
+/* "taso/_cython/core.pyx":560
  *         return PyTensor(t)
  * 
  *     def sub(self, *, PyTensor x, PyTensor y):             # <<<<<<<<<<<<<<
@@ -16314,33 +16340,33 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_103sub(PyObject *__pyx_v_self, Py
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("sub", __pyx_n_s_x); __PYX_ERR(1, 565, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("sub", __pyx_n_s_x); __PYX_ERR(1, 560, __pyx_L3_error)
       }
       if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("sub", __pyx_n_s_y); __PYX_ERR(1, 565, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("sub", __pyx_n_s_y); __PYX_ERR(1, 560, __pyx_L3_error)
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "sub") < 0)) __PYX_ERR(1, 565, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "sub") < 0)) __PYX_ERR(1, 560, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("sub", __pyx_n_s_x); __PYX_ERR(1, 565, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("sub", __pyx_n_s_x); __PYX_ERR(1, 560, __pyx_L3_error)
     }
     __pyx_v_x = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     __pyx_v_y = ((struct __pyx_obj_4taso_4core_PyTensor *)values[1]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sub", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 565, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("sub", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 560, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.sub", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_x), __pyx_ptype_4taso_4core_PyTensor, 1, "x", 0))) __PYX_ERR(1, 565, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_y), __pyx_ptype_4taso_4core_PyTensor, 1, "y", 0))) __PYX_ERR(1, 565, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_x), __pyx_ptype_4taso_4core_PyTensor, 1, "x", 0))) __PYX_ERR(1, 560, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_y), __pyx_ptype_4taso_4core_PyTensor, 1, "y", 0))) __PYX_ERR(1, 560, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_102sub(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_x, __pyx_v_y);
 
   /* function exit code */
@@ -16369,7 +16395,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_102sub(struct __pyx_obj_4taso_4co
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("sub", 0);
 
-  /* "taso/_cython/core.pyx":566
+  /* "taso/_cython/core.pyx":561
  * 
  *     def sub(self, *, PyTensor x, PyTensor y):
  *         cdef TensorHandle handle = self.p_graph.element(OP_EW_SUB, x.ctensor, y.ctensor)             # <<<<<<<<<<<<<<
@@ -16378,9 +16404,229 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_102sub(struct __pyx_obj_4taso_4co
  */
   __pyx_v_handle = __pyx_v_self->p_graph->element(taso::OP_EW_SUB, __pyx_v_x->ctensor, __pyx_v_y->ctensor);
 
-  /* "taso/_cython/core.pyx":567
+  /* "taso/_cython/core.pyx":562
  *     def sub(self, *, PyTensor x, PyTensor y):
  *         cdef TensorHandle handle = self.p_graph.element(OP_EW_SUB, x.ctensor, y.ctensor)
+ *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
+ *         return PyTensor(t)
+ * 
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 562, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cast); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 562, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 562, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 562, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 562, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = NULL;
+  __pyx_t_6 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+      __pyx_t_6 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_3)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 562, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 562, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  } else
+  #endif
+  {
+    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 562, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (__pyx_t_4) {
+      __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
+    }
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_6, __pyx_t_2);
+    __Pyx_GIVEREF(__pyx_t_5);
+    PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_5);
+    __pyx_t_2 = 0;
+    __pyx_t_5 = 0;
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 562, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_v_t = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "taso/_cython/core.pyx":563
+ *         cdef TensorHandle handle = self.p_graph.element(OP_EW_SUB, x.ctensor, y.ctensor)
+ *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+ *         return PyTensor(t)             # <<<<<<<<<<<<<<
+ * 
+ *     def tanh(self, PyTensor input, bool inplace = False):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 563, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "taso/_cython/core.pyx":560
+ *         return PyTensor(t)
+ * 
+ *     def sub(self, *, PyTensor x, PyTensor y):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.element(OP_EW_SUB, x.ctensor, y.ctensor)
+ *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("taso.core.PyGraph.sub", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_t);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "taso/_cython/core.pyx":565
+ *         return PyTensor(t)
+ * 
+ *     def tanh(self, PyTensor input, bool inplace = False):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.tanh(input.ctensor, inplace)
+ *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_105tanh(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_105tanh(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input = 0;
+  bool __pyx_v_inplace;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("tanh (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_input,&__pyx_n_s_inplace,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_inplace);
+          if (value) { values[1] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "tanh") < 0)) __PYX_ERR(1, 565, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
+    if (values[1]) {
+      __pyx_v_inplace = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_inplace == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 565, __pyx_L3_error)
+    } else {
+      __pyx_v_inplace = ((bool)0);
+    }
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("tanh", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 565, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("taso.core.PyGraph.tanh", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 565, __pyx_L1_error)
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_104tanh(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_inplace);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_104tanh(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, bool __pyx_v_inplace) {
+  taso::TensorHandle __pyx_v_handle;
+  PyObject *__pyx_v_t = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("tanh", 0);
+
+  /* "taso/_cython/core.pyx":566
+ * 
+ *     def tanh(self, PyTensor input, bool inplace = False):
+ *         cdef TensorHandle handle = self.p_graph.tanh(input.ctensor, inplace)             # <<<<<<<<<<<<<<
+ *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
+ *         return PyTensor(t)
+ */
+  __pyx_v_handle = __pyx_v_self->p_graph->tanh(__pyx_v_input->ctensor, __pyx_v_inplace);
+
+  /* "taso/_cython/core.pyx":567
+ *     def tanh(self, PyTensor input, bool inplace = False):
+ *         cdef TensorHandle handle = self.p_graph.tanh(input.ctensor, inplace)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
@@ -16450,11 +16696,11 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_102sub(struct __pyx_obj_4taso_4co
   __pyx_t_1 = 0;
 
   /* "taso/_cython/core.pyx":568
- *         cdef TensorHandle handle = self.p_graph.element(OP_EW_SUB, x.ctensor, y.ctensor)
+ *         cdef TensorHandle handle = self.p_graph.tanh(input.ctensor, inplace)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
  * 
- *     def tanh(self, PyTensor input, bool inplace = False):
+ *     def transpose(self, PyTensor input, tuple perm, bool shuffle = False):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 568, __pyx_L1_error)
@@ -16466,8 +16712,8 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_102sub(struct __pyx_obj_4taso_4co
   /* "taso/_cython/core.pyx":565
  *         return PyTensor(t)
  * 
- *     def sub(self, *, PyTensor x, PyTensor y):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.element(OP_EW_SUB, x.ctensor, y.ctensor)
+ *     def tanh(self, PyTensor input, bool inplace = False):             # <<<<<<<<<<<<<<
+ *         cdef TensorHandle handle = self.p_graph.tanh(input.ctensor, inplace)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  */
 
@@ -16479,7 +16725,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_102sub(struct __pyx_obj_4taso_4co
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("taso.core.PyGraph.sub", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("taso.core.PyGraph.tanh", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_t);
@@ -16489,226 +16735,6 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_102sub(struct __pyx_obj_4taso_4co
 }
 
 /* "taso/_cython/core.pyx":570
- *         return PyTensor(t)
- * 
- *     def tanh(self, PyTensor input, bool inplace = False):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.tanh(input.ctensor, inplace)
- *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_105tanh(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_105tanh(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input = 0;
-  bool __pyx_v_inplace;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("tanh (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_input,&__pyx_n_s_inplace,0};
-    PyObject* values[2] = {0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_inplace);
-          if (value) { values[1] = value; kw_args--; }
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "tanh") < 0)) __PYX_ERR(1, 570, __pyx_L3_error)
-      }
-    } else {
-      switch (PyTuple_GET_SIZE(__pyx_args)) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-    }
-    __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
-    if (values[1]) {
-      __pyx_v_inplace = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_inplace == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 570, __pyx_L3_error)
-    } else {
-      __pyx_v_inplace = ((bool)0);
-    }
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("tanh", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 570, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("taso.core.PyGraph.tanh", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 570, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_104tanh(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_inplace);
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_104tanh(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, struct __pyx_obj_4taso_4core_PyTensor *__pyx_v_input, bool __pyx_v_inplace) {
-  taso::TensorHandle __pyx_v_handle;
-  PyObject *__pyx_v_t = NULL;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  int __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("tanh", 0);
-
-  /* "taso/_cython/core.pyx":571
- * 
- *     def tanh(self, PyTensor input, bool inplace = False):
- *         cdef TensorHandle handle = self.p_graph.tanh(input.ctensor, inplace)             # <<<<<<<<<<<<<<
- *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
- *         return PyTensor(t)
- */
-  __pyx_v_handle = __pyx_v_self->p_graph->tanh(__pyx_v_input->ctensor, __pyx_v_inplace);
-
-  /* "taso/_cython/core.pyx":572
- *     def tanh(self, PyTensor input, bool inplace = False):
- *         cdef TensorHandle handle = self.p_graph.tanh(input.ctensor, inplace)
- *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
- *         return PyTensor(t)
- * 
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 572, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cast); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 572, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 572, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 572, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 572, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = NULL;
-  __pyx_t_6 = 0;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-      __pyx_t_6 = 1;
-    }
-  }
-  #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_3)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 572, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  } else
-  #endif
-  #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 572, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  } else
-  #endif
-  {
-    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 572, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    if (__pyx_t_4) {
-      __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
-    }
-    __Pyx_GIVEREF(__pyx_t_2);
-    PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_6, __pyx_t_2);
-    __Pyx_GIVEREF(__pyx_t_5);
-    PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_5);
-    __pyx_t_2 = 0;
-    __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 572, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  }
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_t = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "taso/_cython/core.pyx":573
- *         cdef TensorHandle handle = self.p_graph.tanh(input.ctensor, inplace)
- *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
- *         return PyTensor(t)             # <<<<<<<<<<<<<<
- * 
- *     def transpose(self, PyTensor input, tuple perm, bool shuffle = False):
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 573, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "taso/_cython/core.pyx":570
- *         return PyTensor(t)
- * 
- *     def tanh(self, PyTensor input, bool inplace = False):             # <<<<<<<<<<<<<<
- *         cdef TensorHandle handle = self.p_graph.tanh(input.ctensor, inplace)
- *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("taso.core.PyGraph.tanh", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_t);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "taso/_cython/core.pyx":575
  *         return PyTensor(t)
  * 
  *     def transpose(self, PyTensor input, tuple perm, bool shuffle = False):             # <<<<<<<<<<<<<<
@@ -16753,7 +16779,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_107transpose(PyObject *__pyx_v_se
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_perm)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("transpose", 0, 2, 3, 1); __PYX_ERR(1, 575, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("transpose", 0, 2, 3, 1); __PYX_ERR(1, 570, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -16763,7 +16789,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_107transpose(PyObject *__pyx_v_se
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "transpose") < 0)) __PYX_ERR(1, 575, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "transpose") < 0)) __PYX_ERR(1, 570, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -16778,21 +16804,21 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_107transpose(PyObject *__pyx_v_se
     __pyx_v_input = ((struct __pyx_obj_4taso_4core_PyTensor *)values[0]);
     __pyx_v_perm = ((PyObject*)values[1]);
     if (values[2]) {
-      __pyx_v_shuffle = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_shuffle == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 575, __pyx_L3_error)
+      __pyx_v_shuffle = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_shuffle == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 570, __pyx_L3_error)
     } else {
       __pyx_v_shuffle = ((bool)0);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("transpose", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 575, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("transpose", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 570, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.transpose", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 575, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_perm), (&PyTuple_Type), 1, "perm", 1))) __PYX_ERR(1, 575, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 570, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_perm), (&PyTuple_Type), 1, "perm", 1))) __PYX_ERR(1, 570, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_106transpose(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_perm, __pyx_v_shuffle);
 
   /* function exit code */
@@ -16826,7 +16852,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_106transpose(struct __pyx_obj_4ta
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("transpose", 0);
 
-  /* "taso/_cython/core.pyx":577
+  /* "taso/_cython/core.pyx":572
  *     def transpose(self, PyTensor input, tuple perm, bool shuffle = False):
  *         cdef vector[int] cperm
  *         cperm.resize(len(perm))             # <<<<<<<<<<<<<<
@@ -16835,17 +16861,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_106transpose(struct __pyx_obj_4ta
  */
   if (unlikely(__pyx_v_perm == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 577, __pyx_L1_error)
+    __PYX_ERR(1, 572, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_perm); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 577, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_perm); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 572, __pyx_L1_error)
   try {
     __pyx_v_cperm.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 577, __pyx_L1_error)
+    __PYX_ERR(1, 572, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":578
+  /* "taso/_cython/core.pyx":573
  *         cdef vector[int] cperm
  *         cperm.resize(len(perm))
  *         for i in range(len(perm)):             # <<<<<<<<<<<<<<
@@ -16854,14 +16880,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_106transpose(struct __pyx_obj_4ta
  */
   if (unlikely(__pyx_v_perm == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 578, __pyx_L1_error)
+    __PYX_ERR(1, 573, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_perm); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 578, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_perm); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 573, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":579
+    /* "taso/_cython/core.pyx":574
  *         cperm.resize(len(perm))
  *         for i in range(len(perm)):
  *             cperm[i] = perm[i]             # <<<<<<<<<<<<<<
@@ -16870,16 +16896,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_106transpose(struct __pyx_obj_4ta
  */
     if (unlikely(__pyx_v_perm == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 579, __pyx_L1_error)
+      __PYX_ERR(1, 574, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_perm, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 579, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_perm, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 574, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 579, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 574, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_cperm[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":580
+  /* "taso/_cython/core.pyx":575
  *         for i in range(len(perm)):
  *             cperm[i] = perm[i]
  *         cdef TensorHandle handle = self.p_graph.transpose(input.ctensor, cperm, shuffle)             # <<<<<<<<<<<<<<
@@ -16888,23 +16914,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_106transpose(struct __pyx_obj_4ta
  */
   __pyx_v_handle = __pyx_v_self->p_graph->transpose(__pyx_v_input->ctensor, __pyx_v_cperm, __pyx_v_shuffle);
 
-  /* "taso/_cython/core.pyx":581
+  /* "taso/_cython/core.pyx":576
  *             cperm[i] = perm[i]
  *         cdef TensorHandle handle = self.p_graph.transpose(input.ctensor, cperm, shuffle)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 581, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 576, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 581, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 576, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 581, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 576, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 581, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 576, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 581, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 576, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -16922,7 +16948,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_106transpose(struct __pyx_obj_4ta
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 581, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 576, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -16932,7 +16958,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_106transpose(struct __pyx_obj_4ta
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 581, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 576, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -16940,7 +16966,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_106transpose(struct __pyx_obj_4ta
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 581, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 576, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -16951,7 +16977,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_106transpose(struct __pyx_obj_4ta
     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_5, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 581, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 576, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
@@ -16959,7 +16985,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_106transpose(struct __pyx_obj_4ta
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":582
+  /* "taso/_cython/core.pyx":577
  *         cdef TensorHandle handle = self.p_graph.transpose(input.ctensor, cperm, shuffle)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -16967,13 +16993,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_106transpose(struct __pyx_obj_4ta
  *     def unsqueeze(self, PyTensor input, tuple axes):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 582, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 577, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":575
+  /* "taso/_cython/core.pyx":570
  *         return PyTensor(t)
  * 
  *     def transpose(self, PyTensor input, tuple perm, bool shuffle = False):             # <<<<<<<<<<<<<<
@@ -16998,7 +17024,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_106transpose(struct __pyx_obj_4ta
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":584
+/* "taso/_cython/core.pyx":579
  *         return PyTensor(t)
  * 
  *     def unsqueeze(self, PyTensor input, tuple axes):             # <<<<<<<<<<<<<<
@@ -17040,11 +17066,11 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_109unsqueeze(PyObject *__pyx_v_se
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_axes)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("unsqueeze", 1, 2, 2, 1); __PYX_ERR(1, 584, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("unsqueeze", 1, 2, 2, 1); __PYX_ERR(1, 579, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "unsqueeze") < 0)) __PYX_ERR(1, 584, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "unsqueeze") < 0)) __PYX_ERR(1, 579, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -17057,14 +17083,14 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_109unsqueeze(PyObject *__pyx_v_se
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("unsqueeze", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 584, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("unsqueeze", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 579, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.unsqueeze", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 584, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 584, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_input), __pyx_ptype_4taso_4core_PyTensor, 1, "input", 0))) __PYX_ERR(1, 579, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_axes), (&PyTuple_Type), 1, "axes", 1))) __PYX_ERR(1, 579, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_108unsqueeze(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_input, __pyx_v_axes);
 
   /* function exit code */
@@ -17098,7 +17124,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_108unsqueeze(struct __pyx_obj_4ta
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("unsqueeze", 0);
 
-  /* "taso/_cython/core.pyx":586
+  /* "taso/_cython/core.pyx":581
  *     def unsqueeze(self, PyTensor input, tuple axes):
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))             # <<<<<<<<<<<<<<
@@ -17107,17 +17133,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_108unsqueeze(struct __pyx_obj_4ta
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 586, __pyx_L1_error)
+    __PYX_ERR(1, 581, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 586, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 581, __pyx_L1_error)
   try {
     __pyx_v_caxes.resize(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 586, __pyx_L1_error)
+    __PYX_ERR(1, 581, __pyx_L1_error)
   }
 
-  /* "taso/_cython/core.pyx":587
+  /* "taso/_cython/core.pyx":582
  *         cdef vector[int] caxes
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):             # <<<<<<<<<<<<<<
@@ -17126,14 +17152,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_108unsqueeze(struct __pyx_obj_4ta
  */
   if (unlikely(__pyx_v_axes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 587, __pyx_L1_error)
+    __PYX_ERR(1, 582, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 587, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_axes); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 582, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":588
+    /* "taso/_cython/core.pyx":583
  *         caxes.resize(len(axes))
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]             # <<<<<<<<<<<<<<
@@ -17142,16 +17168,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_108unsqueeze(struct __pyx_obj_4ta
  */
     if (unlikely(__pyx_v_axes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 588, __pyx_L1_error)
+      __PYX_ERR(1, 583, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 588, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_axes, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 583, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 588, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 583, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_caxes[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":589
+  /* "taso/_cython/core.pyx":584
  *         for i in range(len(axes)):
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.unsqueeze(input.ctensor, caxes)             # <<<<<<<<<<<<<<
@@ -17160,23 +17186,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_108unsqueeze(struct __pyx_obj_4ta
  */
   __pyx_v_handle = __pyx_v_self->p_graph->unsqueeze(__pyx_v_input->ctensor, __pyx_v_caxes);
 
-  /* "taso/_cython/core.pyx":590
+  /* "taso/_cython/core.pyx":585
  *             caxes[i] = axes[i]
  *         cdef TensorHandle handle = self.p_graph.unsqueeze(input.ctensor, caxes)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 590, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 585, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 590, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 585, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 590, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 585, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 590, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 585, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 590, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 585, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -17194,7 +17220,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_108unsqueeze(struct __pyx_obj_4ta
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 590, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 585, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -17204,7 +17230,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_108unsqueeze(struct __pyx_obj_4ta
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 590, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 585, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -17212,7 +17238,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_108unsqueeze(struct __pyx_obj_4ta
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 590, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 585, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -17223,7 +17249,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_108unsqueeze(struct __pyx_obj_4ta
     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_5, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 590, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 585, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
@@ -17231,7 +17257,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_108unsqueeze(struct __pyx_obj_4ta
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":591
+  /* "taso/_cython/core.pyx":586
  *         cdef TensorHandle handle = self.p_graph.unsqueeze(input.ctensor, caxes)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -17239,13 +17265,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_108unsqueeze(struct __pyx_obj_4ta
  *     def new_input(self, *, tuple dims):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 591, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 586, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":584
+  /* "taso/_cython/core.pyx":579
  *         return PyTensor(t)
  * 
  *     def unsqueeze(self, PyTensor input, tuple axes):             # <<<<<<<<<<<<<<
@@ -17270,7 +17296,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_108unsqueeze(struct __pyx_obj_4ta
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":593
+/* "taso/_cython/core.pyx":588
  *         return PyTensor(t)
  * 
  *     def new_input(self, *, tuple dims):             # <<<<<<<<<<<<<<
@@ -17301,27 +17327,27 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_111new_input(PyObject *__pyx_v_se
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dims)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("new_input", __pyx_n_s_dims); __PYX_ERR(1, 593, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("new_input", __pyx_n_s_dims); __PYX_ERR(1, 588, __pyx_L3_error)
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "new_input") < 0)) __PYX_ERR(1, 593, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "new_input") < 0)) __PYX_ERR(1, 588, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("new_input", __pyx_n_s_dims); __PYX_ERR(1, 593, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("new_input", __pyx_n_s_dims); __PYX_ERR(1, 588, __pyx_L3_error)
     }
     __pyx_v_dims = ((PyObject*)values[0]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("new_input", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 593, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("new_input", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 588, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.new_input", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dims), (&PyTuple_Type), 1, "dims", 1))) __PYX_ERR(1, 593, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dims), (&PyTuple_Type), 1, "dims", 1))) __PYX_ERR(1, 588, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_110new_input(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_dims);
 
   /* function exit code */
@@ -17356,7 +17382,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_110new_input(struct __pyx_obj_4ta
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("new_input", 0);
 
-  /* "taso/_cython/core.pyx":594
+  /* "taso/_cython/core.pyx":589
  * 
  *     def new_input(self, *, tuple dims):
  *         cdef int ndim = len(dims)             # <<<<<<<<<<<<<<
@@ -17365,12 +17391,12 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_110new_input(struct __pyx_obj_4ta
  */
   if (unlikely(__pyx_v_dims == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 594, __pyx_L1_error)
+    __PYX_ERR(1, 589, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_dims); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 594, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_dims); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 589, __pyx_L1_error)
   __pyx_v_ndim = __pyx_t_1;
 
-  /* "taso/_cython/core.pyx":596
+  /* "taso/_cython/core.pyx":591
  *         cdef int ndim = len(dims)
  *         cdef int dim_array[16]
  *         assert (ndim < 16)             # <<<<<<<<<<<<<<
@@ -17381,12 +17407,12 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_110new_input(struct __pyx_obj_4ta
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_ndim < 16) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(1, 596, __pyx_L1_error)
+      __PYX_ERR(1, 591, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "taso/_cython/core.pyx":597
+  /* "taso/_cython/core.pyx":592
  *         cdef int dim_array[16]
  *         assert (ndim < 16)
  *         for i in range(0, len(dims)):             # <<<<<<<<<<<<<<
@@ -17395,14 +17421,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_110new_input(struct __pyx_obj_4ta
  */
   if (unlikely(__pyx_v_dims == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 597, __pyx_L1_error)
+    __PYX_ERR(1, 592, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_dims); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 597, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_dims); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 592, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "taso/_cython/core.pyx":598
+    /* "taso/_cython/core.pyx":593
  *         assert (ndim < 16)
  *         for i in range(0, len(dims)):
  *             dim_array[i] = dims[i]             # <<<<<<<<<<<<<<
@@ -17411,16 +17437,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_110new_input(struct __pyx_obj_4ta
  */
     if (unlikely(__pyx_v_dims == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 598, __pyx_L1_error)
+      __PYX_ERR(1, 593, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_dims, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 598, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_dims, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 593, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 598, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 593, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     (__pyx_v_dim_array[__pyx_v_i]) = __pyx_t_5;
   }
 
-  /* "taso/_cython/core.pyx":599
+  /* "taso/_cython/core.pyx":594
  *         for i in range(0, len(dims)):
  *             dim_array[i] = dims[i]
  *         cdef TensorHandle handle = self.p_graph.new_input(ndim, dim_array)             # <<<<<<<<<<<<<<
@@ -17429,23 +17455,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_110new_input(struct __pyx_obj_4ta
  */
   __pyx_v_handle = __pyx_v_self->p_graph->new_input(__pyx_v_ndim, __pyx_v_dim_array);
 
-  /* "taso/_cython/core.pyx":600
+  /* "taso/_cython/core.pyx":595
  *             dim_array[i] = dims[i]
  *         cdef TensorHandle handle = self.p_graph.new_input(ndim, dim_array)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 600, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 595, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 600, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_cast); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 595, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 600, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 595, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 600, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 595, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 600, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 595, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -17463,7 +17489,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_110new_input(struct __pyx_obj_4ta
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 600, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 595, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -17473,7 +17499,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_110new_input(struct __pyx_obj_4ta
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_6, __pyx_t_9};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 600, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 595, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -17481,7 +17507,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_110new_input(struct __pyx_obj_4ta
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 600, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 595, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -17492,7 +17518,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_110new_input(struct __pyx_obj_4ta
     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_5, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 600, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 595, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
@@ -17500,7 +17526,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_110new_input(struct __pyx_obj_4ta
   __pyx_v_t = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "taso/_cython/core.pyx":601
+  /* "taso/_cython/core.pyx":596
  *         cdef TensorHandle handle = self.p_graph.new_input(ndim, dim_array)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -17508,13 +17534,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_110new_input(struct __pyx_obj_4ta
  *     def new_weight(self, *, tuple dims, data = None):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 601, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 596, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":593
+  /* "taso/_cython/core.pyx":588
  *         return PyTensor(t)
  * 
  *     def new_input(self, *, tuple dims):             # <<<<<<<<<<<<<<
@@ -17539,7 +17565,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_110new_input(struct __pyx_obj_4ta
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":603
+/* "taso/_cython/core.pyx":598
  *         return PyTensor(t)
  * 
  *     def new_weight(self, *, tuple dims, data = None):             # <<<<<<<<<<<<<<
@@ -17572,7 +17598,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_113new_weight(PyObject *__pyx_v_s
       kw_args = PyDict_Size(__pyx_kwds);
       if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dims)) != 0)) kw_args--;
       else {
-        __Pyx_RaiseKeywordRequired("new_weight", __pyx_n_s_dims); __PYX_ERR(1, 603, __pyx_L3_error)
+        __Pyx_RaiseKeywordRequired("new_weight", __pyx_n_s_dims); __PYX_ERR(1, 598, __pyx_L3_error)
       }
       if (kw_args == 1) {
         const Py_ssize_t index = 1;
@@ -17580,25 +17606,25 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_113new_weight(PyObject *__pyx_v_s
         if (value) { values[index] = value; kw_args--; }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "new_weight") < 0)) __PYX_ERR(1, 603, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, 0, "new_weight") < 0)) __PYX_ERR(1, 598, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 0) {
       goto __pyx_L5_argtuple_error;
     } else {
-      __Pyx_RaiseKeywordRequired("new_weight", __pyx_n_s_dims); __PYX_ERR(1, 603, __pyx_L3_error)
+      __Pyx_RaiseKeywordRequired("new_weight", __pyx_n_s_dims); __PYX_ERR(1, 598, __pyx_L3_error)
     }
     __pyx_v_dims = ((PyObject*)values[0]);
     __pyx_v_data = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("new_weight", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 603, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("new_weight", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 598, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.new_weight", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dims), (&PyTuple_Type), 1, "dims", 1))) __PYX_ERR(1, 603, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dims), (&PyTuple_Type), 1, "dims", 1))) __PYX_ERR(1, 598, __pyx_L1_error)
   __pyx_r = __pyx_pf_4taso_4core_7PyGraph_112new_weight(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_dims, __pyx_v_data);
 
   /* function exit code */
@@ -17637,7 +17663,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
   __Pyx_RefNannySetupContext("new_weight", 0);
   __Pyx_INCREF(__pyx_v_data);
 
-  /* "taso/_cython/core.pyx":604
+  /* "taso/_cython/core.pyx":599
  * 
  *     def new_weight(self, *, tuple dims, data = None):
  *         cdef int ndim = len(dims)             # <<<<<<<<<<<<<<
@@ -17646,12 +17672,12 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
  */
   if (unlikely(__pyx_v_dims == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 604, __pyx_L1_error)
+    __PYX_ERR(1, 599, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_dims); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 604, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_dims); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 599, __pyx_L1_error)
   __pyx_v_ndim = __pyx_t_1;
 
-  /* "taso/_cython/core.pyx":607
+  /* "taso/_cython/core.pyx":602
  *         cdef int dim_array[16]
  *         cdef array.array arr
  *         if data is None:             # <<<<<<<<<<<<<<
@@ -17662,32 +17688,32 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "taso/_cython/core.pyx":608
+    /* "taso/_cython/core.pyx":603
  *         cdef array.array arr
  *         if data is None:
  *             data = np.random.rand(*dims)             # <<<<<<<<<<<<<<
  *         if isinstance(data, np.ndarray):
  *             assert dims == data.shape
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 608, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 603, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_random); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 608, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_random); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 603, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_rand); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 608, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_rand); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 603, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (unlikely(__pyx_v_dims == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      __PYX_ERR(1, 608, __pyx_L1_error)
+      __PYX_ERR(1, 603, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_v_dims, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 608, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_v_dims, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 603, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF_SET(__pyx_v_data, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "taso/_cython/core.pyx":607
+    /* "taso/_cython/core.pyx":602
  *         cdef int dim_array[16]
  *         cdef array.array arr
  *         if data is None:             # <<<<<<<<<<<<<<
@@ -17696,24 +17722,24 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
  */
   }
 
-  /* "taso/_cython/core.pyx":609
+  /* "taso/_cython/core.pyx":604
  *         if data is None:
  *             data = np.random.rand(*dims)
  *         if isinstance(data, np.ndarray):             # <<<<<<<<<<<<<<
  *             assert dims == data.shape
  *             arr = array.array('f', data.flatten().tolist())
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 609, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 609, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_3 = PyObject_IsInstance(__pyx_v_data, __pyx_t_4); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(1, 609, __pyx_L1_error)
+  __pyx_t_3 = PyObject_IsInstance(__pyx_v_data, __pyx_t_4); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(1, 604, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (__pyx_t_2) {
 
-    /* "taso/_cython/core.pyx":610
+    /* "taso/_cython/core.pyx":605
  *             data = np.random.rand(*dims)
  *         if isinstance(data, np.ndarray):
  *             assert dims == data.shape             # <<<<<<<<<<<<<<
@@ -17722,27 +17748,27 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
  */
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_shape); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 610, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_shape); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 605, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = PyObject_RichCompare(__pyx_v_dims, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 610, __pyx_L1_error)
+      __pyx_t_5 = PyObject_RichCompare(__pyx_v_dims, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 605, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 610, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 605, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       if (unlikely(!__pyx_t_2)) {
         PyErr_SetNone(PyExc_AssertionError);
-        __PYX_ERR(1, 610, __pyx_L1_error)
+        __PYX_ERR(1, 605, __pyx_L1_error)
       }
     }
     #endif
 
-    /* "taso/_cython/core.pyx":611
+    /* "taso/_cython/core.pyx":606
  *         if isinstance(data, np.ndarray):
  *             assert dims == data.shape
  *             arr = array.array('f', data.flatten().tolist())             # <<<<<<<<<<<<<<
  *         else:
  *             arr = array.array('f', data)
  */
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_flatten); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 611, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_flatten); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 606, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_7 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -17756,10 +17782,10 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
     }
     __pyx_t_4 = (__pyx_t_7) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 611, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 606, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_tolist); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 611, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_tolist); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 606, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = NULL;
@@ -17774,10 +17800,10 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
     }
     __pyx_t_5 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 611, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 606, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 611, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 606, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_INCREF(__pyx_n_u_f);
     __Pyx_GIVEREF(__pyx_n_u_f);
@@ -17785,13 +17811,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 611, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 606, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_v_arr = ((arrayobject *)__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "taso/_cython/core.pyx":609
+    /* "taso/_cython/core.pyx":604
  *         if data is None:
  *             data = np.random.rand(*dims)
  *         if isinstance(data, np.ndarray):             # <<<<<<<<<<<<<<
@@ -17801,7 +17827,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
     goto __pyx_L4;
   }
 
-  /* "taso/_cython/core.pyx":613
+  /* "taso/_cython/core.pyx":608
  *             arr = array.array('f', data.flatten().tolist())
  *         else:
  *             arr = array.array('f', data)             # <<<<<<<<<<<<<<
@@ -17809,7 +17835,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
  *         for i in range(0, len(dims)):
  */
   /*else*/ {
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 613, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 608, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_n_u_f);
     __Pyx_GIVEREF(__pyx_n_u_f);
@@ -17817,7 +17843,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
     __Pyx_INCREF(__pyx_v_data);
     __Pyx_GIVEREF(__pyx_v_data);
     PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_data);
-    __pyx_t_6 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_5, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 613, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_5, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 608, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_arr = ((arrayobject *)__pyx_t_6);
@@ -17825,7 +17851,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
   }
   __pyx_L4:;
 
-  /* "taso/_cython/core.pyx":614
+  /* "taso/_cython/core.pyx":609
  *         else:
  *             arr = array.array('f', data)
  *         assert (ndim < 16)             # <<<<<<<<<<<<<<
@@ -17836,12 +17862,12 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_ndim < 16) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(1, 614, __pyx_L1_error)
+      __PYX_ERR(1, 609, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "taso/_cython/core.pyx":615
+  /* "taso/_cython/core.pyx":610
  *             arr = array.array('f', data)
  *         assert (ndim < 16)
  *         for i in range(0, len(dims)):             # <<<<<<<<<<<<<<
@@ -17850,14 +17876,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
  */
   if (unlikely(__pyx_v_dims == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(1, 615, __pyx_L1_error)
+    __PYX_ERR(1, 610, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_dims); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 615, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_dims); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 610, __pyx_L1_error)
   __pyx_t_8 = __pyx_t_1;
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "taso/_cython/core.pyx":616
+    /* "taso/_cython/core.pyx":611
  *         assert (ndim < 16)
  *         for i in range(0, len(dims)):
  *             dim_array[i] = dims[i]             # <<<<<<<<<<<<<<
@@ -17866,16 +17892,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
  */
     if (unlikely(__pyx_v_dims == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 616, __pyx_L1_error)
+      __PYX_ERR(1, 611, __pyx_L1_error)
     }
-    __pyx_t_6 = __Pyx_GetItemInt_Tuple(__pyx_v_dims, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 616, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_GetItemInt_Tuple(__pyx_v_dims, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 611, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 616, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 611, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     (__pyx_v_dim_array[__pyx_v_i]) = __pyx_t_10;
   }
 
-  /* "taso/_cython/core.pyx":617
+  /* "taso/_cython/core.pyx":612
  *         for i in range(0, len(dims)):
  *             dim_array[i] = dims[i]
  *         cdef TensorHandle handle = self.p_graph.new_weight(ndim, dim_array, arr.data.as_floats)             # <<<<<<<<<<<<<<
@@ -17884,23 +17910,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
  */
   __pyx_v_handle = __pyx_v_self->p_graph->new_weight(__pyx_v_ndim, __pyx_v_dim_array, __pyx_v_arr->data.as_floats);
 
-  /* "taso/_cython/core.pyx":618
+  /* "taso/_cython/core.pyx":613
  *             dim_array[i] = dims[i]
  *         cdef TensorHandle handle = self.p_graph.new_weight(ndim, dim_array, arr.data.as_floats)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyTensor(t)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 618, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 613, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_cast); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 618, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_cast); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 613, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 618, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_handle)); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 613, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 618, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 613, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 618, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 613, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -17918,7 +17944,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_5, __pyx_t_11};
-    __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 618, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 613, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -17928,7 +17954,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_5, __pyx_t_11};
-    __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 618, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 613, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -17936,7 +17962,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
   } else
   #endif
   {
-    __pyx_t_12 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_12)) __PYX_ERR(1, 618, __pyx_L1_error)
+    __pyx_t_12 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_12)) __PYX_ERR(1, 613, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -17947,7 +17973,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
     PyTuple_SET_ITEM(__pyx_t_12, 1+__pyx_t_10, __pyx_t_11);
     __pyx_t_5 = 0;
     __pyx_t_11 = 0;
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_12, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 618, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_12, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 613, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   }
@@ -17955,7 +17981,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
   __pyx_v_t = __pyx_t_6;
   __pyx_t_6 = 0;
 
-  /* "taso/_cython/core.pyx":619
+  /* "taso/_cython/core.pyx":614
  *         cdef TensorHandle handle = self.p_graph.new_weight(ndim, dim_array, arr.data.as_floats)
  *         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
  *         return PyTensor(t)             # <<<<<<<<<<<<<<
@@ -17963,13 +17989,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
  *     def optimize(self, float alpha, int budget, bool print_subst):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 619, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyTensor), __pyx_v_t); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 614, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":603
+  /* "taso/_cython/core.pyx":598
  *         return PyTensor(t)
  * 
  *     def new_weight(self, *, tuple dims, data = None):             # <<<<<<<<<<<<<<
@@ -17996,7 +18022,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_112new_weight(struct __pyx_obj_4t
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":621
+/* "taso/_cython/core.pyx":616
  *         return PyTensor(t)
  * 
  *     def optimize(self, float alpha, int budget, bool print_subst):             # <<<<<<<<<<<<<<
@@ -18041,17 +18067,17 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_115optimize(PyObject *__pyx_v_sel
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_budget)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("optimize", 1, 3, 3, 1); __PYX_ERR(1, 621, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("optimize", 1, 3, 3, 1); __PYX_ERR(1, 616, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_print_subst)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("optimize", 1, 3, 3, 2); __PYX_ERR(1, 621, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("optimize", 1, 3, 3, 2); __PYX_ERR(1, 616, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "optimize") < 0)) __PYX_ERR(1, 621, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "optimize") < 0)) __PYX_ERR(1, 616, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -18060,13 +18086,13 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_115optimize(PyObject *__pyx_v_sel
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_alpha = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_alpha == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 621, __pyx_L3_error)
-    __pyx_v_budget = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_budget == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 621, __pyx_L3_error)
-    __pyx_v_print_subst = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_print_subst == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 621, __pyx_L3_error)
+    __pyx_v_alpha = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_alpha == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 616, __pyx_L3_error)
+    __pyx_v_budget = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_budget == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 616, __pyx_L3_error)
+    __pyx_v_print_subst = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_print_subst == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 616, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("optimize", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 621, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("optimize", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 616, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.optimize", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -18096,7 +18122,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_114optimize(struct __pyx_obj_4tas
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("optimize", 0);
 
-  /* "taso/_cython/core.pyx":622
+  /* "taso/_cython/core.pyx":617
  * 
  *     def optimize(self, float alpha, int budget, bool print_subst):
  *         cdef Graph* new_graph = self.p_graph.optimize(alpha, budget, print_subst)             # <<<<<<<<<<<<<<
@@ -18105,23 +18131,23 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_114optimize(struct __pyx_obj_4tas
  */
   __pyx_v_new_graph = __pyx_v_self->p_graph->optimize(__pyx_v_alpha, __pyx_v_budget, __pyx_v_print_subst);
 
-  /* "taso/_cython/core.pyx":623
+  /* "taso/_cython/core.pyx":618
  *     def optimize(self, float alpha, int budget, bool print_subst):
  *         cdef Graph* new_graph = self.p_graph.optimize(alpha, budget, print_subst)
  *         graph = ctypes.cast(<unsigned long long>new_graph, ctypes.c_void_p)             # <<<<<<<<<<<<<<
  *         return PyGraph(graph)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 623, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 618, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cast); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 623, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_cast); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 618, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_new_graph)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 623, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(((unsigned PY_LONG_LONG)__pyx_v_new_graph)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 618, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 623, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_ctypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 618, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 623, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_c_void_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 618, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -18139,7 +18165,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_114optimize(struct __pyx_obj_4tas
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 623, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 618, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -18149,7 +18175,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_114optimize(struct __pyx_obj_4tas
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 623, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 618, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -18157,7 +18183,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_114optimize(struct __pyx_obj_4tas
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 623, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 618, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -18168,7 +18194,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_114optimize(struct __pyx_obj_4tas
     PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_5);
     __pyx_t_2 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 623, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 618, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
@@ -18176,7 +18202,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_114optimize(struct __pyx_obj_4tas
   __pyx_v_graph = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "taso/_cython/core.pyx":624
+  /* "taso/_cython/core.pyx":619
  *         cdef Graph* new_graph = self.p_graph.optimize(alpha, budget, print_subst)
  *         graph = ctypes.cast(<unsigned long long>new_graph, ctypes.c_void_p)
  *         return PyGraph(graph)             # <<<<<<<<<<<<<<
@@ -18184,13 +18210,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_114optimize(struct __pyx_obj_4tas
  *     def get_operator_list(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyGraph), __pyx_v_graph); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 624, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_4taso_4core_PyGraph), __pyx_v_graph); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 619, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":621
+  /* "taso/_cython/core.pyx":616
  *         return PyTensor(t)
  * 
  *     def optimize(self, float alpha, int budget, bool print_subst):             # <<<<<<<<<<<<<<
@@ -18215,7 +18241,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_114optimize(struct __pyx_obj_4tas
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":626
+/* "taso/_cython/core.pyx":621
  *         return PyGraph(graph)
  * 
  *     def get_operator_list(self):             # <<<<<<<<<<<<<<
@@ -18253,7 +18279,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_116get_operator_list(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_operator_list", 0);
 
-  /* "taso/_cython/core.pyx":628
+  /* "taso/_cython/core.pyx":623
  *     def get_operator_list(self):
  *         cdef Op ops[4192]
  *         cdef int numOps = self.p_graph.get_operator_list(ops, 4192)             # <<<<<<<<<<<<<<
@@ -18262,19 +18288,19 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_116get_operator_list(struct __pyx
  */
   __pyx_v_numOps = __pyx_v_self->p_graph->get_operator_list(__pyx_v_ops, 0x1060);
 
-  /* "taso/_cython/core.pyx":629
+  /* "taso/_cython/core.pyx":624
  *         cdef Op ops[4192]
  *         cdef int numOps = self.p_graph.get_operator_list(ops, 4192)
  *         opList = list()             # <<<<<<<<<<<<<<
  *         for i in range(numOps):
  *             #print(ops[i].guid)
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 629, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 624, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_opList = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "taso/_cython/core.pyx":630
+  /* "taso/_cython/core.pyx":625
  *         cdef int numOps = self.p_graph.get_operator_list(ops, 4192)
  *         opList = list()
  *         for i in range(numOps):             # <<<<<<<<<<<<<<
@@ -18286,20 +18312,20 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_116get_operator_list(struct __pyx
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "taso/_cython/core.pyx":632
+    /* "taso/_cython/core.pyx":627
  *         for i in range(numOps):
  *             #print(ops[i].guid)
  *             opList.append(ops[i])             # <<<<<<<<<<<<<<
  *         return opList
  * 
  */
-    __pyx_t_1 = __pyx_convert__to_py_taso_3a__3a_Op((__pyx_v_ops[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 632, __pyx_L1_error)
+    __pyx_t_1 = __pyx_convert__to_py_taso_3a__3a_Op((__pyx_v_ops[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 627, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_opList, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 632, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_opList, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 627, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "taso/_cython/core.pyx":633
+  /* "taso/_cython/core.pyx":628
  *             #print(ops[i].guid)
  *             opList.append(ops[i])
  *         return opList             # <<<<<<<<<<<<<<
@@ -18311,7 +18337,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_116get_operator_list(struct __pyx
   __pyx_r = __pyx_v_opList;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":626
+  /* "taso/_cython/core.pyx":621
  *         return PyGraph(graph)
  * 
  *     def get_operator_list(self):             # <<<<<<<<<<<<<<
@@ -18331,7 +18357,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_116get_operator_list(struct __pyx
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":635
+/* "taso/_cython/core.pyx":630
  *         return opList
  * 
  *     def get_input_edges(self, Op op):             # <<<<<<<<<<<<<<
@@ -18350,7 +18376,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_119get_input_edges(PyObject *__py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_input_edges (wrapper)", 0);
   assert(__pyx_arg_op); {
-    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(__pyx_arg_op); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 635, __pyx_L3_error)
+    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(__pyx_arg_op); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 630, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -18382,7 +18408,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_118get_input_edges(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_input_edges", 0);
 
-  /* "taso/_cython/core.pyx":637
+  /* "taso/_cython/core.pyx":632
  *     def get_input_edges(self, Op op):
  *         cdef Edge edges[128];
  *         cdef int numEdges = self.p_graph.get_input_edges(edges, op.guid)             # <<<<<<<<<<<<<<
@@ -18391,19 +18417,19 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_118get_input_edges(struct __pyx_o
  */
   __pyx_v_numEdges = __pyx_v_self->p_graph->get_input_edges(__pyx_v_edges, __pyx_v_op.guid);
 
-  /* "taso/_cython/core.pyx":638
+  /* "taso/_cython/core.pyx":633
  *         cdef Edge edges[128];
  *         cdef int numEdges = self.p_graph.get_input_edges(edges, op.guid)
  *         inEdges = list()             # <<<<<<<<<<<<<<
  *         for i in range(numEdges):
  *             inEdges.append(edges[i])
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 638, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 633, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_inEdges = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "taso/_cython/core.pyx":639
+  /* "taso/_cython/core.pyx":634
  *         cdef int numEdges = self.p_graph.get_input_edges(edges, op.guid)
  *         inEdges = list()
  *         for i in range(numEdges):             # <<<<<<<<<<<<<<
@@ -18415,20 +18441,20 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_118get_input_edges(struct __pyx_o
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "taso/_cython/core.pyx":640
+    /* "taso/_cython/core.pyx":635
  *         inEdges = list()
  *         for i in range(numEdges):
  *             inEdges.append(edges[i])             # <<<<<<<<<<<<<<
  *         return inEdges
  * 
  */
-    __pyx_t_1 = __pyx_convert__to_py_taso_3a__3a_Edge((__pyx_v_edges[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 640, __pyx_L1_error)
+    __pyx_t_1 = __pyx_convert__to_py_taso_3a__3a_Edge((__pyx_v_edges[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 635, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_inEdges, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 640, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_inEdges, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 635, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "taso/_cython/core.pyx":641
+  /* "taso/_cython/core.pyx":636
  *         for i in range(numEdges):
  *             inEdges.append(edges[i])
  *         return inEdges             # <<<<<<<<<<<<<<
@@ -18440,7 +18466,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_118get_input_edges(struct __pyx_o
   __pyx_r = __pyx_v_inEdges;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":635
+  /* "taso/_cython/core.pyx":630
  *         return opList
  * 
  *     def get_input_edges(self, Op op):             # <<<<<<<<<<<<<<
@@ -18460,7 +18486,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_118get_input_edges(struct __pyx_o
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":643
+/* "taso/_cython/core.pyx":638
  *         return inEdges
  * 
  *     def get_input_dims(self, Op op, int idx):             # <<<<<<<<<<<<<<
@@ -18502,11 +18528,11 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_121get_input_dims(PyObject *__pyx
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_idx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_input_dims", 1, 2, 2, 1); __PYX_ERR(1, 643, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_input_dims", 1, 2, 2, 1); __PYX_ERR(1, 638, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_input_dims") < 0)) __PYX_ERR(1, 643, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_input_dims") < 0)) __PYX_ERR(1, 638, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -18514,12 +18540,12 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_121get_input_dims(PyObject *__pyx
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(values[0]); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 643, __pyx_L3_error)
-    __pyx_v_idx = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_idx == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 643, __pyx_L3_error)
+    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(values[0]); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 638, __pyx_L3_error)
+    __pyx_v_idx = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_idx == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 638, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_input_dims", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 643, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_input_dims", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 638, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.get_input_dims", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -18549,7 +18575,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_120get_input_dims(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_input_dims", 0);
 
-  /* "taso/_cython/core.pyx":645
+  /* "taso/_cython/core.pyx":640
  *     def get_input_dims(self, Op op, int idx):
  *         cdef int dims[8]
  *         cdef int ndims = self.p_graph.get_input_dims(op.guid, dims, idx)             # <<<<<<<<<<<<<<
@@ -18558,19 +18584,19 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_120get_input_dims(struct __pyx_ob
  */
   __pyx_v_ndims = __pyx_v_self->p_graph->get_input_dims(__pyx_v_op.guid, __pyx_v_dims, __pyx_v_idx);
 
-  /* "taso/_cython/core.pyx":646
+  /* "taso/_cython/core.pyx":641
  *         cdef int dims[8]
  *         cdef int ndims = self.p_graph.get_input_dims(op.guid, dims, idx)
  *         dimlist = list()             # <<<<<<<<<<<<<<
  *         for i in range(ndims):
  *             dimlist.append(dims[i])
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 646, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 641, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_dimlist = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "taso/_cython/core.pyx":647
+  /* "taso/_cython/core.pyx":642
  *         cdef int ndims = self.p_graph.get_input_dims(op.guid, dims, idx)
  *         dimlist = list()
  *         for i in range(ndims):             # <<<<<<<<<<<<<<
@@ -18582,20 +18608,20 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_120get_input_dims(struct __pyx_ob
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "taso/_cython/core.pyx":648
+    /* "taso/_cython/core.pyx":643
  *         dimlist = list()
  *         for i in range(ndims):
  *             dimlist.append(dims[i])             # <<<<<<<<<<<<<<
  *         return dimlist
  * 
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_dims[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 648, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_dims[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 643, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_dimlist, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 648, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_dimlist, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 643, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "taso/_cython/core.pyx":649
+  /* "taso/_cython/core.pyx":644
  *         for i in range(ndims):
  *             dimlist.append(dims[i])
  *         return dimlist             # <<<<<<<<<<<<<<
@@ -18607,7 +18633,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_120get_input_dims(struct __pyx_ob
   __pyx_r = __pyx_v_dimlist;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":643
+  /* "taso/_cython/core.pyx":638
  *         return inEdges
  * 
  *     def get_input_dims(self, Op op, int idx):             # <<<<<<<<<<<<<<
@@ -18627,7 +18653,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_120get_input_dims(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":651
+/* "taso/_cython/core.pyx":646
  *         return dimlist
  * 
  *     def get_weight_value(self, Op op):             # <<<<<<<<<<<<<<
@@ -18646,7 +18672,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_123get_weight_value(PyObject *__p
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_weight_value (wrapper)", 0);
   assert(__pyx_arg_op); {
-    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(__pyx_arg_op); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 651, __pyx_L3_error)
+    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(__pyx_arg_op); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 646, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -18679,16 +18705,16 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_122get_weight_value(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_weight_value", 0);
 
-  /* "taso/_cython/core.pyx":652
+  /* "taso/_cython/core.pyx":647
  * 
  *     def get_weight_value(self, Op op):
  *         dims = self.get_input_dims(op, 0)             # <<<<<<<<<<<<<<
  *         data = np.zeros(shape=dims)
  *         val = array.array('f', data.flatten().tolist())
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_input_dims); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 652, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_input_dims); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 647, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __pyx_convert__to_py_taso_3a__3a_Op(__pyx_v_op); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 652, __pyx_L1_error)
+  __pyx_t_3 = __pyx_convert__to_py_taso_3a__3a_Op(__pyx_v_op); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 647, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -18705,7 +18731,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_122get_weight_value(struct __pyx_
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_3, __pyx_int_0};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 652, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 647, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -18714,14 +18740,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_122get_weight_value(struct __pyx_
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_3, __pyx_int_0};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 652, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 647, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 652, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 647, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -18732,7 +18758,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_122get_weight_value(struct __pyx_
     __Pyx_GIVEREF(__pyx_int_0);
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_int_0);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 652, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 647, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -18740,36 +18766,36 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_122get_weight_value(struct __pyx_
   __pyx_v_dims = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "taso/_cython/core.pyx":653
+  /* "taso/_cython/core.pyx":648
  *     def get_weight_value(self, Op op):
  *         dims = self.get_input_dims(op, 0)
  *         data = np.zeros(shape=dims)             # <<<<<<<<<<<<<<
  *         val = array.array('f', data.flatten().tolist())
  *         cdef array.array arr = val
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 653, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 648, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 653, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 648, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 653, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 648, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_shape, __pyx_v_dims) < 0) __PYX_ERR(1, 653, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 653, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_shape, __pyx_v_dims) < 0) __PYX_ERR(1, 648, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 648, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_data = __pyx_t_6;
   __pyx_t_6 = 0;
 
-  /* "taso/_cython/core.pyx":654
+  /* "taso/_cython/core.pyx":649
  *         dims = self.get_input_dims(op, 0)
  *         data = np.zeros(shape=dims)
  *         val = array.array('f', data.flatten().tolist())             # <<<<<<<<<<<<<<
  *         cdef array.array arr = val
  *         self.p_graph.get_weight_value(op.guid, arr.data.as_floats)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_flatten); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 654, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_flatten); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 649, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -18783,10 +18809,10 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_122get_weight_value(struct __pyx_
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 654, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 649, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_tolist); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 654, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_tolist); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 649, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -18801,10 +18827,10 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_122get_weight_value(struct __pyx_
   }
   __pyx_t_6 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 654, __pyx_L1_error)
+  if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 649, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 654, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 649, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_u_f);
   __Pyx_GIVEREF(__pyx_n_u_f);
@@ -18812,26 +18838,26 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_122get_weight_value(struct __pyx_
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_6);
   __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_2, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 654, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_2, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 649, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_val = __pyx_t_6;
   __pyx_t_6 = 0;
 
-  /* "taso/_cython/core.pyx":655
+  /* "taso/_cython/core.pyx":650
  *         data = np.zeros(shape=dims)
  *         val = array.array('f', data.flatten().tolist())
  *         cdef array.array arr = val             # <<<<<<<<<<<<<<
  *         self.p_graph.get_weight_value(op.guid, arr.data.as_floats)
  *         return val
  */
-  if (!(likely(__Pyx_TypeTest(__pyx_v_val, __pyx_ptype_7cpython_5array_array)))) __PYX_ERR(1, 655, __pyx_L1_error)
+  if (!(likely(__Pyx_TypeTest(__pyx_v_val, __pyx_ptype_7cpython_5array_array)))) __PYX_ERR(1, 650, __pyx_L1_error)
   __pyx_t_6 = __pyx_v_val;
   __Pyx_INCREF(__pyx_t_6);
   __pyx_v_arr = ((arrayobject *)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "taso/_cython/core.pyx":656
+  /* "taso/_cython/core.pyx":651
  *         val = array.array('f', data.flatten().tolist())
  *         cdef array.array arr = val
  *         self.p_graph.get_weight_value(op.guid, arr.data.as_floats)             # <<<<<<<<<<<<<<
@@ -18840,7 +18866,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_122get_weight_value(struct __pyx_
  */
   __pyx_v_self->p_graph->get_weight_value(__pyx_v_op.guid, __pyx_v_arr->data.as_floats);
 
-  /* "taso/_cython/core.pyx":657
+  /* "taso/_cython/core.pyx":652
  *         cdef array.array arr = val
  *         self.p_graph.get_weight_value(op.guid, arr.data.as_floats)
  *         return val             # <<<<<<<<<<<<<<
@@ -18852,7 +18878,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_122get_weight_value(struct __pyx_
   __pyx_r = __pyx_v_val;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":651
+  /* "taso/_cython/core.pyx":646
  *         return dimlist
  * 
  *     def get_weight_value(self, Op op):             # <<<<<<<<<<<<<<
@@ -18879,7 +18905,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_122get_weight_value(struct __pyx_
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":659
+/* "taso/_cython/core.pyx":654
  *         return val
  * 
  *     def get_split_lens(self, Op op):             # <<<<<<<<<<<<<<
@@ -18898,7 +18924,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_125get_split_lens(PyObject *__pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_split_lens (wrapper)", 0);
   assert(__pyx_arg_op); {
-    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(__pyx_arg_op); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 659, __pyx_L3_error)
+    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(__pyx_arg_op); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 654, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -18930,7 +18956,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_124get_split_lens(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_split_lens", 0);
 
-  /* "taso/_cython/core.pyx":661
+  /* "taso/_cython/core.pyx":656
  *     def get_split_lens(self, Op op):
  *         cdef int lens[128]
  *         cdef int numsplits = self.p_graph.get_split_lens(op.guid, lens)             # <<<<<<<<<<<<<<
@@ -18939,19 +18965,19 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_124get_split_lens(struct __pyx_ob
  */
   __pyx_v_numsplits = __pyx_v_self->p_graph->get_split_lens(__pyx_v_op.guid, __pyx_v_lens);
 
-  /* "taso/_cython/core.pyx":662
+  /* "taso/_cython/core.pyx":657
  *         cdef int lens[128]
  *         cdef int numsplits = self.p_graph.get_split_lens(op.guid, lens)
  *         lenlist = list()             # <<<<<<<<<<<<<<
  *         for i in range(numsplits):
  *             lenlist.append(lens[i])
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 662, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 657, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_lenlist = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "taso/_cython/core.pyx":663
+  /* "taso/_cython/core.pyx":658
  *         cdef int numsplits = self.p_graph.get_split_lens(op.guid, lens)
  *         lenlist = list()
  *         for i in range(numsplits):             # <<<<<<<<<<<<<<
@@ -18963,20 +18989,20 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_124get_split_lens(struct __pyx_ob
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "taso/_cython/core.pyx":664
+    /* "taso/_cython/core.pyx":659
  *         lenlist = list()
  *         for i in range(numsplits):
  *             lenlist.append(lens[i])             # <<<<<<<<<<<<<<
  *         return lenlist
  * 
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_lens[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 664, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_lens[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 659, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_lenlist, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 664, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_lenlist, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 659, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "taso/_cython/core.pyx":665
+  /* "taso/_cython/core.pyx":660
  *         for i in range(numsplits):
  *             lenlist.append(lens[i])
  *         return lenlist             # <<<<<<<<<<<<<<
@@ -18988,7 +19014,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_124get_split_lens(struct __pyx_ob
   __pyx_r = __pyx_v_lenlist;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":659
+  /* "taso/_cython/core.pyx":654
  *         return val
  * 
  *     def get_split_lens(self, Op op):             # <<<<<<<<<<<<<<
@@ -19008,7 +19034,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_124get_split_lens(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":667
+/* "taso/_cython/core.pyx":662
  *         return lenlist
  * 
  *     def get_output_dims(self, Op op, int idx):             # <<<<<<<<<<<<<<
@@ -19050,11 +19076,11 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_127get_output_dims(PyObject *__py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_idx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_output_dims", 1, 2, 2, 1); __PYX_ERR(1, 667, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_output_dims", 1, 2, 2, 1); __PYX_ERR(1, 662, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_output_dims") < 0)) __PYX_ERR(1, 667, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_output_dims") < 0)) __PYX_ERR(1, 662, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -19062,12 +19088,12 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_127get_output_dims(PyObject *__py
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(values[0]); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 667, __pyx_L3_error)
-    __pyx_v_idx = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_idx == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 667, __pyx_L3_error)
+    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(values[0]); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 662, __pyx_L3_error)
+    __pyx_v_idx = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_idx == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 662, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_output_dims", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 667, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_output_dims", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 662, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.get_output_dims", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -19097,7 +19123,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_126get_output_dims(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_output_dims", 0);
 
-  /* "taso/_cython/core.pyx":669
+  /* "taso/_cython/core.pyx":664
  *     def get_output_dims(self, Op op, int idx):
  *         cdef int dims[8]
  *         cdef int ndims = self.p_graph.get_output_dims(op.guid, dims, idx)             # <<<<<<<<<<<<<<
@@ -19106,19 +19132,19 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_126get_output_dims(struct __pyx_o
  */
   __pyx_v_ndims = __pyx_v_self->p_graph->get_output_dims(__pyx_v_op.guid, __pyx_v_dims, __pyx_v_idx);
 
-  /* "taso/_cython/core.pyx":670
+  /* "taso/_cython/core.pyx":665
  *         cdef int dims[8]
  *         cdef int ndims = self.p_graph.get_output_dims(op.guid, dims, idx)
  *         dimlist = list()             # <<<<<<<<<<<<<<
  *         for i in range(ndims):
  *             dimlist.append(dims[i])
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 670, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 665, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_dimlist = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "taso/_cython/core.pyx":671
+  /* "taso/_cython/core.pyx":666
  *         cdef int ndims = self.p_graph.get_output_dims(op.guid, dims, idx)
  *         dimlist = list()
  *         for i in range(ndims):             # <<<<<<<<<<<<<<
@@ -19130,20 +19156,20 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_126get_output_dims(struct __pyx_o
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "taso/_cython/core.pyx":672
+    /* "taso/_cython/core.pyx":667
  *         dimlist = list()
  *         for i in range(ndims):
  *             dimlist.append(dims[i])             # <<<<<<<<<<<<<<
  *         return dimlist
  * 
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_dims[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 672, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_dims[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 667, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_dimlist, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 672, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_dimlist, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 667, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "taso/_cython/core.pyx":673
+  /* "taso/_cython/core.pyx":668
  *         for i in range(ndims):
  *             dimlist.append(dims[i])
  *         return dimlist             # <<<<<<<<<<<<<<
@@ -19155,7 +19181,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_126get_output_dims(struct __pyx_o
   __pyx_r = __pyx_v_dimlist;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":667
+  /* "taso/_cython/core.pyx":662
  *         return lenlist
  * 
  *     def get_output_dims(self, Op op, int idx):             # <<<<<<<<<<<<<<
@@ -19175,7 +19201,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_126get_output_dims(struct __pyx_o
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":675
+/* "taso/_cython/core.pyx":670
  *         return dimlist
  * 
  *     def get_num_outputs(self, Op op):             # <<<<<<<<<<<<<<
@@ -19194,7 +19220,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_129get_num_outputs(PyObject *__py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_num_outputs (wrapper)", 0);
   assert(__pyx_arg_op); {
-    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(__pyx_arg_op); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 675, __pyx_L3_error)
+    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(__pyx_arg_op); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 670, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -19218,21 +19244,21 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_128get_num_outputs(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_num_outputs", 0);
 
-  /* "taso/_cython/core.pyx":676
+  /* "taso/_cython/core.pyx":671
  * 
  *     def get_num_outputs(self, Op op):
  *         return self.p_graph.get_num_outputs(op.guid)             # <<<<<<<<<<<<<<
  * 
- *     def get_operator_type(self, Op op):
+ *     def get_op_init_vector(self, Op op, input_name):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->p_graph->get_num_outputs(__pyx_v_op.guid)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 676, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->p_graph->get_num_outputs(__pyx_v_op.guid)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 671, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "taso/_cython/core.pyx":675
+  /* "taso/_cython/core.pyx":670
  *         return dimlist
  * 
  *     def get_num_outputs(self, Op op):             # <<<<<<<<<<<<<<
@@ -19251,8 +19277,311 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_128get_num_outputs(struct __pyx_o
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":678
+/* "taso/_cython/core.pyx":673
  *         return self.p_graph.get_num_outputs(op.guid)
+ * 
+ *     def get_op_init_vector(self, Op op, input_name):             # <<<<<<<<<<<<<<
+ *         cdef int temp_arr[128]
+ *         cdef int* ptr = &temp_arr[0]
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_131get_op_init_vector(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_131get_op_init_vector(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  taso::Op __pyx_v_op;
+  PyObject *__pyx_v_input_name = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_op_init_vector (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_op,&__pyx_n_s_input_name,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_op)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_input_name)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("get_op_init_vector", 1, 2, 2, 1); __PYX_ERR(1, 673, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_op_init_vector") < 0)) __PYX_ERR(1, 673, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+    }
+    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(values[0]); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 673, __pyx_L3_error)
+    __pyx_v_input_name = values[1];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("get_op_init_vector", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 673, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("taso.core.PyGraph.get_op_init_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_130get_op_init_vector(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_op, __pyx_v_input_name);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_op_init_vector(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op, PyObject *__pyx_v_input_name) {
+  int __pyx_v_temp_arr[0x80];
+  int *__pyx_v_ptr;
+  int __pyx_v_n_dims;
+  PyObject *__pyx_v_py_list = NULL;
+  int __pyx_v_i;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  int __pyx_t_4;
+  int __pyx_t_5;
+  int __pyx_t_6;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_op_init_vector", 0);
+
+  /* "taso/_cython/core.pyx":675
+ *     def get_op_init_vector(self, Op op, input_name):
+ *         cdef int temp_arr[128]
+ *         cdef int* ptr = &temp_arr[0]             # <<<<<<<<<<<<<<
+ *         cdef int n_dims = 0
+ *         py_list = list()
+ */
+  __pyx_v_ptr = (&(__pyx_v_temp_arr[0]));
+
+  /* "taso/_cython/core.pyx":676
+ *         cdef int temp_arr[128]
+ *         cdef int* ptr = &temp_arr[0]
+ *         cdef int n_dims = 0             # <<<<<<<<<<<<<<
+ *         py_list = list()
+ * 
+ */
+  __pyx_v_n_dims = 0;
+
+  /* "taso/_cython/core.pyx":677
+ *         cdef int* ptr = &temp_arr[0]
+ *         cdef int n_dims = 0
+ *         py_list = list()             # <<<<<<<<<<<<<<
+ * 
+ *         if input_name == 'starts':
+ */
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 677, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_py_list = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "taso/_cython/core.pyx":679
+ *         py_list = list()
+ * 
+ *         if input_name == 'starts':             # <<<<<<<<<<<<<<
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STARTS)
+ *         elif input_name == 'ends':
+ */
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_input_name, __pyx_n_u_starts, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 679, __pyx_L1_error)
+  if (__pyx_t_2) {
+
+    /* "taso/_cython/core.pyx":680
+ * 
+ *         if input_name == 'starts':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STARTS)             # <<<<<<<<<<<<<<
+ *         elif input_name == 'ends':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_ENDS)
+ */
+    __pyx_v_n_dims = __pyx_v_self->p_graph->get_operator_list_attr(__pyx_v_ptr, __pyx_v_op.guid, taso::PM_STARTS);
+
+    /* "taso/_cython/core.pyx":679
+ *         py_list = list()
+ * 
+ *         if input_name == 'starts':             # <<<<<<<<<<<<<<
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STARTS)
+ *         elif input_name == 'ends':
+ */
+    goto __pyx_L3;
+  }
+
+  /* "taso/_cython/core.pyx":681
+ *         if input_name == 'starts':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STARTS)
+ *         elif input_name == 'ends':             # <<<<<<<<<<<<<<
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_ENDS)
+ *         elif input_name == 'axes':
+ */
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_input_name, __pyx_n_u_ends, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 681, __pyx_L1_error)
+  if (__pyx_t_2) {
+
+    /* "taso/_cython/core.pyx":682
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STARTS)
+ *         elif input_name == 'ends':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_ENDS)             # <<<<<<<<<<<<<<
+ *         elif input_name == 'axes':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
+ */
+    __pyx_v_n_dims = __pyx_v_self->p_graph->get_operator_list_attr(__pyx_v_ptr, __pyx_v_op.guid, taso::PM_ENDS);
+
+    /* "taso/_cython/core.pyx":681
+ *         if input_name == 'starts':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STARTS)
+ *         elif input_name == 'ends':             # <<<<<<<<<<<<<<
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_ENDS)
+ *         elif input_name == 'axes':
+ */
+    goto __pyx_L3;
+  }
+
+  /* "taso/_cython/core.pyx":683
+ *         elif input_name == 'ends':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_ENDS)
+ *         elif input_name == 'axes':             # <<<<<<<<<<<<<<
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
+ *         elif input_name == 'steps':
+ */
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_input_name, __pyx_n_u_axes, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 683, __pyx_L1_error)
+  if (__pyx_t_2) {
+
+    /* "taso/_cython/core.pyx":684
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_ENDS)
+ *         elif input_name == 'axes':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)             # <<<<<<<<<<<<<<
+ *         elif input_name == 'steps':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STEPS)
+ */
+    __pyx_v_n_dims = __pyx_v_self->p_graph->get_operator_list_attr(__pyx_v_ptr, __pyx_v_op.guid, taso::PM_AXES);
+
+    /* "taso/_cython/core.pyx":683
+ *         elif input_name == 'ends':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_ENDS)
+ *         elif input_name == 'axes':             # <<<<<<<<<<<<<<
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
+ *         elif input_name == 'steps':
+ */
+    goto __pyx_L3;
+  }
+
+  /* "taso/_cython/core.pyx":685
+ *         elif input_name == 'axes':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
+ *         elif input_name == 'steps':             # <<<<<<<<<<<<<<
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STEPS)
+ * 
+ */
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_input_name, __pyx_n_u_steps, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 685, __pyx_L1_error)
+  if (__pyx_t_2) {
+
+    /* "taso/_cython/core.pyx":686
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
+ *         elif input_name == 'steps':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STEPS)             # <<<<<<<<<<<<<<
+ * 
+ *         temp_arr[:] = ptr
+ */
+    __pyx_v_n_dims = __pyx_v_self->p_graph->get_operator_list_attr(__pyx_v_ptr, __pyx_v_op.guid, taso::PM_STEPS);
+
+    /* "taso/_cython/core.pyx":685
+ *         elif input_name == 'axes':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
+ *         elif input_name == 'steps':             # <<<<<<<<<<<<<<
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STEPS)
+ * 
+ */
+  }
+  __pyx_L3:;
+
+  /* "taso/_cython/core.pyx":688
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STEPS)
+ * 
+ *         temp_arr[:] = ptr             # <<<<<<<<<<<<<<
+ *         for i in range(n_dims):
+ *             py_list.append(temp_arr[i])
+ */
+  memcpy(&(__pyx_v_temp_arr[0]), __pyx_v_ptr, sizeof(__pyx_v_temp_arr[0]) * (0x80 - 0));
+
+  /* "taso/_cython/core.pyx":689
+ * 
+ *         temp_arr[:] = ptr
+ *         for i in range(n_dims):             # <<<<<<<<<<<<<<
+ *             py_list.append(temp_arr[i])
+ * 
+ */
+  __pyx_t_3 = __pyx_v_n_dims;
+  __pyx_t_4 = __pyx_t_3;
+  for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
+    __pyx_v_i = __pyx_t_5;
+
+    /* "taso/_cython/core.pyx":690
+ *         temp_arr[:] = ptr
+ *         for i in range(n_dims):
+ *             py_list.append(temp_arr[i])             # <<<<<<<<<<<<<<
+ * 
+ *         return py_list
+ */
+    __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_temp_arr[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 690, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_py_list, __pyx_t_1); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(1, 690, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  }
+
+  /* "taso/_cython/core.pyx":692
+ *             py_list.append(temp_arr[i])
+ * 
+ *         return py_list             # <<<<<<<<<<<<<<
+ * 
+ *     def get_operator_type(self, Op op):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_py_list);
+  __pyx_r = __pyx_v_py_list;
+  goto __pyx_L0;
+
+  /* "taso/_cython/core.pyx":673
+ *         return self.p_graph.get_num_outputs(op.guid)
+ * 
+ *     def get_op_init_vector(self, Op op, input_name):             # <<<<<<<<<<<<<<
+ *         cdef int temp_arr[128]
+ *         cdef int* ptr = &temp_arr[0]
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("taso.core.PyGraph.get_op_init_vector", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_py_list);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "taso/_cython/core.pyx":694
+ *         return py_list
  * 
  *     def get_operator_type(self, Op op):             # <<<<<<<<<<<<<<
  *         cdef OpType type = self.p_graph.get_operator_type(op.guid)
@@ -19260,8 +19589,8 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_128get_num_outputs(struct __pyx_o
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_131get_operator_type(PyObject *__pyx_v_self, PyObject *__pyx_arg_op); /*proto*/
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_131get_operator_type(PyObject *__pyx_v_self, PyObject *__pyx_arg_op) {
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_133get_operator_type(PyObject *__pyx_v_self, PyObject *__pyx_arg_op); /*proto*/
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_133get_operator_type(PyObject *__pyx_v_self, PyObject *__pyx_arg_op) {
   taso::Op __pyx_v_op;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -19270,7 +19599,7 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_131get_operator_type(PyObject *__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_operator_type (wrapper)", 0);
   assert(__pyx_arg_op); {
-    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(__pyx_arg_op); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 678, __pyx_L3_error)
+    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(__pyx_arg_op); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 694, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -19278,14 +19607,14 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_131get_operator_type(PyObject *__
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_130get_operator_type(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_op);
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_132get_operator_type(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_op);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_operator_type(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op) {
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_type(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op) {
   enum taso::OpType __pyx_v_type;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -19300,7 +19629,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_operator_type(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_operator_type", 0);
 
-  /* "taso/_cython/core.pyx":679
+  /* "taso/_cython/core.pyx":695
  * 
  *     def get_operator_type(self, Op op):
  *         cdef OpType type = self.p_graph.get_operator_type(op.guid)             # <<<<<<<<<<<<<<
@@ -19309,24 +19638,24 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_operator_type(struct __pyx
  */
   __pyx_v_type = __pyx_v_self->p_graph->get_operator_type(__pyx_v_op.guid);
 
-  /* "taso/_cython/core.pyx":680
+  /* "taso/_cython/core.pyx":696
  *     def get_operator_type(self, Op op):
  *         cdef OpType type = self.p_graph.get_operator_type(op.guid)
  *         if type in op_table:             # <<<<<<<<<<<<<<
  *             return op_table[type]
  *         else:
  */
-  __pyx_t_1 = __Pyx_PyInt_From_enum__taso_3a__3a_OpType(__pyx_v_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 680, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_enum__taso_3a__3a_OpType(__pyx_v_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 696, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_op_table); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 680, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_op_table); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 696, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(1, 680, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(1, 696, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
-    /* "taso/_cython/core.pyx":681
+    /* "taso/_cython/core.pyx":697
  *         cdef OpType type = self.p_graph.get_operator_type(op.guid)
  *         if type in op_table:
  *             return op_table[type]             # <<<<<<<<<<<<<<
@@ -19334,11 +19663,11 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_operator_type(struct __pyx
  *             assert False, 'Undefined type: {}'.format(type)
  */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_op_table); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 681, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_op_table); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 697, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyInt_From_enum__taso_3a__3a_OpType(__pyx_v_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 681, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_enum__taso_3a__3a_OpType(__pyx_v_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 697, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 681, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 697, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -19346,7 +19675,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_operator_type(struct __pyx
     __pyx_t_5 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":680
+    /* "taso/_cython/core.pyx":696
  *     def get_operator_type(self, Op op):
  *         cdef OpType type = self.p_graph.get_operator_type(op.guid)
  *         if type in op_table:             # <<<<<<<<<<<<<<
@@ -19355,7 +19684,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_operator_type(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":683
+  /* "taso/_cython/core.pyx":699
  *             return op_table[type]
  *         else:
  *             assert False, 'Undefined type: {}'.format(type)             # <<<<<<<<<<<<<<
@@ -19366,9 +19695,9 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_operator_type(struct __pyx
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
       if (unlikely(!0)) {
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Undefined_type, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 683, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Undefined_type, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 699, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_2 = __Pyx_PyInt_From_enum__taso_3a__3a_OpType(__pyx_v_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 683, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyInt_From_enum__taso_3a__3a_OpType(__pyx_v_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 699, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __pyx_t_6 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -19383,25 +19712,25 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_operator_type(struct __pyx
         __pyx_t_5 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_6, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_2);
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 683, __pyx_L1_error)
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 699, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyTuple_Pack(1, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 683, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_Pack(1, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 699, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         PyErr_SetObject(PyExc_AssertionError, __pyx_t_1);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __PYX_ERR(1, 683, __pyx_L1_error)
+        __PYX_ERR(1, 699, __pyx_L1_error)
       }
     }
     #endif
 
-    /* "taso/_cython/core.pyx":684
+    /* "taso/_cython/core.pyx":700
  *         else:
  *             assert False, 'Undefined type: {}'.format(type)
  *             return "Undefined"             # <<<<<<<<<<<<<<
  * 
- *     def get_operator_attr(self, Op op, attrname):
+ *     def get_operator_int_attr(self, Op op, attrname):
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(__pyx_n_u_Undefined);
@@ -19409,8 +19738,8 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_operator_type(struct __pyx
     goto __pyx_L0;
   }
 
-  /* "taso/_cython/core.pyx":678
- *         return self.p_graph.get_num_outputs(op.guid)
+  /* "taso/_cython/core.pyx":694
+ *         return py_list
  * 
  *     def get_operator_type(self, Op op):             # <<<<<<<<<<<<<<
  *         cdef OpType type = self.p_graph.get_operator_type(op.guid)
@@ -19431,8 +19760,197 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_operator_type(struct __pyx
   return __pyx_r;
 }
 
-/* "taso/_cython/core.pyx":686
+/* "taso/_cython/core.pyx":702
  *             return "Undefined"
+ * 
+ *     def get_operator_int_attr(self, Op op, attrname):             # <<<<<<<<<<<<<<
+ *         cdef int val
+ *         if attrname == 'num_inputs':
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_135get_operator_int_attr(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_135get_operator_int_attr(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  taso::Op __pyx_v_op;
+  PyObject *__pyx_v_attrname = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_operator_int_attr (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_op,&__pyx_n_s_attrname,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_op)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_attrname)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("get_operator_int_attr", 1, 2, 2, 1); __PYX_ERR(1, 702, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_operator_int_attr") < 0)) __PYX_ERR(1, 702, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+    }
+    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(values[0]); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 702, __pyx_L3_error)
+    __pyx_v_attrname = values[1];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("get_operator_int_attr", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 702, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("taso.core.PyGraph.get_operator_int_attr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_134get_operator_int_attr(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_op, __pyx_v_attrname);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_134get_operator_int_attr(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op, PyObject *__pyx_v_attrname) {
+  int __pyx_v_val;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_operator_int_attr", 0);
+
+  /* "taso/_cython/core.pyx":704
+ *     def get_operator_int_attr(self, Op op, attrname):
+ *         cdef int val
+ *         if attrname == 'num_inputs':             # <<<<<<<<<<<<<<
+ *             val = self.p_graph.get_operator_int_attr(op.guid, PM_NUM_INPUTS)
+ *             return val
+ */
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_num_inputs, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 704, __pyx_L1_error)
+  if (__pyx_t_1) {
+
+    /* "taso/_cython/core.pyx":705
+ *         cdef int val
+ *         if attrname == 'num_inputs':
+ *             val = self.p_graph.get_operator_int_attr(op.guid, PM_NUM_INPUTS)             # <<<<<<<<<<<<<<
+ *             return val
+ *         else:
+ */
+    __pyx_v_val = __pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_NUM_INPUTS);
+
+    /* "taso/_cython/core.pyx":706
+ *         if attrname == 'num_inputs':
+ *             val = self.p_graph.get_operator_int_attr(op.guid, PM_NUM_INPUTS)
+ *             return val             # <<<<<<<<<<<<<<
+ *         else:
+ *            assert False, 'Add functionality for: {} in get_operator_int_attr()'.format(attrname)
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 706, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
+    goto __pyx_L0;
+
+    /* "taso/_cython/core.pyx":704
+ *     def get_operator_int_attr(self, Op op, attrname):
+ *         cdef int val
+ *         if attrname == 'num_inputs':             # <<<<<<<<<<<<<<
+ *             val = self.p_graph.get_operator_int_attr(op.guid, PM_NUM_INPUTS)
+ *             return val
+ */
+  }
+
+  /* "taso/_cython/core.pyx":708
+ *             return val
+ *         else:
+ *            assert False, 'Add functionality for: {} in get_operator_int_attr()'.format(attrname)             # <<<<<<<<<<<<<<
+ * 
+ *     def get_operator_attr(self, Op op, attrname):
+ */
+  /*else*/ {
+    #ifndef CYTHON_WITHOUT_ASSERTIONS
+    if (unlikely(!Py_OptimizeFlag)) {
+      if (unlikely(!0)) {
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Add_functionality_for_in_get_ope, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 708, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_4 = NULL;
+        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+          __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+          if (likely(__pyx_t_4)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+            __Pyx_INCREF(__pyx_t_4);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_3, function);
+          }
+        }
+        __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_attrname) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_attrname);
+        __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 708, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __pyx_t_3 = PyTuple_Pack(1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 708, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        PyErr_SetObject(PyExc_AssertionError, __pyx_t_3);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __PYX_ERR(1, 708, __pyx_L1_error)
+      }
+    }
+    #endif
+  }
+
+  /* "taso/_cython/core.pyx":702
+ *             return "Undefined"
+ * 
+ *     def get_operator_int_attr(self, Op op, attrname):             # <<<<<<<<<<<<<<
+ *         cdef int val
+ *         if attrname == 'num_inputs':
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("taso.core.PyGraph.get_operator_int_attr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "taso/_cython/core.pyx":710
+ *            assert False, 'Add functionality for: {} in get_operator_int_attr()'.format(attrname)
  * 
  *     def get_operator_attr(self, Op op, attrname):             # <<<<<<<<<<<<<<
  *         cdef int kh, kw, sh, sw
@@ -19440,8 +19958,8 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_130get_operator_type(struct __pyx
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_133get_operator_attr(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_133get_operator_attr(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_137get_operator_attr(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_137get_operator_attr(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   taso::Op __pyx_v_op;
   PyObject *__pyx_v_attrname = 0;
   int __pyx_lineno = 0;
@@ -19473,11 +19991,11 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_133get_operator_attr(PyObject *__
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_attrname)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_operator_attr", 1, 2, 2, 1); __PYX_ERR(1, 686, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_operator_attr", 1, 2, 2, 1); __PYX_ERR(1, 710, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_operator_attr") < 0)) __PYX_ERR(1, 686, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_operator_attr") < 0)) __PYX_ERR(1, 710, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -19485,31 +20003,32 @@ static PyObject *__pyx_pw_4taso_4core_7PyGraph_133get_operator_attr(PyObject *__
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(values[0]); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 686, __pyx_L3_error)
+    __pyx_v_op = __pyx_convert__from_py_taso_3a__3a_Op(values[0]); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 710, __pyx_L3_error)
     __pyx_v_attrname = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_operator_attr", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 686, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_operator_attr", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 710, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("taso.core.PyGraph.get_operator_attr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_op, __pyx_v_attrname);
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_136get_operator_attr(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), __pyx_v_op, __pyx_v_attrname);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op, PyObject *__pyx_v_attrname) {
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_136get_operator_attr(struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, taso::Op __pyx_v_op, PyObject *__pyx_v_attrname) {
   int __pyx_v_kh;
   int __pyx_v_kw;
   int __pyx_v_sh;
   int __pyx_v_sw;
   enum taso::PaddingMode __pyx_v_pm;
   int __pyx_v_temp_arr[0x80];
+  int *__pyx_v_ptr;
   char *__pyx_v_c_string_ptr;
   PyObject *__pyx_v_dims = NULL;
   PyObject *__pyx_v_inputH = NULL;
@@ -19544,17 +20063,26 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_operator_attr", 0);
 
-  /* "taso/_cython/core.pyx":693
+  /* "taso/_cython/core.pyx":714
+ *         cdef PaddingMode pm
+ *         cdef int temp_arr[128]
+ *         cdef int *ptr = &temp_arr[0]             # <<<<<<<<<<<<<<
+ *         cdef int num_axes
+ *         cdef char* c_string_ptr
+ */
+  __pyx_v_ptr = (&(__pyx_v_temp_arr[0]));
+
+  /* "taso/_cython/core.pyx":718
  *         cdef char* c_string_ptr
  * 
  *         if attrname == 'kernel_shape':             # <<<<<<<<<<<<<<
  *             kh = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_H)
  *             kw = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_W)
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_kernel_shape, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 693, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_kernel_shape, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 718, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":694
+    /* "taso/_cython/core.pyx":719
  * 
  *         if attrname == 'kernel_shape':
  *             kh = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_H)             # <<<<<<<<<<<<<<
@@ -19563,7 +20091,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_kh = __pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_KERNEL_H);
 
-    /* "taso/_cython/core.pyx":695
+    /* "taso/_cython/core.pyx":720
  *         if attrname == 'kernel_shape':
  *             kh = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_H)
  *             kw = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_W)             # <<<<<<<<<<<<<<
@@ -19572,7 +20100,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_kw = __pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_KERNEL_W);
 
-    /* "taso/_cython/core.pyx":696
+    /* "taso/_cython/core.pyx":721
  *             kh = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_H)
  *             kw = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_W)
  *             return [kh, kw]             # <<<<<<<<<<<<<<
@@ -19580,11 +20108,11 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *             sh = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_H)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_kh); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 696, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_kh); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 721, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_kw); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 696, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_kw); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 721, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 696, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 721, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_2);
     PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
@@ -19596,7 +20124,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":693
+    /* "taso/_cython/core.pyx":718
  *         cdef char* c_string_ptr
  * 
  *         if attrname == 'kernel_shape':             # <<<<<<<<<<<<<<
@@ -19605,17 +20133,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":697
+  /* "taso/_cython/core.pyx":722
  *             kw = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_W)
  *             return [kh, kw]
  *         elif attrname == 'strides':             # <<<<<<<<<<<<<<
  *             sh = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_H)
  *             sw = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_W)
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_strides, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 697, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_strides, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 722, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":698
+    /* "taso/_cython/core.pyx":723
  *             return [kh, kw]
  *         elif attrname == 'strides':
  *             sh = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_H)             # <<<<<<<<<<<<<<
@@ -19624,7 +20152,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_sh = __pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_STRIDE_H);
 
-    /* "taso/_cython/core.pyx":699
+    /* "taso/_cython/core.pyx":724
  *         elif attrname == 'strides':
  *             sh = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_H)
  *             sw = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_W)             # <<<<<<<<<<<<<<
@@ -19633,7 +20161,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_sw = __pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_STRIDE_W);
 
-    /* "taso/_cython/core.pyx":700
+    /* "taso/_cython/core.pyx":725
  *             sh = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_H)
  *             sw = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_W)
  *             return [sh, sw]             # <<<<<<<<<<<<<<
@@ -19641,11 +20169,11 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *             pm = <PaddingMode>self.p_graph.get_operator_int_attr(op.guid, PM_PAD)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_sh); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 700, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_sh); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 725, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_sw); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 700, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_sw); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 725, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 700, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 725, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_4);
     PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_4);
@@ -19657,7 +20185,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":697
+    /* "taso/_cython/core.pyx":722
  *             kw = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_W)
  *             return [kh, kw]
  *         elif attrname == 'strides':             # <<<<<<<<<<<<<<
@@ -19666,17 +20194,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":701
+  /* "taso/_cython/core.pyx":726
  *             sw = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_W)
  *             return [sh, sw]
  *         elif attrname == 'pads':             # <<<<<<<<<<<<<<
  *             pm = <PaddingMode>self.p_graph.get_operator_int_attr(op.guid, PM_PAD)
  *             if pm == PD_MODE_VALID:
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_pads, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 701, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_pads, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 726, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":702
+    /* "taso/_cython/core.pyx":727
  *             return [sh, sw]
  *         elif attrname == 'pads':
  *             pm = <PaddingMode>self.p_graph.get_operator_int_attr(op.guid, PM_PAD)             # <<<<<<<<<<<<<<
@@ -19685,7 +20213,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_pm = ((enum taso::PaddingMode)__pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_PAD));
 
-    /* "taso/_cython/core.pyx":703
+    /* "taso/_cython/core.pyx":728
  *         elif attrname == 'pads':
  *             pm = <PaddingMode>self.p_graph.get_operator_int_attr(op.guid, PM_PAD)
  *             if pm == PD_MODE_VALID:             # <<<<<<<<<<<<<<
@@ -19695,7 +20223,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     __pyx_t_1 = ((__pyx_v_pm == taso::PD_MODE_VALID) != 0);
     if (__pyx_t_1) {
 
-      /* "taso/_cython/core.pyx":704
+      /* "taso/_cython/core.pyx":729
  *             pm = <PaddingMode>self.p_graph.get_operator_int_attr(op.guid, PM_PAD)
  *             if pm == PD_MODE_VALID:
  *                 return [0, 0, 0, 0]             # <<<<<<<<<<<<<<
@@ -19703,7 +20231,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *             dims = self.get_input_dims(op, 0)
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 704, __pyx_L1_error)
+      __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 729, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_INCREF(__pyx_int_0);
       __Pyx_GIVEREF(__pyx_int_0);
@@ -19721,7 +20249,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
       __pyx_t_2 = 0;
       goto __pyx_L0;
 
-      /* "taso/_cython/core.pyx":703
+      /* "taso/_cython/core.pyx":728
  *         elif attrname == 'pads':
  *             pm = <PaddingMode>self.p_graph.get_operator_int_attr(op.guid, PM_PAD)
  *             if pm == PD_MODE_VALID:             # <<<<<<<<<<<<<<
@@ -19730,7 +20258,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     }
 
-    /* "taso/_cython/core.pyx":705
+    /* "taso/_cython/core.pyx":730
  *             if pm == PD_MODE_VALID:
  *                 return [0, 0, 0, 0]
  *             assert pm == PD_MODE_SAME             # <<<<<<<<<<<<<<
@@ -19741,21 +20269,21 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     if (unlikely(!Py_OptimizeFlag)) {
       if (unlikely(!((__pyx_v_pm == taso::PD_MODE_SAME) != 0))) {
         PyErr_SetNone(PyExc_AssertionError);
-        __PYX_ERR(1, 705, __pyx_L1_error)
+        __PYX_ERR(1, 730, __pyx_L1_error)
       }
     }
     #endif
 
-    /* "taso/_cython/core.pyx":706
+    /* "taso/_cython/core.pyx":731
  *                 return [0, 0, 0, 0]
  *             assert pm == PD_MODE_SAME
  *             dims = self.get_input_dims(op, 0)             # <<<<<<<<<<<<<<
  *             assert len(dims) == 4, "input tensor must be 4 dim for pads attribute"
  *             kh = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_H)
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_input_dims); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 706, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_input_dims); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 731, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __pyx_convert__to_py_taso_3a__3a_Op(__pyx_v_op); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 706, __pyx_L1_error)
+    __pyx_t_4 = __pyx_convert__to_py_taso_3a__3a_Op(__pyx_v_op); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 731, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     __pyx_t_6 = 0;
@@ -19772,7 +20300,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_4, __pyx_int_0};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 706, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 731, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -19781,14 +20309,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_4, __pyx_int_0};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 706, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 731, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 706, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 731, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -19799,7 +20327,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
       __Pyx_GIVEREF(__pyx_int_0);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_int_0);
       __pyx_t_4 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 706, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 731, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -19807,7 +20335,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     __pyx_v_dims = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "taso/_cython/core.pyx":707
+    /* "taso/_cython/core.pyx":732
  *             assert pm == PD_MODE_SAME
  *             dims = self.get_input_dims(op, 0)
  *             assert len(dims) == 4, "input tensor must be 4 dim for pads attribute"             # <<<<<<<<<<<<<<
@@ -19816,15 +20344,15 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
-      __pyx_t_8 = PyObject_Length(__pyx_v_dims); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(1, 707, __pyx_L1_error)
+      __pyx_t_8 = PyObject_Length(__pyx_v_dims); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(1, 732, __pyx_L1_error)
       if (unlikely(!((__pyx_t_8 == 4) != 0))) {
         PyErr_SetObject(PyExc_AssertionError, __pyx_kp_u_input_tensor_must_be_4_dim_for_p);
-        __PYX_ERR(1, 707, __pyx_L1_error)
+        __PYX_ERR(1, 732, __pyx_L1_error)
       }
     }
     #endif
 
-    /* "taso/_cython/core.pyx":708
+    /* "taso/_cython/core.pyx":733
  *             dims = self.get_input_dims(op, 0)
  *             assert len(dims) == 4, "input tensor must be 4 dim for pads attribute"
  *             kh = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_H)             # <<<<<<<<<<<<<<
@@ -19833,7 +20361,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_kh = __pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_KERNEL_H);
 
-    /* "taso/_cython/core.pyx":709
+    /* "taso/_cython/core.pyx":734
  *             assert len(dims) == 4, "input tensor must be 4 dim for pads attribute"
  *             kh = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_H)
  *             kw = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_W)             # <<<<<<<<<<<<<<
@@ -19842,7 +20370,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_kw = __pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_KERNEL_W);
 
-    /* "taso/_cython/core.pyx":710
+    /* "taso/_cython/core.pyx":735
  *             kh = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_H)
  *             kw = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_W)
  *             sh = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_H)             # <<<<<<<<<<<<<<
@@ -19851,7 +20379,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_sh = __pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_STRIDE_H);
 
-    /* "taso/_cython/core.pyx":711
+    /* "taso/_cython/core.pyx":736
  *             kw = self.p_graph.get_operator_int_attr(op.guid, PM_KERNEL_W)
  *             sh = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_H)
  *             sw = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_W)             # <<<<<<<<<<<<<<
@@ -19860,50 +20388,50 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_sw = __pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_STRIDE_W);
 
-    /* "taso/_cython/core.pyx":712
+    /* "taso/_cython/core.pyx":737
  *             sh = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_H)
  *             sw = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_W)
  *             inputH = dims[2]             # <<<<<<<<<<<<<<
  *             inputW = dims[3]
  *             if inputH % sh == 0:
  */
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_dims, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 712, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_dims, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 737, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_inputH = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "taso/_cython/core.pyx":713
+    /* "taso/_cython/core.pyx":738
  *             sw = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_W)
  *             inputH = dims[2]
  *             inputW = dims[3]             # <<<<<<<<<<<<<<
  *             if inputH % sh == 0:
  *                 padH = max(kh - sh, 0)
  */
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_dims, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 713, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_dims, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 738, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_inputW = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "taso/_cython/core.pyx":714
+    /* "taso/_cython/core.pyx":739
  *             inputH = dims[2]
  *             inputW = dims[3]
  *             if inputH % sh == 0:             # <<<<<<<<<<<<<<
  *                 padH = max(kh - sh, 0)
  *             else:
  */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_sh); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 714, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_sh); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 739, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyNumber_Remainder(__pyx_v_inputH, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 714, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Remainder(__pyx_v_inputH, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 739, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 714, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 739, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 714, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 739, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_1) {
 
-      /* "taso/_cython/core.pyx":715
+      /* "taso/_cython/core.pyx":740
  *             inputW = dims[3]
  *             if inputH % sh == 0:
  *                 padH = max(kh - sh, 0)             # <<<<<<<<<<<<<<
@@ -19917,12 +20445,12 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
       } else {
         __pyx_t_10 = __pyx_t_6;
       }
-      __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 715, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 740, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_v_padH = __pyx_t_2;
       __pyx_t_2 = 0;
 
-      /* "taso/_cython/core.pyx":714
+      /* "taso/_cython/core.pyx":739
  *             inputH = dims[2]
  *             inputW = dims[3]
  *             if inputH % sh == 0:             # <<<<<<<<<<<<<<
@@ -19932,7 +20460,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
       goto __pyx_L5;
     }
 
-    /* "taso/_cython/core.pyx":717
+    /* "taso/_cython/core.pyx":742
  *                 padH = max(kh - sh, 0)
  *             else:
  *                 padH = max(kh - (inputH % sh), 0)             # <<<<<<<<<<<<<<
@@ -19941,25 +20469,25 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     /*else*/ {
       __pyx_t_10 = 0;
-      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_kh); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 717, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_kh); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 742, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_sh); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 717, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_sh); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 742, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = PyNumber_Remainder(__pyx_v_inputH, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 717, __pyx_L1_error)
+      __pyx_t_7 = PyNumber_Remainder(__pyx_v_inputH, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 742, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 717, __pyx_L1_error)
+      __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 742, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 717, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 742, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_4 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 717, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 742, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 717, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 742, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_1) {
-        __pyx_t_4 = __Pyx_PyInt_From_long(__pyx_t_10); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 717, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyInt_From_long(__pyx_t_10); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 742, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_7 = __pyx_t_4;
         __pyx_t_4 = 0;
@@ -19976,26 +20504,26 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     }
     __pyx_L5:;
 
-    /* "taso/_cython/core.pyx":718
+    /* "taso/_cython/core.pyx":743
  *             else:
  *                 padH = max(kh - (inputH % sh), 0)
  *             if inputW % sw == 0:             # <<<<<<<<<<<<<<
  *                 padW = max(kw - sw, 0)
  *             else:
  */
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_sw); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 718, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_sw); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 743, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_7 = PyNumber_Remainder(__pyx_v_inputW, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 718, __pyx_L1_error)
+    __pyx_t_7 = PyNumber_Remainder(__pyx_v_inputW, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 743, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyInt_EqObjC(__pyx_t_7, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 718, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_EqObjC(__pyx_t_7, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 743, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 718, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 743, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_1) {
 
-      /* "taso/_cython/core.pyx":719
+      /* "taso/_cython/core.pyx":744
  *                 padH = max(kh - (inputH % sh), 0)
  *             if inputW % sw == 0:
  *                 padW = max(kw - sw, 0)             # <<<<<<<<<<<<<<
@@ -20009,12 +20537,12 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
       } else {
         __pyx_t_9 = __pyx_t_6;
       }
-      __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 719, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 744, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_v_padW = __pyx_t_3;
       __pyx_t_3 = 0;
 
-      /* "taso/_cython/core.pyx":718
+      /* "taso/_cython/core.pyx":743
  *             else:
  *                 padH = max(kh - (inputH % sh), 0)
  *             if inputW % sw == 0:             # <<<<<<<<<<<<<<
@@ -20024,7 +20552,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
       goto __pyx_L6;
     }
 
-    /* "taso/_cython/core.pyx":721
+    /* "taso/_cython/core.pyx":746
  *                 padW = max(kw - sw, 0)
  *             else:
  *                 padW = max(kw - (inputW % sw), 0)             # <<<<<<<<<<<<<<
@@ -20033,25 +20561,25 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     /*else*/ {
       __pyx_t_9 = 0;
-      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_kw); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 721, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_kw); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 746, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_sw); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 721, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_sw); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 746, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_4 = PyNumber_Remainder(__pyx_v_inputW, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 721, __pyx_L1_error)
+      __pyx_t_4 = PyNumber_Remainder(__pyx_v_inputW, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 746, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = PyNumber_Subtract(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 721, __pyx_L1_error)
+      __pyx_t_7 = PyNumber_Subtract(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 746, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 721, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 746, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_t_7, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 721, __pyx_L1_error)
+      __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_t_7, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 746, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 721, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 746, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       if (__pyx_t_1) {
-        __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 721, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 746, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __pyx_t_4 = __pyx_t_2;
         __pyx_t_2 = 0;
@@ -20068,35 +20596,35 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     }
     __pyx_L6:;
 
-    /* "taso/_cython/core.pyx":723
+    /* "taso/_cython/core.pyx":748
  *                 padW = max(kw - (inputW % sw), 0)
  *             # Ensure padding is same on both sides
  *             if padH % 2 == 1:             # <<<<<<<<<<<<<<
  *                 padH += 1
  *             if padW % 2 == 1:
  */
-    __pyx_t_7 = __Pyx_PyInt_RemainderObjC(__pyx_v_padH, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 723, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_RemainderObjC(__pyx_v_padH, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 748, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_4 = __Pyx_PyInt_EqObjC(__pyx_t_7, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 723, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_EqObjC(__pyx_t_7, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 748, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 723, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 748, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_1) {
 
-      /* "taso/_cython/core.pyx":724
+      /* "taso/_cython/core.pyx":749
  *             # Ensure padding is same on both sides
  *             if padH % 2 == 1:
  *                 padH += 1             # <<<<<<<<<<<<<<
  *             if padW % 2 == 1:
  *                 padW += 1
  */
-      __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_v_padH, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 724, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_v_padH, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 749, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF_SET(__pyx_v_padH, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "taso/_cython/core.pyx":723
+      /* "taso/_cython/core.pyx":748
  *                 padW = max(kw - (inputW % sw), 0)
  *             # Ensure padding is same on both sides
  *             if padH % 2 == 1:             # <<<<<<<<<<<<<<
@@ -20105,35 +20633,35 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     }
 
-    /* "taso/_cython/core.pyx":725
+    /* "taso/_cython/core.pyx":750
  *             if padH % 2 == 1:
  *                 padH += 1
  *             if padW % 2 == 1:             # <<<<<<<<<<<<<<
  *                 padW += 1
  *             return [padH // 2, padW // 2, padH - padH // 2, padW - padW // 2]
  */
-    __pyx_t_4 = __Pyx_PyInt_RemainderObjC(__pyx_v_padW, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 725, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_RemainderObjC(__pyx_v_padW, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 750, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __Pyx_PyInt_EqObjC(__pyx_t_4, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 725, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_EqObjC(__pyx_t_4, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 750, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 725, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 750, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     if (__pyx_t_1) {
 
-      /* "taso/_cython/core.pyx":726
+      /* "taso/_cython/core.pyx":751
  *                 padH += 1
  *             if padW % 2 == 1:
  *                 padW += 1             # <<<<<<<<<<<<<<
  *             return [padH // 2, padW // 2, padH - padH // 2, padW - padW // 2]
  *         elif attrname == 'group':
  */
-      __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_padW, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 726, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_padW, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 751, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF_SET(__pyx_v_padW, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "taso/_cython/core.pyx":725
+      /* "taso/_cython/core.pyx":750
  *             if padH % 2 == 1:
  *                 padH += 1
  *             if padW % 2 == 1:             # <<<<<<<<<<<<<<
@@ -20142,7 +20670,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     }
 
-    /* "taso/_cython/core.pyx":727
+    /* "taso/_cython/core.pyx":752
  *             if padW % 2 == 1:
  *                 padW += 1
  *             return [padH // 2, padW // 2, padH - padH // 2, padW - padW // 2]             # <<<<<<<<<<<<<<
@@ -20150,21 +20678,21 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_GROUP)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_7 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_padH, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 727, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_padH, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 752, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_4 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_padW, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 727, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_padW, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 752, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_padH, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 727, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_padH, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 752, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyNumber_Subtract(__pyx_v_padH, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 727, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Subtract(__pyx_v_padH, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 752, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_padW, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 727, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_FloorDivideObjC(__pyx_v_padW, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 752, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = PyNumber_Subtract(__pyx_v_padW, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 727, __pyx_L1_error)
+    __pyx_t_5 = PyNumber_Subtract(__pyx_v_padW, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 752, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 727, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 752, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_7);
     PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_7);
@@ -20182,7 +20710,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":701
+    /* "taso/_cython/core.pyx":726
  *             sw = self.p_graph.get_operator_int_attr(op.guid, PM_STRIDE_W)
  *             return [sh, sw]
  *         elif attrname == 'pads':             # <<<<<<<<<<<<<<
@@ -20191,31 +20719,31 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":728
+  /* "taso/_cython/core.pyx":753
  *                 padW += 1
  *             return [padH // 2, padW // 2, padH - padH // 2, padW - padW // 2]
  *         elif attrname == 'group':             # <<<<<<<<<<<<<<
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_GROUP)
  *         elif attrname == 'dilations':
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_group, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 728, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_group, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 753, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":729
+    /* "taso/_cython/core.pyx":754
  *             return [padH // 2, padW // 2, padH - padH // 2, padW - padW // 2]
  *         elif attrname == 'group':
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_GROUP)             # <<<<<<<<<<<<<<
  *         elif attrname == 'dilations':
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_DILATIONS)
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_DILATIONS)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_GROUP)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 729, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_GROUP)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 754, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":728
+    /* "taso/_cython/core.pyx":753
  *                 padW += 1
  *             return [padH // 2, padW // 2, padH - padH // 2, padW - padW // 2]
  *         elif attrname == 'group':             # <<<<<<<<<<<<<<
@@ -20224,39 +20752,48 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":730
+  /* "taso/_cython/core.pyx":755
  *         elif attrname == 'group':
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_GROUP)
  *         elif attrname == 'dilations':             # <<<<<<<<<<<<<<
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_DILATIONS)
- *             dilation_list = list()
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_DILATIONS)
+ *             temp_arr[:] = ptr
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_dilations, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 730, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_dilations, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 755, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":731
+    /* "taso/_cython/core.pyx":756
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_GROUP)
  *         elif attrname == 'dilations':
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_DILATIONS)             # <<<<<<<<<<<<<<
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_DILATIONS)             # <<<<<<<<<<<<<<
+ *             temp_arr[:] = ptr
+ *             dilation_list = list()
+ */
+    __pyx_v_n_dims = __pyx_v_self->p_graph->get_operator_list_attr(__pyx_v_ptr, __pyx_v_op.guid, taso::PM_DILATIONS);
+
+    /* "taso/_cython/core.pyx":757
+ *         elif attrname == 'dilations':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_DILATIONS)
+ *             temp_arr[:] = ptr             # <<<<<<<<<<<<<<
  *             dilation_list = list()
  *             for i in range(n_dims):
  */
-    __pyx_v_n_dims = __pyx_v_self->p_graph->get_operator_list_attr(__pyx_v_temp_arr, __pyx_v_op.guid, taso::PM_DILATIONS);
+    memcpy(&(__pyx_v_temp_arr[0]), __pyx_v_ptr, sizeof(__pyx_v_temp_arr[0]) * (0x80 - 0));
 
-    /* "taso/_cython/core.pyx":732
- *         elif attrname == 'dilations':
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_DILATIONS)
+    /* "taso/_cython/core.pyx":758
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_DILATIONS)
+ *             temp_arr[:] = ptr
  *             dilation_list = list()             # <<<<<<<<<<<<<<
  *             for i in range(n_dims):
  *                 dilation_list.append(temp_arr[i])
  */
-    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 732, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 758, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_dilation_list = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "taso/_cython/core.pyx":733
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_DILATIONS)
+    /* "taso/_cython/core.pyx":759
+ *             temp_arr[:] = ptr
  *             dilation_list = list()
  *             for i in range(n_dims):             # <<<<<<<<<<<<<<
  *                 dilation_list.append(temp_arr[i])
@@ -20267,73 +20804,82 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_11; __pyx_t_8+=1) {
       __pyx_v_i = __pyx_t_8;
 
-      /* "taso/_cython/core.pyx":734
+      /* "taso/_cython/core.pyx":760
  *             dilation_list = list()
  *             for i in range(n_dims):
  *                 dilation_list.append(temp_arr[i])             # <<<<<<<<<<<<<<
  *             return dilation_list
  *         elif attrname == 'kernel_shape':
  */
-      __pyx_t_2 = __Pyx_PyInt_From_int((__pyx_v_temp_arr[__pyx_v_i])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 734, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_int((__pyx_v_temp_arr[__pyx_v_i])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 760, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_dilation_list, __pyx_t_2); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(1, 734, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_dilation_list, __pyx_t_2); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(1, 760, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
 
-    /* "taso/_cython/core.pyx":735
+    /* "taso/_cython/core.pyx":761
  *             for i in range(n_dims):
  *                 dilation_list.append(temp_arr[i])
  *             return dilation_list             # <<<<<<<<<<<<<<
  *         elif attrname == 'kernel_shape':
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_KERNEL_SHAPE)
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_KERNEL_SHAPE)
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(__pyx_v_dilation_list);
     __pyx_r = __pyx_v_dilation_list;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":730
+    /* "taso/_cython/core.pyx":755
  *         elif attrname == 'group':
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_GROUP)
  *         elif attrname == 'dilations':             # <<<<<<<<<<<<<<
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_DILATIONS)
- *             dilation_list = list()
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_DILATIONS)
+ *             temp_arr[:] = ptr
  */
   }
 
-  /* "taso/_cython/core.pyx":736
+  /* "taso/_cython/core.pyx":762
  *                 dilation_list.append(temp_arr[i])
  *             return dilation_list
  *         elif attrname == 'kernel_shape':             # <<<<<<<<<<<<<<
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_KERNEL_SHAPE)
- *             shape_list = list()
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_KERNEL_SHAPE)
+ *             temp_arr[:] = ptr
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_kernel_shape, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 736, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_kernel_shape, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 762, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":737
+    /* "taso/_cython/core.pyx":763
  *             return dilation_list
  *         elif attrname == 'kernel_shape':
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_KERNEL_SHAPE)             # <<<<<<<<<<<<<<
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_KERNEL_SHAPE)             # <<<<<<<<<<<<<<
+ *             temp_arr[:] = ptr
+ *             shape_list = list()
+ */
+    __pyx_v_n_dims = __pyx_v_self->p_graph->get_operator_list_attr(__pyx_v_ptr, __pyx_v_op.guid, taso::PM_KERNEL_SHAPE);
+
+    /* "taso/_cython/core.pyx":764
+ *         elif attrname == 'kernel_shape':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_KERNEL_SHAPE)
+ *             temp_arr[:] = ptr             # <<<<<<<<<<<<<<
  *             shape_list = list()
  *             for i in range(n_dims):
  */
-    __pyx_v_n_dims = __pyx_v_self->p_graph->get_operator_list_attr(__pyx_v_temp_arr, __pyx_v_op.guid, taso::PM_KERNEL_SHAPE);
+    memcpy(&(__pyx_v_temp_arr[0]), __pyx_v_ptr, sizeof(__pyx_v_temp_arr[0]) * (0x80 - 0));
 
-    /* "taso/_cython/core.pyx":738
- *         elif attrname == 'kernel_shape':
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_KERNEL_SHAPE)
+    /* "taso/_cython/core.pyx":765
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_KERNEL_SHAPE)
+ *             temp_arr[:] = ptr
  *             shape_list = list()             # <<<<<<<<<<<<<<
  *             for i in range(n_dims):
  *                 shape_list.append(temp_arr[i])
  */
-    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 738, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 765, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_shape_list = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "taso/_cython/core.pyx":739
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_KERNEL_SHAPE)
+    /* "taso/_cython/core.pyx":766
+ *             temp_arr[:] = ptr
  *             shape_list = list()
  *             for i in range(n_dims):             # <<<<<<<<<<<<<<
  *                 shape_list.append(temp_arr[i])
@@ -20344,20 +20890,20 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_11; __pyx_t_8+=1) {
       __pyx_v_i = __pyx_t_8;
 
-      /* "taso/_cython/core.pyx":740
+      /* "taso/_cython/core.pyx":767
  *             shape_list = list()
  *             for i in range(n_dims):
  *                 shape_list.append(temp_arr[i])             # <<<<<<<<<<<<<<
  *             return shape_list
  *         elif attrname == 'axis':
  */
-      __pyx_t_2 = __Pyx_PyInt_From_int((__pyx_v_temp_arr[__pyx_v_i])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 740, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_int((__pyx_v_temp_arr[__pyx_v_i])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 767, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_shape_list, __pyx_t_2); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(1, 740, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_shape_list, __pyx_t_2); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(1, 767, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
 
-    /* "taso/_cython/core.pyx":741
+    /* "taso/_cython/core.pyx":768
  *             for i in range(n_dims):
  *                 shape_list.append(temp_arr[i])
  *             return shape_list             # <<<<<<<<<<<<<<
@@ -20369,26 +20915,26 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     __pyx_r = __pyx_v_shape_list;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":736
+    /* "taso/_cython/core.pyx":762
  *                 dilation_list.append(temp_arr[i])
  *             return dilation_list
  *         elif attrname == 'kernel_shape':             # <<<<<<<<<<<<<<
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_KERNEL_SHAPE)
- *             shape_list = list()
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_KERNEL_SHAPE)
+ *             temp_arr[:] = ptr
  */
   }
 
-  /* "taso/_cython/core.pyx":742
+  /* "taso/_cython/core.pyx":769
  *                 shape_list.append(temp_arr[i])
  *             return shape_list
  *         elif attrname == 'axis':             # <<<<<<<<<<<<<<
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_AXIS)
  *         elif attrname == 'split':
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_axis, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 742, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_axis, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 769, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":743
+    /* "taso/_cython/core.pyx":770
  *             return shape_list
  *         elif attrname == 'axis':
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_AXIS)             # <<<<<<<<<<<<<<
@@ -20396,13 +20942,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *             return self.get_split_lens(op)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_AXIS)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 743, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_AXIS)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 770, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":742
+    /* "taso/_cython/core.pyx":769
  *                 shape_list.append(temp_arr[i])
  *             return shape_list
  *         elif attrname == 'axis':             # <<<<<<<<<<<<<<
@@ -20411,17 +20957,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":744
+  /* "taso/_cython/core.pyx":771
  *         elif attrname == 'axis':
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_AXIS)
  *         elif attrname == 'split':             # <<<<<<<<<<<<<<
  *             return self.get_split_lens(op)
  *         elif attrname == 'perm':
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_split, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 744, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_split, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 771, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":745
+    /* "taso/_cython/core.pyx":772
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_AXIS)
  *         elif attrname == 'split':
  *             return self.get_split_lens(op)             # <<<<<<<<<<<<<<
@@ -20429,9 +20975,9 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *             perIdx = self.p_graph.get_operator_int_attr(op.guid, PM_PERM)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_split_lens); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 745, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_split_lens); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 772, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_3 = __pyx_convert__to_py_taso_3a__3a_Op(__pyx_v_op); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 745, __pyx_L1_error)
+    __pyx_t_3 = __pyx_convert__to_py_taso_3a__3a_Op(__pyx_v_op); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 772, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -20446,14 +20992,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 745, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 772, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":744
+    /* "taso/_cython/core.pyx":771
  *         elif attrname == 'axis':
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_AXIS)
  *         elif attrname == 'split':             # <<<<<<<<<<<<<<
@@ -20462,38 +21008,38 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":746
+  /* "taso/_cython/core.pyx":773
  *         elif attrname == 'split':
  *             return self.get_split_lens(op)
  *         elif attrname == 'perm':             # <<<<<<<<<<<<<<
  *             perIdx = self.p_graph.get_operator_int_attr(op.guid, PM_PERM)
  *             dims = self.get_output_dims(op, 0)
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_perm, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 746, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_perm, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 773, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":747
+    /* "taso/_cython/core.pyx":774
  *             return self.get_split_lens(op)
  *         elif attrname == 'perm':
  *             perIdx = self.p_graph.get_operator_int_attr(op.guid, PM_PERM)             # <<<<<<<<<<<<<<
  *             dims = self.get_output_dims(op, 0)
  *             for i in range(len(dims)-1,-1,-1):
  */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_PERM)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 747, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_PERM)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 774, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_perIdx = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "taso/_cython/core.pyx":748
+    /* "taso/_cython/core.pyx":775
  *         elif attrname == 'perm':
  *             perIdx = self.p_graph.get_operator_int_attr(op.guid, PM_PERM)
  *             dims = self.get_output_dims(op, 0)             # <<<<<<<<<<<<<<
  *             for i in range(len(dims)-1,-1,-1):
  *                 dims[i] = perIdx % len(dims)
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_output_dims); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 748, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_output_dims); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 775, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_3 = __pyx_convert__to_py_taso_3a__3a_Op(__pyx_v_op); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 748, __pyx_L1_error)
+    __pyx_t_3 = __pyx_convert__to_py_taso_3a__3a_Op(__pyx_v_op); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 775, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     __pyx_t_6 = 0;
@@ -20510,7 +21056,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_3, __pyx_int_0};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 748, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 775, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -20519,14 +21065,14 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_3, __pyx_int_0};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 748, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 775, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 748, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 775, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_4) {
         __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -20537,7 +21083,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
       __Pyx_GIVEREF(__pyx_int_0);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_int_0);
       __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 748, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 775, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -20545,63 +21091,63 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     __pyx_v_dims = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "taso/_cython/core.pyx":749
+    /* "taso/_cython/core.pyx":776
  *             perIdx = self.p_graph.get_operator_int_attr(op.guid, PM_PERM)
  *             dims = self.get_output_dims(op, 0)
  *             for i in range(len(dims)-1,-1,-1):             # <<<<<<<<<<<<<<
  *                 dims[i] = perIdx % len(dims)
  *                 perIdx = perIdx // len(dims)
  */
-    __pyx_t_8 = PyObject_Length(__pyx_v_dims); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(1, 749, __pyx_L1_error)
+    __pyx_t_8 = PyObject_Length(__pyx_v_dims); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(1, 776, __pyx_L1_error)
     for (__pyx_t_13 = (__pyx_t_8 - 1); __pyx_t_13 > -1L; __pyx_t_13-=1) {
       __pyx_v_i = __pyx_t_13;
 
-      /* "taso/_cython/core.pyx":750
+      /* "taso/_cython/core.pyx":777
  *             dims = self.get_output_dims(op, 0)
  *             for i in range(len(dims)-1,-1,-1):
  *                 dims[i] = perIdx % len(dims)             # <<<<<<<<<<<<<<
  *                 perIdx = perIdx // len(dims)
  *             perm = tuple(dims)
  */
-      __pyx_t_14 = PyObject_Length(__pyx_v_dims); if (unlikely(__pyx_t_14 == ((Py_ssize_t)-1))) __PYX_ERR(1, 750, __pyx_L1_error)
-      __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_14); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 750, __pyx_L1_error)
+      __pyx_t_14 = PyObject_Length(__pyx_v_dims); if (unlikely(__pyx_t_14 == ((Py_ssize_t)-1))) __PYX_ERR(1, 777, __pyx_L1_error)
+      __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_14); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 777, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = PyNumber_Remainder(__pyx_v_perIdx, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 750, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_Remainder(__pyx_v_perIdx, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 777, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(__Pyx_SetItemInt(__pyx_v_dims, __pyx_v_i, __pyx_t_5, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1) < 0)) __PYX_ERR(1, 750, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_v_dims, __pyx_v_i, __pyx_t_5, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1) < 0)) __PYX_ERR(1, 777, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "taso/_cython/core.pyx":751
+      /* "taso/_cython/core.pyx":778
  *             for i in range(len(dims)-1,-1,-1):
  *                 dims[i] = perIdx % len(dims)
  *                 perIdx = perIdx // len(dims)             # <<<<<<<<<<<<<<
  *             perm = tuple(dims)
  *             return perm
  */
-      __pyx_t_14 = PyObject_Length(__pyx_v_dims); if (unlikely(__pyx_t_14 == ((Py_ssize_t)-1))) __PYX_ERR(1, 751, __pyx_L1_error)
-      __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_14); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 751, __pyx_L1_error)
+      __pyx_t_14 = PyObject_Length(__pyx_v_dims); if (unlikely(__pyx_t_14 == ((Py_ssize_t)-1))) __PYX_ERR(1, 778, __pyx_L1_error)
+      __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_14); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 778, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_2 = PyNumber_FloorDivide(__pyx_v_perIdx, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 751, __pyx_L1_error)
+      __pyx_t_2 = PyNumber_FloorDivide(__pyx_v_perIdx, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 778, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF_SET(__pyx_v_perIdx, __pyx_t_2);
       __pyx_t_2 = 0;
     }
 
-    /* "taso/_cython/core.pyx":752
+    /* "taso/_cython/core.pyx":779
  *                 dims[i] = perIdx % len(dims)
  *                 perIdx = perIdx // len(dims)
  *             perm = tuple(dims)             # <<<<<<<<<<<<<<
  *             return perm
  *         elif attrname == 'epsilon':
  */
-    __pyx_t_2 = __Pyx_PySequence_Tuple(__pyx_v_dims); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 752, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PySequence_Tuple(__pyx_v_dims); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 779, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_perm = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "taso/_cython/core.pyx":753
+    /* "taso/_cython/core.pyx":780
  *                 perIdx = perIdx // len(dims)
  *             perm = tuple(dims)
  *             return perm             # <<<<<<<<<<<<<<
@@ -20613,7 +21159,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     __pyx_r = __pyx_v_perm;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":746
+    /* "taso/_cython/core.pyx":773
  *         elif attrname == 'split':
  *             return self.get_split_lens(op)
  *         elif attrname == 'perm':             # <<<<<<<<<<<<<<
@@ -20622,31 +21168,31 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":754
+  /* "taso/_cython/core.pyx":781
  *             perm = tuple(dims)
  *             return perm
  *         elif attrname == 'epsilon':             # <<<<<<<<<<<<<<
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_EPSILON)
  *         elif attrname == 'axes':
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_epsilon, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 754, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_epsilon, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 781, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":755
+    /* "taso/_cython/core.pyx":782
  *             return perm
  *         elif attrname == 'epsilon':
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_EPSILON)             # <<<<<<<<<<<<<<
  *         elif attrname == 'axes':
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_AXES)
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->p_graph->get_operator_float_attr(__pyx_v_op.guid, taso::PM_EPSILON)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 755, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->p_graph->get_operator_float_attr(__pyx_v_op.guid, taso::PM_EPSILON)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 782, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":754
+    /* "taso/_cython/core.pyx":781
  *             perm = tuple(dims)
  *             return perm
  *         elif attrname == 'epsilon':             # <<<<<<<<<<<<<<
@@ -20655,39 +21201,48 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":756
+  /* "taso/_cython/core.pyx":783
  *         elif attrname == 'epsilon':
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_EPSILON)
  *         elif attrname == 'axes':             # <<<<<<<<<<<<<<
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_AXES)
- *             axes_list = list()
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
+ *             temp_arr[:] = ptr
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_axes, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 756, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_axes, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 783, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":757
+    /* "taso/_cython/core.pyx":784
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_EPSILON)
  *         elif attrname == 'axes':
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_AXES)             # <<<<<<<<<<<<<<
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)             # <<<<<<<<<<<<<<
+ *             temp_arr[:] = ptr
+ *             axes_list = list()
+ */
+    __pyx_v_n_dims = __pyx_v_self->p_graph->get_operator_list_attr(__pyx_v_ptr, __pyx_v_op.guid, taso::PM_AXES);
+
+    /* "taso/_cython/core.pyx":785
+ *         elif attrname == 'axes':
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
+ *             temp_arr[:] = ptr             # <<<<<<<<<<<<<<
  *             axes_list = list()
  *             for i in range(n_dims):
  */
-    __pyx_v_n_dims = __pyx_v_self->p_graph->get_operator_list_attr(__pyx_v_temp_arr, __pyx_v_op.guid, taso::PM_AXES);
+    memcpy(&(__pyx_v_temp_arr[0]), __pyx_v_ptr, sizeof(__pyx_v_temp_arr[0]) * (0x80 - 0));
 
-    /* "taso/_cython/core.pyx":758
- *         elif attrname == 'axes':
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_AXES)
+    /* "taso/_cython/core.pyx":786
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
+ *             temp_arr[:] = ptr
  *             axes_list = list()             # <<<<<<<<<<<<<<
  *             for i in range(n_dims):
  *                 axes_list.append(temp_arr[i])
  */
-    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 758, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 786, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_axes_list = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "taso/_cython/core.pyx":759
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_AXES)
+    /* "taso/_cython/core.pyx":787
+ *             temp_arr[:] = ptr
  *             axes_list = list()
  *             for i in range(n_dims):             # <<<<<<<<<<<<<<
  *                 axes_list.append(temp_arr[i])
@@ -20698,20 +21253,20 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_11; __pyx_t_8+=1) {
       __pyx_v_i = __pyx_t_8;
 
-      /* "taso/_cython/core.pyx":760
+      /* "taso/_cython/core.pyx":788
  *             axes_list = list()
  *             for i in range(n_dims):
  *                 axes_list.append(temp_arr[i])             # <<<<<<<<<<<<<<
  *             return axes_list
  *         elif attrname == 'keepdims':
  */
-      __pyx_t_2 = __Pyx_PyInt_From_int((__pyx_v_temp_arr[__pyx_v_i])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 760, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_int((__pyx_v_temp_arr[__pyx_v_i])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 788, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_axes_list, __pyx_t_2); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(1, 760, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_axes_list, __pyx_t_2); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(1, 788, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
 
-    /* "taso/_cython/core.pyx":761
+    /* "taso/_cython/core.pyx":789
  *             for i in range(n_dims):
  *                 axes_list.append(temp_arr[i])
  *             return axes_list             # <<<<<<<<<<<<<<
@@ -20723,26 +21278,26 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     __pyx_r = __pyx_v_axes_list;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":756
+    /* "taso/_cython/core.pyx":783
  *         elif attrname == 'epsilon':
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_EPSILON)
  *         elif attrname == 'axes':             # <<<<<<<<<<<<<<
- *             n_dims = self.p_graph.get_operator_list_attr(temp_arr, op.guid, PM_AXES)
- *             axes_list = list()
+ *             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
+ *             temp_arr[:] = ptr
  */
   }
 
-  /* "taso/_cython/core.pyx":762
+  /* "taso/_cython/core.pyx":790
  *                 axes_list.append(temp_arr[i])
  *             return axes_list
  *         elif attrname == 'keepdims':             # <<<<<<<<<<<<<<
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_KEEP_DIMS)
  *         elif attrname == 'coordinate_transformation_mode':
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_keepdims, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 762, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_keepdims, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 790, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":763
+    /* "taso/_cython/core.pyx":791
  *             return axes_list
  *         elif attrname == 'keepdims':
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_KEEP_DIMS)             # <<<<<<<<<<<<<<
@@ -20750,13 +21305,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_KEEP_DIMS)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 763, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->p_graph->get_operator_int_attr(__pyx_v_op.guid, taso::PM_KEEP_DIMS)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 791, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":762
+    /* "taso/_cython/core.pyx":790
  *                 axes_list.append(temp_arr[i])
  *             return axes_list
  *         elif attrname == 'keepdims':             # <<<<<<<<<<<<<<
@@ -20765,17 +21320,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":764
+  /* "taso/_cython/core.pyx":792
  *         elif attrname == 'keepdims':
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_KEEP_DIMS)
  *         elif attrname == 'coordinate_transformation_mode':             # <<<<<<<<<<<<<<
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  *             self.p_graph.get_operator_string_attr(op.guid, PM_COOR_TRANS_MODE, c_string_ptr)
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_coordinate_transformation_mode, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 764, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_coordinate_transformation_mode, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 792, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":765
+    /* "taso/_cython/core.pyx":793
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_KEEP_DIMS)
  *         elif attrname == 'coordinate_transformation_mode':
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))             # <<<<<<<<<<<<<<
@@ -20784,7 +21339,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_c_string_ptr = ((char *)malloc((0x65 * (sizeof(char)))));
 
-    /* "taso/_cython/core.pyx":766
+    /* "taso/_cython/core.pyx":794
  *         elif attrname == 'coordinate_transformation_mode':
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  *             self.p_graph.get_operator_string_attr(op.guid, PM_COOR_TRANS_MODE, c_string_ptr)             # <<<<<<<<<<<<<<
@@ -20793,7 +21348,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_self->p_graph->get_operator_string_attr(__pyx_v_op.guid, taso::PM_COOR_TRANS_MODE, __pyx_v_c_string_ptr);
 
-    /* "taso/_cython/core.pyx":767
+    /* "taso/_cython/core.pyx":795
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  *             self.p_graph.get_operator_string_attr(op.guid, PM_COOR_TRANS_MODE, c_string_ptr)
  *             return c_string_ptr             # <<<<<<<<<<<<<<
@@ -20801,13 +21356,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_CUBIC_COEFF_A)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyBytes_FromString(__pyx_v_c_string_ptr); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 767, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyBytes_FromString(__pyx_v_c_string_ptr); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 795, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":764
+    /* "taso/_cython/core.pyx":792
  *         elif attrname == 'keepdims':
  *             return self.p_graph.get_operator_int_attr(op.guid, PM_KEEP_DIMS)
  *         elif attrname == 'coordinate_transformation_mode':             # <<<<<<<<<<<<<<
@@ -20816,17 +21371,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":768
+  /* "taso/_cython/core.pyx":796
  *             self.p_graph.get_operator_string_attr(op.guid, PM_COOR_TRANS_MODE, c_string_ptr)
  *             return c_string_ptr
  *         elif attrname == 'cubic_coeff_a':             # <<<<<<<<<<<<<<
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_CUBIC_COEFF_A)
  *         elif attrname == 'mode':
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_cubic_coeff_a, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 768, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_cubic_coeff_a, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 796, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":769
+    /* "taso/_cython/core.pyx":797
  *             return c_string_ptr
  *         elif attrname == 'cubic_coeff_a':
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_CUBIC_COEFF_A)             # <<<<<<<<<<<<<<
@@ -20834,13 +21389,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->p_graph->get_operator_float_attr(__pyx_v_op.guid, taso::PM_CUBIC_COEFF_A)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 769, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->p_graph->get_operator_float_attr(__pyx_v_op.guid, taso::PM_CUBIC_COEFF_A)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 797, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":768
+    /* "taso/_cython/core.pyx":796
  *             self.p_graph.get_operator_string_attr(op.guid, PM_COOR_TRANS_MODE, c_string_ptr)
  *             return c_string_ptr
  *         elif attrname == 'cubic_coeff_a':             # <<<<<<<<<<<<<<
@@ -20849,17 +21404,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":770
+  /* "taso/_cython/core.pyx":798
  *         elif attrname == 'cubic_coeff_a':
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_CUBIC_COEFF_A)
  *         elif attrname == 'mode':             # <<<<<<<<<<<<<<
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  *             self.p_graph.get_operator_string_attr(op.guid, PM_MODE, c_string_ptr)
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_mode, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 770, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_mode, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 798, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":771
+    /* "taso/_cython/core.pyx":799
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_CUBIC_COEFF_A)
  *         elif attrname == 'mode':
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))             # <<<<<<<<<<<<<<
@@ -20868,7 +21423,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_c_string_ptr = ((char *)malloc((0x65 * (sizeof(char)))));
 
-    /* "taso/_cython/core.pyx":772
+    /* "taso/_cython/core.pyx":800
  *         elif attrname == 'mode':
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  *             self.p_graph.get_operator_string_attr(op.guid, PM_MODE, c_string_ptr)             # <<<<<<<<<<<<<<
@@ -20877,7 +21432,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_self->p_graph->get_operator_string_attr(__pyx_v_op.guid, taso::PM_MODE, __pyx_v_c_string_ptr);
 
-    /* "taso/_cython/core.pyx":773
+    /* "taso/_cython/core.pyx":801
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  *             self.p_graph.get_operator_string_attr(op.guid, PM_MODE, c_string_ptr)
  *             return c_string_ptr             # <<<<<<<<<<<<<<
@@ -20885,13 +21440,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyBytes_FromString(__pyx_v_c_string_ptr); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 773, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyBytes_FromString(__pyx_v_c_string_ptr); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 801, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":770
+    /* "taso/_cython/core.pyx":798
  *         elif attrname == 'cubic_coeff_a':
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_CUBIC_COEFF_A)
  *         elif attrname == 'mode':             # <<<<<<<<<<<<<<
@@ -20900,17 +21455,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":774
+  /* "taso/_cython/core.pyx":802
  *             self.p_graph.get_operator_string_attr(op.guid, PM_MODE, c_string_ptr)
  *             return c_string_ptr
  *         elif attrname == 'nearest_mode':             # <<<<<<<<<<<<<<
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  *             self.p_graph.get_operator_string_attr(op.guid, PM_NEAREST_MODE, c_string_ptr)
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_nearest_mode, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 774, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_nearest_mode, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 802, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":775
+    /* "taso/_cython/core.pyx":803
  *             return c_string_ptr
  *         elif attrname == 'nearest_mode':
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))             # <<<<<<<<<<<<<<
@@ -20919,7 +21474,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_c_string_ptr = ((char *)malloc((0x65 * (sizeof(char)))));
 
-    /* "taso/_cython/core.pyx":776
+    /* "taso/_cython/core.pyx":804
  *         elif attrname == 'nearest_mode':
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  *             self.p_graph.get_operator_string_attr(op.guid, PM_NEAREST_MODE, c_string_ptr)             # <<<<<<<<<<<<<<
@@ -20928,7 +21483,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
     __pyx_v_self->p_graph->get_operator_string_attr(__pyx_v_op.guid, taso::PM_NEAREST_MODE, __pyx_v_c_string_ptr);
 
-    /* "taso/_cython/core.pyx":777
+    /* "taso/_cython/core.pyx":805
  *             c_string_ptr = <char *> malloc((100 + 1) * sizeof(char))
  *             self.p_graph.get_operator_string_attr(op.guid, PM_NEAREST_MODE, c_string_ptr)
  *             return c_string_ptr             # <<<<<<<<<<<<<<
@@ -20936,13 +21491,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_ALPHA)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyBytes_FromString(__pyx_v_c_string_ptr); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 777, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyBytes_FromString(__pyx_v_c_string_ptr); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 805, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":774
+    /* "taso/_cython/core.pyx":802
  *             self.p_graph.get_operator_string_attr(op.guid, PM_MODE, c_string_ptr)
  *             return c_string_ptr
  *         elif attrname == 'nearest_mode':             # <<<<<<<<<<<<<<
@@ -20951,17 +21506,17 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":778
+  /* "taso/_cython/core.pyx":806
  *             self.p_graph.get_operator_string_attr(op.guid, PM_NEAREST_MODE, c_string_ptr)
  *             return c_string_ptr
  *         elif attrname == 'alpha':             # <<<<<<<<<<<<<<
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_ALPHA)
  *         else:
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_alpha, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 778, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_attrname, __pyx_n_u_alpha, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(1, 806, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "taso/_cython/core.pyx":779
+    /* "taso/_cython/core.pyx":807
  *             return c_string_ptr
  *         elif attrname == 'alpha':
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_ALPHA)             # <<<<<<<<<<<<<<
@@ -20969,13 +21524,13 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  *            assert False, 'Internal error: unknow attribute {}'.format(attrname)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->p_graph->get_operator_float_attr(__pyx_v_op.guid, taso::PM_ALPHA)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 779, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->p_graph->get_operator_float_attr(__pyx_v_op.guid, taso::PM_ALPHA)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 807, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "taso/_cython/core.pyx":778
+    /* "taso/_cython/core.pyx":806
  *             self.p_graph.get_operator_string_attr(op.guid, PM_NEAREST_MODE, c_string_ptr)
  *             return c_string_ptr
  *         elif attrname == 'alpha':             # <<<<<<<<<<<<<<
@@ -20984,7 +21539,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
   }
 
-  /* "taso/_cython/core.pyx":781
+  /* "taso/_cython/core.pyx":809
  *             return self.p_graph.get_operator_float_attr(op.guid, PM_ALPHA)
  *         else:
  *            assert False, 'Internal error: unknow attribute {}'.format(attrname)             # <<<<<<<<<<<<<<
@@ -20993,7 +21548,7 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
       if (unlikely(!0)) {
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Internal_error_unknow_attribute, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 781, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Internal_error_unknow_attribute, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 809, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_7 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -21007,22 +21562,22 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
         }
         __pyx_t_2 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_7, __pyx_v_attrname) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_attrname);
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 781, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 809, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_5 = PyTuple_Pack(1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 781, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_Pack(1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 809, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         PyErr_SetObject(PyExc_AssertionError, __pyx_t_5);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __PYX_ERR(1, 781, __pyx_L1_error)
+        __PYX_ERR(1, 809, __pyx_L1_error)
       }
     }
     #endif
   }
 
-  /* "taso/_cython/core.pyx":686
- *             return "Undefined"
+  /* "taso/_cython/core.pyx":710
+ *            assert False, 'Add functionality for: {} in get_operator_int_attr()'.format(attrname)
  * 
  *     def get_operator_attr(self, Op op, attrname):             # <<<<<<<<<<<<<<
  *         cdef int kh, kw, sh, sw
@@ -21063,19 +21618,19 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_132get_operator_attr(struct __pyx
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_135__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_135__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_139__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_139__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_134__reduce_cython__(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self));
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_138__reduce_cython__(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_134__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self) {
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_138__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -21120,19 +21675,19 @@ static PyObject *__pyx_pf_4taso_4core_7PyGraph_134__reduce_cython__(CYTHON_UNUSE
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_137__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_4taso_4core_7PyGraph_137__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_141__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_4taso_4core_7PyGraph_141__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_136__setstate_cython__(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_4taso_4core_7PyGraph_140__setstate_cython__(((struct __pyx_obj_4taso_4core_PyGraph *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4taso_4core_7PyGraph_136__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_4taso_4core_7PyGraph_140__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_4taso_4core_PyGraph *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -22340,10 +22895,12 @@ static PyMethodDef __pyx_methods_4taso_4core_PyGraph[] = {
   {"get_split_lens", (PyCFunction)__pyx_pw_4taso_4core_7PyGraph_125get_split_lens, METH_O, 0},
   {"get_output_dims", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4taso_4core_7PyGraph_127get_output_dims, METH_VARARGS|METH_KEYWORDS, 0},
   {"get_num_outputs", (PyCFunction)__pyx_pw_4taso_4core_7PyGraph_129get_num_outputs, METH_O, 0},
-  {"get_operator_type", (PyCFunction)__pyx_pw_4taso_4core_7PyGraph_131get_operator_type, METH_O, 0},
-  {"get_operator_attr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4taso_4core_7PyGraph_133get_operator_attr, METH_VARARGS|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_4taso_4core_7PyGraph_135__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_4taso_4core_7PyGraph_137__setstate_cython__, METH_O, 0},
+  {"get_op_init_vector", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4taso_4core_7PyGraph_131get_op_init_vector, METH_VARARGS|METH_KEYWORDS, 0},
+  {"get_operator_type", (PyCFunction)__pyx_pw_4taso_4core_7PyGraph_133get_operator_type, METH_O, 0},
+  {"get_operator_int_attr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4taso_4core_7PyGraph_135get_operator_int_attr, METH_VARARGS|METH_KEYWORDS, 0},
+  {"get_operator_attr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4taso_4core_7PyGraph_137get_operator_attr, METH_VARARGS|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_4taso_4core_7PyGraph_139__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_4taso_4core_7PyGraph_141__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -22466,6 +23023,7 @@ static struct PyModuleDef __pyx_moduledef = {
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_Add, __pyx_k_Add, sizeof(__pyx_k_Add), 0, 1, 0, 1},
+  {&__pyx_kp_u_Add_functionality_for_in_get_ope, __pyx_k_Add_functionality_for_in_get_ope, sizeof(__pyx_k_Add_functionality_for_in_get_ope), 0, 1, 0, 0},
   {&__pyx_n_u_ArgMax, __pyx_k_ArgMax, sizeof(__pyx_k_ArgMax), 0, 1, 0, 1},
   {&__pyx_n_u_ArgMin, __pyx_k_ArgMin, sizeof(__pyx_k_ArgMin), 0, 1, 0, 1},
   {&__pyx_n_u_AveragePool, __pyx_k_AveragePool, sizeof(__pyx_k_AveragePool), 0, 1, 0, 1},
@@ -22570,6 +23128,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_dstIdx, __pyx_k_dstIdx, sizeof(__pyx_k_dstIdx), 0, 0, 1, 1},
   {&__pyx_n_s_dstOp, __pyx_k_dstOp, sizeof(__pyx_k_dstOp), 0, 0, 1, 1},
   {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
+  {&__pyx_n_u_ends, __pyx_k_ends, sizeof(__pyx_k_ends), 0, 1, 0, 1},
   {&__pyx_n_s_epsilon, __pyx_k_epsilon, sizeof(__pyx_k_epsilon), 0, 0, 1, 1},
   {&__pyx_n_u_epsilon, __pyx_k_epsilon, sizeof(__pyx_k_epsilon), 0, 1, 0, 1},
   {&__pyx_n_u_f, __pyx_k_f, sizeof(__pyx_k_f), 0, 1, 0, 1},
@@ -22589,6 +23148,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_inplace, __pyx_k_inplace, sizeof(__pyx_k_inplace), 0, 0, 1, 1},
   {&__pyx_n_s_input, __pyx_k_input, sizeof(__pyx_k_input), 0, 0, 1, 1},
+  {&__pyx_n_s_input_name, __pyx_k_input_name, sizeof(__pyx_k_input_name), 0, 0, 1, 1},
   {&__pyx_kp_u_input_tensor_must_be_4_dim_for_p, __pyx_k_input_tensor_must_be_4_dim_for_p, sizeof(__pyx_k_input_tensor_must_be_4_dim_for_p), 0, 1, 0, 0},
   {&__pyx_n_s_inputs, __pyx_k_inputs, sizeof(__pyx_k_inputs), 0, 0, 1, 1},
   {&__pyx_n_s_keepdims, __pyx_k_keepdims, sizeof(__pyx_k_keepdims), 0, 0, 1, 1},
@@ -22606,6 +23166,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_nearest_mode, __pyx_k_nearest_mode, sizeof(__pyx_k_nearest_mode), 0, 1, 0, 1},
   {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
   {&__pyx_n_s_np, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
+  {&__pyx_n_s_num_inputs, __pyx_k_num_inputs, sizeof(__pyx_k_num_inputs), 0, 0, 1, 1},
+  {&__pyx_n_u_num_inputs, __pyx_k_num_inputs, sizeof(__pyx_k_num_inputs), 0, 1, 0, 1},
   {&__pyx_n_s_numpy, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
   {&__pyx_n_s_op, __pyx_k_op, sizeof(__pyx_k_op), 0, 0, 1, 1},
   {&__pyx_n_s_op_table, __pyx_k_op_table, sizeof(__pyx_k_op_table), 0, 0, 1, 1},
@@ -22637,7 +23199,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_srcIdx, __pyx_k_srcIdx, sizeof(__pyx_k_srcIdx), 0, 0, 1, 1},
   {&__pyx_n_s_srcOp, __pyx_k_srcOp, sizeof(__pyx_k_srcOp), 0, 0, 1, 1},
   {&__pyx_n_s_start, __pyx_k_start, sizeof(__pyx_k_start), 0, 0, 1, 1},
+  {&__pyx_n_u_starts, __pyx_k_starts, sizeof(__pyx_k_starts), 0, 1, 0, 1},
   {&__pyx_n_s_steps, __pyx_k_steps, sizeof(__pyx_k_steps), 0, 0, 1, 1},
+  {&__pyx_n_u_steps, __pyx_k_steps, sizeof(__pyx_k_steps), 0, 1, 0, 1},
   {&__pyx_n_s_strides, __pyx_k_strides, sizeof(__pyx_k_strides), 0, 0, 1, 1},
   {&__pyx_n_u_strides, __pyx_k_strides, sizeof(__pyx_k_strides), 0, 1, 0, 1},
   {&__pyx_kp_s_taso__cython_core_pyx, __pyx_k_taso__cython_core_pyx, sizeof(__pyx_k_taso__cython_core_pyx), 0, 0, 1, 0},

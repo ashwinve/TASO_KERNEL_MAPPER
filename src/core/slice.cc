@@ -20,9 +20,10 @@ TensorHandle Graph::slice(const TensorHandle _input,
                           const std::vector<int>& _start,
                           const std::vector<int>& _end,
                           const std::vector<int>& _axes,
-                          const std::vector<int>& _steps)
+                          const std::vector<int>& _steps,
+                          const int num_inputs)
 {
-  Op op = model->get_or_create_slice(*_input, _start, _end, _axes, _steps);
+  Op op = model->get_or_create_slice(*_input, _start, _end, _axes, _steps, num_inputs);
   add_edge(_input->op, op, _input->idx, 0);
   TensorHandle t = new Tensor(op.ptr->outputs[0]);
   t->op = op;
@@ -33,7 +34,8 @@ Op Model::get_or_create_slice(const Tensor& _input,
                               const std::vector<int>& _start,
                               const std::vector<int>& _end,
                               const std::vector<int>& _axes,
-                              const std::vector<int>& _steps)
+                              const std::vector<int>& _steps,
+                              const int num_inputs)
 {
   if (_start.size() != _end.size())
     return Op::INVALID_OP;
@@ -46,7 +48,7 @@ Op Model::get_or_create_slice(const Tensor& _input,
   if (slice.find(key) != slice.end()) {
     sliceOp = slice[key];
   } else {
-    sliceOp = new Slice(this, _input, _start, _end, _axes, _steps);
+    sliceOp = new Slice(this, _input, _start, _end, _axes, _steps, num_inputs);
     measure_slice_cost(sliceOp);
     slice[key] = sliceOp;
   }
@@ -60,9 +62,10 @@ Slice::Slice(Model* _model, const Tensor& _input,
              const std::vector<int>& _start,
              const std::vector<int>& _end,
              const std::vector<int>& _axes,
-             const std::vector<int>& _steps)
+             const std::vector<int>& _steps,
+             const int num_inputs)
 : OpBase(_input, _model, OP_SLICE),
-  start(_start), end(_end), axes(_axes), steps(_steps)
+  start(_start), end(_end), axes(_axes), steps(_steps), num_inputs(num_inputs)
 {
   assert(_start.size() == _end.size());
   assert(_start.size() == _axes.size());
@@ -102,7 +105,37 @@ Slice::~Slice(void)
 
 bool Slice::get_int_parameter(PMParameter para, int* value)
 {
-  return OpBase::get_int_parameter(para, value);
+  switch(para){
+    case PM_NUM_INPUTS:
+      *value = num_inputs;
+      return true;
+    default:
+      return OpBase::get_int_parameter(para, value);
+  }
+}
+
+bool Slice::get_list_parameter(int* &arr, PMParameter para, int * ret)
+{
+  switch (para) {
+    case PM_STARTS:
+      arr = (int*) start.data();
+      *ret = (int) start.size();
+      return true;
+    case PM_ENDS:
+      arr = (int*) end.data();
+      *ret = (int) end.size();
+      return true;
+    case PM_AXES:
+      arr = (int*) axes.data();
+      *ret = (int) axes.size();
+      return true;
+    case PM_STEPS:
+      arr = (int*) steps.data();
+      *ret = (int) steps.size();
+      return true;
+    default:
+      return OpBase::get_list_parameter(arr, para, ret);
+  }
 }
 
 void Slice::collect_costs(float& exe_time, float& flops,

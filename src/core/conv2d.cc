@@ -257,7 +257,7 @@ bool Conv2D::get_int_parameter(PMParameter para, int* value)
   }
 }
 
-bool Conv2D::get_list_parameter(int* arr, PMParameter para, int * ret)
+bool Conv2D::get_list_parameter(int* &arr, PMParameter para, int * ret)
 {
   switch (para) {
     case PM_DILATIONS:
