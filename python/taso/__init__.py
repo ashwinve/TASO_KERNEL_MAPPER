@@ -311,8 +311,13 @@ def _gemm(op, graph, tensors, initializer):
     if "transB" in attrs and attrs["transB"] == 1:
         inputs[1] = graph.transpose(inputs[1], (1,0), shuffle=True)
     outputs = graph.matmul(inputs[0], inputs[1])
+    
     if len(inputs) > 2:
-        outputs = graph.add(outputs, inputs[2])
+        dim = inputs[2].dim(0)
+        dims_tuple = np.ones(outputs.nDim)
+        dims_tuple[-1] = dim
+        reshaped_bias = graph.reshape(inputs[2], tuple(dims_tuple))
+        outputs = graph.add(outputs, reshaped_bias)
     return outputs
 
 def _greater(op, graph, tensors, initializer):
@@ -1044,6 +1049,10 @@ input_weight_names['Sub'] = ['input1', 'input2']
 input_weight_names['BroadcastAdd'] = ['input1', 'input2']
 input_weight_names['Transpose'] = ['input']
 input_weight_names['Slice'] = ['input', 'starts', 'ends', 'axes', 'steps']
+input_weight_names['Split'] = ['input', 'split']
+input_weight_names["Squeeze"] = ['input', 'axes']
+input_weight_names['ReduceMax'] = ['input', 'axes']
+input_weight_names['ReduceSum'] = ['input', 'axes']
 
 operator_attrs = dict()
 operator_attrs['Add'] = []
@@ -1060,7 +1069,7 @@ operator_attrs['Dropout'] = []
 operator_attrs['Erf'] = []
 operator_attrs['Exp'] = []
 operator_attrs['Expand'] = []
-operator_attrs['Gemm'] = [] # "alpha", "beta", "transB"
+operator_attrs['Gemm'] = [] # this is fissioned into Matmul + Add
 operator_attrs['Greater'] = []
 operator_attrs['Identity'] = []
 operator_attrs['Less'] = []
@@ -1074,8 +1083,8 @@ operator_attrs['Shape'] = []
 operator_attrs['Sigmoid'] = []
 operator_attrs['Slice'] = []
 operator_attrs['Softplus'] = []
-operator_attrs['Split'] = ['axis', 'split']
-operator_attrs["Squeeze"] = ['axes']
+operator_attrs['Split'] = ['axis'] # 'split': After opset 11, moved from operator attr to op input
+operator_attrs["Squeeze"] = [] # 'axes': After opset 11, moved from operator attr to op input
 operator_attrs['Sqrt'] = []
 operator_attrs['StridedSlice'] = []
 operator_attrs['Sub'] = []
@@ -1089,9 +1098,9 @@ operator_attrs['Unsqueeze'] = ['axes']
 # TODO: register this or catch and generate a Resize node?
 operator_attrs['Upsample'] = ['nearest']
 operator_attrs['BroadcastAdd'] = []
-operator_attrs['ReduceMax'] = ['axes', 'keepdims']
+operator_attrs['ReduceMax'] = ['keepdims']
 operator_attrs['ReduceMean'] = ['axes']
-operator_attrs['ReduceSum'] = ['axes', 'keepdims']
+operator_attrs['ReduceSum'] = ['keepdims']
 
 def _input_tensor_name(graph, inedge, op):
     intype = graph.get_operator_type(inedge['srcOp'])
@@ -1154,14 +1163,14 @@ def export_onnx(graph):
                                           TensorProto.FLOAT, graph.get_input_dims(op, e['dstIdx']),
                                           graph.get_weight_value(e['srcOp'])))
         
-        # add a second input for Reshape
+        # account for ONNX operators where attributes became input tensors
         if mytype == 'Reshape':
             inputs.append('Reshape_attr{}'.format(op['guid']))
             shape = graph.get_output_dims(op, 0)
             graph_inputs.append(helper.make_tensor_value_info('Reshape_attr{}'.format(op['guid']), TensorProto.INT64, [len(shape)]))
             graph_initializers.append(helper.make_tensor('Reshape_attr{}'.format(op['guid']), TensorProto.INT64, [len(shape)], shape))
         
-        if mytype == 'Slice':
+        elif mytype == 'Slice':
             num_inputs = graph.get_operator_int_attr(op, 'num_inputs')
             assert num_inputs >= 3, "Slice requires at least 3 inputs"
             assert num_inputs <= 5, "Slice takes at most 5 inputs"
@@ -1199,6 +1208,16 @@ def export_onnx(graph):
                                                                                         graph_initializers, 
                                                                                         mytype, op, steps, 4)
         
+        elif mytype == 'Split':
+            splits = graph.get_split_lens(op)
+            inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, splits, 1)
+        elif mytype == 'ReduceSum' or mytype == 'ReduceMax' or mytype == 'Squeeze':
+            axes = graph.get_operator_attr(op, 'axes')
+            inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, axes, 1)
         outputs = list()
         for i in range(graph.get_num_outputs(op)):
             outputs.append(_output_tensor_name(graph, op, i))
