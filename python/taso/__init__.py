@@ -1060,7 +1060,7 @@ operator_attrs['Dropout'] = []
 operator_attrs['Erf'] = []
 operator_attrs['Exp'] = []
 operator_attrs['Expand'] = []
-operator_attrs['Gemm'] = []
+operator_attrs['Gemm'] = [] # "alpha", "beta", "transB"
 operator_attrs['Greater'] = []
 operator_attrs['Identity'] = []
 operator_attrs['Less'] = []
@@ -1153,7 +1153,7 @@ def export_onnx(graph):
                 graph_initializers.append(helper.make_tensor(_input_tensor_name(graph, e, op),
                                           TensorProto.FLOAT, graph.get_input_dims(op, e['dstIdx']),
                                           graph.get_weight_value(e['srcOp'])))
-
+        
         # add a second input for Reshape
         if mytype == 'Reshape':
             inputs.append('Reshape_attr{}'.format(op['guid']))
@@ -1198,16 +1198,16 @@ def export_onnx(graph):
                 inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, steps, 4)
-                
-            sys.exit()
-            
+        
         outputs = list()
         for i in range(graph.get_num_outputs(op)):
             outputs.append(_output_tensor_name(graph, op, i))
             output_guids[(op['guid'], i)] = op
+        
         node = helper.make_node(mytype, inputs, outputs, '{}{}'.format(mytype, op['guid']))
         _add_node_attribute(graph, node, op, mytype)
         graph_nodes.append(node)
+        
     for guid, idx in output_guids:
         op = output_guids[(guid, idx)]
         graph_outputs.append(helper.make_tensor_value_info(_output_tensor_name(graph, op, idx),

@@ -77,6 +77,18 @@ bool Squeeze::get_int_parameter(PMParameter para, int* value)
   return OpBase::get_int_parameter(para, value);
 }
 
+bool Squeeze::get_list_parameter(int* &arr, PMParameter para, int * ret)
+{
+  switch (para) {
+    case PM_AXES:
+      arr = axes.data();
+      *ret = (int) axes.size();
+      return true;
+    default:
+      return OpBase::get_list_parameter(arr, para, ret);
+  }
+}
+
 void Squeeze::collect_costs(float& exe_time, float& flops,
                             float& meme_acc, int& num_kernels)
 {

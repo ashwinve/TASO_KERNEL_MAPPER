@@ -1141,6 +1141,7 @@ public:
   Squeeze(Model* _model, const Tensor& input, const std::vector<int>& axes);
   ~Squeeze(void);
   bool get_int_parameter(PMParameter para, int*);
+  bool get_list_parameter(int* &arr, PMParameter para, int * ret);
   void forward(bool block);
   void map(void);
   void unmap(void);
