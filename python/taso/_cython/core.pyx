@@ -684,6 +684,10 @@ cdef class PyGraph:
             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_AXES)
         elif input_name == 'steps':
             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_STEPS)
+        elif input_name == 'pads':
+            n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_PAD)
+        else:
+            assert False, 'Add functionality for: {} in get_op_init_vector()'.format(input_name)
         
         temp_arr[:] = ptr
         for i in range(n_dims):

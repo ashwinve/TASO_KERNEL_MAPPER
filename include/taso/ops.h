@@ -398,7 +398,7 @@ enum PMParameter {
   PM_KERNEL_W,		// Conv2D, Pool2D
   PM_STRIDE_H,		// Conv2D, Pool2D
   PM_STRIDE_W,		// Conv2D, Pool2D
-  PM_PAD,		// Conv2D, Pool2D
+  PM_PAD,		// Conv2D, Pool2D, Pad
   PM_ACTI,		// Conv2D, Pool2D
   PM_NUMDIM,		// Concat, Transpose
   PM_AXIS,		// Concat, Split
@@ -1034,6 +1034,8 @@ public:
       string _pad_mode);
   ~Pad(void);
   bool get_int_parameter(PMParameter para, int*);
+  bool get_list_parameter(int* &arr, PMParameter para, int * ret);
+  bool get_string_parameter(PMParameter para, char* value);
   void forward(bool block);
   void map(void);
   void unmap(void);

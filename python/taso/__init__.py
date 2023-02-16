@@ -1043,6 +1043,7 @@ input_weight_names['Div'] = ['input1', 'input2']
 input_weight_names['MatMul'] = ['input', 'weight']
 input_weight_names['Mul'] = ['input1', 'input2']
 input_weight_names['Pow'] = ['input1', 'input2']
+input_weight_names['Pad'] = ['input', 'pads']
 input_weight_names['Reshape'] = ['input', 'shape']
 input_weight_names['Resize'] = ['input', 'sizes']
 input_weight_names['Sub'] = ['input1', 'input2']
@@ -1051,7 +1052,6 @@ input_weight_names['Transpose'] = ['input']
 input_weight_names['Slice'] = ['input', 'starts', 'ends', 'axes', 'steps']
 input_weight_names['Split'] = ['input', 'split']
 input_weight_names["Squeeze"] = ['input', 'axes']
-input_weight_names['ReduceMax'] = ['input', 'axes']
 input_weight_names['ReduceSum'] = ['input', 'axes']
 
 operator_attrs = dict()
@@ -1074,7 +1074,7 @@ operator_attrs['Greater'] = []
 operator_attrs['Identity'] = []
 operator_attrs['Less'] = []
 operator_attrs['Log'] = []
-operator_attrs['Pad'] = []
+operator_attrs['Pad'] = ['mode']
 operator_attrs['Pow'] = []
 operator_attrs['MatMul'] = []
 operator_attrs['MaxPool'] = ['kernel_shape', 'pads', 'strides']
@@ -1098,7 +1098,7 @@ operator_attrs['Unsqueeze'] = ['axes']
 # TODO: register this or catch and generate a Resize node?
 operator_attrs['Upsample'] = ['nearest']
 operator_attrs['BroadcastAdd'] = []
-operator_attrs['ReduceMax'] = ['keepdims']
+operator_attrs['ReduceMax'] = ['keepdims', 'axes']
 operator_attrs['ReduceMean'] = ['axes']
 operator_attrs['ReduceSum'] = ['keepdims']
 
@@ -1213,11 +1213,17 @@ def export_onnx(graph):
             inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, splits, 1)
-        elif mytype == 'ReduceSum' or mytype == 'ReduceMax' or mytype == 'Squeeze':
+        elif mytype == 'ReduceSum' or mytype == 'Squeeze':
             axes = graph.get_operator_attr(op, 'axes')
             inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, axes, 1)
+        elif mytype == 'Pad':
+            pads = graph.get_op_init_vector(op, 'pads')
+            inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, pads, 1)
+            
         outputs = list()
         for i in range(graph.get_num_outputs(op)):
             outputs.append(_output_tensor_name(graph, op, i))

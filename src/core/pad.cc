@@ -82,6 +82,33 @@ bool Pad::get_int_parameter(PMParameter para, int* value)
   return OpBase::get_int_parameter(para, value);
 }
 
+bool Pad::get_list_parameter(int* &arr, PMParameter para, int * ret)
+{
+  vector<int> pads;
+  switch (para) {
+    case PM_PAD:
+      pads = pad_before;
+      pads.insert(pads.end(), pad_after.begin(), pad_after.end());
+
+      arr = (int*) pads.data();
+      *ret = (int) pads.size();
+      return true;
+    default:
+      return OpBase::get_list_parameter(arr, para, ret);
+  }
+}
+
+bool Pad::get_string_parameter(PMParameter para, char* value)
+{
+  switch(para){
+    case PM_MODE:
+      strcpy(value, pad_mode.c_str());
+      return true;
+    default:
+      return OpBase::get_string_parameter(para, value);
+  }
+}
+
 void Pad::collect_costs(float& exe_time, float& flops,
                         float& mem_acc, int& num_kernels)
 {
