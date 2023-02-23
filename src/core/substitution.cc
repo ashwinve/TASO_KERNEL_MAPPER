@@ -684,6 +684,8 @@ OpX* GraphXfer::create_conv2d(TensorX input, TensorX weight,
   conv->add_pm_constraint(COMPARE_EQ, PM_STRIDE_W, strideW);
   conv->add_pm_constraint(COMPARE_EQ, PM_PAD, padding);
   conv->add_pm_constraint(COMPARE_EQ, PM_ACTI, activation);
+  conv->add_pm_constraint(COMPARE_EQ, PM_DILATION_H, 1);
+  conv->add_pm_constraint(COMPARE_EQ, PM_DILATION_W, 1);
   //conv->add_input_constraint(COMPARE_EQ, IN_1, DIM_2, kernelH);
   //conv->add_input_constraint(COMPARE_EQ, IN_1, DIM_3, kernelW);
   // The following is no longer true because of group conv
@@ -1218,15 +1220,17 @@ bool GraphXfer::create_new_operator(const OpX* opx, Op& op)
       Tensor input = opx->inputs[0].to_tensor(this);
       Tensor weight = opx->inputs[1].to_tensor(this);
       int strideH, strideW, padding, activation;
-      const std::vector<int> kernel_shape;
-      const std::vector<int> dilations;
+      int dilation_H, dilation_W;
       assert(opx->get_pm_constraint(PM_STRIDE_H, strideH));
       assert(opx->get_pm_constraint(PM_STRIDE_W, strideW));
       assert(opx->get_pm_constraint(PM_PAD, padding));
       assert(opx->get_pm_constraint(PM_ACTI, activation));
+      assert(opx->get_pm_constraint(PM_DILATION_H, dilation_H));
+      assert(opx->get_pm_constraint(PM_DILATION_W, dilation_W));
+
       op = model->get_or_create_conv2d(input, weight, strideH, strideW,
                                        (PaddingMode)padding,
-                                       kernel_shape, dilations,
+                                       dilation_H, dilation_W,
                                        (ActiMode)activation);
       break;
     }

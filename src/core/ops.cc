@@ -1285,7 +1285,7 @@ float Graph::run(void)
         assert(inList.size() == 2);
         opPtr = new Conv2D(model, inputs[0], inputs[1],
                            conv->strideH, conv->strideW,
-                           conv->padding, conv->kernel_shape, conv->dilations, conv->activation);
+                           conv->padding, 1, 1, conv->activation);
 #ifdef USE_CUDNN
         ((Conv2D*)opPtr)->fwdAlgo = conv->fwdAlgo;
 #endif

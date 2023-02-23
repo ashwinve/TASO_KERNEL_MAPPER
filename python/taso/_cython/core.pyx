@@ -232,23 +232,20 @@ cdef class PyGraph:
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
     
-    def conv2d(self, *, PyTensor input, PyTensor weight, strides, padding, kernel_shape, dilations, activation = "NONE"):
-        cdef vector[int] c_kernel_shape
-        cdef vector[int] c_dilations
-        c_kernel_shape.resize(len(kernel_shape))
-        c_dilations.resize(len(dilations))
+    def conv2d(self, *, PyTensor input, PyTensor weight, strides, padding, dilations, activation = "NONE"):
+        # cdef vector[int] c_kernel_shape
+        # cdef vector[int] c_dilations
+        # c_kernel_shape.resize(len(kernel_shape))
+        # c_dilations.resize(len(dilations))
 
         assert (type(input) == PyTensor)
         padding = get_padding_mode(padding)
         activation = get_activation_mode(activation)
-
-        for i in range(len(kernel_shape)):
-            c_kernel_shape[i] = kernel_shape[i]
         
-        for i in range(len(dilations)):
-            c_dilations[i] = dilations[i]
+        # for i in range(len(dilations)):
+        #    c_dilations[i] = dilations[i]
 
-        cdef TensorHandle handle = self.p_graph.conv2d(input.ctensor, weight.ctensor, strides[0], strides[1], padding, c_kernel_shape, c_dilations, activation)
+        cdef TensorHandle handle = self.p_graph.conv2d(input.ctensor, weight.ctensor, strides[0], strides[1], padding, dilations[0], dilations[1], activation)
         t = ctypes.cast(<unsigned long long>handle, ctypes.c_void_p)
         return PyTensor(t)
 
@@ -757,11 +754,14 @@ cdef class PyGraph:
         elif attrname == 'group':
             return self.p_graph.get_operator_int_attr(op.guid, PM_GROUP)
         elif attrname == 'dilations':
-            n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_DILATIONS)
-            temp_arr[:] = ptr
-            dilation_list = list()
-            for i in range(n_dims):
-                dilation_list.append(temp_arr[i])
+            # n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_DILATIONS)
+            dilation_H = self.p_graph.get_operator_int_attr(op.guid, PM_DILATION_H)
+            dilation_W = self.p_graph.get_operator_int_attr(op.guid, PM_DILATION_W)
+            dilation_list = [dilation_H, dilation_W]
+            # temp_arr[:] = ptr
+            # dilation_list = list()
+            # for i in range(n_dims):
+            #    dilation_list.append(temp_arr[i])
             return dilation_list
         elif attrname == 'kernel_shape':
             n_dims = self.p_graph.get_operator_list_attr(ptr, op.guid, PM_KERNEL_SHAPE)

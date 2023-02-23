@@ -237,10 +237,9 @@ def _conv2d(op, graph, tensors, initializer):
         group = attrs["group"]
     pads = _get_conv_pool_pads_attr(attrs)
     strides = attrs["strides"]
-    kernel_shape = attrs["kernel_shape"]
     dilations = attrs["dilations"]
     outputs = graph.conv2d(input=inputs[0], weight=inputs[1], strides=strides, padding=pads,
-                           kernel_shape=kernel_shape, dilations=dilations)
+                           dilations=dilations)
     
     if len(inputs) > 2:
         dim = inputs[2].dim(0)
@@ -1040,6 +1039,7 @@ input_weight_names['BatchNormalization'] = ['input', 'scale', 'bias', 'mean', 'v
 input_weight_names['Concat'] = ['input1', 'input2', 'input3', 'input4', 'input5', 'input6']
 input_weight_names['Conv'] = ['input', 'weight', 'bias']
 input_weight_names['Div'] = ['input1', 'input2']
+input_weight_names['Expand'] = ['input', 'shape']
 input_weight_names['MatMul'] = ['input', 'weight']
 input_weight_names['Mul'] = ['input1', 'input2']
 input_weight_names['Pow'] = ['input1', 'input2']
@@ -1063,7 +1063,7 @@ operator_attrs['BatchNormalization'] = ['epsilon'] # TODO: Add momentum
 operator_attrs['Cast'] = []
 operator_attrs['Ceil'] = []
 operator_attrs['Concat'] = ['axis']
-operator_attrs['Conv'] = ['dilations', 'group', 'kernel_shape', 'pads', 'strides']
+operator_attrs['Conv'] = ['dilations', 'group', 'pads', 'strides']
 operator_attrs['Div'] = []
 operator_attrs['Dropout'] = []
 operator_attrs['Erf'] = []
@@ -1149,7 +1149,7 @@ def export_onnx(graph):
     for op in opList:
         mytype = graph.get_operator_type(op)
         inedges = graph.get_input_edges(op)
-        # print("op.guid={} mytype={} inedges={}".format(op['guid'], mytype, len(inedges)))
+        print("op.guid={} mytype={} inedges={}".format(op['guid'], mytype, len(inedges)))
         inputs = list()
         for e in inedges:
             intype = graph.get_operator_type(e['srcOp'])
@@ -1223,14 +1223,27 @@ def export_onnx(graph):
             inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, pads, 1)
+        elif mytype == 'Expand':
+            shape = graph.get_output_dims(op, 0)
+            inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, shape, 1)
             
         outputs = list()
         for i in range(graph.get_num_outputs(op)):
             outputs.append(_output_tensor_name(graph, op, i))
             output_guids[(op['guid'], i)] = op
-        
         node = helper.make_node(mytype, inputs, outputs, '{}{}'.format(mytype, op['guid']))
-        _add_node_attribute(graph, node, op, mytype)
+        
+        if(mytype == 'Conv'):
+            for key in operator_attrs[mytype]:
+                # print("getting: ", key)
+                val = graph.get_operator_attr(op, key)
+                # print("Got: ", val)
+                attr = helper.make_attribute(key, val)
+                node.attribute.append(attr)
+        else:
+            _add_node_attribute(graph, node, op, mytype)
         graph_nodes.append(node)
         
     for guid, idx in output_guids:
