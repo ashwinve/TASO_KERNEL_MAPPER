@@ -1123,13 +1123,13 @@ def _add_node_attribute(graph, node, op, optype):
         node.attribute.append(attr)
 
 # Helper function to register tensors that should be at Op input
-def export_register_input_tensor(inputs, graph_inputs, graph_initializers, mytype, op, py_array, input_idx):
+def export_register_input_tensor(inputs, graph_inputs_dict, graph_initializers, mytype, op, py_array, input_idx):
     input_tensor_name = "{}{}_{}".format(mytype, op['guid'], input_weight_names[mytype][input_idx])
     inputs.append(input_tensor_name)
-    graph_inputs.append(helper.make_tensor_value_info(input_tensor_name, TensorProto.INT64, [len(py_array)]))
+    graph_inputs_dict[input_tensor_name] = helper.make_tensor_value_info(input_tensor_name, TensorProto.INT64, [len(py_array)])
     graph_initializers.append(helper.make_tensor(input_tensor_name, TensorProto.INT64, [len(py_array)], py_array))
     
-    return inputs, graph_inputs, graph_initializers
+    return inputs, graph_inputs_dict, graph_initializers
                     
 def export_onnx(graph):
     '''
@@ -1142,33 +1142,38 @@ def export_onnx(graph):
     '''
     opList = graph.get_operator_list()
     graph_nodes = list()
-    graph_inputs = list()
+    graph_inputs_dict = dict()
     graph_initializers = list()
     graph_outputs = list()
     output_guids = dict()
     for op in opList:
         mytype = graph.get_operator_type(op)
         inedges = graph.get_input_edges(op)
-        print("op.guid={} mytype={} inedges={}".format(op['guid'], mytype, len(inedges)))
+        # print("op.guid={} mytype={} inedges={}".format(op['guid'], mytype, len(inedges)))
         inputs = list()
         for e in inedges:
             intype = graph.get_operator_type(e['srcOp'])
             inputs.append(_input_tensor_name(graph, e, op))
             output_guids.pop((e['srcOp']['guid'], e['srcIdx']), None)
             if intype == 'Input' or intype == 'Weight':
-                graph_inputs.append(helper.make_tensor_value_info(_input_tensor_name(graph, e, op),
-                                    TensorProto.FLOAT, graph.get_input_dims(op, e['dstIdx'])))
+                new_input_name = _input_tensor_name(graph, e, op)
+                if new_input_name not in graph_inputs_dict.keys():
+                    graph_inputs_dict[new_input_name] = helper.make_tensor_value_info(_input_tensor_name(graph, e, op),
+                                        TensorProto.FLOAT, graph.get_input_dims(op, e['dstIdx']))
             if intype == 'Weight':
                 graph_initializers.append(helper.make_tensor(_input_tensor_name(graph, e, op),
-                                          TensorProto.FLOAT, graph.get_input_dims(op, e['dstIdx']),
-                                          graph.get_weight_value(e['srcOp'])))
+                                            TensorProto.FLOAT, graph.get_input_dims(op, e['dstIdx']),
+                                            graph.get_weight_value(e['srcOp'])))
         
         # account for ONNX operators where attributes became input tensors
         if mytype == 'Reshape':
-            inputs.append('Reshape_attr{}'.format(op['guid']))
+            # inputs.append('Reshape_attr{}'.format(op['guid']))
             shape = graph.get_output_dims(op, 0)
-            graph_inputs.append(helper.make_tensor_value_info('Reshape_attr{}'.format(op['guid']), TensorProto.INT64, [len(shape)]))
-            graph_initializers.append(helper.make_tensor('Reshape_attr{}'.format(op['guid']), TensorProto.INT64, [len(shape)], shape))
+            inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, shape, 1)
+            # graph_inputs.append(helper.make_tensor_value_info('Reshape_attr{}'.format(op['guid']), TensorProto.INT64, [len(shape)]))
+            # graph_initializers.append(helper.make_tensor('Reshape_attr{}'.format(op['guid']), TensorProto.INT64, [len(shape)], shape))
         
         elif mytype == 'Slice':
             num_inputs = graph.get_operator_int_attr(op, 'num_inputs')
@@ -1178,11 +1183,11 @@ def export_onnx(graph):
                 starts = graph.get_op_init_vector(op, 'starts')
                 ends = graph.get_op_init_vector(op, 'ends')
                 
-                inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, starts, 1)
                 
-                inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, ends, 2)
             
@@ -1192,40 +1197,40 @@ def export_onnx(graph):
                 axes = graph.get_op_init_vector(op, 'axes')
                 steps = graph.get_op_init_vector(op, 'steps')
                 
-                inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, starts, 1)
                 
-                inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, ends, 2)
                 
-                inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, axes, 3)
                 
-                inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+                inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, steps, 4)
         
         elif mytype == 'Split':
             splits = graph.get_split_lens(op)
-            inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+            inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, splits, 1)
         elif mytype == 'ReduceSum' or mytype == 'Squeeze':
             axes = graph.get_operator_attr(op, 'axes')
-            inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+            inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, axes, 1)
         elif mytype == 'Pad':
             pads = graph.get_op_init_vector(op, 'pads')
-            inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+            inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, pads, 1)
         elif mytype == 'Expand':
             shape = graph.get_output_dims(op, 0)
-            inputs, graph_inputs, graph_initializers = export_register_input_tensor(inputs, graph_inputs, 
+            inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, shape, 1)
             
@@ -1250,6 +1255,8 @@ def export_onnx(graph):
         op = output_guids[(guid, idx)]
         graph_outputs.append(helper.make_tensor_value_info(_output_tensor_name(graph, op, idx),
                              TensorProto.FLOAT, graph.get_output_dims(op, idx)))
+    
+    graph_inputs = list(graph_inputs_dict.values())
     onnx_graph = helper.make_graph(graph_nodes, 'main', graph_inputs, graph_outputs, graph_initializers)
     onnx_model = helper.make_model(onnx_graph, producer_name='TASO Optimized Model')
     return onnx_model
