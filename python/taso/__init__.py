@@ -1045,7 +1045,7 @@ input_weight_names['Mul'] = ['input1', 'input2']
 input_weight_names['Pow'] = ['input1', 'input2']
 input_weight_names['Pad'] = ['input', 'pads']
 input_weight_names['Reshape'] = ['input', 'shape']
-input_weight_names['Resize'] = ['input', 'sizes']
+input_weight_names['Resize'] = ['input', 'roi', 'scales', 'sizes']
 input_weight_names['Sub'] = ['input1', 'input2']
 input_weight_names['BroadcastAdd'] = ['input1', 'input2']
 input_weight_names['Transpose'] = ['input']
@@ -1233,7 +1233,25 @@ def export_onnx(graph):
             inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, shape, 1)
+        elif mytype == 'Resize':
+            # empty list for roi specification
+            # if required regsiter into Resize node
+            inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, [], 1)
             
+            # empty list for scales specification
+            # One of 'scales' and 'sizes' MUST be specified and it is an error if both are specified.
+            # If 'sizes' is needed, the user can use an empty string as the name of 'scales' in this
+            # operator's input list.
+            inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, "", 2)
+            
+            sizes = graph.get_op_init_vector(op, 'sizes')
+            inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
+                                                                                        graph_initializers, 
+                                                                                        mytype, op, sizes, 3)
         outputs = list()
         for i in range(graph.get_num_outputs(op)):
             outputs.append(_output_tensor_name(graph, op, i))

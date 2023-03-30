@@ -114,6 +114,18 @@ bool Resize::get_string_parameter(PMParameter para, char* value)
   }
 }
 
+bool Resize::get_list_parameter(int* &arr, PMParameter para, int * ret)
+{
+  switch(para){
+    case PM_SIZES:
+      arr = (int*) shape.data();
+      *ret = (int) shape.size();
+      return true;
+    default:
+      return OpBase::get_list_parameter(arr, para, ret);
+  }
+}
+
 void Resize::collect_costs(float& exe_time, float& flops,
                            float& mem_acc, int& num_kernels)
 {

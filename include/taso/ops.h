@@ -418,7 +418,8 @@ enum PMParameter {
   PM_KERNEL_SHAPE, // Conv2D
   PM_STARTS, // Slice
   PM_ENDS, // Slice
-  PM_STEPS // Slice
+  PM_STEPS, // Slice
+  PM_SIZES // Resize
 };
 
 enum TNParameter {
@@ -1079,6 +1080,7 @@ public:
   bool get_int_parameter(PMParameter para, int*);
   bool get_float_parameter(PMParameter para, float* value);
   bool get_string_parameter(PMParameter para, char* value);
+  bool get_list_parameter(int* &arr, PMParameter para, int * ret);
   void forward(bool block);
   void map(void);
   void unmap(void);

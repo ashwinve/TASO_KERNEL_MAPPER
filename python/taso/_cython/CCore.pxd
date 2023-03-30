@@ -132,6 +132,7 @@ cdef extern from "taso/ops.h" namespace "taso":
         PM_STARTS
         PM_ENDS
         PM_STEPS
+        PM_SIZES
 
     # This must be consistent with include/taso/ops.h
     cdef enum ActiMode:
