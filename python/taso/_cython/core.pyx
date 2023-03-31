@@ -811,5 +811,9 @@ cdef class PyGraph:
             return c_string_ptr
         elif attrname == 'alpha':
             return self.p_graph.get_operator_float_attr(op.guid, PM_ALPHA)
+        elif attrname == 'allowzero':
+            # For Reshape node, adding allowzero attribute and setting to default value: 0
+            # Required by TensorRT
+            return 0
         else:
            assert False, 'Internal error: unknow attribute {}'.format(attrname)
