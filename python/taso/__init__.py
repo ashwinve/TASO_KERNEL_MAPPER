@@ -364,19 +364,56 @@ def _matmul(op, graph, tensors, initializer):
     inputs = _get_inputs(op, graph, tensors, initializer)
     assert len(inputs) == 2, "MatMul takes exactly two inputs"
     
-    if(inputs[0].nDim != inputs[1].nDim):
-        # check if dims are the same. if not, reshape inputs[1] to inputs[0]
-        # the dimensions sent to reshape are prepended with 1s
+    
+    if(inputs[0].nDim != inputs[1].nDim):  
+        # check if dims are the same. if not, broadcast inputs[1] to inputs[0]
         numDims = inputs[0].nDim
+        i_dims = np.zeros(numDims)
+        for j in range(numDims):
+            i_dims[j] = inputs[0].dim(j)
+        
         dims = [inputs[0].dim(i) for i in range(numDims)]
         j = numDims - 1
-        # iterate backwards through dims and overwrite with inputs[1] dimensions
+        # iterate backwards through dims and overwrite with 1s
         for i in range(inputs[1].nDim - 1, -1, -1):
-            dims[j] = inputs[1].dim(i)
+            dims[j] = 1
             j = j -1
         
-        reshaped_weights = graph.reshape(inputs[1], tuple(dims))
-        outputs = graph.matmul(inputs[0], reshaped_weights)
+        # find initalizer index to update raw_data
+        
+        for init in initializer:
+            if init.name == op.input[1]:
+                break
+            
+        weight_data = numpy_helper.to_array(init)
+        ones = np.ones(dims)
+        b_weight_data = (ones * weight_data).astype(weight_data.dtype)
+        weight_tensor_proto = b_weight_data.tobytes()
+        
+        # update initializer list with broadcasted weight data
+        for init in initializer:
+            if init.name == op.input[1]:
+                # Modify the raw_data field of the initializer
+                init.raw_data = weight_tensor_proto
+
+                # Modify the dimensions of the initializer
+                init.dims[:] = b_weight_data.shape
+        
+        # print("input shape ", i_dims)
+        # print("weight_data ", weight_data.shape, weight_data.dtype)
+        # print("b_weight_data ", b_weight_data.shape, b_weight_data.dtype)
+        
+        # verify
+        for init in initializer:
+            if init.name == op.input[1]:
+                v_weight_data = numpy_helper.to_array(init)
+                assert(np.all(b_weight_data == v_weight_data))
+                
+                # print("v_weight_data", v_weight_data.shape)
+        
+        b_weight_tensor = graph.new_weight(dims=tuple(b_weight_data.shape), data=b_weight_data)
+        outputs = graph.matmul(inputs[0], b_weight_tensor)
+        
     else:
         outputs = graph.matmul(inputs[0], inputs[1])
     return outputs
@@ -1007,10 +1044,11 @@ def load_onnx(filename):
     cnt = 0
     for opname in node_list:
         op = name_to_op[opname]
-        # print(cnt, op.op_type, opname)
+        print(cnt, op.op_type, opname)
         cnt += 1
         if op.op_type in xf_operators:
             try:
+                # TODO: Assigning to model.graph.initializer due to explicit broadcast semantics in TASO
                 outputs = xf_operators[op.op_type](op, graph, tensors, model.graph.initializer)
                 if not isinstance(outputs, list):
                     outputs = [outputs]
@@ -1018,6 +1056,12 @@ def load_onnx(filename):
                 for i in range(len(outputs)):
                     assert _check_output(outputs[i], op.output[i])
                     tensors[op.output[i]] = outputs[i]
+                
+                # if op.op_type == 'MatMul':
+                #     for init in model.graph.initializer:
+                #         if init.name == op.input[1]:
+                #             v_weight_data = numpy_helper.to_array(init)
+                #             print("in load_onnx:", v_weight_data.shape)
                 
                 # print(out_edges['/model/decode_head/Reshape'])
                 # print(out_edges['/model/decode_head/Resize'])

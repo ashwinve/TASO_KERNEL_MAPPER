@@ -25,9 +25,11 @@ TensorHandle Graph::reshape(const TensorHandle _input,
     if (myshape[i] == 0)
       myshape[i] = _input->dim[i];
   int input_size = _input->volume();
+  std::cout << "input_volume: " << input_size <<std::endl;
   // replace -1 with actual size
   for (size_t i = 0; i < myshape.size(); i++)
     if (myshape[i] != -1) {
+      std::cout << "input_size % myshape[i]: " << input_size << " % " << myshape[i] <<std::endl;
       assert(input_size % myshape[i] == 0);
       input_size /= myshape[i];
     }
