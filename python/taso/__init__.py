@@ -1097,6 +1097,8 @@ input_weight_names['Slice'] = ['input', 'starts', 'ends', 'axes', 'steps']
 input_weight_names['Split'] = ['input', 'split']
 input_weight_names["Squeeze"] = ['input', 'axes']
 input_weight_names['ReduceSum'] = ['input', 'axes']
+input_weight_names['ReduceMean'] = ['input', 'axes']
+input_weight_names['ReduceMax'] = ['input', 'axes']
 
 operator_attrs = dict()
 operator_attrs['Add'] = []
@@ -1142,8 +1144,8 @@ operator_attrs['Unsqueeze'] = ['axes']
 # TODO: register this or catch and generate a Resize node?
 operator_attrs['Upsample'] = ['nearest']
 operator_attrs['BroadcastAdd'] = []
-operator_attrs['ReduceMax'] = ['keepdims', 'axes']
-operator_attrs['ReduceMean'] = ['axes']
+operator_attrs['ReduceMax'] = ['keepdims']
+operator_attrs['ReduceMean'] = ['keepdims']
 operator_attrs['ReduceSum'] = ['keepdims']
 
 def _input_tensor_name(graph, inedge, op):
@@ -1262,7 +1264,7 @@ def export_onnx(graph):
             inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
                                                                                         graph_initializers, 
                                                                                         mytype, op, splits, 1)
-        elif mytype == 'ReduceSum' or mytype == 'Squeeze':
+        elif mytype in ['ReduceSum', 'ReduceMean', 'ReduceMax', 'Squeeze']:
             axes = graph.get_operator_attr(op, 'axes')
             inputs, graph_inputs_dict, graph_initializers = export_register_input_tensor(inputs, graph_inputs_dict, 
                                                                                         graph_initializers, 
